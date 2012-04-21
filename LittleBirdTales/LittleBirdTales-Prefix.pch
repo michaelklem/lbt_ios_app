@@ -1,0 +1,35 @@
+//
+// Prefix header for all source files of the 'LittleBirdTales' target in the 'LittleBirdTales' project
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_4_0
+#warning "This project uses features only available in iOS SDK 4.0 and later."
+#endif
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
+#endif
+
+#define IsIdiomPad UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad
+
+#define servicesURLPrefix @"http://www.littlebirdtales.com"
+
+#define UIColorFromRGB(rgbValue) [UIColor \
+colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \
+green:((float)((rgbValue & 0xFF00) >> 8))/255.0 \
+blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
+
+struct Pixel
+{
+    unsigned char red;
+    unsigned char blue;
+    unsigned char green;
+    unsigned char alpha;
+};
+typedef struct Pixel Pixel;
+
+#define COLOR_THREADHOLD 0.02f
+#define PER_THREADHOLD 30
