@@ -7,9 +7,10 @@
 //
 
 #import "AppDelegate.h"
-
 #import "LoginViewController.h"
 #import "TalesController.h"
+#import "FlurryAnalytics.h"
+
 AppDelegate* _shared;
 @implementation AppDelegate
 
@@ -59,6 +60,8 @@ AppDelegate* _shared;
 //    x = x + 1;
 //    NSLog(@"%i %i",x,y-1);
 //    NSLog(@"%i %i",x,y+1);
+    
+    [FlurryAnalytics startSession:@"S9B535JQQD3DD5XJ2GUM"];
     
     //As client request to display Splash Screen a little longer
     [NSThread sleepForTimeInterval:1.0];

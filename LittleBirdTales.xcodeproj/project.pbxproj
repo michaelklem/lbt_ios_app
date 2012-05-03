@@ -264,6 +264,7 @@
 		37F7D4AF14FB051A007C5B9A /* AudioRecord-iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37F7D4AE14FB051A007C5B9A /* AudioRecord-iPhone.xib */; };
 		37F7D4B314FB08B8007C5B9A /* iphone-bg-player.png in Resources */ = {isa = PBXBuildFile; fileRef = 37F7D4B114FB08B8007C5B9A /* iphone-bg-player.png */; };
 		37F7D4B414FB08B8007C5B9A /* iphone-bg-player@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 37F7D4B214FB08B8007C5B9A /* iphone-bg-player@2x.png */; };
+		BD17135715527ADA00CB53A1 /* libFlurryAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BD17135615527ADA00CB53A1 /* libFlurryAnalytics.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -595,6 +596,8 @@
 		37F7D4AE14FB051A007C5B9A /* AudioRecord-iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "AudioRecord-iPhone.xib"; sourceTree = "<group>"; };
 		37F7D4B114FB08B8007C5B9A /* iphone-bg-player.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iphone-bg-player.png"; sourceTree = "<group>"; };
 		37F7D4B214FB08B8007C5B9A /* iphone-bg-player@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iphone-bg-player@2x.png"; sourceTree = "<group>"; };
+		BD17135515527ADA00CB53A1 /* FlurryAnalytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryAnalytics.h; sourceTree = "<group>"; };
+		BD17135615527ADA00CB53A1 /* libFlurryAnalytics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurryAnalytics.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -610,6 +613,7 @@
 				04F1218B14B9F3C90003E733 /* UIKit.framework in Frameworks */,
 				04F1218D14B9F3C90003E733 /* Foundation.framework in Frameworks */,
 				04F1218F14B9F3C90003E733 /* CoreGraphics.framework in Frameworks */,
+				BD17135715527ADA00CB53A1 /* libFlurryAnalytics.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -901,6 +905,7 @@
 		04F1217B14B9F3C80003E733 = {
 			isa = PBXGroup;
 			children = (
+				BD17135415527ADA00CB53A1 /* FlurryAnalytics */,
 				04F1219014B9F3C90003E733 /* LittleBirdTales */,
 				37F6E8DF14C7BBD7003A278D /* Libs */,
 				0498461214D853DB0095370C /* Objs */,
@@ -1304,6 +1309,16 @@
 			name = "Edit Tale";
 			sourceTree = "<group>";
 		};
+		BD17135415527ADA00CB53A1 /* FlurryAnalytics */ = {
+			isa = PBXGroup;
+			children = (
+				BD17135515527ADA00CB53A1 /* FlurryAnalytics.h */,
+				BD17135615527ADA00CB53A1 /* libFlurryAnalytics.a */,
+			);
+			name = FlurryAnalytics;
+			path = LittleBirdTales/FlurryAnalytics;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1638,8 +1653,9 @@
 					armv7,
 					armv6,
 				);
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Michael Klem";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Michael Klem";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Developer: mike Klem (94A5586Y4U)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: mike Klem (94A5586Y4U)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -1655,8 +1671,9 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
-				PROVISIONING_PROFILE = "B650415B-967B-4F14-9128-EAEC60D2CDCD";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "B650415B-967B-4F14-9128-EAEC60D2CDCD";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=*]" = "80CD80FE-5FD0-4FDC-8AC7-45E3CE7CEB26";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "80CD80FE-5FD0-4FDC-8AC7-45E3CE7CEB26";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1670,8 +1687,8 @@
 					armv7,
 					armv6,
 				);
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Michael Klem";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Michael Klem";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: mike Klem (94A5586Y4U)";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_THUMB_SUPPORT = NO;
@@ -1681,8 +1698,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "B650415B-967B-4F14-9128-EAEC60D2CDCD";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "B650415B-967B-4F14-9128-EAEC60D2CDCD";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "80CD80FE-5FD0-4FDC-8AC7-45E3CE7CEB26";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -1697,16 +1714,20 @@
 					armv7,
 				);
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Michael Klem";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Michael Klem";
+				CODE_SIGN_IDENTITY = "iPhone Developer: mike Klem (94A5586Y4U)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: mike Klem (94A5586Y4U)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LittleBirdTales/LittleBirdTales-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = "LittleBirdTales/LittleBirdTales-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/LittleBirdTales/FlurryAnalytics\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "B650415B-967B-4F14-9128-EAEC60D2CDCD";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "B650415B-967B-4F14-9128-EAEC60D2CDCD";
+				PROVISIONING_PROFILE = "80CD80FE-5FD0-4FDC-8AC7-45E3CE7CEB26";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "80CD80FE-5FD0-4FDC-8AC7-45E3CE7CEB26";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1720,16 +1741,20 @@
 					armv7,
 				);
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Michael Klem";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Michael Klem";
+				CODE_SIGN_IDENTITY = "iPhone Developer: mike Klem (94A5586Y4U)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: mike Klem (94A5586Y4U)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LittleBirdTales/LittleBirdTales-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = "LittleBirdTales/LittleBirdTales-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/LittleBirdTales/FlurryAnalytics\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "B650415B-967B-4F14-9128-EAEC60D2CDCD";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "B650415B-967B-4F14-9128-EAEC60D2CDCD";
+				PROVISIONING_PROFILE = "80CD80FE-5FD0-4FDC-8AC7-45E3CE7CEB26";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "80CD80FE-5FD0-4FDC-8AC7-45E3CE7CEB26";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
