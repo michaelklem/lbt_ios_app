@@ -1653,7 +1653,7 @@
 					armv7,
 					armv6,
 				);
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Mike Klem";
 				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Developer: mike Klem (94A5586Y4U)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: mike Klem (94A5586Y4U)";
 				COPY_PHASE_STRIP = NO;
@@ -1671,7 +1671,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "85DA6B49-8B37-4CB2-A03A-63765AA59456";
 				"PROVISIONING_PROFILE[sdk=*]" = "80CD80FE-5FD0-4FDC-8AC7-45E3CE7CEB26";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "80CD80FE-5FD0-4FDC-8AC7-45E3CE7CEB26";
 				SDKROOT = iphoneos;
@@ -1687,8 +1687,8 @@
 					armv7,
 					armv6,
 				);
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: mike Klem (94A5586Y4U)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Mike Klem";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_THUMB_SUPPORT = NO;
@@ -1698,8 +1698,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "80CD80FE-5FD0-4FDC-8AC7-45E3CE7CEB26";
+				PROVISIONING_PROFILE = "85DA6B49-8B37-4CB2-A03A-63765AA59456";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -1714,7 +1714,7 @@
 					armv7,
 				);
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: mike Klem (94A5586Y4U)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: mike Klem (94A5586Y4U)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LittleBirdTales/LittleBirdTales-Prefix.pch";
@@ -1726,7 +1726,7 @@
 					"\"$(SRCROOT)/LittleBirdTales/FlurryAnalytics\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "80CD80FE-5FD0-4FDC-8AC7-45E3CE7CEB26";
+				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "80CD80FE-5FD0-4FDC-8AC7-45E3CE7CEB26";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
@@ -1741,8 +1741,8 @@
 					armv7,
 				);
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: mike Klem (94A5586Y4U)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: mike Klem (94A5586Y4U)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LittleBirdTales/LittleBirdTales-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
@@ -1753,8 +1753,8 @@
 					"\"$(SRCROOT)/LittleBirdTales/FlurryAnalytics\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "80CD80FE-5FD0-4FDC-8AC7-45E3CE7CEB26";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "80CD80FE-5FD0-4FDC-8AC7-45E3CE7CEB26";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
