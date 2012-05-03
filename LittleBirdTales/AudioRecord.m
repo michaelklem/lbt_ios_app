@@ -7,6 +7,7 @@
 //
 
 #import "AudioRecord.h"
+#import <AudioToolbox/AudioServices.h>
 
 @implementation AudioRecord
 @synthesize delegate, voiceName, pageFolder;
@@ -31,8 +32,14 @@
     
     
     hasRecorded = NO;
-    
+
     [[AVAudioSession sharedInstance] setCategory: AVAudioSessionCategoryPlayAndRecord error: nil];
+
+    // Make the default sound route for the session be to use the speaker.
+    // This resolves the issue where the recorded audio is too low.
+    UInt32 doChangeDefaultRoute = 1;
+    AudioSessionSetProperty (kAudioSessionProperty_OverrideCategoryDefaultToSpeaker, sizeof (doChangeDefaultRoute), &doChangeDefaultRoute);
+
     [[AVAudioSession sharedInstance] setActive: YES error: nil];
     
     [playButton setEnabled:NO];
