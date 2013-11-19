@@ -139,8 +139,35 @@
     [UIImageJPEGRepresentation(original, 0.8) writeToFile:fullPathToFile atomically:YES];
     UIImage *thumbnail = [original resizedImageWithContentMode:UIViewContentModeScaleAspectFill bounds:CGSizeMake(200, 140) interpolationQuality:kCGInterpolationDefault];
     [UIImageJPEGRepresentation(thumbnail, 0.8) writeToFile:[NSString stringWithFormat:@"%@.jpg",fullPathToFile] atomically:YES];
-        
+    
     self.image = imageName;
+    self.modified = round([[NSDate date] timeIntervalSince1970]);
+}
+
+- (void)saveAudio:(NSData *)audioData {
+    
+    double number = round([[NSDate date] timeIntervalSince1970]);
+    
+    NSString *folderPath = [NSString stringWithFormat:@"%@/%@/voices",
+                            [Lib applicationDocumentsDirectory],pageFolder];
+    NSString *voiceName = [NSString stringWithFormat:@"/%@/voices/%.0f.caf",
+                           pageFolder,number];
+    
+    if (![[NSFileManager defaultManager] fileExistsAtPath:folderPath]){
+        [[NSFileManager defaultManager] createDirectoryAtPath:folderPath withIntermediateDirectories:YES attributes:nil error:nil];
+    }
+    
+    // Find the path to the documents directory
+    
+    NSString *fullPathToFile = [[Lib applicationDocumentsDirectory] stringByAppendingPathComponent:voiceName];
+    NSURL *file = [NSURL fileURLWithPath:fullPathToFile];
+     
+    [audioData writeToURL:file atomically:YES];
+    
+    AVAudioPlayer* player = [[AVAudioPlayer alloc] initWithData:audioData error:nil];
+    
+    self.time = player.duration;
+    self.voice = voiceName;
     self.modified = round([[NSDate date] timeIntervalSince1970]);
 }
 

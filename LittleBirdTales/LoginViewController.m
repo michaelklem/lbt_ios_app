@@ -7,6 +7,7 @@
 //
 
 #import "LoginViewController.h"
+#import "DownloadTalesController.h"
 #import "AppDelegate.h"
 #import "ServiceLib.h"
 #import "SBJson.h"
@@ -14,7 +15,7 @@
 
 @implementation LoginViewController
 
-@synthesize tale, taleNumber;
+@synthesize tale, taleNumber, downloadRequest;
 
 -(IBAction)login:(id)sender {
     
@@ -104,16 +105,33 @@
             [Lib setValue:@"" forKey:@"schoolcode"];
         }
         
-        uploadingView.hidden = NO;
-        loginView.hidden = YES;
-        backButton.enabled = NO;
-        [loadingText setText:@"Uploading..."] ;
+        if(downloadRequest) {
+            uploadingView.hidden = YES;
+            loginView.hidden = YES;
+            downloadingView.hidden = NO;
+            DownloadTalesController* controller;
+            if (IsIdiomPad) {
+                controller = [[DownloadTalesController alloc] initWithNibName:@"DownloadTalesController-iPad" bundle:nil];
+            } else {
+                controller = [[DownloadTalesController alloc] initWithNibName:@"DownloadTalesController-iPhone" bundle:nil];
+            }
+            controller.userId = userId;
+            [self.navigationController pushViewController:controller animated:YES];
+            return;
+        }
+        else {
+            uploadingView.hidden = NO;
+            downloadingView.hidden = YES;
+            loginView.hidden = YES;
+            backButton.enabled = NO;
+            [loadingText setText:@"Uploading..."] ;
 
-        [NSTimer scheduledTimerWithTimeInterval: 0.5f
+            [NSTimer scheduledTimerWithTimeInterval: 0.5f
                                          target: self
                                        selector: @selector(uploadTale)
                                        userInfo: nil
                                         repeats: NO];
+        }
     } else {
         [activityIndicator stopAnimating];
         uploadingView.hidden = YES;

@@ -114,6 +114,18 @@
     
 }
 
+-(IBAction)downloadTales:(id)sender {
+    LoginViewController* controller;
+    if (IsIdiomPad) {
+        controller = [[LoginViewController alloc] initWithNibName:@"LoginViewController-iPad" bundle:nil];
+    } else {
+        controller = [[LoginViewController alloc] initWithNibName:@"LoginViewController-iPhone" bundle:nil];
+    }
+    
+    controller.downloadRequest = true;
+    [self.navigationController pushViewController:controller animated:YES];
+}
+
 -(void)inputedTitle:(NSString*)title author:(NSString*)author {
     
     Tale *newTale = [Tale newTalewithTitle:title author:author];
@@ -214,7 +226,12 @@
             
             [talesScrollView addSubview:button];
         }
+        if (IsIdiomPad) {
             [talesScrollView setContentSize:CGSizeMake(210*[[Tale tales] count] , 140)];
+        }
+        else {
+            [talesScrollView setContentSize:CGSizeMake(90*[[Tale tales] count] , 63)];
+        }
     }
 }
 

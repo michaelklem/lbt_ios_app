@@ -15,7 +15,7 @@
 
 #define IsIdiomPad UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad
 
-#define servicesURLPrefix @"http://www.littlebirdtales.com"
+#define servicesURLPrefix @"http://marnold1.littlebirdtales.com"
 
 #define UIColorFromRGB(rgbValue) [UIColor \
 colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \

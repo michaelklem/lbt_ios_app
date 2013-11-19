@@ -22,6 +22,7 @@
     
     IBOutlet UIView *loginView;
     IBOutlet UIView *uploadingView;
+    IBOutlet UIView *downloadingView;
     IBOutlet UIView *sharingView;
     
     IBOutlet UISwitch *rememberMe;
@@ -33,6 +34,7 @@
 
 @property (nonatomic, retain) Tale* tale;
 @property (nonatomic, assign) NSInteger taleNumber;
+@property (nonatomic, assign) BOOL downloadRequest;
 
 - (IBAction)login:(id)sender;
 - (IBAction)signup:(id)sender;

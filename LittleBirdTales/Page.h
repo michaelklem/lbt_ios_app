@@ -39,5 +39,6 @@
 - (NSString*)pageVoicePath;
 - (NSString*)pageImagePath;
 - (void)saveImage:(UIImage*)original;
+- (void)saveAudio:(NSData*)original;
 
 @end
