@@ -25,8 +25,6 @@
     NSArray* userTales;
 }
 
-@property (nonatomic, assign) NSString* userId;
-
  - (void)reloadTaleList;
  - (void)selectTale;
  - (void)back;

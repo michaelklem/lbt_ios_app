@@ -265,6 +265,10 @@
 		37F7D4B314FB08B8007C5B9A /* iphone-bg-player.png in Resources */ = {isa = PBXBuildFile; fileRef = 37F7D4B114FB08B8007C5B9A /* iphone-bg-player.png */; };
 		37F7D4B414FB08B8007C5B9A /* iphone-bg-player@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 37F7D4B214FB08B8007C5B9A /* iphone-bg-player@2x.png */; };
 		BD17135715527ADA00CB53A1 /* libFlurryAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BD17135615527ADA00CB53A1 /* libFlurryAnalytics.a */; };
+		F425CDBF183C857800AB9367 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F425CDB9183C857800AB9367 /* libTestFlight.a */; };
+		F425CDC0183C857800AB9367 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = F425CDBA183C857800AB9367 /* README.md */; };
+		F425CDC1183C857800AB9367 /* release_notes.md in Resources */ = {isa = PBXBuildFile; fileRef = F425CDBB183C857800AB9367 /* release_notes.md */; };
+		F425CDCE183C86D300AB9367 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F425CDCD183C86D300AB9367 /* libz.dylib */; };
 		F42B463B183B1E62001D9BE3 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = F42B4631183B1E62001D9BE3 /* ioapi.c */; };
 		F42B463C183B1E62001D9BE3 /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = F42B4633183B1E62001D9BE3 /* mztools.c */; };
 		F42B463D183B1E62001D9BE3 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = F42B4635183B1E62001D9BE3 /* unzip.c */; };
@@ -608,6 +612,13 @@
 		37F7D4B214FB08B8007C5B9A /* iphone-bg-player@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iphone-bg-player@2x.png"; sourceTree = "<group>"; };
 		BD17135515527ADA00CB53A1 /* FlurryAnalytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryAnalytics.h; sourceTree = "<group>"; };
 		BD17135615527ADA00CB53A1 /* libFlurryAnalytics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurryAnalytics.a; sourceTree = "<group>"; };
+		F425CDB9183C857800AB9367 /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
+		F425CDBA183C857800AB9367 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		F425CDBB183C857800AB9367 /* release_notes.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = release_notes.md; sourceTree = "<group>"; };
+		F425CDBC183C857800AB9367 /* TestFlight+AsyncLogging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TestFlight+AsyncLogging.h"; sourceTree = "<group>"; };
+		F425CDBD183C857800AB9367 /* TestFlight+ManualSessions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TestFlight+ManualSessions.h"; sourceTree = "<group>"; };
+		F425CDBE183C857800AB9367 /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
+		F425CDCD183C86D300AB9367 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		F42B4630183B1E62001D9BE3 /* crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt.h; sourceTree = "<group>"; };
 		F42B4631183B1E62001D9BE3 /* ioapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ioapi.c; sourceTree = "<group>"; };
 		F42B4632183B1E62001D9BE3 /* ioapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ioapi.h; sourceTree = "<group>"; };
@@ -632,6 +643,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F425CDCE183C86D300AB9367 /* libz.dylib in Frameworks */,
 				F42B4642183B203F001D9BE3 /* libz.1.2.5.dylib in Frameworks */,
 				3760BF7A1510436D0086ECD6 /* AudioToolbox.framework in Frameworks */,
 				37DA10F314FC8D14002C98F7 /* MediaPlayer.framework in Frameworks */,
@@ -642,6 +654,7 @@
 				04F1218D14B9F3C90003E733 /* Foundation.framework in Frameworks */,
 				04F1218F14B9F3C90003E733 /* CoreGraphics.framework in Frameworks */,
 				BD17135715527ADA00CB53A1 /* libFlurryAnalytics.a in Frameworks */,
+				F425CDBF183C857800AB9367 /* libTestFlight.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -933,6 +946,8 @@
 		04F1217B14B9F3C80003E733 = {
 			isa = PBXGroup;
 			children = (
+				F425CDCD183C86D300AB9367 /* libz.dylib */,
+				F425CDB8183C857800AB9367 /* TestFlightSDK2.0.2 */,
 				F42B4641183B203F001D9BE3 /* libz.1.2.5.dylib */,
 				F42B462F183B1E62001D9BE3 /* minizip */,
 				F42B4639183B1E62001D9BE3 /* ZipArchive.mm */,
@@ -1353,6 +1368,20 @@
 			path = LittleBirdTales/FlurryAnalytics;
 			sourceTree = "<group>";
 		};
+		F425CDB8183C857800AB9367 /* TestFlightSDK2.0.2 */ = {
+			isa = PBXGroup;
+			children = (
+				F425CDB9183C857800AB9367 /* libTestFlight.a */,
+				F425CDBA183C857800AB9367 /* README.md */,
+				F425CDBB183C857800AB9367 /* release_notes.md */,
+				F425CDBC183C857800AB9367 /* TestFlight+AsyncLogging.h */,
+				F425CDBD183C857800AB9367 /* TestFlight+ManualSessions.h */,
+				F425CDBE183C857800AB9367 /* TestFlight.h */,
+			);
+			name = TestFlightSDK2.0.2;
+			path = ../../../Users/home/Downloads/TestFlightSDK2.0.2;
+			sourceTree = "<group>";
+		};
 		F42B462F183B1E62001D9BE3 /* minizip */ = {
 			isa = PBXGroup;
 			children = (
@@ -1618,6 +1647,8 @@
 				F4AEFE0E1820B0A700BD44D9 /* Default-568h@2x.png in Resources */,
 				F4D1573C1821FCAE00806778 /* DownloadTalesController-iPad.xib in Resources */,
 				F497F39818286DAA0046D1CE /* DownloadTalesController-iPhone.xib in Resources */,
+				F425CDC0183C857800AB9367 /* README.md in Resources */,
+				F425CDC1183C857800AB9367 /* release_notes.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1793,6 +1824,8 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/LittleBirdTales/FlurryAnalytics\"",
+					/Users/home/Downloads/TestFlightSDK2.0.2,
+					"\"$(SRCROOT)/TestFlightSDK2.0.2\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "2AE33152-8AFD-48C4-B263-A9665DA12D6D";
@@ -1820,6 +1853,8 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/LittleBirdTales/FlurryAnalytics\"",
+					/Users/home/Downloads/TestFlightSDK2.0.2,
+					"\"$(SRCROOT)/TestFlightSDK2.0.2\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "2AE33152-8AFD-48C4-B263-A9665DA12D6D";

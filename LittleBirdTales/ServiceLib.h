@@ -12,6 +12,7 @@
     
 }
 +(NSString*)sendRequest:(NSMutableDictionary*)params andUrl:(NSString*)strURL;
++(NSData*)sendRequestForFile:(NSMutableDictionary*)params andUrl:(NSString*)strURL;
 +(NSString*)sendGetRequest:(NSString*)strURL;
 +(ServiceLib*)shareInstance;
 @end

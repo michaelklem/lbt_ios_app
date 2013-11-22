@@ -58,4 +58,36 @@ static ServiceLib* serviceLib;
 	return string;
 	
 }
+
++(NSData*)sendRequestForFile:(NSMutableDictionary*)params andUrl:(NSString*)strURL {
+    NSLog(@"Request to URL: %@",strURL);
+	NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:strURL]];
+	
+	[theRequest setHTTPMethod:@"POST"];
+	
+	NSString* paramStr = @"";
+	
+	if (params) {
+		NSEnumerator *keys = [params keyEnumerator];
+		
+		for (int i = 0; i < [params count]; i++) {
+			NSString *key = [keys nextObject];
+			NSString *val = [params objectForKey:key];
+			paramStr = [NSString stringWithFormat:@"%@&%@=%@",paramStr,key,val];
+		}
+	}
+	 
+	if (paramStr.length > 0) {
+		NSData* requestData = [paramStr dataUsingEncoding:NSUTF8StringEncoding];
+		NSString* requestDataLengthString = [NSString stringWithFormat:@"%u", [requestData length]];
+		[theRequest setHTTPBody: requestData];
+		[theRequest setValue:requestDataLengthString forHTTPHeaderField:@"Content-Length"];
+	}
+	
+	NSData* responeData = [NSURLConnection sendSynchronousRequest:theRequest returningResponse:nil error:nil];
+	
+	return responeData;
+	
+}
+
 @end

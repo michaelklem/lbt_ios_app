@@ -51,6 +51,7 @@
                        [NSCharacterSet whitespaceAndNewlineCharacterSet]];
     NSString* password = [pwdText text];
     NSString *code = [schoolText text];
+    NSString *encryptedUserId;
     
     NSString* strData;
     
@@ -81,6 +82,8 @@
             [Lib setValue:userId forKey:@"user_id"];
             bucketPath = [obj objectForKey:@"bucket_path"];
             [Lib setValue:bucketPath forKey:@"bucket_path"];
+            encryptedUserId = [obj objectForKey:@"encrypted_id"];
+            [Lib setValue:encryptedUserId forKey:@"encrypted_user_id"];
             sucessed = TRUE;
         }
         else if ([obj isKindOfClass:[NSDictionary class]] && [obj objectForKey:@"error"]) {
@@ -115,7 +118,6 @@
             } else {
                 controller = [[DownloadTalesController alloc] initWithNibName:@"DownloadTalesController-iPhone" bundle:nil];
             }
-            controller.userId = userId;
             [self.navigationController pushViewController:controller animated:YES];
             return;
         }

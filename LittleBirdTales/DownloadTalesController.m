@@ -18,7 +18,6 @@
 
 @implementation DownloadTalesController
 
-@synthesize userId;
 static int LoadingItemContext = 1;
 - (void)reloadTaleList {
     for (UIView *view in talesScrollView.subviews) {
@@ -149,8 +148,11 @@ static int LoadingItemContext = 1;
     NSDictionary *currentTale = [userTales objectAtIndex:currentTaleIndex];
     
     NSString* strData;
-    NSString* url = [NSString stringWithFormat:@"%@/services/tale/tale_id/%@/",servicesURLPrefix, [currentTale valueForKey:@"tale_id"]];
-    strData = [ServiceLib sendGetRequest:url];
+    NSString* url = [NSString stringWithFormat:@"%@/services/tale/",servicesURLPrefix];
+    strData = [ServiceLib sendRequest:[NSMutableDictionary dictionaryWithObjectsAndKeys:
+                             [currentTale valueForKey:@"tale_id"],@"tale_id",
+                             nil]
+                     andUrl:url];
     NSData *jsonData = [strData dataUsingEncoding:NSUTF8StringEncoding];
     NSError *e = nil;
     NSDictionary *json = [NSJSONSerialization JSONObjectWithData: jsonData options: NSJSONReadingMutableContainers error: &e];
@@ -161,13 +163,16 @@ static int LoadingItemContext = 1;
     
     Tale *newTale = [Tale newTalewithTitle:[json valueForKey:@"title"] author:[json valueForKey:@"author"]];
     
-    NSURL *url2 = [NSString stringWithFormat:@"%@/services/taleData/tale_id/%@/",servicesURLPrefix, [currentTale valueForKey:@"tale_id"]];
+    NSString *url2 = [NSString stringWithFormat:@"%@/services/taleData/",servicesURLPrefix];
     NSLog(@"%@", url2);
     NSError *error = nil;
-    NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:url2] options:0 error:&error];
     
-    if(!error)
-    {
+    NSData *data = [ServiceLib sendRequestForFile:[NSMutableDictionary dictionaryWithObjectsAndKeys:
+                             [currentTale valueForKey:@"tale_id"],@"tale_id",
+                             nil]
+                     andUrl:url2]; 
+    
+    
         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
         NSString *path = [paths objectAtIndex:0];
         NSString *zipPath = [path stringByAppendingPathComponent:@"tale_data.zip"];
@@ -244,11 +249,7 @@ static int LoadingItemContext = 1;
         {
             NSLog(@"Error saving file %@",error);
         }
-    }
-    else
-    {
-        NSLog(@"Error downloading zip file: %@", error);
-    }
+    
     
     
     [Tale addTale:newTale];
@@ -282,8 +283,13 @@ static int LoadingItemContext = 1;
 - (void)viewWillAppear:(BOOL)animated {
         noTaleBackground.hidden = YES;
     NSString* strData;
-    NSString* url = [NSString stringWithFormat:@"%@/services/tales/user_id/%@/",servicesURLPrefix, userId];
-    strData = [ServiceLib sendGetRequest:url];
+    NSString* url = [NSString stringWithFormat:@"%@/services/tales/",servicesURLPrefix];
+    NSLog(@"%@", [Lib getValueOfKey:@"encrypted_user_id"]);
+    strData = [ServiceLib sendRequest:[NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                       [Lib getValueOfKey:@"encrypted_user_id"],@"user_id",
+                                       nil]
+                               andUrl:url];
+    NSLog(@"%@", strData);
     NSData *jsonData = [strData dataUsingEncoding:NSUTF8StringEncoding];
     NSError *e = nil;
     NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData: jsonData options: NSJSONReadingMutableContainers error: &e];
