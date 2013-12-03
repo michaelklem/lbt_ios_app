@@ -9,11 +9,18 @@
 #import "AppDelegate.h"
 #import "LoginViewController.h"
 #import "TalesController.h"
-#import "FlurryAnalytics.h"
-#import "TestFlight.h"
+#import "Flurry.h"
+#import "iRate.h"
 
 AppDelegate* _shared;
 @implementation AppDelegate
+
++ (void)initialize
+{
+    //configure iRate
+    [iRate sharedInstance].daysUntilPrompt = 0.01;
+    [iRate sharedInstance].usesUntilPrompt = 1;
+}
 
 +(AppDelegate*)shared {
     return _shared;
@@ -61,9 +68,9 @@ AppDelegate* _shared;
 //    x = x + 1;
 //    NSLog(@"%i %i",x,y-1);
 //    NSLog(@"%i %i",x,y+1);
-    [TestFlight takeOff:@"c4229ebb-e9e2-4db9-adff-3629365ba578"];
-    [FlurryAnalytics startSession:@"S9B535JQQD3DD5XJ2GUM"];
-    NSLog(@"Flurry version: %@",[FlurryAnalytics getFlurryAgentVersion]);
+    [Flurry setCrashReportingEnabled:YES];
+    [Flurry startSession:@"68NHTPWPGX3QNMXSTG9R"];
+                           
     
     //As client request to display Splash Screen a little longer
     [NSThread sleepForTimeInterval:1.0];

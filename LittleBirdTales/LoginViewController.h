@@ -22,7 +22,6 @@
     
     IBOutlet UIView *loginView;
     IBOutlet UIView *uploadingView;
-    IBOutlet UIView *downloadingView;
     IBOutlet UIView *sharingView;
     
     IBOutlet UISwitch *rememberMe;

@@ -61,16 +61,15 @@
                                            password,@"password",
                                            code,@"schoolcode",
                                            nil] 
-                                   andUrl:[NSString stringWithFormat:@"%@/services/login.php",servicesURLPrefix]];
+                                   andUrl:[NSString stringWithFormat:@"%@/services/authenticate.php",servicesURLPrefix]];
     }
     else {
         strData = [ServiceLib sendRequest:[NSMutableDictionary dictionaryWithObjectsAndKeys:
                                            email,@"email",
                                            password,@"password",
                                            nil] 
-                                   andUrl:[NSString stringWithFormat:@"%@/services/login.php",servicesURLPrefix]];
+                                   andUrl:[NSString stringWithFormat:@"%@/services/authenticate.php",servicesURLPrefix]];
     }
-    
     BOOL sucessed = FALSE;
     //NSLog(@"--%@",strData);
     
@@ -111,7 +110,6 @@
         if(downloadRequest) {
             uploadingView.hidden = YES;
             loginView.hidden = YES;
-            downloadingView.hidden = NO;
             DownloadTalesController* controller;
             if (IsIdiomPad) {
                 controller = [[DownloadTalesController alloc] initWithNibName:@"DownloadTalesController-iPad" bundle:nil];
@@ -123,7 +121,6 @@
         }
         else {
             uploadingView.hidden = NO;
-            downloadingView.hidden = YES;
             loginView.hidden = YES;
             backButton.enabled = NO;
             [loadingText setText:@"Uploading..."] ;

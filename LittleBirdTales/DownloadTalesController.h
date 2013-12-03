@@ -20,6 +20,10 @@
     IBOutlet UIImageView* previewImage;
     IBOutlet UIImageView *noTaleBackground;
     IBOutlet UIScrollView *talesScrollView;
+    IBOutlet UIView *downloadingView;
+    IBOutlet UIView *talesPreviewView;
+    IBOutlet UIActivityIndicatorView *activityIndicator;
+    IBOutlet UILabel *downloadingLabel;
     NSInteger lastTaleIndex;
     NSInteger currentTaleIndex;
     NSArray* userTales;

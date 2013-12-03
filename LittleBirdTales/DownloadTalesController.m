@@ -11,6 +11,7 @@
 #import "TalesController.h"
 #import "SBJson.h"
 #import "ServiceLib.h"
+#import "HttpHelper.h"
 #import "Lib.h"
 #import <AudioToolbox/AudioServices.h> 
 #import <AVFoundation/AVFoundation.h>
@@ -60,8 +61,16 @@ static int LoadingItemContext = 1;
             }
             else {
                 NSString *imageUrl = [NSString stringWithFormat:@"%@%@", servicesURLPrefix,imageData];
-                UIImage *pImage=[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageUrl]]];
-                [button setImage:pImage forState:UIControlStateNormal];
+                [HttpHelper sendAsyncGetRequestToURL:imageUrl
+                                      withParameters:[NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                                      @"1",@"test",
+                                                      nil]
+                                 andCompletionHandler:^(NSURLResponse *response, NSData *taleContent, NSError *error) {
+                                     UIImage *pImage=[UIImage imageWithData:taleContent];
+                                     [button setImage:pImage forState:UIControlStateNormal];
+                                 }];
+                
+                
             }
             
             
@@ -80,10 +89,11 @@ static int LoadingItemContext = 1;
             [talesScrollView setContentSize:CGSizeMake(210*[userTales count] , 140)];
         }
         else {
-            [talesScrollView setContentSize:CGSizeMake(90*[userTales count] , 63)];
+            [talesScrollView setContentSize:CGSizeMake(95*[userTales count] , 63)];
         }
         
     }
+    [activityIndicator stopAnimating];
 }
 
 -(void)selectTale:(id)sender {
@@ -145,129 +155,137 @@ static int LoadingItemContext = 1;
 }
 
 - (void)downloadTale:(id)sender {
+    downloadingView.hidden = NO;
+    downloadingLabel.text = @"Downloading tale...";
+    talesPreviewView.hidden = YES;
+    [activityIndicator startAnimating];
+    
     NSDictionary *currentTale = [userTales objectAtIndex:currentTaleIndex];
     
-    NSString* strData;
     NSString* url = [NSString stringWithFormat:@"%@/services/tale/",servicesURLPrefix];
-    strData = [ServiceLib sendRequest:[NSMutableDictionary dictionaryWithObjectsAndKeys:
-                             [currentTale valueForKey:@"tale_id"],@"tale_id",
-                             nil]
-                     andUrl:url];
-    NSData *jsonData = [strData dataUsingEncoding:NSUTF8StringEncoding];
-    NSError *e = nil;
-    NSDictionary *json = [NSJSONSerialization JSONObjectWithData: jsonData options: NSJSONReadingMutableContainers error: &e];
     
-    
-    NSLog(@"Downloaded Tale.");
-    NSLog(@"Title: %@",[json valueForKey:@"title"]);
-    
-    Tale *newTale = [Tale newTalewithTitle:[json valueForKey:@"title"] author:[json valueForKey:@"author"]];
-    
-    NSString *url2 = [NSString stringWithFormat:@"%@/services/taleData/",servicesURLPrefix];
-    NSLog(@"%@", url2);
-    NSError *error = nil;
-    
-    NSData *data = [ServiceLib sendRequestForFile:[NSMutableDictionary dictionaryWithObjectsAndKeys:
-                             [currentTale valueForKey:@"tale_id"],@"tale_id",
-                             nil]
-                     andUrl:url2]; 
-    
-    
-        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
-        NSString *path = [paths objectAtIndex:0];
-        NSString *zipPath = [path stringByAppendingPathComponent:@"tale_data.zip"];
-        [data writeToFile:zipPath options:0 error:&error];
-        
-        if(!error)
-        {
-            ZipArchive *za = [[ZipArchive alloc] init];
-            if ([za UnzipOpenFile: zipPath]) {
-                BOOL ret = [za UnzipFileTo: path overWrite: YES];
-                if (NO == ret){} [za UnzipCloseFile];
-                
-                if([[json valueForKey:@"has_image"] boolValue]) {
-                    NSString *imageFilePath = [path stringByAppendingPathComponent:@"image.jpg"];
-                    NSData *imageData = [NSData dataWithContentsOfFile:imageFilePath options:0 error:nil];
-                    UIImage *img = [UIImage imageWithData:imageData];
-                
-                    Page *page = [newTale.pages objectAtIndex:0];
-                
-                    [page saveImage:img];
-                }
-                
-                if([[json valueForKey:@"has_audio"] boolValue]) {
-                    NSLog(@"has_audio");
-                    NSString *imageFilePath = [path stringByAppendingPathComponent:@"audio.mp3"];
-                    NSData *audioData = [NSData dataWithContentsOfFile:imageFilePath options:0 error:nil];
-                    NSLog(@"has_audio:%d", audioData.length);
-                    Page *page = [newTale.pages objectAtIndex:0];
-                    [page saveAudio:audioData];
-                }
-                
-                
-                NSArray* pages = [json valueForKey:@"pages"];
-                if ([pages count] > 0) {
-                    for (NSInteger i = 0; i < [pages count]; i++) {
-                        NSDictionary *item = [pages objectAtIndex:i];
-                        Page *samplePage = [Page newPage];
-                        samplePage.pageFolder = [NSString stringWithFormat:@"%@/%0.f",[Lib taleFolderPathFromIndex:newTale.index],samplePage.index];
-                        samplePage.text = [item valueForKey:@"text"];
-                        
-                        if([[item valueForKey:@"has_image"] boolValue]) {
-                            NSString *imageFilePath = [path stringByAppendingPathComponent:[NSString stringWithFormat:@"%d/page.jpg", i]];
-                            NSData *imageData = [NSData dataWithContentsOfFile:imageFilePath options:0 error:nil];
-                            UIImage *img = [UIImage imageWithData:imageData];
-                                
-                            [samplePage saveImage:img];
-                        }
-                        
-                        if([[item valueForKey:@"has_audio"] boolValue]) {
-                            NSLog(@"has_audio");
-                            NSString *audioFilePath = [path stringByAppendingPathComponent:[NSString stringWithFormat:@"%d/page.mp3", i]];
-                            NSData *audioData = [NSData dataWithContentsOfFile:audioFilePath options:0 error:nil];
-                            NSLog(@"has_audio:%d", audioData.length);
-                            [samplePage saveAudio:audioData];
-                        }
-                            
-                        [newTale.pages addObject:samplePage];
-                        
-                    }
-                }
-                /*
-                 Page *samplePage = [Page newPage];
-                 samplePage.pageFolder = [NSString stringWithFormat:@"%@/%0.f",[Lib taleFolderPathFromIndex:tale.index],samplePage.index];
-                 [tale.pages addObject:samplePage];
-                 
-                 */
-                /*dispatch_async(dispatch_get_main_queue(), ^{
-                    self.imageView.image = img;
-                    self.label.text = textString;
-                });*/
-            }
-        }
-        else
-        {
-            NSLog(@"Error saving file %@",error);
-        }
-    
-    
-    
-    [Tale addTale:newTale];
-    [Tale save];
-    
-    
-    
-    currentTaleIndex = [[Tale tales] count] - 1;
-    
-    EditTaleViewController* controller;
-    if (IsIdiomPad) {
-        controller = [[EditTaleViewController alloc] initWithNibName:@"EditTaleViewController-iPad" bundle:nil];
-    } else {
-        controller = [[EditTaleViewController alloc] initWithNibName:@"EditTaleViewController-iPhone" bundle:nil];
-    }
-    controller.tale = [[Tale tales] lastObject];
-    controller.taleNumber = [[Tale tales] count] - 1;
-    [self.navigationController pushViewController:controller animated:YES];
+    [HttpHelper sendAsyncPostRequestToURL:url
+                           withParameters:[NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                           [currentTale valueForKey:@"tale_id"],@"tale_id",
+                                           nil]
+                     andCompletionHandler:^(NSURLResponse *response, NSData *taleContent, NSError *error) {
+                         NSError *e = nil;
+                         NSDictionary *json = [NSJSONSerialization JSONObjectWithData: taleContent options: NSJSONReadingMutableContainers error: &e];
+                         NSString *myString = [[NSString alloc] initWithData:taleContent encoding:NSUTF8StringEncoding];
+                         NSLog(@"Downloaded Tale.");
+                         NSLog(@"Title: %@",[json valueForKey:@"title"]);
+                         NSLog(@"content: %@",myString);
+                         
+                         Tale *newTale = [Tale newTalewithTitle:[json valueForKey:@"title"] author:[json valueForKey:@"author"]];
+                         
+                         NSString *url2 = [NSString stringWithFormat:@"%@/services/taleData/",servicesURLPrefix];
+                         NSLog(@"%@", url2);
+                         NSError *error2 = nil;
+                         
+                         NSData *data = [ServiceLib sendRequestForFile:[NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                                                        [currentTale valueForKey:@"tale_id"],@"tale_id",
+                                                                        nil]
+                                                                andUrl:url2];
+                         
+                         
+                         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+                         NSString *path = [paths objectAtIndex:0];
+                         NSString *zipPath = [path stringByAppendingPathComponent:@"tale_data.zip"];
+                         [data writeToFile:zipPath options:0 error:&error2];
+                         
+                         if(!error)
+                         {
+                             ZipArchive *za = [[ZipArchive alloc] init];
+                             if ([za UnzipOpenFile: zipPath]) {
+                                 BOOL ret = [za UnzipFileTo: path overWrite: YES];
+                                 if (NO == ret){} [za UnzipCloseFile];
+                                 
+                                 if([[json valueForKey:@"has_image"] boolValue]) {
+                                     NSString *imageFilePath = [path stringByAppendingPathComponent:@"image.jpg"];
+                                     NSData *imageData = [NSData dataWithContentsOfFile:imageFilePath options:0 error:nil];
+                                     UIImage *img = [UIImage imageWithData:imageData];
+                                     
+                                     Page *page = [newTale.pages objectAtIndex:0];
+                                     
+                                     [page saveImage:img];
+                                 }
+                                 
+                                 if([[json valueForKey:@"has_audio"] boolValue]) {
+                                     NSLog(@"has_audio");
+                                     NSString *imageFilePath = [path stringByAppendingPathComponent:@"audio.mp3"];
+                                     NSData *audioData = [NSData dataWithContentsOfFile:imageFilePath options:0 error:nil];
+                                     NSLog(@"has_audio:%d", audioData.length);
+                                     Page *page = [newTale.pages objectAtIndex:0];
+                                     [page saveAudio:audioData];
+                                 }
+                                 
+                                 
+                                 NSArray* pages = [json valueForKey:@"pages"];
+                                 if ([pages count] > 0) {
+                                     for (NSInteger i = 0; i < [pages count]; i++) {
+                                         NSDictionary *item = [pages objectAtIndex:i];
+                                         Page *samplePage = [Page newPage];
+                                         samplePage.pageFolder = [NSString stringWithFormat:@"%@/%0.f",[Lib taleFolderPathFromIndex:newTale.index],samplePage.index];
+                                         samplePage.text = [item valueForKey:@"text"];
+                                         
+                                         if([[item valueForKey:@"has_image"] boolValue]) {
+                                             NSString *imageFilePath = [path stringByAppendingPathComponent:[NSString stringWithFormat:@"%d/page.jpg", i]];
+                                             NSData *imageData = [NSData dataWithContentsOfFile:imageFilePath options:0 error:nil];
+                                             UIImage *img = [UIImage imageWithData:imageData];
+                                             
+                                             [samplePage saveImage:img];
+                                         }
+                                         
+                                         if([[item valueForKey:@"has_audio"] boolValue]) {
+                                             NSLog(@"has_audio");
+                                             NSString *audioFilePath = [path stringByAppendingPathComponent:[NSString stringWithFormat:@"%d/page.mp3", i]];
+                                             NSData *audioData = [NSData dataWithContentsOfFile:audioFilePath options:0 error:nil];
+                                             NSLog(@"has_audio:%d", audioData.length);
+                                             [samplePage saveAudio:audioData];
+                                         }
+                                         
+                                         [newTale.pages addObject:samplePage];
+                                         
+                                     }
+                                 }
+                                 /*
+                                  Page *samplePage = [Page newPage];
+                                  samplePage.pageFolder = [NSString stringWithFormat:@"%@/%0.f",[Lib taleFolderPathFromIndex:tale.index],samplePage.index];
+                                  [tale.pages addObject:samplePage];
+                                  
+                                  */
+                                 /*dispatch_async(dispatch_get_main_queue(), ^{
+                                  self.imageView.image = img;
+                                  self.label.text = textString;
+                                  });*/
+                             }
+                         }
+                         else
+                         {
+                             NSLog(@"Error saving file %@",error);
+                         }
+                         
+                         
+                         
+                         [Tale addTale:newTale];
+                         [Tale save];
+                         
+                         EditTaleViewController* controller;
+                         if (IsIdiomPad) {
+                             controller = [[EditTaleViewController alloc] initWithNibName:@"EditTaleViewController-iPad" bundle:nil];
+                         } else {
+                             controller = [[EditTaleViewController alloc] initWithNibName:@"EditTaleViewController-iPhone" bundle:nil];
+                         }
+                         controller.tale = [[Tale tales] lastObject];
+                         NSLog(@"%@", controller.tale);
+                         
+                         controller.taleNumber = [[Tale tales] count] - 1;
+                         NSLog(@"%ld", (long)controller.taleNumber);
+                         [self.navigationController pushViewController:controller animated:YES];
+                         downloadingView.hidden = YES;
+                         talesPreviewView.hidden = NO;
+                         [activityIndicator stopAnimating];
+                     }];
 }
 
 - (IBAction)back:(id)sender {
@@ -280,30 +298,36 @@ static int LoadingItemContext = 1;
     [self.navigationController pushViewController:controller animated:YES];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-        noTaleBackground.hidden = YES;
+- (void)viewDidLoad {
+    noTaleBackground.hidden = YES;
+    downloadingView.hidden = NO;
+    downloadingLabel.text = @"Getting tales list...";
+    [activityIndicator startAnimating];
     NSString* strData;
     NSString* url = [NSString stringWithFormat:@"%@/services/tales/",servicesURLPrefix];
     NSLog(@"%@", [Lib getValueOfKey:@"encrypted_user_id"]);
-    strData = [ServiceLib sendRequest:[NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                       [Lib getValueOfKey:@"encrypted_user_id"],@"user_id",
-                                       nil]
-                               andUrl:url];
-    NSLog(@"%@", strData);
-    NSData *jsonData = [strData dataUsingEncoding:NSUTF8StringEncoding];
-    NSError *e = nil;
-    NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData: jsonData options: NSJSONReadingMutableContainers error: &e];
-    
-    userTales = jsonArray;
-    [self reloadTaleList];
-    if([userTales count] > 0) {
-        [self selectTale:nil];
-        noTaleBackground.hidden = YES;
-    }
-    else {
-        noTaleBackground.hidden = NO;
-        [Lib showAlert:@"Warning" withMessage:@"You have no Tales to Download."];
-    }
+    [HttpHelper sendAsyncPostRequestToURL:url
+                          withParameters:[NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                          [Lib getValueOfKey:@"encrypted_user_id"],@"user_id",
+                                          nil]
+                    andCompletionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+                        NSError *e = nil;
+                        NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData: data options: NSJSONReadingMutableContainers error: &e];
+                        userTales = jsonArray;
+                        [self reloadTaleList];
+                        if([userTales count] > 0) {
+                            [self selectTale:nil];
+                            noTaleBackground.hidden = YES;
+                            downloadingView.hidden = YES;
+                            talesPreviewView.hidden = NO;
+                        }
+                        else {
+                            [activityIndicator stopAnimating];
+                            noTaleBackground.hidden = NO;
+                            talesPreviewView.hidden = NO;
+                            [Lib showAlert:@"Warning" withMessage:@"You have no Tales to Download."];
+                        }
+                    }];
 }
 
 @end

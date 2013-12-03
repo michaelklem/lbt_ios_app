@@ -250,7 +250,6 @@
 		37F615D514DA308000332A64 /* sample_thumbnail.png in Resources */ = {isa = PBXBuildFile; fileRef = 37F615D414DA308000332A64 /* sample_thumbnail.png */; };
 		37F615D714DA320400332A64 /* ipad_pagecell_seperator.png in Resources */ = {isa = PBXBuildFile; fileRef = 37F615D614DA320400332A64 /* ipad_pagecell_seperator.png */; };
 		37F6E8CB14C7AA67003A278D /* LoginViewController-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37F6E8C914C7AA67003A278D /* LoginViewController-iPad.xib */; };
-		37F6E8CC14C7AA67003A278D /* LoginViewController-iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37F6E8CA14C7AA67003A278D /* LoginViewController-iPhone.xib */; };
 		37F6E8CF14C7AA87003A278D /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37F6E8CE14C7AA87003A278D /* LoginViewController.m */; };
 		37F6E8D314C7AC91003A278D /* bg-home-ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 37F6E8D214C7AC91003A278D /* bg-home-ipad.png */; };
 		37F6E8D814C7B273003A278D /* btn-edit-ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 37F6E8D414C7B272003A278D /* btn-edit-ipad.png */; };
@@ -264,10 +263,6 @@
 		37F7D4AF14FB051A007C5B9A /* AudioRecord-iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37F7D4AE14FB051A007C5B9A /* AudioRecord-iPhone.xib */; };
 		37F7D4B314FB08B8007C5B9A /* iphone-bg-player.png in Resources */ = {isa = PBXBuildFile; fileRef = 37F7D4B114FB08B8007C5B9A /* iphone-bg-player.png */; };
 		37F7D4B414FB08B8007C5B9A /* iphone-bg-player@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 37F7D4B214FB08B8007C5B9A /* iphone-bg-player@2x.png */; };
-		BD17135715527ADA00CB53A1 /* libFlurryAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BD17135615527ADA00CB53A1 /* libFlurryAnalytics.a */; };
-		F425CDBF183C857800AB9367 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F425CDB9183C857800AB9367 /* libTestFlight.a */; };
-		F425CDC0183C857800AB9367 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = F425CDBA183C857800AB9367 /* README.md */; };
-		F425CDC1183C857800AB9367 /* release_notes.md in Resources */ = {isa = PBXBuildFile; fileRef = F425CDBB183C857800AB9367 /* release_notes.md */; };
 		F425CDCE183C86D300AB9367 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F425CDCD183C86D300AB9367 /* libz.dylib */; };
 		F42B463B183B1E62001D9BE3 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = F42B4631183B1E62001D9BE3 /* ioapi.c */; };
 		F42B463C183B1E62001D9BE3 /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = F42B4633183B1E62001D9BE3 /* mztools.c */; };
@@ -275,10 +270,19 @@
 		F42B463E183B1E62001D9BE3 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = F42B4637183B1E62001D9BE3 /* zip.c */; };
 		F42B463F183B1E62001D9BE3 /* ZipArchive.mm in Sources */ = {isa = PBXBuildFile; fileRef = F42B4639183B1E62001D9BE3 /* ZipArchive.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		F42B4642183B203F001D9BE3 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F42B4641183B203F001D9BE3 /* libz.1.2.5.dylib */; };
+		F44433A91845A023001F59C7 /* HttpHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = F44433A81845A023001F59C7 /* HttpHelper.m */; };
+		F47876801846B48200B56B59 /* LoginViewController-iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = F478767F1846B48200B56B59 /* LoginViewController-iPhone.xib */; };
 		F497F39818286DAA0046D1CE /* DownloadTalesController-iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = F497F39718286DAA0046D1CE /* DownloadTalesController-iPhone.xib */; };
 		F4AEFE0E1820B0A700BD44D9 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F4AEFE0D1820B0A700BD44D9 /* Default-568h@2x.png */; };
 		F4D157381821C3E700806778 /* DownloadTalesController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D157361821C3E700806778 /* DownloadTalesController.m */; };
 		F4D1573C1821FCAE00806778 /* DownloadTalesController-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4D1573B1821FCAE00806778 /* DownloadTalesController-iPad.xib */; };
+		F4EC4EF2184AE72900C21FDF /* ipad_btn_download_tale.png in Resources */ = {isa = PBXBuildFile; fileRef = F4EC4EF0184AE72900C21FDF /* ipad_btn_download_tale.png */; };
+		F4EC4EF3184AE72900C21FDF /* ipad_btn_download_tales.png in Resources */ = {isa = PBXBuildFile; fileRef = F4EC4EF1184AE72900C21FDF /* ipad_btn_download_tales.png */; };
+		F4EC4EF8184CF70400C21FDF /* iRate.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F4EC4EF5184CF70300C21FDF /* iRate.bundle */; };
+		F4EC4EF9184CF70400C21FDF /* iRate.m in Sources */ = {isa = PBXBuildFile; fileRef = F4EC4EF7184CF70400C21FDF /* iRate.m */; };
+		F4EC4EFD184D0AD300C21FDF /* libFlurry_4.3.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F4EC4EFC184D0AD300C21FDF /* libFlurry_4.3.0.a */; };
+		F4EC4EFF184D0E4000C21FDF /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4EC4EFE184D0E4000C21FDF /* Security.framework */; };
+		F4EC4F01184D0E7E00C21FDF /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4EC4F00184D0E7E00C21FDF /* SystemConfiguration.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -594,7 +598,6 @@
 		37F615D414DA308000332A64 /* sample_thumbnail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sample_thumbnail.png; sourceTree = "<group>"; };
 		37F615D614DA320400332A64 /* ipad_pagecell_seperator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ipad_pagecell_seperator.png; sourceTree = "<group>"; };
 		37F6E8C914C7AA67003A278D /* LoginViewController-iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "LoginViewController-iPad.xib"; sourceTree = "<group>"; };
-		37F6E8CA14C7AA67003A278D /* LoginViewController-iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "LoginViewController-iPhone.xib"; sourceTree = "<group>"; };
 		37F6E8CD14C7AA87003A278D /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		37F6E8CE14C7AA87003A278D /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		37F6E8D214C7AC91003A278D /* bg-home-ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg-home-ipad.png"; sourceTree = "<group>"; };
@@ -610,14 +613,6 @@
 		37F7D4AE14FB051A007C5B9A /* AudioRecord-iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "AudioRecord-iPhone.xib"; sourceTree = "<group>"; };
 		37F7D4B114FB08B8007C5B9A /* iphone-bg-player.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iphone-bg-player.png"; sourceTree = "<group>"; };
 		37F7D4B214FB08B8007C5B9A /* iphone-bg-player@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iphone-bg-player@2x.png"; sourceTree = "<group>"; };
-		BD17135515527ADA00CB53A1 /* FlurryAnalytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryAnalytics.h; sourceTree = "<group>"; };
-		BD17135615527ADA00CB53A1 /* libFlurryAnalytics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurryAnalytics.a; sourceTree = "<group>"; };
-		F425CDB9183C857800AB9367 /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
-		F425CDBA183C857800AB9367 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
-		F425CDBB183C857800AB9367 /* release_notes.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = release_notes.md; sourceTree = "<group>"; };
-		F425CDBC183C857800AB9367 /* TestFlight+AsyncLogging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TestFlight+AsyncLogging.h"; sourceTree = "<group>"; };
-		F425CDBD183C857800AB9367 /* TestFlight+ManualSessions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TestFlight+ManualSessions.h"; sourceTree = "<group>"; };
-		F425CDBE183C857800AB9367 /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
 		F425CDCD183C86D300AB9367 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		F42B4630183B1E62001D9BE3 /* crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt.h; sourceTree = "<group>"; };
 		F42B4631183B1E62001D9BE3 /* ioapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ioapi.c; sourceTree = "<group>"; };
@@ -628,14 +623,26 @@
 		F42B4636183B1E62001D9BE3 /* unzip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = unzip.h; sourceTree = "<group>"; };
 		F42B4637183B1E62001D9BE3 /* zip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zip.c; sourceTree = "<group>"; };
 		F42B4638183B1E62001D9BE3 /* zip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zip.h; sourceTree = "<group>"; };
-		F42B4639183B1E62001D9BE3 /* ZipArchive.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = ZipArchive.mm; path = ../../../Users/home/Downloads/ZipArchive/ZipArchive.mm; sourceTree = "<group>"; };
-		F42B463A183B1E62001D9BE3 /* ZipArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZipArchive.h; path = ../../../Users/home/Downloads/ZipArchive/ZipArchive.h; sourceTree = "<group>"; };
+		F42B4639183B1E62001D9BE3 /* ZipArchive.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = ZipArchive.mm; path = /Users/home/Downloads/ZipArchive/ZipArchive.mm; sourceTree = "<absolute>"; };
+		F42B463A183B1E62001D9BE3 /* ZipArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZipArchive.h; path = /Users/home/Downloads/ZipArchive/ZipArchive.h; sourceTree = "<absolute>"; };
 		F42B4641183B203F001D9BE3 /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
+		F44433A71845A023001F59C7 /* HttpHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpHelper.h; sourceTree = "<group>"; };
+		F44433A81845A023001F59C7 /* HttpHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpHelper.m; sourceTree = "<group>"; };
+		F478767F1846B48200B56B59 /* LoginViewController-iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "LoginViewController-iPhone.xib"; sourceTree = "<group>"; };
 		F497F39718286DAA0046D1CE /* DownloadTalesController-iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "DownloadTalesController-iPhone.xib"; sourceTree = "<group>"; };
 		F4AEFE0D1820B0A700BD44D9 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		F4D157361821C3E700806778 /* DownloadTalesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadTalesController.m; sourceTree = "<group>"; };
 		F4D1573A1821C65800806778 /* DownloadTalesController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DownloadTalesController.h; sourceTree = "<group>"; };
 		F4D1573B1821FCAE00806778 /* DownloadTalesController-iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "DownloadTalesController-iPad.xib"; sourceTree = "<group>"; };
+		F4EC4EF0184AE72900C21FDF /* ipad_btn_download_tale.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ipad_btn_download_tale.png; sourceTree = "<group>"; };
+		F4EC4EF1184AE72900C21FDF /* ipad_btn_download_tales.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ipad_btn_download_tales.png; sourceTree = "<group>"; };
+		F4EC4EF5184CF70300C21FDF /* iRate.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = iRate.bundle; sourceTree = "<group>"; };
+		F4EC4EF6184CF70400C21FDF /* iRate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iRate.h; sourceTree = "<group>"; };
+		F4EC4EF7184CF70400C21FDF /* iRate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iRate.m; sourceTree = "<group>"; };
+		F4EC4EFB184D0AD300C21FDF /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
+		F4EC4EFC184D0AD300C21FDF /* libFlurry_4.3.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_4.3.0.a; sourceTree = "<group>"; };
+		F4EC4EFE184D0E4000C21FDF /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		F4EC4F00184D0E7E00C21FDF /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -643,6 +650,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4EC4F01184D0E7E00C21FDF /* SystemConfiguration.framework in Frameworks */,
+				F4EC4EFF184D0E4000C21FDF /* Security.framework in Frameworks */,
 				F425CDCE183C86D300AB9367 /* libz.dylib in Frameworks */,
 				F42B4642183B203F001D9BE3 /* libz.1.2.5.dylib in Frameworks */,
 				3760BF7A1510436D0086ECD6 /* AudioToolbox.framework in Frameworks */,
@@ -653,8 +662,7 @@
 				04F1218B14B9F3C90003E733 /* UIKit.framework in Frameworks */,
 				04F1218D14B9F3C90003E733 /* Foundation.framework in Frameworks */,
 				04F1218F14B9F3C90003E733 /* CoreGraphics.framework in Frameworks */,
-				BD17135715527ADA00CB53A1 /* libFlurryAnalytics.a in Frameworks */,
-				F425CDBF183C857800AB9367 /* libTestFlight.a in Frameworks */,
+				F4EC4EFD184D0AD300C21FDF /* libFlurry_4.3.0.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -946,14 +954,11 @@
 		04F1217B14B9F3C80003E733 = {
 			isa = PBXGroup;
 			children = (
+				F4EC4F00184D0E7E00C21FDF /* SystemConfiguration.framework */,
+				F4EC4EFE184D0E4000C21FDF /* Security.framework */,
 				F425CDCD183C86D300AB9367 /* libz.dylib */,
-				F425CDB8183C857800AB9367 /* TestFlightSDK2.0.2 */,
 				F42B4641183B203F001D9BE3 /* libz.1.2.5.dylib */,
-				F42B462F183B1E62001D9BE3 /* minizip */,
-				F42B4639183B1E62001D9BE3 /* ZipArchive.mm */,
-				F42B463A183B1E62001D9BE3 /* ZipArchive.h */,
 				F4AEFE0D1820B0A700BD44D9 /* Default-568h@2x.png */,
-				BD17135415527ADA00CB53A1 /* FlurryAnalytics */,
 				04F1219014B9F3C90003E733 /* LittleBirdTales */,
 				37F6E8DF14C7BBD7003A278D /* Libs */,
 				0498461214D853DB0095370C /* Objs */,
@@ -1226,8 +1231,8 @@
 			children = (
 				37F6E8CD14C7AA87003A278D /* LoginViewController.h */,
 				37F6E8CE14C7AA87003A278D /* LoginViewController.m */,
+				F478767F1846B48200B56B59 /* LoginViewController-iPhone.xib */,
 				37F6E8C914C7AA67003A278D /* LoginViewController-iPad.xib */,
-				37F6E8CA14C7AA67003A278D /* LoginViewController-iPhone.xib */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -1266,6 +1271,8 @@
 			children = (
 				04449F641503D6B10055A780 /* clear_ipad.png */,
 				04449F611503D5910055A780 /* upload_ipad.png */,
+				F4EC4EF0184AE72900C21FDF /* ipad_btn_download_tale.png */,
+				F4EC4EF1184AE72900C21FDF /* ipad_btn_download_tales.png */,
 				37ABBFFE1511EB1600C3FB6E /* ipad_btn_preview.png */,
 				37DA10F014FC68CC002C98F7 /* ipad_btn_record_active.png */,
 				046AE68614EF9D650056C1DB /* save.png */,
@@ -1332,6 +1339,13 @@
 		37F6E8DF14C7BBD7003A278D /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				F4EC4EFA184D0AD300C21FDF /* Flurry */,
+				F4EC4EF4184CF70300C21FDF /* iRate */,
+				F42B462F183B1E62001D9BE3 /* minizip */,
+				F44433A71845A023001F59C7 /* HttpHelper.h */,
+				F44433A81845A023001F59C7 /* HttpHelper.m */,
+				F42B4639183B1E62001D9BE3 /* ZipArchive.mm */,
+				F42B463A183B1E62001D9BE3 /* ZipArchive.h */,
 				376C211D14E46EB200D540FB /* Lib.h */,
 				376C211E14E46EB200D540FB /* Lib.m */,
 				376C211514E46E9E00D540FB /* Sound.h */,
@@ -1358,30 +1372,6 @@
 			name = "Edit Tale";
 			sourceTree = "<group>";
 		};
-		BD17135415527ADA00CB53A1 /* FlurryAnalytics */ = {
-			isa = PBXGroup;
-			children = (
-				BD17135515527ADA00CB53A1 /* FlurryAnalytics.h */,
-				BD17135615527ADA00CB53A1 /* libFlurryAnalytics.a */,
-			);
-			name = FlurryAnalytics;
-			path = LittleBirdTales/FlurryAnalytics;
-			sourceTree = "<group>";
-		};
-		F425CDB8183C857800AB9367 /* TestFlightSDK2.0.2 */ = {
-			isa = PBXGroup;
-			children = (
-				F425CDB9183C857800AB9367 /* libTestFlight.a */,
-				F425CDBA183C857800AB9367 /* README.md */,
-				F425CDBB183C857800AB9367 /* release_notes.md */,
-				F425CDBC183C857800AB9367 /* TestFlight+AsyncLogging.h */,
-				F425CDBD183C857800AB9367 /* TestFlight+ManualSessions.h */,
-				F425CDBE183C857800AB9367 /* TestFlight.h */,
-			);
-			name = TestFlightSDK2.0.2;
-			path = ../../../Users/home/Downloads/TestFlightSDK2.0.2;
-			sourceTree = "<group>";
-		};
 		F42B462F183B1E62001D9BE3 /* minizip */ = {
 			isa = PBXGroup;
 			children = (
@@ -1396,8 +1386,8 @@
 				F42B4638183B1E62001D9BE3 /* zip.h */,
 			);
 			name = minizip;
-			path = ../../../Users/home/Downloads/ZipArchive/minizip;
-			sourceTree = "<group>";
+			path = /Users/home/Downloads/ZipArchive/minizip;
+			sourceTree = "<absolute>";
 		};
 		F4D1572F18219EEB00806778 /* DownloadTale */ = {
 			isa = PBXGroup;
@@ -1408,6 +1398,25 @@
 				F497F39718286DAA0046D1CE /* DownloadTalesController-iPhone.xib */,
 			);
 			name = DownloadTale;
+			sourceTree = "<group>";
+		};
+		F4EC4EF4184CF70300C21FDF /* iRate */ = {
+			isa = PBXGroup;
+			children = (
+				F4EC4EF5184CF70300C21FDF /* iRate.bundle */,
+				F4EC4EF6184CF70400C21FDF /* iRate.h */,
+				F4EC4EF7184CF70400C21FDF /* iRate.m */,
+			);
+			path = iRate;
+			sourceTree = "<group>";
+		};
+		F4EC4EFA184D0AD300C21FDF /* Flurry */ = {
+			isa = PBXGroup;
+			children = (
+				F4EC4EFB184D0AD300C21FDF /* Flurry.h */,
+				F4EC4EFC184D0AD300C21FDF /* libFlurry_4.3.0.a */,
+			);
+			path = Flurry;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1468,7 +1477,6 @@
 				049F9FA514B9FC340060D00D /* btn-login-iphone.png in Resources */,
 				049F9FA614B9FC340060D00D /* btn-login-iphone@2x.png in Resources */,
 				37F6E8CB14C7AA67003A278D /* LoginViewController-iPad.xib in Resources */,
-				37F6E8CC14C7AA67003A278D /* LoginViewController-iPhone.xib in Resources */,
 				37F6E8D314C7AC91003A278D /* bg-home-ipad.png in Resources */,
 				37F6E8D814C7B273003A278D /* btn-edit-ipad.png in Resources */,
 				37F6E8D914C7B273003A278D /* btn-delete-ipad.png in Resources */,
@@ -1647,8 +1655,10 @@
 				F4AEFE0E1820B0A700BD44D9 /* Default-568h@2x.png in Resources */,
 				F4D1573C1821FCAE00806778 /* DownloadTalesController-iPad.xib in Resources */,
 				F497F39818286DAA0046D1CE /* DownloadTalesController-iPhone.xib in Resources */,
-				F425CDC0183C857800AB9367 /* README.md in Resources */,
-				F425CDC1183C857800AB9367 /* release_notes.md in Resources */,
+				F47876801846B48200B56B59 /* LoginViewController-iPhone.xib in Resources */,
+				F4EC4EF2184AE72900C21FDF /* ipad_btn_download_tale.png in Resources */,
+				F4EC4EF3184AE72900C21FDF /* ipad_btn_download_tales.png in Resources */,
+				F4EC4EF8184CF70400C21FDF /* iRate.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1730,6 +1740,8 @@
 				F42B463D183B1E62001D9BE3 /* unzip.c in Sources */,
 				F42B463E183B1E62001D9BE3 /* zip.c in Sources */,
 				F42B463F183B1E62001D9BE3 /* ZipArchive.mm in Sources */,
+				F44433A91845A023001F59C7 /* HttpHelper.m in Sources */,
+				F4EC4EF9184CF70400C21FDF /* iRate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1820,12 +1832,13 @@
 				GCC_PREFIX_HEADER = "LittleBirdTales/LittleBirdTales-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = "LittleBirdTales/LittleBirdTales-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/LittleBirdTales/FlurryAnalytics\"",
 					/Users/home/Downloads/TestFlightSDK2.0.2,
 					"\"$(SRCROOT)/TestFlightSDK2.0.2\"",
+					"\"$(SRCROOT)/Flurry\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "2AE33152-8AFD-48C4-B263-A9665DA12D6D";
@@ -1849,12 +1862,13 @@
 				GCC_PREFIX_HEADER = "LittleBirdTales/LittleBirdTales-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = "LittleBirdTales/LittleBirdTales-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/LittleBirdTales/FlurryAnalytics\"",
 					/Users/home/Downloads/TestFlightSDK2.0.2,
 					"\"$(SRCROOT)/TestFlightSDK2.0.2\"",
+					"\"$(SRCROOT)/Flurry\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "2AE33152-8AFD-48C4-B263-A9665DA12D6D";

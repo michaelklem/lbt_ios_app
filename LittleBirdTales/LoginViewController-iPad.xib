@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <archive type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="8.00">
 	<data>
-		<int key="IBDocument.SystemTarget">1536</int>
+		<int key="IBDocument.SystemTarget">1552</int>
 		<string key="IBDocument.SystemVersion">13A603</string>
-		<string key="IBDocument.InterfaceBuilderVersion">2844</string>
+		<string key="IBDocument.InterfaceBuilderVersion">3084</string>
 		<string key="IBDocument.AppKitVersion">1265</string>
 		<string key="IBDocument.HIToolboxVersion">695.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-			<string key="NS.object.0">1930</string>
+			<string key="NS.object.0">2083</string>
 		</object>
 		<array key="IBDocument.IntegratedClassDependencies">
 			<string>IBProxyObject</string>
@@ -62,7 +62,7 @@
 						<string key="NSFrame">{{0, 118}, {1024, 511}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="775772520"/>
+						<reference key="NSNextKeyView" ref="426104642"/>
 						<string key="NSReuseIdentifierKey">_NS:569</string>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -257,7 +257,7 @@
 								<string key="NSFrame">{{260, 232}, {126, 41}}</string>
 								<reference key="NSSuperview" ref="426104642"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="898124597"/>
+								<reference key="NSNextKeyView" ref="775772520"/>
 								<string key="NSReuseIdentifierKey">_NS:241</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -458,7 +458,6 @@
 								<string key="NSFrame">{{20, 166}, {390, 42}}</string>
 								<reference key="NSSuperview" ref="981898297"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="426104642"/>
 								<string key="NSReuseIdentifierKey">_NS:345</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -466,7 +465,7 @@
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 								<string key="IBUIText">Uploading Tale...</string>
-								<object class="NSColor" key="IBUITextColor" id="140003940">
+								<object class="NSColor" key="IBUITextColor">
 									<int key="NSColorSpace">1</int>
 									<bytes key="NSRGB">MCAwIDAAA</bytes>
 									<string key="IBUIColorCocoaTouchKeyPath">darkTextColor</string>
@@ -475,13 +474,13 @@
 								<int key="IBUIBaselineAdjustment">1</int>
 								<float key="IBUIMinimumFontSize">10</float>
 								<int key="IBUITextAlignment">1</int>
-								<object class="IBUIFontDescription" key="IBUIFontDescription" id="404849164">
+								<object class="IBUIFontDescription" key="IBUIFontDescription">
 									<string key="name">ArialRoundedMTBold</string>
 									<string key="family">Arial Rounded MT Bold</string>
 									<int key="traits">0</int>
 									<double key="pointSize">23</double>
 								</object>
-								<object class="NSFont" key="IBUIFont" id="888478462">
+								<object class="NSFont" key="IBUIFont">
 									<string key="NSName">ArialRoundedMTBold</string>
 									<double key="NSSize">23</double>
 									<int key="NSfFlags">16</int>
@@ -492,57 +491,6 @@
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="616039386"/>
-						<string key="NSReuseIdentifierKey">_NS:212</string>
-						<reference key="IBUIBackgroundColor" ref="788814958"/>
-						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-					</object>
-					<object class="IBUIView" id="898124597">
-						<reference key="NSNextResponder" ref="191373211"/>
-						<int key="NSvFlags">-2147483356</int>
-						<array class="NSMutableArray" key="NSSubviews">
-							<object class="IBUIActivityIndicatorView" id="65879652">
-								<reference key="NSNextResponder" ref="898124597"/>
-								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{197, 71}, {37, 37}}</string>
-								<reference key="NSSuperview" ref="898124597"/>
-								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="252512285"/>
-								<string key="NSReuseIdentifierKey">_NS:1062</string>
-								<bool key="IBUIOpaque">NO</bool>
-								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-								<bool key="IBUIHidesWhenStopped">NO</bool>
-								<int key="IBUIStyle">0</int>
-								<object class="NSColor" key="IBUIColor">
-									<int key="NSColorSpace">2</int>
-									<bytes key="NSRGB">MSAwLjU2MDc4NDMzOTkgMC4yNTA5ODA0MDcAA</bytes>
-								</object>
-							</object>
-							<object class="IBUILabel" id="252512285">
-								<reference key="NSNextResponder" ref="898124597"/>
-								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{20, 166}, {390, 42}}</string>
-								<reference key="NSSuperview" ref="898124597"/>
-								<reference key="NSWindow"/>
-								<string key="NSReuseIdentifierKey">_NS:345</string>
-								<bool key="IBUIOpaque">NO</bool>
-								<bool key="IBUIClipsSubviews">YES</bool>
-								<int key="IBUIContentMode">7</int>
-								<bool key="IBUIUserInteractionEnabled">NO</bool>
-								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-								<string key="IBUIText">Getting Tales...</string>
-								<reference key="IBUITextColor" ref="140003940"/>
-								<nil key="IBUIHighlightedColor"/>
-								<int key="IBUIBaselineAdjustment">1</int>
-								<float key="IBUIMinimumFontSize">10</float>
-								<int key="IBUITextAlignment">1</int>
-								<reference key="IBUIFontDescription" ref="404849164"/>
-								<reference key="IBUIFont" ref="888478462"/>
-							</object>
-						</array>
-						<string key="NSFrame">{{298, 118}, {430, 280}}</string>
-						<reference key="NSSuperview" ref="191373211"/>
-						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="65879652"/>
 						<string key="NSReuseIdentifierKey">_NS:212</string>
 						<reference key="IBUIBackgroundColor" ref="788814958"/>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -651,14 +599,6 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">downloadingView</string>
-						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="898124597"/>
-					</object>
-					<int key="connectionID">48</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">delegate</string>
 						<reference key="source" ref="329901469"/>
 						<reference key="destination" ref="372490531"/>
@@ -754,7 +694,6 @@
 							<reference ref="981898297"/>
 							<reference ref="775772520"/>
 							<reference ref="426104642"/>
-							<reference ref="898124597"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -886,26 +825,6 @@
 						<reference key="object" ref="291007808"/>
 						<reference key="parent" ref="426104642"/>
 					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">45</int>
-						<reference key="object" ref="898124597"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="252512285"/>
-							<reference ref="65879652"/>
-						</array>
-						<reference key="parent" ref="191373211"/>
-						<string key="objectName">Downloading</string>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">46</int>
-						<reference key="object" ref="252512285"/>
-						<reference key="parent" ref="898124597"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">47</int>
-						<reference key="object" ref="65879652"/>
-						<reference key="parent" ref="898124597"/>
-					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -928,9 +847,6 @@
 				<string key="34.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="41.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="42.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="45.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="46.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="47.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="5.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="6.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="7.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -985,8 +901,6 @@
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="activityIndicator">UIActivityIndicatorView</string>
 						<string key="backButton">UIButton</string>
-						<string key="downloView">UIView</string>
-						<string key="downloadingView">UIView</string>
 						<string key="emailText">UITextField</string>
 						<string key="loadingText">UILabel</string>
 						<string key="loginView">UIView</string>
@@ -1004,14 +918,6 @@
 						<object class="IBToOneOutletInfo" key="backButton">
 							<string key="name">backButton</string>
 							<string key="candidateClassName">UIButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="downloView">
-							<string key="name">downloView</string>
-							<string key="candidateClassName">UIView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="downloadingView">
-							<string key="name">downloadingView</string>
-							<string key="candidateClassName">UIView</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="emailText">
 							<string key="name">emailText</string>
@@ -1067,6 +973,6 @@
 			<string key="ipad_btn_signup.png">{108, 41}</string>
 			<string key="ipad_btn_viewonweb.png">{238, 41}</string>
 		</dictionary>
-		<string key="IBCocoaTouchPluginVersion">1930</string>
+		<string key="IBCocoaTouchPluginVersion">2083</string>
 	</data>
 </archive>

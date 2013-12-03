@@ -230,7 +230,7 @@
             [talesScrollView setContentSize:CGSizeMake(210*[[Tale tales] count] , 140)];
         }
         else {
-            [talesScrollView setContentSize:CGSizeMake(90*[[Tale tales] count] , 63)];
+            [talesScrollView setContentSize:CGSizeMake(95*[[Tale tales] count] , 63)];
         }
     }
 }
