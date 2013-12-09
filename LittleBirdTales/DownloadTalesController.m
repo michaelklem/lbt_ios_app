@@ -135,8 +135,8 @@ static int LoadingItemContext = 1;
         NSDictionary *currentTale = [userTales objectAtIndex:currentTaleIndex];
         NSLog(@"Title: %@",[currentTale valueForKey:@"title"]);
        
-        [titleLabel setText:[currentTale valueForKey:@"title"]];
-        [authorLabel setText:[currentTale valueForKey:@"author"]];
+        [titleLabel setText:[[currentTale valueForKey:@"title"] isEqual:[NSNull null]]? @"My Little Bird Tale" : [currentTale valueForKey:@"title"]];
+        [authorLabel setText:[[currentTale valueForKey:@"author"] isEqual:[NSNull null]] ? @"A Little Bird" : [currentTale valueForKey:@"author"]];
         [pageLabel setText:[NSString stringWithFormat:@"%@",[currentTale valueForKey:@"pages"]]];
         [createdLabel setText:[currentTale valueForKey:@"created"]];
         [modifiedLabel setText:[currentTale valueForKey:@"modified"]];
@@ -176,7 +176,7 @@ static int LoadingItemContext = 1;
                          NSLog(@"Title: %@",[json valueForKey:@"title"]);
                          NSLog(@"content: %@",myString);
                          
-                         Tale *newTale = [Tale newTalewithTitle:[json valueForKey:@"title"] author:[json valueForKey:@"author"]];
+                         Tale *newTale = [Tale newTalewithTitle:[[json valueForKey:@"title"] isEqual:[NSNull null]]?@"My Little Bird Tale":[json valueForKey:@"title"] author:[[json valueForKey:@"author"] isEqual:[NSNull null]]?@"A Little Bird":[json valueForKey:@"author"]];
                          
                          NSString *url2 = [NSString stringWithFormat:@"%@/services/taleData/",servicesURLPrefix];
                          NSLog(@"%@", url2);
@@ -226,7 +226,7 @@ static int LoadingItemContext = 1;
                                          NSDictionary *item = [pages objectAtIndex:i];
                                          Page *samplePage = [Page newPage];
                                          samplePage.pageFolder = [NSString stringWithFormat:@"%@/%0.f",[Lib taleFolderPathFromIndex:newTale.index],samplePage.index];
-                                         samplePage.text = [item valueForKey:@"text"];
+                                         samplePage.text = [[item valueForKey:@"text"] isEqual:[NSNull null]]?@"":[item valueForKey:@"text"];
                                          
                                          if([[item valueForKey:@"has_image"] boolValue]) {
                                              NSString *imageFilePath = [path stringByAppendingPathComponent:[NSString stringWithFormat:@"%d/page.jpg", i]];

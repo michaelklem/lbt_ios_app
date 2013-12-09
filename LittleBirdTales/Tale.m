@@ -202,7 +202,7 @@ NSMutableArray* tales;
 	[postBody appendData:[[NSString stringWithFormat:@"%0.f",index] dataUsingEncoding:NSUTF8StringEncoding]];
 	[postBody appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",stringBoundary] dataUsingEncoding:NSUTF8StringEncoding]];
     
-    // Tale ID
+    // Tale Title
 	[postBody appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n",@"title"] dataUsingEncoding:NSUTF8StringEncoding]];
 	[postBody appendData:[[NSString stringWithFormat:@"%@",title] dataUsingEncoding:NSUTF8StringEncoding]];
 	[postBody appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",stringBoundary] dataUsingEncoding:NSUTF8StringEncoding]];

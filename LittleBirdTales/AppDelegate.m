@@ -18,8 +18,8 @@ AppDelegate* _shared;
 + (void)initialize
 {
     //configure iRate
-    [iRate sharedInstance].daysUntilPrompt = 0.01;
-    [iRate sharedInstance].usesUntilPrompt = 1;
+    [iRate sharedInstance].daysUntilPrompt = 3;
+    [iRate sharedInstance].usesUntilPrompt = 5;
 }
 
 +(AppDelegate*)shared {
