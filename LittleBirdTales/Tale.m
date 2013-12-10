@@ -176,7 +176,7 @@ NSMutableArray* tales;
     BOOL success = NO;
     
     NSMutableURLRequest* theRequest = [[NSMutableURLRequest alloc] initWithURL: 
-                                       [NSURL URLWithString:[NSString stringWithFormat: @"%@/services/add_tale.php",servicesURLPrefix]]];
+                                       [NSURL URLWithString:[NSString stringWithFormat: @"%@/services/add_tale_1_3_0.php",servicesURLPrefix]]];
 	[theRequest setHTTPMethod:@"POST"];
 	
 	NSString *stringBoundary = [NSString stringWithString:@"0xKhTmLbOuNdArY"];

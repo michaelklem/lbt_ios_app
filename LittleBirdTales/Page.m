@@ -175,7 +175,7 @@
     
     
     NSMutableURLRequest* theRequest = [[NSMutableURLRequest alloc] initWithURL: 
-                                        [NSURL URLWithString:[NSString stringWithFormat: @"%@/services/upload_page.php",servicesURLPrefix]]];
+                                        [NSURL URLWithString:[NSString stringWithFormat: @"%@/services/upload_page_1_3_0.php",servicesURLPrefix]]];
 	[theRequest setHTTPMethod:@"POST"];
 	
 	NSString *stringBoundary = [NSString stringWithString:@"0xKhTmLbOuNdArY"];
