@@ -7,10 +7,15 @@
 //
 
 #import "EditTaleViewController.h"
-
+#import <AssetsLibrary/AssetsLibrary.h>
 
 @implementation EditTaleViewController
 @synthesize tale, taleNumber, popoverController;
+
+- (BOOL)shouldAutorotate
+{
+    return NO;
+}
 
 -(IBAction)drawPage:(id)sender {
     //TODO: Check if there is a page to draw
@@ -130,24 +135,102 @@
 }
 
 -(IBAction)uploadPage:(id)sender {
-    UIActionSheet* actionSheet;
-    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-        actionSheet = [[UIActionSheet alloc] 
-                          initWithTitle:@"Choose image"
-                          delegate:self
-                          cancelButtonTitle:@"Cancel"
-                          destructiveButtonTitle:@"From Photo Library"
-                          otherButtonTitles:@"From Gallery", @"Take photo", nil];
+
+    ALAuthorizationStatus status = [ALAssetsLibrary authorizationStatus];
+    NSLog(@"status : %i",status);
+    if (status != ALAuthorizationStatusAuthorized) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Attention" message:@"Please give this app permission to access your photo library in your settings app!" delegate:nil cancelButtonTitle:@"Close" otherButtonTitles:nil, nil];
+        [alert show];
     }
-    else {
-        actionSheet = [[UIActionSheet alloc] 
-                       initWithTitle:@"Choose image"
-                       delegate:self
-                       cancelButtonTitle:@"Cancel"
-                       destructiveButtonTitle:@"From Photo Library"
-                       otherButtonTitles:@"From Gallery", nil];
-    }
-    [actionSheet showInView:self.view];
+//    ALAssetsLibrary *lib = [[ALAssetsLibrary alloc] init];
+//    
+//    [lib enumerateGroupsWithTypes:ALAssetsGroupSavedPhotos usingBlock:^(ALAssetsGroup *group, BOOL *stop) {
+//        NSLog(@"%i",[group numberOfAssets]);
+//    } failureBlock:^(NSError *error) {
+//        if (error.code == ALAssetsLibraryAccessUserDeniedError) {
+//            NSLog(@"user denied access, code: %i",error.code);
+//        }else{
+//            NSLog(@"Other error code: %i",error.code);
+//        }
+//    }];
+//
+//    UIActionSheet* actionSheet;
+//    [actionSheet showInView:self.view];
+
+    
+    //    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary])
+//    {
+//        void(^blk)() =  ^() {
+//            UIImagePickerController* picker = [[UIImagePickerController alloc] init];
+//            picker.delegate = self;
+//            picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+//            if (NIIsPad()) {
+//                UIPopoverController* popover = [[UIPopoverController alloc] initWithContentViewController:picker];
+//                [popover presentPopoverFromBarButtonItem:self.popoverAnchor permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+//            } else {
+//                [self.navigationController presentModalViewController:picker animated:YES];
+//            }
+//        };
+//        
+//        // Make sure we have permission, otherwise request it first
+//        ALAssetsLibrary* assetsLibrary = [[ALAssetsLibrary alloc] init];
+//        ALAuthorizationStatus authStatus;
+//        if (IOS_VERSION_GREATER_THAN_OR_EQUAL_TO(@"6.0"))
+//            authStatus = [ALAssetsLibrary authorizationStatus];
+//        else
+//            authStatus = ALAuthorizationStatusAuthorized;
+//        
+//        if (authStatus == ALAuthorizationStatusAuthorized) {
+//            blk();
+//        } else if (authStatus == ALAuthorizationStatusDenied || authStatus == ALAuthorizationStatusRestricted) {
+//            [[UIAlertView alertViewWithTitle:@"Grant photos permission" message:@"Grant permission to your photos. Go to Settings App > Privacy > Photos."] show];
+//        } else if (authStatus == ALAuthorizationStatusNotDetermined) {
+//            [assetsLibrary enumerateGroupsWithTypes:ALAssetsGroupAll usingBlock:^(ALAssetsGroup *group, BOOL *stop) {
+//                // Catch the final iteration, ignore the rest
+//                if (group == nil)
+//                    dispatch_async(dispatch_get_main_queue(), ^{
+//                        blk();
+//                    });
+//                *stop = YES;
+//            } failureBlock:^(NSError *error) {
+//                dispatch_async(dispatch_get_main_queue(), ^{
+//                    [[UIAlertView alertViewWithTitle:@"Grant photos permission" message:@"Grant permission to your photos. Go to Settings App > Privacy > Photos."] show];
+//                });
+//            }];
+//        }
+//    }
+//    
+    
+    
+//    if( [UIImagePickerController isCameraDeviceAvailable:UIImagePickerControllerCameraDeviceFront] || [UIImagePickerController isCameraDeviceAvailable:UIImagePickerControllerCameraDeviceRear])
+//    {
+//        picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+//        [self presentViewController:picker animated:YES completion:nil];
+//    } else {
+//        picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+//        [self presentViewController:picker animated:YES completion:nil];
+//    }
+    
+//    UIActionSheet* actionSheet;
+//    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
+//    {
+//    
+//        actionSheet = [[UIActionSheet alloc]
+//                          initWithTitle:@"Choose image"
+//                          delegate:self
+//                          cancelButtonTitle:@"Cancel"
+//                          destructiveButtonTitle:@"From Photo Library4"
+//                          otherButtonTitles:@"From Gallery", @"Take photo", nil];
+//    }
+//    else {
+//        actionSheet = [[UIActionSheet alloc] 
+//                       initWithTitle:@"Choose image"
+//                       delegate:self
+//                       cancelButtonTitle:@"Cancel"
+//                       destructiveButtonTitle:@"From Photo Library5"
+//                       otherButtonTitles:@"From Gallery", nil];
+//    }
+//    [actionSheet showInView:self.view];
 }
 -(IBAction)soundPage:(id)sender {
     AudioRecord* tView = [AudioRecord viewFromNib:self];

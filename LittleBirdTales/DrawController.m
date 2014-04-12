@@ -316,7 +316,7 @@
                                       initWithTitle:@"Choose image"
                                       delegate:self
                                       cancelButtonTitle:@"Cancel"
-                                      destructiveButtonTitle:@"From Photo Library"
+                                      destructiveButtonTitle:@"From Photo Library2"
                                       otherButtonTitles:@"From Gallery", @"Take photo", nil];
         actionSheet.tag = IMAGETAG;
         [actionSheet showInView:self.view];
@@ -325,7 +325,7 @@
                                       initWithTitle:@"Choose image"
                                       delegate:self
                                       cancelButtonTitle:@"Cancel"
-                                      destructiveButtonTitle:@"From Photo Library"
+                                      destructiveButtonTitle:@"From Photo Library3"
                                       otherButtonTitles:@"From Gallery", nil];
         actionSheet.tag = IMAGETAG;
         [actionSheet showInView:self.view];

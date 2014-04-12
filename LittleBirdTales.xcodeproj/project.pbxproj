@@ -263,12 +263,9 @@
 		37F7D4AF14FB051A007C5B9A /* AudioRecord-iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37F7D4AE14FB051A007C5B9A /* AudioRecord-iPhone.xib */; };
 		37F7D4B314FB08B8007C5B9A /* iphone-bg-player.png in Resources */ = {isa = PBXBuildFile; fileRef = 37F7D4B114FB08B8007C5B9A /* iphone-bg-player.png */; };
 		37F7D4B414FB08B8007C5B9A /* iphone-bg-player@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 37F7D4B214FB08B8007C5B9A /* iphone-bg-player@2x.png */; };
-		F425CDCE183C86D300AB9367 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F425CDCD183C86D300AB9367 /* libz.dylib */; };
-		F42B463B183B1E62001D9BE3 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = F42B4631183B1E62001D9BE3 /* ioapi.c */; };
-		F42B463C183B1E62001D9BE3 /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = F42B4633183B1E62001D9BE3 /* mztools.c */; };
-		F42B463D183B1E62001D9BE3 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = F42B4635183B1E62001D9BE3 /* unzip.c */; };
-		F42B463E183B1E62001D9BE3 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = F42B4637183B1E62001D9BE3 /* zip.c */; };
-		F42B463F183B1E62001D9BE3 /* ZipArchive.mm in Sources */ = {isa = PBXBuildFile; fileRef = F42B4639183B1E62001D9BE3 /* ZipArchive.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		BDC5985A18F5138100CA5D3D /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDC5985918F5138100CA5D3D /* AssetsLibrary.framework */; };
+		BDDB6BA218F91BD70093A543 /* ZipArchive in Resources */ = {isa = PBXBuildFile; fileRef = BDDB6BA118F91BD70093A543 /* ZipArchive */; };
+		BDDB6BA418F924E50093A543 /* libZipArchive-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BDDB6BA318F924E50093A543 /* libZipArchive-ios.a */; };
 		F42B4642183B203F001D9BE3 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F42B4641183B203F001D9BE3 /* libz.1.2.5.dylib */; };
 		F44433A91845A023001F59C7 /* HttpHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = F44433A81845A023001F59C7 /* HttpHelper.m */; };
 		F47876801846B48200B56B59 /* LoginViewController-iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = F478767F1846B48200B56B59 /* LoginViewController-iPhone.xib */; };
@@ -613,18 +610,9 @@
 		37F7D4AE14FB051A007C5B9A /* AudioRecord-iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "AudioRecord-iPhone.xib"; sourceTree = "<group>"; };
 		37F7D4B114FB08B8007C5B9A /* iphone-bg-player.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iphone-bg-player.png"; sourceTree = "<group>"; };
 		37F7D4B214FB08B8007C5B9A /* iphone-bg-player@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iphone-bg-player@2x.png"; sourceTree = "<group>"; };
-		F425CDCD183C86D300AB9367 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
-		F42B4630183B1E62001D9BE3 /* crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt.h; sourceTree = "<group>"; };
-		F42B4631183B1E62001D9BE3 /* ioapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ioapi.c; sourceTree = "<group>"; };
-		F42B4632183B1E62001D9BE3 /* ioapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ioapi.h; sourceTree = "<group>"; };
-		F42B4633183B1E62001D9BE3 /* mztools.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mztools.c; sourceTree = "<group>"; };
-		F42B4634183B1E62001D9BE3 /* mztools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mztools.h; sourceTree = "<group>"; };
-		F42B4635183B1E62001D9BE3 /* unzip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = unzip.c; sourceTree = "<group>"; };
-		F42B4636183B1E62001D9BE3 /* unzip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = unzip.h; sourceTree = "<group>"; };
-		F42B4637183B1E62001D9BE3 /* zip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zip.c; sourceTree = "<group>"; };
-		F42B4638183B1E62001D9BE3 /* zip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zip.h; sourceTree = "<group>"; };
-		F42B4639183B1E62001D9BE3 /* ZipArchive.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = ZipArchive.mm; path = /Users/home/Downloads/ZipArchive/ZipArchive.mm; sourceTree = "<absolute>"; };
-		F42B463A183B1E62001D9BE3 /* ZipArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZipArchive.h; path = /Users/home/Downloads/ZipArchive/ZipArchive.h; sourceTree = "<absolute>"; };
+		BDC5985918F5138100CA5D3D /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		BDDB6BA118F91BD70093A543 /* ZipArchive */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ZipArchive; sourceTree = "<group>"; };
+		BDDB6BA318F924E50093A543 /* libZipArchive-ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libZipArchive-ios.a"; path = "../../../../../Library/Developer/Xcode/DerivedData/ZipArchive-cfykilicfxnueuathfpudibyvfix/Build/Products/Debug-iphoneos/libZipArchive-ios.a"; sourceTree = "<group>"; };
 		F42B4641183B203F001D9BE3 /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
 		F44433A71845A023001F59C7 /* HttpHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpHelper.h; sourceTree = "<group>"; };
 		F44433A81845A023001F59C7 /* HttpHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpHelper.m; sourceTree = "<group>"; };
@@ -650,9 +638,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BDC5985A18F5138100CA5D3D /* AssetsLibrary.framework in Frameworks */,
 				F4EC4F01184D0E7E00C21FDF /* SystemConfiguration.framework in Frameworks */,
 				F4EC4EFF184D0E4000C21FDF /* Security.framework in Frameworks */,
-				F425CDCE183C86D300AB9367 /* libz.dylib in Frameworks */,
 				F42B4642183B203F001D9BE3 /* libz.1.2.5.dylib in Frameworks */,
 				3760BF7A1510436D0086ECD6 /* AudioToolbox.framework in Frameworks */,
 				37DA10F314FC8D14002C98F7 /* MediaPlayer.framework in Frameworks */,
@@ -663,6 +651,7 @@
 				04F1218D14B9F3C90003E733 /* Foundation.framework in Frameworks */,
 				04F1218F14B9F3C90003E733 /* CoreGraphics.framework in Frameworks */,
 				F4EC4EFD184D0AD300C21FDF /* libFlurry_4.3.0.a in Frameworks */,
+				BDDB6BA418F924E50093A543 /* libZipArchive-ios.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -956,15 +945,16 @@
 			children = (
 				F4EC4F00184D0E7E00C21FDF /* SystemConfiguration.framework */,
 				F4EC4EFE184D0E4000C21FDF /* Security.framework */,
-				F425CDCD183C86D300AB9367 /* libz.dylib */,
 				F42B4641183B203F001D9BE3 /* libz.1.2.5.dylib */,
 				F4AEFE0D1820B0A700BD44D9 /* Default-568h@2x.png */,
+				BDDB6BA318F924E50093A543 /* libZipArchive-ios.a */,
 				04F1219014B9F3C90003E733 /* LittleBirdTales */,
 				37F6E8DF14C7BBD7003A278D /* Libs */,
 				0498461214D853DB0095370C /* Objs */,
 				37F6E8C414C7A9C3003A278D /* Resources */,
 				04F1218914B9F3C80003E733 /* Frameworks */,
 				04F1218714B9F3C80003E733 /* Products */,
+				BDDB6BA118F91BD70093A543 /* ZipArchive */,
 			);
 			sourceTree = "<group>";
 		};
@@ -979,6 +969,7 @@
 		04F1218914B9F3C80003E733 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BDC5985918F5138100CA5D3D /* AssetsLibrary.framework */,
 				3760BF791510436D0086ECD6 /* AudioToolbox.framework */,
 				37DA10F214FC8D13002C98F7 /* MediaPlayer.framework */,
 				37DDAE0314F70E7B001C63B6 /* MessageUI.framework */,
@@ -1341,11 +1332,8 @@
 			children = (
 				F4EC4EFA184D0AD300C21FDF /* Flurry */,
 				F4EC4EF4184CF70300C21FDF /* iRate */,
-				F42B462F183B1E62001D9BE3 /* minizip */,
 				F44433A71845A023001F59C7 /* HttpHelper.h */,
 				F44433A81845A023001F59C7 /* HttpHelper.m */,
-				F42B4639183B1E62001D9BE3 /* ZipArchive.mm */,
-				F42B463A183B1E62001D9BE3 /* ZipArchive.h */,
 				376C211D14E46EB200D540FB /* Lib.h */,
 				376C211E14E46EB200D540FB /* Lib.m */,
 				376C211514E46E9E00D540FB /* Sound.h */,
@@ -1371,23 +1359,6 @@
 			);
 			name = "Edit Tale";
 			sourceTree = "<group>";
-		};
-		F42B462F183B1E62001D9BE3 /* minizip */ = {
-			isa = PBXGroup;
-			children = (
-				F42B4630183B1E62001D9BE3 /* crypt.h */,
-				F42B4631183B1E62001D9BE3 /* ioapi.c */,
-				F42B4632183B1E62001D9BE3 /* ioapi.h */,
-				F42B4633183B1E62001D9BE3 /* mztools.c */,
-				F42B4634183B1E62001D9BE3 /* mztools.h */,
-				F42B4635183B1E62001D9BE3 /* unzip.c */,
-				F42B4636183B1E62001D9BE3 /* unzip.h */,
-				F42B4637183B1E62001D9BE3 /* zip.c */,
-				F42B4638183B1E62001D9BE3 /* zip.h */,
-			);
-			name = minizip;
-			path = /Users/home/Downloads/ZipArchive/minizip;
-			sourceTree = "<absolute>";
 		};
 		F4D1572F18219EEB00806778 /* DownloadTale */ = {
 			isa = PBXGroup;
@@ -1445,7 +1416,12 @@
 		04F1217D14B9F3C80003E733 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0430;
+				LastUpgradeCheck = 0510;
+				TargetAttributes = {
+					04F1218514B9F3C80003E733 = {
+						DevelopmentTeam = X732Y7H96H;
+					};
+				};
 			};
 			buildConfigurationList = 04F1218014B9F3C80003E733 /* Build configuration list for PBXProject "LittleBirdTales" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -1568,6 +1544,7 @@
 				04BC99C014EAECD400218DF4 /* tran.png in Resources */,
 				3721D2DE14ECA4AF00AF8EEE /* cover_default.jpg in Resources */,
 				3721D2DF14ECA4AF00AF8EEE /* cover_default_med.jpg in Resources */,
+				BDDB6BA218F91BD70093A543 /* ZipArchive in Resources */,
 				3721D2E014ECA4AF00AF8EEE /* page_default.jpg in Resources */,
 				3721D2E114ECA4AF00AF8EEE /* page_default_med.jpg in Resources */,
 				3721D2E314ECB52A00AF8EEE /* ipad_btn_play_big.png in Resources */,
@@ -1735,11 +1712,6 @@
 				373DBEFC151ED60B0091DCCB /* ColorPickerImageView.m in Sources */,
 				373DBF01151ED62E0091DCCB /* UIImage+ColorAtPixel.m in Sources */,
 				F4D157381821C3E700806778 /* DownloadTalesController.m in Sources */,
-				F42B463B183B1E62001D9BE3 /* ioapi.c in Sources */,
-				F42B463C183B1E62001D9BE3 /* mztools.c in Sources */,
-				F42B463D183B1E62001D9BE3 /* unzip.c in Sources */,
-				F42B463E183B1E62001D9BE3 /* zip.c in Sources */,
-				F42B463F183B1E62001D9BE3 /* ZipArchive.mm in Sources */,
 				F44433A91845A023001F59C7 /* HttpHelper.m in Sources */,
 				F4EC4EF9184CF70400C21FDF /* iRate.m in Sources */,
 			);
@@ -1763,12 +1735,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = (
-					armv7,
-					armv6,
-				);
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Mike Klem (X732Y7H96H)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Mike Klem (X732Y7H96H)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Mike Klem (94A5586Y4U)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Mike Klem (94A5586Y4U)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -1784,8 +1752,9 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				PROVISIONING_PROFILE = "283952DD-572B-4E8C-8404-49D9CC4711A0";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "283952DD-572B-4E8C-8404-49D9CC4711A0";
+				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "07D71BF8-B3EF-47DF-8307-B7EEF7A12E0E";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "07D71BF8-B3EF-47DF-8307-B7EEF7A12E0E";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1795,12 +1764,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = (
-					armv7,
-					armv6,
-				);
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Mike Klem (X732Y7H96H)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Mike Klem (X732Y7H96H)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Mike Klem (94A5586Y4U)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Mike Klem (94A5586Y4U)";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_THUMB_SUPPORT = NO;
@@ -1810,8 +1775,9 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "283952DD-572B-4E8C-8404-49D9CC4711A0";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "283952DD-572B-4E8C-8404-49D9CC4711A0";
+				"OTHER_CFLAGS[arch=*]" = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "07D71BF8-B3EF-47DF-8307-B7EEF7A12E0E";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F4036183-2531-4D22-9766-D306928F32D6";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -1821,13 +1787,9 @@
 		04F121A514B9F3C90003E733 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					armv6,
-					armv7,
-				);
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Mike Klem (X732Y7H96H)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Mike Klem (X732Y7H96H)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LittleBirdTales/LittleBirdTales-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
@@ -1836,12 +1798,12 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/LittleBirdTales/FlurryAnalytics\"",
-					/Users/home/Downloads/TestFlightSDK2.0.2,
-					"\"$(SRCROOT)/TestFlightSDK2.0.2\"",
 					"\"$(SRCROOT)/Flurry\"",
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/ZipArchive-cfykilicfxnueuathfpudibyvfix/Build/Products/Debug-iphoneos",
+					"$(PROJECT_DIR)/Flurry",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "E8DC18EF-43BB-42A5-99B0-067DAFAE671F";
+				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E8DC18EF-43BB-42A5-99B0-067DAFAE671F";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
@@ -1851,13 +1813,9 @@
 		04F121A614B9F3C90003E733 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					armv6,
-					armv7,
-				);
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Mike Klem (X732Y7H96H)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Mike Klem (X732Y7H96H)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LittleBirdTales/LittleBirdTales-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
@@ -1866,12 +1824,12 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/LittleBirdTales/FlurryAnalytics\"",
-					/Users/home/Downloads/TestFlightSDK2.0.2,
-					"\"$(SRCROOT)/TestFlightSDK2.0.2\"",
 					"\"$(SRCROOT)/Flurry\"",
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/ZipArchive-cfykilicfxnueuathfpudibyvfix/Build/Products/Debug-iphoneos",
+					"$(PROJECT_DIR)/Flurry",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "E8DC18EF-43BB-42A5-99B0-067DAFAE671F";
+				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E8DC18EF-43BB-42A5-99B0-067DAFAE671F";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
