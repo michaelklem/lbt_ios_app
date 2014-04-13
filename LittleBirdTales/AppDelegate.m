@@ -49,6 +49,12 @@ AppDelegate* _shared;
     }
 }
 
+// Have to support portrait for UIImagePickerController to be happy when presentModalViewController gets called
+// UINavigationController+Landscape category keeps our views from rotating
+- (NSUInteger)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window {
+   return UIInterfaceOrientationMaskLandscape | UIInterfaceOrientationMaskPortrait;
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
 //    unsigned char a = 100;

@@ -397,10 +397,22 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
 
 - (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex {
     if (buttonIndex == 2 && [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) { // Take Photo
+
         UIImagePickerController* controller = [[UIImagePickerController alloc] init];
-        controller.delegate = self;
-        controller.sourceType = UIImagePickerControllerSourceTypeCamera;
-        [self presentModalViewController:controller animated:YES];        
+		controller.delegate = self;
+		controller.sourceType = UIImagePickerControllerSourceTypeCamera;
+		
+		// Hide camera controls (iOS 5+) until view is shown to prevent console log
+		// "Snapshotting a view that has not been rendered results in an empty snapshot...
+		if ( [self respondsToSelector:@selector(presentViewController:animated:completion:)] ) {
+			controller.showsCameraControls = NO;
+			[self presentViewController:controller animated:YES completion:^{
+				controller.showsCameraControls = YES;
+			}];
+		}
+		else { // up to iOS 5
+			[self presentModalViewController:controller animated:YES];
+		}
     } else if (buttonIndex == 0) { // Library
         
         UIImagePickerController* controller = [[UIImagePickerController alloc] init];
