@@ -15,7 +15,7 @@
 #import "Lib.h"
 #import <AudioToolbox/AudioServices.h> 
 #import <AVFoundation/AVFoundation.h>
-#import "ZipArchive.h"
+#import "../ZipArchive/ZipArchive.h"
 
 @implementation DownloadTalesController
 
