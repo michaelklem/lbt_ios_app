@@ -148,7 +148,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+        
     if ([[Tale tales] count] > 0) {
         [self selectTale:nil];
     }

@@ -257,9 +257,11 @@
 }
 #pragma mark - View lifecycle
 
+-(BOOL)prefersStatusBarHidden { return YES; }
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
     //Undo Manager
     undoManager = [[NSUndoManager alloc] init];
     [undoManager setLevelsOfUndo:5];
@@ -291,7 +293,7 @@
     pagesTableView.allowsSelectionDuringEditing = YES;
     
     [self setActivePage:0];
-
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {

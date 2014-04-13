@@ -126,6 +126,8 @@ static void HSVFromUIColor( UIColor* color, float* h, float* s, float* v )
     [self updateResultColor];
 }
 
+-(BOOL)prefersStatusBarHidden { return YES; }
+
 - (void) viewDidLoad
 {
 	[ super viewDidLoad ];

@@ -33,6 +33,9 @@
 
 #pragma mark - View lifecycle
 
+-(BOOL)prefersStatusBarHidden { return YES; }
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];

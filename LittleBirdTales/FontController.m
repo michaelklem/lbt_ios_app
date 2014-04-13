@@ -49,6 +49,9 @@ numberOfRowsInComponent:(NSInteger)component {
     fontLabel.font = [UIFont fontWithName:self.fontName size:self.fontSize];
 }
 
+-(BOOL)prefersStatusBarHidden { return YES; }
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     fonts = [[NSMutableArray alloc] init];

@@ -77,9 +77,12 @@
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 }
+
+-(BOOL)prefersStatusBarHidden { return YES; }
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+        
     if (!IsIdiomPad) {
     //ScrollView
         [scrollView setZoomScale:0.5];

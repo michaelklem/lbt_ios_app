@@ -298,6 +298,8 @@ static int LoadingItemContext = 1;
     [self.navigationController pushViewController:controller animated:YES];
 }
 
+-(BOOL)prefersStatusBarHidden { return YES; }
+
 - (void)viewDidLoad {
     noTaleBackground.hidden = YES;
     downloadingView.hidden = NO;

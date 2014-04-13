@@ -112,6 +112,8 @@ static void HSVFromUIColor( UIColor* color, float* h, float* s, float* v )
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+-(BOOL)prefersStatusBarHidden { return YES; }
+
 - (void) viewDidLoad
 {
 	[ super viewDidLoad ];
@@ -165,6 +167,7 @@ static void HSVFromUIColor( UIColor* color, float* h, float* s, float* v )
 	UINavigationController* nav = [ [ UINavigationController alloc ] initWithRootViewController: self ];
 	
 	nav.navigationBar.barStyle = UIBarStyleBlackOpaque;
+    nav.navigationBar.translucent = NO;
 	
 	self.navigationItem.rightBarButtonItem = [ [ UIBarButtonItem alloc ] initWithBarButtonSystemItem: UIBarButtonSystemItemDone target: self action: @selector( done: ) ];
 				
