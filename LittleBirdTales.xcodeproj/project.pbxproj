@@ -263,6 +263,7 @@
 		37F7D4AF14FB051A007C5B9A /* AudioRecord-iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37F7D4AE14FB051A007C5B9A /* AudioRecord-iPhone.xib */; };
 		37F7D4B314FB08B8007C5B9A /* iphone-bg-player.png in Resources */ = {isa = PBXBuildFile; fileRef = 37F7D4B114FB08B8007C5B9A /* iphone-bg-player.png */; };
 		37F7D4B414FB08B8007C5B9A /* iphone-bg-player@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 37F7D4B214FB08B8007C5B9A /* iphone-bg-player@2x.png */; };
+		BDAFD72A1901AA6E0082B7A3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BDAFD7291901AA6E0082B7A3 /* Images.xcassets */; };
 		BDDB6BA818FA11140093A543 /* ZipArchive in Resources */ = {isa = PBXBuildFile; fileRef = BDDB6BA718FA11140093A543 /* ZipArchive */; };
 		BDDB6BAA18FA13990093A543 /* libZipArchive-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BDDB6BA918FA13990093A543 /* libZipArchive-ios.a */; };
 		BDDB6BAC18FA14000093A543 /* TestFlightSDK2.0.2 in Resources */ = {isa = PBXBuildFile; fileRef = BDDB6BAB18FA14000093A543 /* TestFlightSDK2.0.2 */; };
@@ -612,6 +613,7 @@
 		37F7D4AE14FB051A007C5B9A /* AudioRecord-iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "AudioRecord-iPhone.xib"; sourceTree = "<group>"; };
 		37F7D4B114FB08B8007C5B9A /* iphone-bg-player.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iphone-bg-player.png"; sourceTree = "<group>"; };
 		37F7D4B214FB08B8007C5B9A /* iphone-bg-player@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iphone-bg-player@2x.png"; sourceTree = "<group>"; };
+		BDAFD7291901AA6E0082B7A3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		BDDB6BA718FA11140093A543 /* ZipArchive */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ZipArchive; sourceTree = "<group>"; };
 		BDDB6BA918FA13990093A543 /* libZipArchive-ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libZipArchive-ios.a"; sourceTree = "<group>"; };
 		BDDB6BAB18FA14000093A543 /* TestFlightSDK2.0.2 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = TestFlightSDK2.0.2; sourceTree = "<group>"; };
@@ -1001,6 +1003,7 @@
 				04F1219114B9F3C90003E733 /* Supporting Files */,
 				BDDB6BAD18FA16E00093A543 /* UINavigationController+Landscape.h */,
 				BDDB6BAE18FA17240093A543 /* UINavigationController+Landscape.m */,
+				BDAFD7291901AA6E0082B7A3 /* Images.xcassets */,
 			);
 			path = LittleBirdTales;
 			sourceTree = "<group>";
@@ -1407,6 +1410,7 @@
 			buildPhases = (
 				04F1218214B9F3C80003E733 /* Sources */,
 				04F1218314B9F3C80003E733 /* Frameworks */,
+				BDAFD7281901A3890082B7A3 /* ShellScript */,
 				04F1218414B9F3C80003E733 /* Resources */,
 			);
 			buildRules = (
@@ -1424,7 +1428,7 @@
 		04F1217D14B9F3C80003E733 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0430;
+				LastUpgradeCheck = 0510;
 				TargetAttributes = {
 					04F1218514B9F3C80003E733 = {
 						DevelopmentTeam = X732Y7H96H;
@@ -1582,6 +1586,7 @@
 				370EC75814F8DEC80047D099 /* iphone-bg-edittale.png in Resources */,
 				370EC75914F8DEC80047D099 /* iphone-bg-edittale@2x.png in Resources */,
 				370EC75B14F8DEE70047D099 /* InputTaleInfo-iPhone.xib in Resources */,
+				BDAFD72A1901AA6E0082B7A3 /* Images.xcassets in Resources */,
 				370EC75D14F8E47F0047D099 /* InputTextView-iPhone.xib in Resources */,
 				370EC75F14F8EE590047D099 /* PageCell-iPhone.xib in Resources */,
 				3700256D14F9BBA40065B6E5 /* CropImage-iPhone.xib in Resources */,
@@ -1649,6 +1654,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		BDAFD7281901A3890082B7A3 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/bash;
+			shellScript = "buildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"$INFOPLIST_FILE\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"$INFOPLIST_FILE\"\nproductVersion=$(/usr/libexec/PlistBuddy -c \"Print CFBundleShortVersionString\" \"$INFOPLIST_FILE\")";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		04F1218214B9F3C80003E733 /* Sources */ = {
@@ -1745,12 +1766,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = (
-					armv7,
-					armv6,
-				);
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Mike Klem (X732Y7H96H)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Mike Klem (X732Y7H96H)";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -1766,10 +1783,12 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				PROVISIONING_PROFILE = "283952DD-572B-4E8C-8404-49D9CC4711A0";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "283952DD-572B-4E8C-8404-49D9CC4711A0";
+				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
 		};
@@ -1777,12 +1796,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = (
-					armv7,
-					armv6,
-				);
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Mike Klem (X732Y7H96H)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Mike Klem (X732Y7H96H)";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_THUMB_SUPPORT = NO;
@@ -1792,24 +1807,22 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "283952DD-572B-4E8C-8404-49D9CC4711A0";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "283952DD-572B-4E8C-8404-49D9CC4711A0";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
 		04F121A514B9F3C90003E733 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					armv6,
-					armv7,
-				);
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Mike Klem (94A5586Y4U)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Mike Klem (94A5586Y4U)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LittleBirdTales/LittleBirdTales-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
@@ -1823,9 +1836,10 @@
 					"$(PROJECT_DIR)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "1E51F38D-6851-41BE-B73C-5EFB61AD5973";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "1E51F38D-6851-41BE-B73C-5EFB61AD5973";
+				PROVISIONING_PROFILE = "03D0FB4C-5816-4029-8404-24A1628C6BC4";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "03D0FB4C-5816-4029-8404-24A1628C6BC4";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1833,13 +1847,11 @@
 		04F121A614B9F3C90003E733 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					armv6,
-					armv7,
-				);
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Mike Klem (94A5586Y4U)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Mike Klem (94A5586Y4U)";
+				CURRENT_PROJECT_VERSION = 1.3.1;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LittleBirdTales/LittleBirdTales-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
@@ -1853,9 +1865,10 @@
 					"$(PROJECT_DIR)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "1E51F38D-6851-41BE-B73C-5EFB61AD5973";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "1E51F38D-6851-41BE-B73C-5EFB61AD5973";
+				PROVISIONING_PROFILE = "03D0FB4C-5816-4029-8404-24A1628C6BC4";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "03D0FB4C-5816-4029-8404-24A1628C6BC4";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
