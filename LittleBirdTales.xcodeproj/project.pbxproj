@@ -128,6 +128,9 @@
 		04F1219514B9F3C90003E733 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 04F1219314B9F3C90003E733 /* InfoPlist.strings */; };
 		04F1219714B9F3C90003E733 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F1219614B9F3C90003E733 /* main.m */; };
 		04F1219B14B9F3C90003E733 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F1219A14B9F3C90003E733 /* AppDelegate.m */; };
+		1FC208C01906AE76009D22F7 /* icon120.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FC208BF1906AE76009D22F7 /* icon120.png */; };
+		1FC208C219075028009D22F7 /* icon76.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FC208C119075028009D22F7 /* icon76.png */; };
+		1FC208C419075031009D22F7 /* icon152.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FC208C319075031009D22F7 /* icon152.png */; };
 		3700256D14F9BBA40065B6E5 /* CropImage-iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3700256C14F9BBA40065B6E5 /* CropImage-iPhone.xib */; };
 		3700257714F9CCB40065B6E5 /* GalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3700257514F9CCB40065B6E5 /* GalleryViewController.m */; };
 		3700257814F9CCB40065B6E5 /* GalleryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3700257614F9CCB40065B6E5 /* GalleryViewController.xib */; };
@@ -432,6 +435,9 @@
 		04F1219814B9F3C90003E733 /* LittleBirdTales-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LittleBirdTales-Prefix.pch"; sourceTree = "<group>"; };
 		04F1219914B9F3C90003E733 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		04F1219A14B9F3C90003E733 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		1FC208BF1906AE76009D22F7 /* icon120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon120.png; sourceTree = SOURCE_ROOT; };
+		1FC208C119075028009D22F7 /* icon76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon76.png; sourceTree = SOURCE_ROOT; };
+		1FC208C319075031009D22F7 /* icon152.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon152.png; sourceTree = SOURCE_ROOT; };
 		3700256C14F9BBA40065B6E5 /* CropImage-iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "CropImage-iPhone.xib"; sourceTree = "<group>"; };
 		3700256F14F9C1B00065B6E5 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../../Default.png; sourceTree = "<group>"; };
 		3700257114F9C1B50065B6E5 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "../../Default@2x.png"; sourceTree = "<group>"; };
@@ -1073,6 +1079,7 @@
 		3721D2D814ECA49B00AF8EEE /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				1FC208BF1906AE76009D22F7 /* icon120.png */,
 				375647F215201B3100305E57 /* Default-Portrait@2x~ipad.png */,
 				375647F015201B0A00305E57 /* icon144.png */,
 				375647ED15201AD600305E57 /* Default-Portrait~ipad.png */,
@@ -1080,7 +1087,9 @@
 				049845FC14D83FF40095370C /* icon57.png */,
 				049845F514D83FA30095370C /* icon54.png */,
 				049845F614D83FA30095370C /* icon72.png */,
+				1FC208C119075028009D22F7 /* icon76.png */,
 				049845F714D83FA30095370C /* icon114.png */,
+				1FC208C319075031009D22F7 /* icon152.png */,
 				3700257114F9C1B50065B6E5 /* Default@2x.png */,
 				3700256F14F9C1B00065B6E5 /* Default.png */,
 				373DBEDE151ECEB90091DCCB /* Default-Landscape@2x~ipad.png */,
@@ -1588,6 +1597,7 @@
 				370EC75B14F8DEE70047D099 /* InputTaleInfo-iPhone.xib in Resources */,
 				BDAFD72A1901AA6E0082B7A3 /* Images.xcassets in Resources */,
 				370EC75D14F8E47F0047D099 /* InputTextView-iPhone.xib in Resources */,
+				1FC208C419075031009D22F7 /* icon152.png in Resources */,
 				370EC75F14F8EE590047D099 /* PageCell-iPhone.xib in Resources */,
 				3700256D14F9BBA40065B6E5 /* CropImage-iPhone.xib in Resources */,
 				3700257814F9CCB40065B6E5 /* GalleryViewController.xib in Resources */,
@@ -1611,6 +1621,7 @@
 				04449F8A1503E9BF0055A780 /* iphone_icon_clear@2x.png in Resources */,
 				04449F8B1503E9BF0055A780 /* iphone_icon_eclipse.png in Resources */,
 				04449F8C1503E9BF0055A780 /* iphone_icon_eclipse@2x.png in Resources */,
+				1FC208C219075028009D22F7 /* icon76.png in Resources */,
 				04449F8D1503E9BF0055A780 /* iphone_icon_fill.png in Resources */,
 				04449F8E1503E9BF0055A780 /* iphone_icon_fill@2x.png in Resources */,
 				04449F8F1503E9BF0055A780 /* iphone_icon_image.png in Resources */,
@@ -1643,6 +1654,7 @@
 				375647EE15201AD600305E57 /* Default-Portrait~ipad.png in Resources */,
 				375647F115201B0A00305E57 /* icon144.png in Resources */,
 				375647F315201B3100305E57 /* Default-Portrait@2x~ipad.png in Resources */,
+				1FC208C01906AE76009D22F7 /* icon120.png in Resources */,
 				F4AEFE0E1820B0A700BD44D9 /* Default-568h@2x.png in Resources */,
 				F4D1573C1821FCAE00806778 /* DownloadTalesController-iPad.xib in Resources */,
 				F497F39818286DAA0046D1CE /* DownloadTalesController-iPhone.xib in Resources */,
@@ -1827,7 +1839,7 @@
 				GCC_PREFIX_HEADER = "LittleBirdTales/LittleBirdTales-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = "LittleBirdTales/LittleBirdTales-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/LittleBirdTales/FlurryAnalytics\"",
@@ -1856,7 +1868,7 @@
 				GCC_PREFIX_HEADER = "LittleBirdTales/LittleBirdTales-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = "LittleBirdTales/LittleBirdTales-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/LittleBirdTales/FlurryAnalytics\"",
