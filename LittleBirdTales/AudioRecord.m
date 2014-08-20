@@ -10,7 +10,7 @@
 #import <AudioToolbox/AudioServices.h>
 
 @implementation AudioRecord
-@synthesize delegate, voiceName, pageFolder;
+@synthesize delegate, voiceName, pageFolder, pageText;
 
 +(AudioRecord*)viewFromNib:(id)owner {
     NSString* nibName = @"AudioRecord-iPhone";
@@ -93,12 +93,20 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(stop:) name:@"FinishPlaybackVoice" object:nil];
     
     if (IsIdiomPad) {
-        progressBar = [[OCProgress alloc] initWithFrame:CGRectMake(330, 258, 364, 30)];
+        progressBar = [[OCProgress alloc] initWithFrame:CGRectMake(330, 208, 364, 30)];
     }
     else {
         progressBar = [[OCProgress alloc] initWithFrame:CGRectMake(150, 150, 180, 20)];
     }
     
+    if (IsIdiomPad) {
+        UITextView *pageTextLabel = [[UITextView alloc] initWithFrame:CGRectMake(170, 238, 684, 90)];
+        [pageTextLabel setTextColor:[UIColor blackColor]];
+        [pageTextLabel setBackgroundColor:[UIColor clearColor]];
+        [pageTextLabel setFont:[UIFont fontWithName: @"Trebuchet MS" size: 18.0f]];
+        [pageTextLabel setText: pageText];
+        [self addSubview:pageTextLabel];
+    }
     
     [progressBar setMinValue:0];
     [progressBar setMaxValue:36];

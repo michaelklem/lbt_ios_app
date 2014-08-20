@@ -41,6 +41,7 @@
 @property (nonatomic, assign) id <AudioRecordDelegate> delegate;
 @property (nonatomic, strong) NSString *voiceName;
 @property (nonatomic, strong) NSString *pageFolder;
+@property (nonatomic, strong) NSString *pageText;
 
 +(AudioRecord*)viewFromNib:(id)owner;
 -(void)showInView:(UIView*)aView;

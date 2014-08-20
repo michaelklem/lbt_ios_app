@@ -155,6 +155,7 @@
     tView.delegate = self;
     tView.pageFolder = page.pageFolder;
     tView.voiceName = page.voice;
+    tView.pageText = page.text;
     [tView showInView:self.view];
 }
 -(IBAction)deletePage:(id)sender {
