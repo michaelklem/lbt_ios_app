@@ -41,7 +41,7 @@
     }        
 }
 
-- (void)textViewDidChange:(UITextView *)_textView {
+-(void)textViewDidChange:(UITextView *)_textView {
     textLeftLabel.text = [NSString stringWithFormat:@"%i characters left", 400-_textView.text.length];
 }
 
@@ -49,7 +49,7 @@
     CGRect frame = self.frame;
     frame.origin.x = frame.origin.y = 0.0;
     self.frame = frame;
-    
+    [self textViewDidChange:self.textView];
     [aView addSubview:self];
     [self.textView becomeFirstResponder];
 }

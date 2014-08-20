@@ -102,9 +102,11 @@
     if (IsIdiomPad) {
         UITextView *pageTextLabel = [[UITextView alloc] initWithFrame:CGRectMake(170, 238, 684, 90)];
         [pageTextLabel setTextColor:[UIColor blackColor]];
-        [pageTextLabel setBackgroundColor:[UIColor clearColor]];
+        [pageTextLabel setBackgroundColor:[UIColor whiteColor]];
         [pageTextLabel setFont:[UIFont fontWithName: @"Trebuchet MS" size: 18.0f]];
         [pageTextLabel setText: pageText];
+        [[pageTextLabel layer] setBorderColor:[[UIColor grayColor] CGColor]];
+        [[pageTextLabel layer] setBorderWidth:1];
         [self addSubview:pageTextLabel];
     }
     
