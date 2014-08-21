@@ -93,20 +93,21 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(stop:) name:@"FinishPlaybackVoice" object:nil];
     
     if (IsIdiomPad) {
-        progressBar = [[OCProgress alloc] initWithFrame:CGRectMake(330, 208, 364, 30)];
+        progressBar = [[OCProgress alloc] initWithFrame:CGRectMake(330, 208, 364, 26)];
     }
     else {
         progressBar = [[OCProgress alloc] initWithFrame:CGRectMake(150, 150, 180, 20)];
     }
     
     if (IsIdiomPad) {
-        UITextView *pageTextLabel = [[UITextView alloc] initWithFrame:CGRectMake(170, 238, 684, 90)];
+        UITextView *pageTextLabel = [[UITextView alloc] initWithFrame:CGRectMake(180, 238, 664, 90)];
         [pageTextLabel setTextColor:[UIColor blackColor]];
         [pageTextLabel setBackgroundColor:[UIColor whiteColor]];
-        [pageTextLabel setFont:[UIFont fontWithName: @"Trebuchet MS" size: 18.0f]];
+        [pageTextLabel setFont:[UIFont fontWithName: @"Arial Rounded MT Bold" size: 18.0f]];
         [pageTextLabel setText: pageText];
         [[pageTextLabel layer] setBorderColor:[[UIColor grayColor] CGColor]];
         [[pageTextLabel layer] setBorderWidth:1];
+        [pageTextLabel setEditable:NO];
         [self addSubview:pageTextLabel];
     }
     
