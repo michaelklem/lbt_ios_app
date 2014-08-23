@@ -30,6 +30,9 @@
 		<dict>
 			<key>CFBundleIconFiles</key>
 			<array>
+				<string>icon80</string>
+				<string>icon58</string>
+				<string>icon29</string>
 				<string>icon114</string>
 				<string>icon57</string>
 				<string>icon120</string>
@@ -42,6 +45,12 @@
 		<dict>
 			<key>CFBundleIconFiles</key>
 			<array>
+				<string>icon58</string>
+				<string>icon29</string>
+				<string>icon80</string>
+				<string>icon40</string>
+				<string>icon100</string>
+				<string>icon50</string>
 				<string>icon152</string>
 				<string>icon76</string>
 				<string>icon144</string>
@@ -58,11 +67,11 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>16</string>
+	<string>1.3.2</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>1.3.1</string>
+	<string>25</string>
 	<key>LSApplicationCategoryType</key>
 	<string></string>
 	<key>LSRequiresIPhoneOS</key>
