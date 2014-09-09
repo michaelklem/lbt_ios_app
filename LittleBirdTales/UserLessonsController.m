@@ -6,14 +6,15 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "TalesController.h"
+#import "UserLessonsController.h"
+#import "UserTalesController.h"
 #import "PlayerController.h"
 #import "EditTaleViewController.h"
 #import "LoginViewController.h"
 #import "UserLoginViewController.h"
 #import "Lib.h"
 
-@implementation TalesController
+@implementation UserLessonsController
 
 -(IBAction)back:(id)sender {
     UserLoginViewController* controller;
@@ -37,6 +38,14 @@
     else {
         [Lib showAlert:@"Error" withMessage:@"No Tale to edit"];
     }
+}
+
+-(IBAction)tabChange:(id)sender {
+    UserTalesController* controller;
+    if (IsIdiomPad) {
+        controller = [[UserTalesController alloc] initWithNibName:@"UserTalesController-iPad" bundle:nil];
+    }
+    [self.navigationController pushViewController:controller animated:NO];
 }
 -(IBAction)uploadTale:(id)sender {
     if ([[currentTale pages] count] == 1) {
@@ -177,6 +186,7 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    [[UISegmentedControl appearance] setTintColor:[UIColor whiteColor]];
     if ([[Tale tales] count] > 0) {
         noTaleBackground.hidden = YES;
         [self selectTale:nil];

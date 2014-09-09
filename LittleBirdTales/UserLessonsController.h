@@ -11,7 +11,7 @@
 #import "Tale.h"
 #import "InputTaleInfo.h"
 
-@interface TalesController : UIViewController <InputTaleInfoDelegate, UIAlertViewDelegate> {
+@interface UserLessonsController : UIViewController <InputTaleInfoDelegate, UIAlertViewDelegate> {
     IBOutlet UIView* taleInfoView;
     IBOutlet UILabel* titleLabel;
     IBOutlet UILabel* authorLabel;
@@ -25,6 +25,7 @@
     Tale *currentTale;
     NSInteger lastTaleIndex;
     NSInteger currentTaleIndex;
+    IBOutlet UISegmentedControl *controlTab;
 }
 
 - (void)reloadTaleList;
@@ -36,4 +37,5 @@
 - (IBAction)playTale:(id)sender;
 - (IBAction)downloadTales:(id)sender;
 - (IBAction)back:(id)sender;
+- (IBAction)tabChange:(id)sender;
 @end

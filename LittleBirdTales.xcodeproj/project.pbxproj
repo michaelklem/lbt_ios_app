@@ -273,10 +273,16 @@
 		BDDB6BAF18FA17240093A543 /* UINavigationController+Landscape.m in Sources */ = {isa = PBXBuildFile; fileRef = BDDB6BAE18FA17240093A543 /* UINavigationController+Landscape.m */; };
 		F425CDCE183C86D300AB9367 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F425CDCD183C86D300AB9367 /* libz.dylib */; };
 		F42B4642183B203F001D9BE3 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F42B4641183B203F001D9BE3 /* libz.1.2.5.dylib */; };
+		F42D6C0619B7EBE00046D27C /* UserLoginViewController-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = F42D6C0219B7EBE00046D27C /* UserLoginViewController-iPad.xib */; };
+		F42D6C0819B7EBE00046D27C /* UserLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F42D6C0519B7EBE00046D27C /* UserLoginViewController.m */; };
 		F44433A91845A023001F59C7 /* HttpHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = F44433A81845A023001F59C7 /* HttpHelper.m */; };
 		F47876801846B48200B56B59 /* LoginViewController-iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = F478767F1846B48200B56B59 /* LoginViewController-iPhone.xib */; };
 		F497F39818286DAA0046D1CE /* DownloadTalesController-iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = F497F39718286DAA0046D1CE /* DownloadTalesController-iPhone.xib */; };
 		F4AEFE0E1820B0A700BD44D9 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F4AEFE0D1820B0A700BD44D9 /* Default-568h@2x.png */; };
+		F4B592C819BF7C1F0004493B /* UserTalesController-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4B592C419BF7C1F0004493B /* UserTalesController-iPad.xib */; };
+		F4B592CA19BF7C1F0004493B /* UserTalesController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B592C719BF7C1F0004493B /* UserTalesController.m */; };
+		F4B592CF19BF8E5E0004493B /* UserLessonsController-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4B592CC19BF8E5E0004493B /* UserLessonsController-iPad.xib */; };
+		F4B592D019BF8E5E0004493B /* UserLessonsController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B592CE19BF8E5E0004493B /* UserLessonsController.m */; };
 		F4D157381821C3E700806778 /* DownloadTalesController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D157361821C3E700806778 /* DownloadTalesController.m */; };
 		F4D1573C1821FCAE00806778 /* DownloadTalesController-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4D1573B1821FCAE00806778 /* DownloadTalesController-iPad.xib */; };
 		F4EC4EF2184AE72900C21FDF /* ipad_btn_download_tale.png in Resources */ = {isa = PBXBuildFile; fileRef = F4EC4EF0184AE72900C21FDF /* ipad_btn_download_tale.png */; };
@@ -627,11 +633,20 @@
 		BDDB6BAE18FA17240093A543 /* UINavigationController+Landscape.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+Landscape.m"; sourceTree = "<group>"; };
 		F425CDCD183C86D300AB9367 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		F42B4641183B203F001D9BE3 /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
+		F42D6C0219B7EBE00046D27C /* UserLoginViewController-iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "UserLoginViewController-iPad.xib"; sourceTree = "<group>"; };
+		F42D6C0419B7EBE00046D27C /* UserLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserLoginViewController.h; sourceTree = "<group>"; };
+		F42D6C0519B7EBE00046D27C /* UserLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserLoginViewController.m; sourceTree = "<group>"; };
 		F44433A71845A023001F59C7 /* HttpHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpHelper.h; sourceTree = "<group>"; };
 		F44433A81845A023001F59C7 /* HttpHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpHelper.m; sourceTree = "<group>"; };
 		F478767F1846B48200B56B59 /* LoginViewController-iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "LoginViewController-iPhone.xib"; sourceTree = "<group>"; };
 		F497F39718286DAA0046D1CE /* DownloadTalesController-iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "DownloadTalesController-iPhone.xib"; sourceTree = "<group>"; };
 		F4AEFE0D1820B0A700BD44D9 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		F4B592C419BF7C1F0004493B /* UserTalesController-iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "UserTalesController-iPad.xib"; sourceTree = "<group>"; };
+		F4B592C619BF7C1F0004493B /* UserTalesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserTalesController.h; sourceTree = "<group>"; };
+		F4B592C719BF7C1F0004493B /* UserTalesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserTalesController.m; sourceTree = "<group>"; };
+		F4B592CC19BF8E5E0004493B /* UserLessonsController-iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "UserLessonsController-iPad.xib"; sourceTree = "<group>"; };
+		F4B592CD19BF8E5E0004493B /* UserLessonsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserLessonsController.h; sourceTree = "<group>"; };
+		F4B592CE19BF8E5E0004493B /* UserLessonsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserLessonsController.m; sourceTree = "<group>"; };
 		F4D157361821C3E700806778 /* DownloadTalesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadTalesController.m; sourceTree = "<group>"; };
 		F4D1573A1821C65800806778 /* DownloadTalesController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DownloadTalesController.h; sourceTree = "<group>"; };
 		F4D1573B1821FCAE00806778 /* DownloadTalesController-iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "DownloadTalesController-iPad.xib"; sourceTree = "<group>"; };
@@ -998,6 +1013,9 @@
 		04F1219014B9F3C90003E733 /* LittleBirdTales */ = {
 			isa = PBXGroup;
 			children = (
+				F4B592CB19BF8E520004493B /* UserLessons */,
+				F4B592C319BF7BFE0004493B /* UserTales */,
+				F42D6BFF19B7AB110046D27C /* UserLogin */,
 				F4D1572F18219EEB00806778 /* DownloadTale */,
 				375F50D414EF871E0025936A /* Dialogs */,
 				37AAD01214DCD50E00D9EF53 /* Player */,
@@ -1354,8 +1372,8 @@
 				F4EC4EF4184CF70300C21FDF /* iRate */,
 				F44433A71845A023001F59C7 /* HttpHelper.h */,
 				F44433A81845A023001F59C7 /* HttpHelper.m */,
-				376C211D14E46EB200D540FB /* Lib.h */,
 				376C211E14E46EB200D540FB /* Lib.m */,
+				376C211D14E46EB200D540FB /* Lib.h */,
 				376C211514E46E9E00D540FB /* Sound.h */,
 				3760C1CB15104A980086ECD6 /* ServiceLib.h */,
 				3760C1CC15104A980086ECD6 /* ServiceLib.m */,
@@ -1378,6 +1396,36 @@
 				37F6E8FE14C7C30E003A278D /* EditTaleViewController-iPad.xib */,
 			);
 			name = "Edit Tale";
+			sourceTree = "<group>";
+		};
+		F42D6BFF19B7AB110046D27C /* UserLogin */ = {
+			isa = PBXGroup;
+			children = (
+				F42D6C0219B7EBE00046D27C /* UserLoginViewController-iPad.xib */,
+				F42D6C0419B7EBE00046D27C /* UserLoginViewController.h */,
+				F42D6C0519B7EBE00046D27C /* UserLoginViewController.m */,
+			);
+			name = UserLogin;
+			sourceTree = "<group>";
+		};
+		F4B592C319BF7BFE0004493B /* UserTales */ = {
+			isa = PBXGroup;
+			children = (
+				F4B592C419BF7C1F0004493B /* UserTalesController-iPad.xib */,
+				F4B592C619BF7C1F0004493B /* UserTalesController.h */,
+				F4B592C719BF7C1F0004493B /* UserTalesController.m */,
+			);
+			name = UserTales;
+			sourceTree = "<group>";
+		};
+		F4B592CB19BF8E520004493B /* UserLessons */ = {
+			isa = PBXGroup;
+			children = (
+				F4B592CC19BF8E5E0004493B /* UserLessonsController-iPad.xib */,
+				F4B592CD19BF8E5E0004493B /* UserLessonsController.h */,
+				F4B592CE19BF8E5E0004493B /* UserLessonsController.m */,
+			);
+			name = UserLessons;
 			sourceTree = "<group>";
 		};
 		F4D1572F18219EEB00806778 /* DownloadTale */ = {
@@ -1483,10 +1531,12 @@
 				37F6E8FF14C7C30E003A278D /* EditTaleViewController-iPad.xib in Resources */,
 				37F6E90114C7C41E003A278D /* bg-edit-ipad.png in Resources */,
 				049845F814D83FA30095370C /* icon54.png in Resources */,
+				F42D6C0619B7EBE00046D27C /* UserLoginViewController-iPad.xib in Resources */,
 				049845F914D83FA30095370C /* icon72.png in Resources */,
 				049845FA14D83FA30095370C /* icon114.png in Resources */,
 				049845FD14D83FF40095370C /* icon57.png in Resources */,
 				049845FF14D847A90095370C /* ipad_btn_create_tale.png in Resources */,
+				F4B592C819BF7C1F0004493B /* UserTalesController-iPad.xib in Resources */,
 				0498460414D847E10095370C /* TalesController-iPhone.xib in Resources */,
 				0498460614D8481C0095370C /* TalesController-iPad.xib in Resources */,
 				0498461014D852790095370C /* ipad_edit_tale_bg.png in Resources */,
@@ -1581,6 +1631,7 @@
 				37C4402914EFFE1900CCD609 /* GalleryTableViewController.xib in Resources */,
 				37C4402E14EFFF1700CCD609 /* GalleryCell.xib in Resources */,
 				37B1A78314F2037E00A661E2 /* ipad_notale_bg.png in Resources */,
+				F4B592CF19BF8E5E0004493B /* UserLessonsController-iPad.xib in Resources */,
 				37129B8214F6827C0089E7C4 /* ipad_btn_signup.png in Resources */,
 				372A5C3914F70558004B6607 /* ipad_btn_sendmail.png in Resources */,
 				372A5C3A14F70558004B6607 /* ipad_btn_viewonweb.png in Resources */,
@@ -1699,6 +1750,7 @@
 				0459B34B14DD4A370019ECB9 /* InputTextView.m in Sources */,
 				0428004C14DE1FDB00122C8C /* LayerManager.m in Sources */,
 				0428004D14DE1FDB00122C8C /* TextLayer.m in Sources */,
+				F42D6C0819B7EBE00046D27C /* UserLoginViewController.m in Sources */,
 				0428005114DE21AB00122C8C /* Layer.m in Sources */,
 				0428005414DE265F00122C8C /* DrawSettings.m in Sources */,
 				0428005B14DE99C400122C8C /* BottomLayer.m in Sources */,
@@ -1753,7 +1805,9 @@
 				04CE0274151B8DBC00A1CF06 /* FloodFill.m in Sources */,
 				373DBEFB151ED60B0091DCCB /* ColorList.m in Sources */,
 				373DBEFC151ED60B0091DCCB /* ColorPickerImageView.m in Sources */,
+				F4B592CA19BF7C1F0004493B /* UserTalesController.m in Sources */,
 				373DBF01151ED62E0091DCCB /* UIImage+ColorAtPixel.m in Sources */,
+				F4B592D019BF8E5E0004493B /* UserLessonsController.m in Sources */,
 				F4D157381821C3E700806778 /* DownloadTalesController.m in Sources */,
 				F44433A91845A023001F59C7 /* HttpHelper.m in Sources */,
 				F4EC4EF9184CF70400C21FDF /* iRate.m in Sources */,

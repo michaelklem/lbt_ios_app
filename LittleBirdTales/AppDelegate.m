@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "LoginViewController.h"
 #import "TalesController.h"
+#import "UserLoginViewController.h"
 #import "Flurry.h"
 #import "iRate.h"
 
@@ -39,9 +40,9 @@ AppDelegate* _shared;
 -(void)showMain {
     if (self.navController &&
         self.navController.viewControllers.count == 1){
-        TalesController* controller;
+        UIViewController* controller;
         if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad) {
-            controller = [[TalesController alloc] initWithNibName:@"TalesController-iPad" bundle:nil];
+            controller = [[UserLoginViewController alloc] initWithNibName:@"UserLoginViewController-iPad" bundle:nil];
         } else {
             controller = [[TalesController alloc] initWithNibName:@"TalesController-iPhone" bundle:nil];
         }
@@ -87,7 +88,7 @@ AppDelegate* _shared;
     // Override point for customization after application launch.
     UIViewController* controller;
     if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad) {
-        controller = [[TalesController alloc] initWithNibName:@"TalesController-iPad" bundle:nil];
+        controller = [[UserLoginViewController alloc] initWithNibName:@"UserLoginViewController-iPad" bundle:nil];
     } else {
         controller = [[TalesController alloc] initWithNibName:@"TalesController-iPhone" bundle:nil];
     }

@@ -5,9 +5,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TalesController">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UserTalesController">
             <connections>
                 <outlet property="authorLabel" destination="66" id="70"/>
+                <outlet property="controlTab" destination="umz-fc-TrL" id="lER-ks-1JN"/>
                 <outlet property="createdLabel" destination="64" id="71"/>
                 <outlet property="modifiedLabel" destination="60" id="72"/>
                 <outlet property="newButton" destination="82" id="87"/>
@@ -179,10 +180,11 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="92">
-                    <rect key="frame" x="10" y="718" width="166" height="42"/>
+                    <rect key="frame" x="10" y="718" width="140" height="42"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
-                    <state key="normal" backgroundImage="ipad_btn_download_tales.png">
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                    <state key="normal" title="Download Tales">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
@@ -190,15 +192,27 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ymP-zX-hD1">
-                    <rect key="frame" x="10" y="8" width="33" height="30"/>
+                    <rect key="frame" x="10" y="8" width="58" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" backgroundImage="ipad_btn_back.png">
+                    <state key="normal" title="Logout">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
                         <action selector="back:" destination="-1" eventType="touchUpInside" id="mDZ-7f-540"/>
                     </connections>
                 </button>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="umz-fc-TrL">
+                    <rect key="frame" x="772" y="10" width="237" height="29"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <segments>
+                        <segment title="Tales"/>
+                        <segment title="Lessons"/>
+                    </segments>
+                    <connections>
+                        <action selector="tabChange:" destination="-1" eventType="valueChanged" id="okb-dR-Ad8"/>
+                    </connections>
+                </segmentedControl>
             </subviews>
             <color key="backgroundColor" white="0.14000000000000001" alpha="0.0" colorSpace="calibratedWhite"/>
             <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
@@ -211,9 +225,7 @@
         <image name="btn-edit-ipad.png" width="60" height="60"/>
         <image name="btn-play-ipad.png" width="73" height="73"/>
         <image name="btn-upload-ipad.png" width="144" height="69"/>
-        <image name="ipad_btn_back.png" width="36" height="30"/>
         <image name="ipad_btn_create_tale.png" width="200" height="140"/>
-        <image name="ipad_btn_download_tales.png" width="166" height="41"/>
         <image name="ipad_btn_play_big.png" width="513" height="362"/>
         <image name="ipad_notale_bg.png" width="1024" height="472"/>
     </resources>
