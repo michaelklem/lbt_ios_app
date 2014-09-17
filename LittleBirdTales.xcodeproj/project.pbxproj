@@ -283,6 +283,9 @@
 		F4B592CA19BF7C1F0004493B /* UserTalesController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B592C719BF7C1F0004493B /* UserTalesController.m */; };
 		F4B592CF19BF8E5E0004493B /* UserLessonsController-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4B592CC19BF8E5E0004493B /* UserLessonsController-iPad.xib */; };
 		F4B592D019BF8E5E0004493B /* UserLessonsController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B592CE19BF8E5E0004493B /* UserLessonsController.m */; };
+		F4B592D619C8BD320004493B /* DownloadAssignmentsController-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4B592D319C8BD320004493B /* DownloadAssignmentsController-iPad.xib */; };
+		F4B592D719C8BD320004493B /* DownloadAssignmentsController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B592D519C8BD320004493B /* DownloadAssignmentsController.m */; };
+		F4B592DA19C8D2100004493B /* Lesson.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B592D919C8D20F0004493B /* Lesson.m */; };
 		F4D157381821C3E700806778 /* DownloadTalesController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D157361821C3E700806778 /* DownloadTalesController.m */; };
 		F4D1573C1821FCAE00806778 /* DownloadTalesController-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4D1573B1821FCAE00806778 /* DownloadTalesController-iPad.xib */; };
 		F4EC4EF2184AE72900C21FDF /* ipad_btn_download_tale.png in Resources */ = {isa = PBXBuildFile; fileRef = F4EC4EF0184AE72900C21FDF /* ipad_btn_download_tale.png */; };
@@ -647,6 +650,11 @@
 		F4B592CC19BF8E5E0004493B /* UserLessonsController-iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "UserLessonsController-iPad.xib"; sourceTree = "<group>"; };
 		F4B592CD19BF8E5E0004493B /* UserLessonsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserLessonsController.h; sourceTree = "<group>"; };
 		F4B592CE19BF8E5E0004493B /* UserLessonsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserLessonsController.m; sourceTree = "<group>"; };
+		F4B592D319C8BD320004493B /* DownloadAssignmentsController-iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "DownloadAssignmentsController-iPad.xib"; sourceTree = "<group>"; };
+		F4B592D419C8BD320004493B /* DownloadAssignmentsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadAssignmentsController.h; sourceTree = "<group>"; };
+		F4B592D519C8BD320004493B /* DownloadAssignmentsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadAssignmentsController.m; sourceTree = "<group>"; };
+		F4B592D819C8D20F0004493B /* Lesson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Lesson.h; path = LittleBirdTales/Lesson.h; sourceTree = "<group>"; };
+		F4B592D919C8D20F0004493B /* Lesson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Lesson.m; path = LittleBirdTales/Lesson.m; sourceTree = "<group>"; };
 		F4D157361821C3E700806778 /* DownloadTalesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadTalesController.m; sourceTree = "<group>"; };
 		F4D1573A1821C65800806778 /* DownloadTalesController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DownloadTalesController.h; sourceTree = "<group>"; };
 		F4D1573B1821FCAE00806778 /* DownloadTalesController-iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "DownloadTalesController-iPad.xib"; sourceTree = "<group>"; };
@@ -871,6 +879,8 @@
 				376C211214E46E9E00D540FB /* Page.h */,
 				376C211314E46E9E00D540FB /* Page.m */,
 				376C211414E46E9E00D540FB /* readme.txt */,
+				F4B592D819C8D20F0004493B /* Lesson.h */,
+				F4B592D919C8D20F0004493B /* Lesson.m */,
 				376C211714E46E9E00D540FB /* Tale.h */,
 				376C211814E46E9E00D540FB /* Tale.m */,
 			);
@@ -1013,9 +1023,7 @@
 		04F1219014B9F3C90003E733 /* LittleBirdTales */ = {
 			isa = PBXGroup;
 			children = (
-				F4B592CB19BF8E520004493B /* UserLessons */,
-				F4B592C319BF7BFE0004493B /* UserTales */,
-				F42D6BFF19B7AB110046D27C /* UserLogin */,
+				F4B592D119C8B9FC0004493B /* Student */,
 				F4D1572F18219EEB00806778 /* DownloadTale */,
 				375F50D414EF871E0025936A /* Dialogs */,
 				37AAD01214DCD50E00D9EF53 /* Player */,
@@ -1428,6 +1436,27 @@
 			name = UserLessons;
 			sourceTree = "<group>";
 		};
+		F4B592D119C8B9FC0004493B /* Student */ = {
+			isa = PBXGroup;
+			children = (
+				F4B592D219C8BD220004493B /* DownloadAssignments */,
+				F4B592CB19BF8E520004493B /* UserLessons */,
+				F4B592C319BF7BFE0004493B /* UserTales */,
+				F42D6BFF19B7AB110046D27C /* UserLogin */,
+			);
+			name = Student;
+			sourceTree = "<group>";
+		};
+		F4B592D219C8BD220004493B /* DownloadAssignments */ = {
+			isa = PBXGroup;
+			children = (
+				F4B592D319C8BD320004493B /* DownloadAssignmentsController-iPad.xib */,
+				F4B592D419C8BD320004493B /* DownloadAssignmentsController.h */,
+				F4B592D519C8BD320004493B /* DownloadAssignmentsController.m */,
+			);
+			name = DownloadAssignments;
+			sourceTree = "<group>";
+		};
 		F4D1572F18219EEB00806778 /* DownloadTale */ = {
 			isa = PBXGroup;
 			children = (
@@ -1628,6 +1657,7 @@
 				046AE68714EF9D650056C1DB /* save.png in Resources */,
 				046AE68914EF9E870056C1DB /* savetog.png in Resources */,
 				046AE68F14EFA40C0056C1DB /* FontController.xib in Resources */,
+				F4B592D619C8BD320004493B /* DownloadAssignmentsController-iPad.xib in Resources */,
 				37C4402914EFFE1900CCD609 /* GalleryTableViewController.xib in Resources */,
 				37C4402E14EFFF1700CCD609 /* GalleryCell.xib in Resources */,
 				37B1A78314F2037E00A661E2 /* ipad_notale_bg.png in Resources */,
@@ -1744,6 +1774,7 @@
 				37F6E8CF14C7AA87003A278D /* LoginViewController.m in Sources */,
 				37F6E8FC14C7C2D3003A278D /* EditTaleViewController.m in Sources */,
 				0498460314D847E10095370C /* TalesController.m in Sources */,
+				F4B592DA19C8D2100004493B /* Lesson.m in Sources */,
 				0452267C14D8C0DA00049C1E /* DrawController.m in Sources */,
 				37BC3F2D14DA0A8C00035E83 /* PageCell.m in Sources */,
 				37AAD01714DCD54500D9EF53 /* PlayerController.m in Sources */,
@@ -1786,6 +1817,7 @@
 				0490EEE114FE1466006F125F /* UIImage+FillPath.m in Sources */,
 				3760C1CD15104A980086ECD6 /* ServiceLib.m in Sources */,
 				3760C1DC15104AC90086ECD6 /* SBJsonStreamParser.m in Sources */,
+				F4B592D719C8BD320004493B /* DownloadAssignmentsController.m in Sources */,
 				3760C1DD15104AC90086ECD6 /* SBJsonStreamParserAccumulator.m in Sources */,
 				3760C1DE15104AC90086ECD6 /* SBJsonStreamParserAdapter.m in Sources */,
 				3760C1DF15104AC90086ECD6 /* SBJsonStreamParserState.m in Sources */,

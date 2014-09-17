@@ -10,12 +10,12 @@
                 <outlet property="authorLabel" destination="66" id="70"/>
                 <outlet property="controlTab" destination="umz-fc-TrL" id="eFE-rR-Wq1"/>
                 <outlet property="createdLabel" destination="64" id="71"/>
+                <outlet property="lessonsScrollView" destination="83" id="ZqX-y3-GXn"/>
                 <outlet property="modifiedLabel" destination="60" id="72"/>
                 <outlet property="noTaleBackground" destination="90" id="91"/>
                 <outlet property="pageLabel" destination="61" id="73"/>
                 <outlet property="previewImage" destination="69" id="77"/>
                 <outlet property="taleInfoView" destination="23" id="75"/>
-                <outlet property="talesScrollView" destination="83" id="84"/>
                 <outlet property="titleLabel" destination="63" id="76"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>

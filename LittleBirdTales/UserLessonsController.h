@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
-#import "Tale.h"
+#import "Lesson.h"
 #import "InputTaleInfo.h"
 
 @interface UserLessonsController : UIViewController <InputTaleInfoDelegate, UIAlertViewDelegate> {
@@ -20,15 +20,15 @@
     IBOutlet UILabel* modifiedLabel;
     IBOutlet UIButton* newButton;
     IBOutlet UIImageView* previewImage;
-    IBOutlet UIScrollView* talesScrollView;
+    IBOutlet UIScrollView* lessonsScrollView;
     IBOutlet UIImageView *noTaleBackground;
-    Tale *currentTale;
-    NSInteger lastTaleIndex;
-    NSInteger currentTaleIndex;
+    Lesson *currentLesson;
+    NSInteger lastLessonIndex;
+    NSInteger currentLessonIndex;
     IBOutlet UISegmentedControl *controlTab;
 }
 
-- (void)reloadTaleList;
+- (void)reloadLessonList;
 - (void)selectTale:(id)sender;
 - (IBAction)newTale:(id)sender;
 - (IBAction)editTale:(id)sender;

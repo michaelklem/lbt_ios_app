@@ -12,6 +12,7 @@
 #import "EditTaleViewController.h"
 #import "LoginViewController.h"
 #import "UserLoginViewController.h"
+#import "DownloadAssignmentsController.h"
 #import "Lib.h"
 
 @implementation UserLessonsController
@@ -24,20 +25,20 @@
     [self.navigationController pushViewController:controller animated:YES];
 }
 -(IBAction)editTale:(id)sender {
-    if ([[Tale tales] count] > 0) {
+    /*if ([[Tale tales] count] > 0) {
         EditTaleViewController* controller;
         if (IsIdiomPad) {
             controller = [[EditTaleViewController alloc] initWithNibName:@"EditTaleViewController-iPad" bundle:nil];
         } else {
             controller = [[EditTaleViewController alloc] initWithNibName:@"EditTaleViewController-iPhone" bundle:nil];
         }
-        controller.tale = currentTale;
-        controller.taleNumber = currentTaleIndex;
+        controller.tale = currentLesson;
+        controller.taleNumber = currentLessonIndex;
         [self.navigationController pushViewController:controller animated:YES];
     }
     else {
         [Lib showAlert:@"Error" withMessage:@"No Tale to edit"];
-    }
+    }*/
 }
 
 -(IBAction)tabChange:(id)sender {
@@ -48,7 +49,7 @@
     [self.navigationController pushViewController:controller animated:NO];
 }
 -(IBAction)uploadTale:(id)sender {
-    if ([[currentTale pages] count] == 1) {
+    if ([[currentLesson pages] count] == 1) {
         [Lib showAlert:@"Little Bird Tales" withMessage:@"Please add at least 1 page to your story to make it playable"];
         return;
     }
@@ -61,9 +62,9 @@
     }
 
     if ([[Tale tales] count] > 0) {
-        controller.tale = currentTale;
-        controller.taleNumber = currentTaleIndex;
-        [self.navigationController pushViewController:controller animated:YES];
+        //controller.tale = currentLesson;
+        //controller.taleNumber = currentLessonIndex;
+        //[self.navigationController pushViewController:controller animated:YES];
     }
     else {
         [Lib showAlert:@"Error" withMessage:@"No Tale to upload"];
@@ -79,11 +80,11 @@
 }
 
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if (buttonIndex == 1) {
-        [Tale remove:currentTale];
+    /*if (buttonIndex == 1) {
+        [Tale remove:currentLesson];
         
         if ([[Tale tales] count]) {
-            currentTaleIndex = 0;
+            currentLessonIndex = 0;
             [self reloadTaleList];
             [self selectTale:nil];
         } else {
@@ -101,11 +102,11 @@
             
             [previewImage setImage:[UIImage new]];
         }
-    }
+    }*/
 }
 
 -(IBAction)playTale:(id)sender {
-    if ([[Tale tales] count] > 0) {
+    /*if ([[Tale tales] count] > 0) {
         PlayerController* controller;
         if (IsIdiomPad) {
             controller = [[PlayerController alloc] initWithNibName:@"PlayerController-iPad" bundle:nil];
@@ -113,13 +114,13 @@
             controller = [[PlayerController alloc] initWithNibName:@"PlayerController-iPhone" bundle:nil];
         }
 
-        controller.tale = currentTale;
+        controller.tale = currentLesson;
         
         [self.navigationController pushViewController:controller animated:YES];
     }
     else {
         [Lib showAlert:@"Error" withMessage:@"No tale to play"];
-    } 
+    } */
     
 }
 -(IBAction)newTale:(id)sender {
@@ -132,14 +133,13 @@
 }
 
 -(IBAction)downloadTales:(id)sender {
-    LoginViewController* controller;
+    DownloadAssignmentsController* controller;
     if (IsIdiomPad) {
-        controller = [[LoginViewController alloc] initWithNibName:@"LoginViewController-iPad" bundle:nil];
+        controller = [[DownloadAssignmentsController alloc] initWithNibName:@"DownloadAssignmentsController-iPad" bundle:nil];
     } else {
-        controller = [[LoginViewController alloc] initWithNibName:@"LoginViewController-iPhone" bundle:nil];
+        controller = [[DownloadAssignmentsController alloc] initWithNibName:@"DownloadAssignmentsController-iPhone" bundle:nil];
     }
     
-    controller.downloadRequest = true;
     [self.navigationController pushViewController:controller animated:YES];
 }
 
@@ -149,7 +149,7 @@
     [Tale addTale:newTale];
     [Tale save];
     
-    currentTaleIndex = [[Tale tales] count] - 1;
+    currentLessonIndex = [[Tale tales] count] - 1;
     
     EditTaleViewController* controller;
     if (IsIdiomPad) {
@@ -166,11 +166,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
         
-    if ([[Tale tales] count] > 0) {
+    if ([[Lesson lessons] count] > 0) {
         [self selectTale:nil];
     }
 
-    currentTaleIndex = 0;
+    currentLessonIndex = 0;
     
     [newButton.layer setMasksToBounds:YES];
    
@@ -187,30 +187,32 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [[UISegmentedControl appearance] setTintColor:[UIColor whiteColor]];
-    if ([[Tale tales] count] > 0) {
+    if ([[Lesson lessons] count] > 0) {
         noTaleBackground.hidden = YES;
         [self selectTale:nil];
     } else {
         noTaleBackground.hidden = NO;
     }
     
-    [self reloadTaleList];
+    [self reloadLessonList];
     
 }
 
-- (void)reloadTaleList {
-    for (UIView *view in talesScrollView.subviews) {
+- (void)reloadLessonList {
+    NSLog(@"Reload lesson list");
+    for (UIView *view in lessonsScrollView.subviews) {
         [view removeFromSuperview];
     }
-    if ([[Tale tales] count] > 0) {
-        for (NSInteger i = 0; i < [[Tale tales] count]; i++) {
-            Tale *tale = [[Tale tales] objectAtIndex:i];
-            Page *coverPage = [[tale pages] objectAtIndex:0];
+    if ([[Lesson lessons] count] > 0) {
+        NSLog(@"Has lessons");
+        for (NSInteger i = 0; i < [[Lesson lessons] count]; i++) {
+            Lesson *lesson = [[Lesson lessons] objectAtIndex:i];
+            Page *coverPage = [[lesson pages] objectAtIndex:0];
             UIButton *button;
             
             if (IsIdiomPad) {
                 button = [[UIButton alloc] initWithFrame:CGRectMake(210*i, 5, 200, 140)];
-                if (i == currentTaleIndex) {
+                if (i == currentLessonIndex) {
                     [button.layer setCornerRadius:5.0];
                     [button.layer setBorderColor:[UIColorFromRGB(0xfa3737) CGColor]];
                     [button.layer setBorderWidth:6.0];
@@ -221,7 +223,7 @@
                 }
             } else {
                 button = [[UIButton alloc] initWithFrame:CGRectMake(95*i, 3, 90, 63)];
-                if (i == currentTaleIndex) {
+                if (i == currentLessonIndex) {
                     [button.layer setCornerRadius:2.0];
                     [button.layer setBorderColor:[UIColorFromRGB(0xfa3737) CGColor]];
                     [button.layer setBorderWidth:2.0];
@@ -242,70 +244,57 @@
             button.tag = 1000 + i;
             [button addTarget:self action:@selector(selectTale:) forControlEvents:UIControlEventTouchUpInside];
             
-            [talesScrollView addSubview:button];
+            [lessonsScrollView addSubview:button];
         }
         if (IsIdiomPad) {
-            [talesScrollView setContentSize:CGSizeMake(210*[[Tale tales] count] , 140)];
+            [lessonsScrollView setContentSize:CGSizeMake(210*[[Tale tales] count] , 140)];
         }
         else {
-            [talesScrollView setContentSize:CGSizeMake(95*[[Tale tales] count] , 63)];
+            [lessonsScrollView setContentSize:CGSizeMake(95*[[Tale tales] count] , 63)];
         }
     }
 }
 
 -(void)selectTale:(id)sender {
     if ([[Tale tales] count] > 0) {
-        lastTaleIndex = currentTaleIndex;
+        lastLessonIndex = currentLessonIndex;
         UIButton *button;
         
         if (sender != nil) {
             
             button = (UIButton*) sender;
-            currentTaleIndex = button.tag - 1000;
+            currentLessonIndex = button.tag - 1000;
         }
         
-        if (lastTaleIndex != currentTaleIndex && sender!= nil) {
-            if (IsIdiomPad) {
-                UIButton *lastButton = (UIButton*)[talesScrollView viewWithTag:lastTaleIndex+1000];
-                [lastButton.layer setMasksToBounds:YES];
-                [lastButton.layer setCornerRadius:5.0];
-                [lastButton.layer setBorderColor:[UIColorFromRGB(0x8FD866) CGColor]];
-                [lastButton.layer setBorderWidth:3.0];
+        if (lastLessonIndex != currentLessonIndex && sender!= nil) {
+            UIButton *lastButton = (UIButton*)[lessonsScrollView viewWithTag:lastLessonIndex+1000];
+            [lastButton.layer setMasksToBounds:YES];
+            [lastButton.layer setCornerRadius:5.0];
+            [lastButton.layer setBorderColor:[UIColorFromRGB(0x8FD866) CGColor]];
+            [lastButton.layer setBorderWidth:3.0];
                 
-                [button.layer setMasksToBounds:YES];
-                [button.layer setCornerRadius:5.0];
-                [button.layer setBorderColor:[UIColorFromRGB(0xfa3737) CGColor]];
-                [button.layer setBorderWidth:6.0];
-            } else {
-                UIButton *lastButton = (UIButton*)[talesScrollView viewWithTag:lastTaleIndex+1000];
-                [lastButton.layer setMasksToBounds:YES];
-                [lastButton.layer setCornerRadius:2.0];
-                [lastButton.layer setBorderColor:[UIColorFromRGB(0x8FD866) CGColor]];
-                [lastButton.layer setBorderWidth:1.0];
-                
-                [button.layer setMasksToBounds:YES];
-                [button.layer setCornerRadius:2.0];
-                [button.layer setBorderColor:[UIColorFromRGB(0xfa3737) CGColor]];
-                [button.layer setBorderWidth:2.0];
-            }
+            [button.layer setMasksToBounds:YES];
+            [button.layer setCornerRadius:5.0];
+            [button.layer setBorderColor:[UIColorFromRGB(0xfa3737) CGColor]];
+            [button.layer setBorderWidth:6.0];
         }
         
-        currentTale = [[Tale tales] objectAtIndex:currentTaleIndex];
+        currentLesson = [[Lesson lessons] objectAtIndex:currentLessonIndex];
         
-        Page *coverPage = [[currentTale pages] objectAtIndex:0];
+        Page *coverPage = [[currentLesson pages] objectAtIndex:0];
         
-        [titleLabel setText:currentTale.title];
-        [authorLabel setText:currentTale.author];
-        [pageLabel setText:[NSString stringWithFormat:@"%d",[[currentTale pages] count] - 1]];
+        [titleLabel setText:currentLesson.title];
+        [authorLabel setText:currentLesson.author];
+        [pageLabel setText:[NSString stringWithFormat:@"%d",[[currentLesson pages] count] - 1]];
         
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setTimeStyle:NSDateFormatterNoStyle];
         [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
         
-        NSDate *date = [NSDate dateWithTimeIntervalSince1970:currentTale.created];
+        NSDate *date = [NSDate dateWithTimeIntervalSince1970:currentLesson.created];
         NSString *createdDate = [dateFormatter stringFromDate:date];
         [createdLabel setText:createdDate];
-        date = [NSDate dateWithTimeIntervalSince1970:currentTale.modified];
+        date = [NSDate dateWithTimeIntervalSince1970:currentLesson.modified];
         NSString *modifiedDate = [dateFormatter stringFromDate:date];
         [modifiedLabel setText:modifiedDate];
         
