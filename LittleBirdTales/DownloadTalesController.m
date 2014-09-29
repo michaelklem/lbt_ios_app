@@ -9,6 +9,7 @@
 #import "DownloadTalesController.h"
 #import "EditTaleViewController.h"
 #import "TalesController.h"
+#import "UserTalesController.h"
 #import "SBJson.h"
 #import "ServiceLib.h"
 #import "HttpHelper.h"
@@ -289,11 +290,20 @@ static int LoadingItemContext = 1;
 }
 
 - (IBAction)back:(id)sender {
-    TalesController* controller;
-    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad) {
-        controller = [[TalesController alloc] initWithNibName:@"TalesController-iPad" bundle:nil];
-    } else {
-        controller = [[TalesController alloc] initWithNibName:@"TalesController-iPhone" bundle:nil];
+    UIViewController* controller;
+    if([[Lib getValueOfKey:@"logged_in"] boolValue]) {
+        if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad) {
+            controller = [[UserTalesController alloc] initWithNibName:@"UserTalesController-iPad" bundle:nil];
+        } else {
+            controller = [[UserTalesController alloc] initWithNibName:@"UserTalesController-iPhone" bundle:nil];
+        }
+    }
+    else {
+        if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad) {
+            controller = [[TalesController alloc] initWithNibName:@"TalesController-iPad" bundle:nil];
+        } else {
+            controller = [[TalesController alloc] initWithNibName:@"TalesController-iPhone" bundle:nil];
+        }
     }
     [self.navigationController pushViewController:controller animated:YES];
 }
@@ -305,7 +315,6 @@ static int LoadingItemContext = 1;
     downloadingView.hidden = NO;
     downloadingLabel.text = @"Getting tales list...";
     [activityIndicator startAnimating];
-    NSString* strData;
     NSString* url = [NSString stringWithFormat:@"%@/services/tales/",servicesURLPrefix];
     NSLog(@"%@", [Lib getValueOfKey:@"encrypted_user_id"]);
     [HttpHelper sendAsyncPostRequestToURL:url

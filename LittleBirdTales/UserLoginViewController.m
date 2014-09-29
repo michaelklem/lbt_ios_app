@@ -83,8 +83,13 @@
             [Lib setValue:userId forKey:@"user_id"];
             bucketPath = [obj objectForKey:@"bucket_path"];
             [Lib setValue:bucketPath forKey:@"bucket_path"];
+            isTeacher = [obj objectForKey:@"is_teacher"];
+            [Lib setValue:isTeacher forKey:@"is_teacher"];
+            isStudent = [obj objectForKey:@"is_student"];
+            [Lib setValue:isStudent forKey:@"is_student"];
             encryptedUserId = [obj objectForKey:@"encrypted_id"];
             [Lib setValue:encryptedUserId forKey:@"encrypted_user_id"];
+            [Lib setValue:@"true" forKey:@"logged_in"];
             sucessed = TRUE;
         }
         else if ([obj isKindOfClass:[NSDictionary class]] && [obj objectForKey:@"error"]) {

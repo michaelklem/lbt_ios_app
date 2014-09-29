@@ -276,6 +276,8 @@
 		F42D6C0619B7EBE00046D27C /* UserLoginViewController-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = F42D6C0219B7EBE00046D27C /* UserLoginViewController-iPad.xib */; };
 		F42D6C0819B7EBE00046D27C /* UserLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F42D6C0519B7EBE00046D27C /* UserLoginViewController.m */; };
 		F44433A91845A023001F59C7 /* HttpHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = F44433A81845A023001F59C7 /* HttpHelper.m */; };
+		F47419DF19D7AFB40024AAF6 /* EditAssignmentViewController-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = F47419DC19D7AFB40024AAF6 /* EditAssignmentViewController-iPad.xib */; };
+		F47419E019D7AFB40024AAF6 /* EditAssignmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F47419DE19D7AFB40024AAF6 /* EditAssignmentViewController.m */; };
 		F47876801846B48200B56B59 /* LoginViewController-iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = F478767F1846B48200B56B59 /* LoginViewController-iPhone.xib */; };
 		F497F39818286DAA0046D1CE /* DownloadTalesController-iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = F497F39718286DAA0046D1CE /* DownloadTalesController-iPhone.xib */; };
 		F4AEFE0E1820B0A700BD44D9 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F4AEFE0D1820B0A700BD44D9 /* Default-568h@2x.png */; };
@@ -641,6 +643,9 @@
 		F42D6C0519B7EBE00046D27C /* UserLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserLoginViewController.m; sourceTree = "<group>"; };
 		F44433A71845A023001F59C7 /* HttpHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpHelper.h; sourceTree = "<group>"; };
 		F44433A81845A023001F59C7 /* HttpHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpHelper.m; sourceTree = "<group>"; };
+		F47419DC19D7AFB40024AAF6 /* EditAssignmentViewController-iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "EditAssignmentViewController-iPad.xib"; sourceTree = "<group>"; };
+		F47419DD19D7AFB40024AAF6 /* EditAssignmentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditAssignmentViewController.h; sourceTree = "<group>"; };
+		F47419DE19D7AFB40024AAF6 /* EditAssignmentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditAssignmentViewController.m; sourceTree = "<group>"; };
 		F478767F1846B48200B56B59 /* LoginViewController-iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "LoginViewController-iPhone.xib"; sourceTree = "<group>"; };
 		F497F39718286DAA0046D1CE /* DownloadTalesController-iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "DownloadTalesController-iPhone.xib"; sourceTree = "<group>"; };
 		F4AEFE0D1820B0A700BD44D9 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -1416,6 +1421,16 @@
 			name = UserLogin;
 			sourceTree = "<group>";
 		};
+		F47419DB19D785150024AAF6 /* EditAssignment */ = {
+			isa = PBXGroup;
+			children = (
+				F47419DC19D7AFB40024AAF6 /* EditAssignmentViewController-iPad.xib */,
+				F47419DD19D7AFB40024AAF6 /* EditAssignmentViewController.h */,
+				F47419DE19D7AFB40024AAF6 /* EditAssignmentViewController.m */,
+			);
+			name = EditAssignment;
+			sourceTree = "<group>";
+		};
 		F4B592C319BF7BFE0004493B /* UserTales */ = {
 			isa = PBXGroup;
 			children = (
@@ -1439,6 +1454,7 @@
 		F4B592D119C8B9FC0004493B /* Student */ = {
 			isa = PBXGroup;
 			children = (
+				F47419DB19D785150024AAF6 /* EditAssignment */,
 				F4B592D219C8BD220004493B /* DownloadAssignments */,
 				F4B592CB19BF8E520004493B /* UserLessons */,
 				F4B592C319BF7BFE0004493B /* UserTales */,
@@ -1557,6 +1573,7 @@
 				37F6E8DA14C7B273003A278D /* btn-play-ipad.png in Resources */,
 				37F6E8DB14C7B273003A278D /* btn-upload-ipad.png in Resources */,
 				37F6E8FD14C7C2D3003A278D /* EditTaleViewController-iPhone.xib in Resources */,
+				F47419DF19D7AFB40024AAF6 /* EditAssignmentViewController-iPad.xib in Resources */,
 				37F6E8FF14C7C30E003A278D /* EditTaleViewController-iPad.xib in Resources */,
 				37F6E90114C7C41E003A278D /* bg-edit-ipad.png in Resources */,
 				049845F814D83FA30095370C /* icon54.png in Resources */,
@@ -1791,6 +1808,7 @@
 				041A87E514DEDBE7006AE392 /* ImageLayer.m in Sources */,
 				371222BD14E1D881002DCBBD /* InputTaleInfo.m in Sources */,
 				376C210B14E46E8300D540FB /* InfColorBarPicker.m in Sources */,
+				F47419E019D7AFB40024AAF6 /* EditAssignmentViewController.m in Sources */,
 				376C210C14E46E8300D540FB /* InfColorIndicatorView.m in Sources */,
 				376C210D14E46E8300D540FB /* InfColorPickerController.m in Sources */,
 				376C210F14E46E8300D540FB /* InfColorSquarePicker.m in Sources */,

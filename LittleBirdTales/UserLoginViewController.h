@@ -28,6 +28,8 @@
     NSString *storyId;
     NSString *userId;
     NSString *bucketPath;
+    NSString *isTeacher;
+    NSString *isStudent;
 }
 
 @property (nonatomic, retain) Tale* tale;

@@ -158,13 +158,13 @@ static int LoadingItemContext = 1;
 
 - (IBAction)downloadLesson:(id)sender  {
     downloadingView.hidden = NO;
-    downloadingLabel.text = @"Downloading tale...";
+    downloadingLabel.text = @"Downloading lesson...";
     talesPreviewView.hidden = YES;
     [activityIndicator startAnimating];
     
     NSDictionary *currentTale = [userTales objectAtIndex:currentTaleIndex];
     
-    NSString* url = [NSString stringWithFormat:@"%@/services/tale/",servicesURLPrefix];
+    NSString* url = [NSString stringWithFormat:@"%@/services/lesson/",servicesURLPrefix];
     
     [HttpHelper sendAsyncPostRequestToURL:url
                            withParameters:[NSMutableDictionary dictionaryWithObjectsAndKeys:
@@ -221,6 +221,17 @@ static int LoadingItemContext = 1;
                                      [page saveAudio:audioData];
                                  }
                                  
+                                 if([[json valueForKey:@"has_teacher_audio"] boolValue]) {
+                                     NSLog(@"has_teacher_audio");
+                                     NSString *imageFilePath = [path stringByAppendingPathComponent:@"teacher_audio.mp3"];
+                                     NSData *audioData = [NSData dataWithContentsOfFile:imageFilePath options:0 error:nil];
+                                     NSLog(@"has_teacher_audio:%d", audioData.length);
+                                     Page *page = [newLesson.pages objectAtIndex:0];
+                                     [page saveTeacherAudio:audioData];
+                                 }
+                                 
+                                 Page *page = [newLesson.pages objectAtIndex:0];
+                                 [page setTeacher_text:[json valueForKey:@"teacherText"]];
                                  
                                  NSArray* pages = [json valueForKey:@"pages"];
                                  if ([pages count] > 0) {
@@ -229,7 +240,9 @@ static int LoadingItemContext = 1;
                                          Page *samplePage = [Page newPage];
                                          samplePage.pageFolder = [NSString stringWithFormat:@"%@/%0.f",[Lib taleFolderPathFromIndex:newLesson.index],samplePage.index];
                                          samplePage.text = [[item valueForKey:@"text"] isEqual:[NSNull null]]?@"":[item valueForKey:@"text"];
-                                         
+                                         samplePage.teacher_text = [item valueForKey:@"teacher_text"];
+                                         NSLog(@"Here is the teacher text: %@", samplePage.teacher_text);
+                                         NSLog(@"Here is the teacher text: %@", [item valueForKey:@"teacher_text"]);
                                          if([[item valueForKey:@"has_image"] boolValue]) {
                                              NSString *imageFilePath = [path stringByAppendingPathComponent:[NSString stringWithFormat:@"%d/page.jpg", i]];
                                              NSData *imageData = [NSData dataWithContentsOfFile:imageFilePath options:0 error:nil];
@@ -244,6 +257,14 @@ static int LoadingItemContext = 1;
                                              NSData *audioData = [NSData dataWithContentsOfFile:audioFilePath options:0 error:nil];
                                              NSLog(@"has_audio:%d", audioData.length);
                                              [samplePage saveAudio:audioData];
+                                         }
+                                         
+                                         if([[item valueForKey:@"has_teacher_audio"] boolValue]) {
+                                             NSLog(@"has_teacher_audio");
+                                             NSString *audioFilePath = [path stringByAppendingPathComponent:[NSString stringWithFormat:@"%d/teacher_page.mp3", i]];
+                                             NSData *audioData = [NSData dataWithContentsOfFile:audioFilePath options:0 error:nil];
+                                             NSLog(@"has_teacher_audio:%d", audioData.length);
+                                             [samplePage saveTeacherAudio:audioData];
                                          }
                                          
                                          [newLesson.pages addObject:samplePage];

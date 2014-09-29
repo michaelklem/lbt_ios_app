@@ -9,7 +9,7 @@
 #import "UserLessonsController.h"
 #import "UserTalesController.h"
 #import "PlayerController.h"
-#import "EditTaleViewController.h"
+#import "EditAssignmentViewController.h"
 #import "LoginViewController.h"
 #import "UserLoginViewController.h"
 #import "DownloadAssignmentsController.h"
@@ -18,6 +18,12 @@
 @implementation UserLessonsController
 
 -(IBAction)back:(id)sender {
+    [Lib setValue:@"" forKey:@"logged_in"];
+    [Lib setValue:@"" forKey:@"user_id"];
+    [Lib setValue:@"" forKey:@"bucket_path"];
+    [Lib setValue:@"" forKey:@"is_teacher"];
+    [Lib setValue:@"" forKey:@"is_student"];
+    [Lib setValue:@"" forKey:@"encrypted_user_id"];
     UserLoginViewController* controller;
     if (IsIdiomPad) {
         controller = [[UserLoginViewController alloc] initWithNibName:@"UserLoginViewController-iPad" bundle:nil];
@@ -25,20 +31,20 @@
     [self.navigationController pushViewController:controller animated:YES];
 }
 -(IBAction)editTale:(id)sender {
-    /*if ([[Tale tales] count] > 0) {
-        EditTaleViewController* controller;
+    if ([[Lesson lessons] count] > 0) {
+        EditAssignmentViewController* controller;
         if (IsIdiomPad) {
-            controller = [[EditTaleViewController alloc] initWithNibName:@"EditTaleViewController-iPad" bundle:nil];
+            controller = [[EditAssignmentViewController alloc] initWithNibName:@"EditAssignmentViewController-iPad" bundle:nil];
         } else {
-            controller = [[EditTaleViewController alloc] initWithNibName:@"EditTaleViewController-iPhone" bundle:nil];
+            controller = [[EditAssignmentViewController alloc] initWithNibName:@"EditAssignmentViewController-iPhone" bundle:nil];
         }
-        controller.tale = currentLesson;
+        controller.lesson = currentLesson;
         controller.taleNumber = currentLessonIndex;
         [self.navigationController pushViewController:controller animated:YES];
     }
     else {
         [Lib showAlert:@"Error" withMessage:@"No Tale to edit"];
-    }*/
+    }
 }
 
 -(IBAction)tabChange:(id)sender {
@@ -145,7 +151,7 @@
 
 -(void)inputedTitle:(NSString*)title author:(NSString*)author {
     
-    Tale *newTale = [Tale newTalewithTitle:title author:author];
+    /*Tale *newTale = [Tale newTalewithTitle:title author:author];
     [Tale addTale:newTale];
     [Tale save];
     
@@ -159,7 +165,7 @@
     }
     controller.tale = [[Tale tales] lastObject];
     controller.taleNumber = [[Tale tales] count] - 1;
-    [self.navigationController pushViewController:controller animated:YES];
+    [self.navigationController pushViewController:controller animated:YES];*/
 }
 #pragma mark - View lifecycle
 
@@ -256,7 +262,8 @@
 }
 
 -(void)selectTale:(id)sender {
-    if ([[Tale tales] count] > 0) {
+    NSLog(@"selecting lesson");
+    if ([[Lesson lessons] count] > 0) {
         lastLessonIndex = currentLessonIndex;
         UIButton *button;
         

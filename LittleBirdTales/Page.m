@@ -12,7 +12,7 @@
 #import "UIImage+Resize.h"
 
 @implementation Page
-@synthesize index, image, voice, text, order, time, created, modified, isCover, pageFolder;
+@synthesize index, image, voice, teacher_voice, text, order, time, teacher_time, created, modified, isCover, pageFolder;
 
 + (Page*)newPage {
     Page *page = [[Page alloc] init];
@@ -168,6 +168,33 @@
     
     self.time = player.duration;
     self.voice = voiceName;
+    self.modified = round([[NSDate date] timeIntervalSince1970]);
+}
+
+- (void)saveTeacherAudio:(NSData *)audioData {
+    
+    double number = round([[NSDate date] timeIntervalSince1970]);
+    
+    NSString *folderPath = [NSString stringWithFormat:@"%@/%@/voices",
+                            [Lib applicationDocumentsDirectory],pageFolder];
+    NSString *voiceName = [NSString stringWithFormat:@"/%@/voices/%.0f.caf",
+                           pageFolder,number];
+    
+    if (![[NSFileManager defaultManager] fileExistsAtPath:folderPath]){
+        [[NSFileManager defaultManager] createDirectoryAtPath:folderPath withIntermediateDirectories:YES attributes:nil error:nil];
+    }
+    
+    // Find the path to the documents directory
+    
+    NSString *fullPathToFile = [[Lib applicationDocumentsDirectory] stringByAppendingPathComponent:voiceName];
+    NSURL *file = [NSURL fileURLWithPath:fullPathToFile];
+    
+    [audioData writeToURL:file atomically:YES];
+    
+    AVAudioPlayer* player = [[AVAudioPlayer alloc] initWithData:audioData error:nil];
+    
+    self.teacher_time = player.duration;
+    self.teacher_voice = voiceName;
     self.modified = round([[NSDate date] timeIntervalSince1970]);
 }
 

@@ -10,6 +10,7 @@
 #import "UserLessonsController.h"
 #import "PlayerController.h"
 #import "EditTaleViewController.h"
+#import "DownloadTalesController.h"
 #import "LoginViewController.h"
 #import "UserLoginViewController.h"
 #import "Lib.h"
@@ -17,6 +18,12 @@
 @implementation UserTalesController
 
 -(IBAction)back:(id)sender {
+    [Lib setValue:@"" forKey:@"logged_in"];
+    [Lib setValue:@"" forKey:@"user_id"];
+    [Lib setValue:@"" forKey:@"bucket_path"];
+    [Lib setValue:@"" forKey:@"is_teacher"];
+    [Lib setValue:@"" forKey:@"is_student"];
+    [Lib setValue:@"" forKey:@"encrypted_user_id"];
     UserLoginViewController* controller;
     if (IsIdiomPad) {
         controller = [[UserLoginViewController alloc] initWithNibName:@"UserLoginViewController-iPad" bundle:nil];
@@ -132,14 +139,13 @@
 }
 
 -(IBAction)downloadTales:(id)sender {
-    LoginViewController* controller;
+    DownloadTalesController* controller;
     if (IsIdiomPad) {
-        controller = [[LoginViewController alloc] initWithNibName:@"LoginViewController-iPad" bundle:nil];
+        controller = [[DownloadTalesController alloc] initWithNibName:@"DownloadTalesController-iPad" bundle:nil];
     } else {
-        controller = [[LoginViewController alloc] initWithNibName:@"LoginViewController-iPhone" bundle:nil];
+        controller = [[DownloadTalesController alloc] initWithNibName:@"DownloadTalesController-iPhone" bundle:nil];
     }
     
-    controller.downloadRequest = true;
     [self.navigationController pushViewController:controller animated:YES];
 }
 
@@ -192,6 +198,14 @@
         [self selectTale:nil];
     } else {
         noTaleBackground.hidden = NO;
+    }
+    
+    if([[Lib getValueOfKey:@"is_student"] boolValue]==false &&
+       [[Lib getValueOfKey:@"is_teacher"] boolValue]==false) {
+        controlTab.hidden = YES;
+    }
+    else {
+        controlTab.hidden = NO;
     }
     
     [self reloadTaleList];

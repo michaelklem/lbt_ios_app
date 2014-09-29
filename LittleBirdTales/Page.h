@@ -15,8 +15,11 @@
 // http:// with image from server and file:// with image saved in iPad
 @property (nonatomic, retain) NSString* image;
 @property (nonatomic, retain) NSString* voice;
+@property (nonatomic, retain) NSString* teacher_text;
+@property (nonatomic, retain) NSString* teacher_voice;
 @property (nonatomic, retain) NSString* text;
 @property (nonatomic, assign) NSInteger time;
+@property (nonatomic, assign) NSInteger teacher_time;
 @property (nonatomic, assign) double created; // time interval since 1970
 @property (nonatomic, assign) double modified; // time interval since 1970
 @property (nonatomic, assign) NSInteger order;
@@ -40,5 +43,6 @@
 - (NSString*)pageImagePath;
 - (void)saveImage:(UIImage*)original;
 - (void)saveAudio:(NSData*)original;
+- (void)saveTeacherAudio:(NSData*)original;
 
 @end
