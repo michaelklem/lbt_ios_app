@@ -320,7 +320,7 @@
                                       delegate:self
                                       cancelButtonTitle:@"Cancel"
                                       destructiveButtonTitle:@"From Photo Library"
-                                      otherButtonTitles:@"From Gallery", @"Take photo", nil];
+                                      otherButtonTitles:@"From Gallery", @"Take Photo", nil];
         actionSheet.tag = IMAGETAG;
         [actionSheet showInView:self.view];
     } else {
@@ -373,7 +373,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
         if (self.popoverController) {
             [self.popoverController dismissPopoverAnimated:YES];
         } else {
-            [picker dismissModalViewControllerAnimated:YES];
+            [picker dismissViewControllerAnimated:YES completion:nil];
         }
         [NSTimer scheduledTimerWithTimeInterval: 0
                                          target: self
@@ -386,7 +386,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
                                        userInfo: info
                                         repeats: NO];            
     } else {
-        [picker dismissModalViewControllerAnimated:YES];  
+        [picker dismissViewControllerAnimated:YES completion:nil];
         [NSTimer scheduledTimerWithTimeInterval: 0
                                          target: self
                                        selector: @selector(showLoadingViewOn)

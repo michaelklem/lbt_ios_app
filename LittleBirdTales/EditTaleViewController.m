@@ -137,7 +137,7 @@
                           delegate:self
                           cancelButtonTitle:@"Cancel"
                           destructiveButtonTitle:@"From Photo Library"
-                          otherButtonTitles:@"From Gallery", @"Take photo", nil];
+                          otherButtonTitles:@"From Gallery", @"Take Photo", nil];
     }
     else {
         actionSheet = [[UIActionSheet alloc] 
@@ -371,7 +371,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
             [self.popoverController dismissPopoverAnimated:YES];
         }
             
-        [picker dismissModalViewControllerAnimated:YES];
+        [picker dismissViewControllerAnimated:YES completion:nil];
         
         [NSTimer scheduledTimerWithTimeInterval: 0
                                          target: self
@@ -384,7 +384,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
                                        userInfo: info
                                         repeats: NO];
     } else {
-        [picker dismissModalViewControllerAnimated:YES];  
+        [picker dismissViewControllerAnimated:YES completion:nil];
         [NSTimer scheduledTimerWithTimeInterval: 0
                                          target: self
                                        selector: @selector(showLoadingViewOn)
@@ -408,21 +408,12 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
 		// Hide camera controls (iOS 5+) until view is shown to prevent console log
 		// "Snapshotting a view that has not been rendered results in an empty snapshot...
 		if ( [self respondsToSelector:@selector(presentViewController:animated:completion:)] ) {
-			controller.showsCameraControls = NO;
-			[self presentViewController:controller animated:YES completion:^{
-				controller.showsCameraControls = YES;
-			}];
+            [self presentViewController:controller animated:YES completion:nil];
 		}
-		else { // up to iOS 5
-            if ([self respondsToSelector:@selector(presentViewController:animated:completion:)])
-            {
-                [self presentViewController:controller animated:YES completion:NULL];
-            }
-            else
-            {
-                [self presentModalViewController:controller animated:YES];
-            }
-		}
+        else
+        {
+            [self presentModalViewController:controller animated:YES];
+        }
     } else if (buttonIndex == 0) { // Library
         
         UIImagePickerController* controller = [[UIImagePickerController alloc] init];
