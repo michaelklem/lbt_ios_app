@@ -414,7 +414,14 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
 			}];
 		}
 		else { // up to iOS 5
-			[self presentModalViewController:controller animated:YES];
+            if ([self respondsToSelector:@selector(presentViewController:animated:completion:)])
+            {
+                [self presentViewController:controller animated:YES completion:NULL];
+            }
+            else
+            {
+                [self presentModalViewController:controller animated:YES];
+            }
 		}
     } else if (buttonIndex == 0) { // Library
         
@@ -436,7 +443,14 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
                                                   animated:YES];            
             
         } else {
-            [self presentModalViewController:controller animated:YES];
+            if ([self respondsToSelector:@selector(presentViewController:animated:completion:)])
+            {
+                [self presentViewController:controller animated:YES completion:NULL];
+            }
+            else
+            {
+                [self presentModalViewController:controller animated:YES];
+            }
         }
     } else if (buttonIndex == 1) { // Gallery
         if (IsIdiomPad) {

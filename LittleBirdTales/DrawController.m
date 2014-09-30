@@ -450,7 +450,14 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
                                                       animated:YES];            
                 
             } else {
-                [self presentModalViewController:controller animated:YES];
+                if ([self respondsToSelector:@selector(presentViewController:animated:completion:)])
+                {
+                    [self presentViewController:controller animated:YES completion:NULL];
+                }
+                else
+                {
+                    [self presentModalViewController:controller animated:YES];
+                }
             }
         } else if (buttonIndex == 1) { // libray
                  
@@ -486,7 +493,15 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
                 UIImagePickerController* controller = [[UIImagePickerController alloc] init];
                 controller.delegate = self;
                 controller.sourceType = UIImagePickerControllerSourceTypeCamera;
-                [self presentModalViewController:controller animated:YES];                   
+ 
+                if ([self respondsToSelector:@selector(presentViewController:animated:completion:)])
+                {
+                    [self presentViewController:controller animated:YES completion:NULL];
+                }
+                else
+                {
+                    [self presentModalViewController:controller animated:YES];
+                }
             }
         }
     }

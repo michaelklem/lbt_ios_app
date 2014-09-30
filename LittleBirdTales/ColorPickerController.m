@@ -203,7 +203,7 @@ static void HSVFromUIColor( UIColor* color, float* h, float* s, float* v )
 	
 	self.navigationItem.rightBarButtonItem = [ [ UIBarButtonItem alloc ] initWithBarButtonSystemItem: UIBarButtonSystemItemDone target: self action: @selector( done: ) ];
 				
-	[ controller presentModalViewController: nav animated: YES ];
+    [controller presentViewController:nav animated:YES completion:nil];
 }
 
 //------------------------------------------------------------------------------

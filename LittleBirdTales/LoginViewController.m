@@ -263,8 +263,15 @@
     
     [picker setSubject:subject];
     [picker setMessageBody:emailBody isHTML:YES];
-	
-	[self presentModalViewController:picker animated:YES];
+
+    if ([self respondsToSelector:@selector(presentViewController:animated:completion:)])
+    {
+        [self presentViewController:picker animated:YES completion:NULL];
+    }
+    else
+    {
+        [self presentModalViewController:picker animated:YES];
+    }    
 }
 
 
