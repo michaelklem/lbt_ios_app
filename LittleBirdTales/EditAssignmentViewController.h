@@ -22,7 +22,8 @@
 #import "CropImage.h"
 #import "PlayerController.h"
 
-@interface EditAssignmentViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, InputTextViewDelegate, InputTaleInfoDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate,UINavigationControllerDelegate, UIPopoverControllerDelegate, UIAlertViewDelegate, AudioRecordDelegate, GalleryDelegate, CropImageDelegate,DrawControllerDelegate, GalleryViewDelegate, AVAudioPlayerDelegate > {
+@interface EditAssignmentViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, InputTextViewDelegate, InputTaleInfoDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate,UINavigationControllerDelegate, UIPopoverControllerDelegate, UIAlertViewDelegate, AudioRecordDelegate, GalleryDelegate, CropImageDelegate,DrawControllerDelegate, GalleryViewDelegate, AVAudioPlayerDelegate, UIGestureRecognizerDelegate > {
+    
     IBOutlet UITableView* pagesTableView;
     IBOutlet UIImageView* imageView;
     IBOutlet UITextView* teacherTextView;
@@ -35,6 +36,7 @@
     IBOutlet UIButton *playButton;
     IBOutlet UIButton *stopButton;
     IBOutlet UILabel *titleLabel;
+    IBOutlet UILabel *pageNumberView;
     
     NSUndoManager *undoManager;
     
@@ -63,6 +65,7 @@
 -(IBAction)preview:(id)sender;
 -(IBAction)playTeacherAudio:(id)sender;
 -(IBAction)stopTeacherAudio:(id)sender;
+-(IBAction)saveText:(id)sender;
 - (void)setActivePage:(NSInteger)index;
 - (void)saveImageFromGallery;
 //- (void)saveTaleHistory;

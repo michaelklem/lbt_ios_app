@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Page.h"
 
-@interface Lesson : NSObject
+@interface Lesson : Page
 @property (nonatomic, assign) double index;
 @property (nonatomic, retain) NSString* title;
 @property (nonatomic, retain) NSString* author;
@@ -34,6 +35,8 @@
 
 // Save tales list to .plist
 +(void)save;
+
++(void)removeAll;
 
 
 - (NSString*)uploadWithUserId: (NSString*)userId andBucketPath: (NSString*)bucketPath ;

@@ -24,6 +24,7 @@
     [Lib setValue:@"" forKey:@"is_teacher"];
     [Lib setValue:@"" forKey:@"is_student"];
     [Lib setValue:@"" forKey:@"encrypted_user_id"];
+    [Lesson removeAll];
     UserLoginViewController* controller;
     if (IsIdiomPad) {
         controller = [[UserLoginViewController alloc] initWithNibName:@"UserLoginViewController-iPad" bundle:nil];
@@ -112,7 +113,7 @@
 }
 
 -(IBAction)playTale:(id)sender {
-    /*if ([[Tale tales] count] > 0) {
+    if ([[Lesson lessons] count] > 0) {
         PlayerController* controller;
         if (IsIdiomPad) {
             controller = [[PlayerController alloc] initWithNibName:@"PlayerController-iPad" bundle:nil];
@@ -126,7 +127,7 @@
     }
     else {
         [Lib showAlert:@"Error" withMessage:@"No tale to play"];
-    } */
+    }
     
 }
 -(IBAction)newTale:(id)sender {

@@ -10,7 +10,9 @@
 
 
 @implementation EditAssignmentViewController
-@synthesize lesson, taleNumber, popoverController;
+@synthesize lesson, taleNumber, popoverController, soundPlayer;
+
+
 
 -(IBAction)drawPage:(id)sender {
     //TODO: Check if there is a page to draw
@@ -61,7 +63,7 @@
     if (text != currentText) {
         [[undoManager prepareWithInvocationTarget:self] inputedText:currentText forPage:currentPage];
     
-        [undoManager setActionName:[NSString stringWithFormat:@"Change Text of Page #%d",currentPage]];
+        [undoManager setActionName:[NSString stringWithFormat:@"Change Text of Page #%ld",(long)currentPage]];
         
         
         [page setText:text];
@@ -114,7 +116,7 @@
     double currentDuration = page.time;
     if (voiceName != currentVoiceName) {
         [[undoManager prepareWithInvocationTarget:self] setVoice:currentVoiceName andDuration:currentDuration forPage:currentPage];
-        [undoManager setActionName:[NSString stringWithFormat:@"Change Voice of Page #%d",currentPage]];
+        [undoManager setActionName:[NSString stringWithFormat:@"Change Voice of Page #%ld",(long)currentPage]];
 
         
         [page setVoice:voiceName];
@@ -184,7 +186,7 @@
             
             //Undo
             [[undoManager prepareWithInvocationTarget:self] addPage:page atIndex:currentPage];
-            [undoManager setActionName:[NSString stringWithFormat:@"Delete Page #%d",currentPage]];
+            [undoManager setActionName:[NSString stringWithFormat:@"Delete Page #%ld",(long)currentPage]];
             
             [lesson.pages removeObjectAtIndex:currentPage];
             [lesson setModified:round([[NSDate date] timeIntervalSince1970])];
@@ -243,6 +245,7 @@
 }
 
 - (void)setActivePage:(NSInteger)index {
+    pageNumberView.text = [NSString stringWithFormat:@"Page %ld of %ld",(long)index+1, (long)lesson.pages.count];
     if (index == 0) {
         [editButton setImage:[UIImage imageNamed:@"btn-edittale-ipad.png"] forState:UIControlStateNormal];
         deleteButton.hidden = YES;
@@ -257,6 +260,7 @@
     
     [teacherTextView setText:page.teacher_text];
     [studentTextView setText:page.text];
+    studentTextView.editable = !page.text_locked;
     uploadButton.enabled = !page.image_locked;
     imageButton.enabled = !page.image_locked;
     editButton.enabled = !page.text_locked;
@@ -278,6 +282,33 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    UISwipeGestureRecognizer * swipeleft=[[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(swipeleft:)];
+    swipeleft.direction=UISwipeGestureRecognizerDirectionLeft;
+    [self.view addGestureRecognizer:swipeleft];
+    
+    UISwipeGestureRecognizer * swiperight=[[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(swiperight:)];
+    swiperight.direction=UISwipeGestureRecognizerDirectionRight;
+    [self.view addGestureRecognizer:swiperight];
+    
+    [studentTextView setDelegate:self];
+    
+    //To make the border look very close to a UITextField
+    [studentTextView.layer setBorderColor:[[[UIColor grayColor] colorWithAlphaComponent:0.5] CGColor]];
+    [studentTextView.layer setBorderWidth:2.0];
+    
+    //The rounded corner part, where you specify your view's corner radius:
+    studentTextView.layer.cornerRadius = 5;
+    studentTextView.clipsToBounds = YES;
+    
+    //To make the border look very close to a UITextField
+    [teacherTextView.layer setBorderColor:[[[UIColor grayColor] colorWithAlphaComponent:0.5] CGColor]];
+    [teacherTextView.layer setBorderWidth:2.0];
+    
+    //The rounded corner part, where you specify your view's corner radius:
+    teacherTextView.layer.cornerRadius = 5;
+    teacherTextView.clipsToBounds = YES;
+    [teacherTextView.layer setBackgroundColor:[[[UIColor lightGrayColor] colorWithAlphaComponent:0.5] CGColor]];
+    
     //Undo Manager
     undoManager = [[NSUndoManager alloc] init];
     [undoManager setLevelsOfUndo:5];
@@ -312,6 +343,14 @@
     
 }
 
+- (void)textViewDidEndEditing:(UITextView *)textView {
+    Page *page = [lesson.pages objectAtIndex:currentPage];
+    
+    [page setText:studentTextView.text];
+    [page setModified:round([[NSDate date] timeIntervalSince1970])];
+    [lesson setModified:round([[NSDate date] timeIntervalSince1970])];
+}
+
 - (void)viewWillAppear:(BOOL)animated {
     Page *page = [lesson.pages objectAtIndex:currentPage];
     [pagesTableView reloadData];
@@ -329,9 +368,23 @@
     [Lesson updateLesson:lesson at:taleNumber];
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+- (NSUInteger)supportedInterfaceOrientations {
+    
+    return UIInterfaceOrientationMaskAll;
+}
+
+-(void)swipeleft:(UISwipeGestureRecognizer*)gestureRecognizer
 {
-    return UIInterfaceOrientationIsLandscape(interfaceOrientation);
+    if([lesson.pages count] > currentPage+1) {
+        [self setActivePage:currentPage+1];
+    }
+}
+
+-(void)swiperight:(UISwipeGestureRecognizer*)gestureRecognizer
+{
+    if(currentPage > 0) {
+        [self setActivePage:currentPage-1];
+    }
 }
 
 - (void)showLoadingViewOn{
@@ -368,7 +421,7 @@
     NSString *currentImageName = page.image;
     
     [[undoManager prepareWithInvocationTarget:self] setImageName:currentImageName forPage:currentPage];
-    [undoManager setActionName:[NSString stringWithFormat:@"Change Image of Page #%d",currentPage]];
+    [undoManager setActionName:[NSString stringWithFormat:@"Change Image of Page #%ld",(long)currentPage]];
     
     [page saveImage:image];
     [page setModified:round([[NSDate date] timeIntervalSince1970])];
@@ -520,7 +573,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
     
     Page* page = [lesson.pages objectAtIndex:indexPath.row];
     
-    cell.pageNumber.text = [NSString stringWithFormat:@"%d", indexPath.row];
+    cell.pageNumber.text = [NSString stringWithFormat:@"%ld", (long)indexPath.row];
     if ([page.text isEqualToString:@""] || page.text == NULL) {
         [cell.textIndicator setImage:[UIImage imageNamed:@"ipad_icon_text_false"]];
     }
@@ -649,7 +702,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
     NSString *currentImageName = page.image;
     
     [[undoManager prepareWithInvocationTarget:self] setImageName:currentImageName forPage:currentPage];
-    [undoManager setActionName:[NSString stringWithFormat:@"Change Image of Page #%d",currentPage]];
+    [undoManager setActionName:[NSString stringWithFormat:@"Change Image of Page #%ld",(long)currentPage]];
 }
 
 -(IBAction)playTeacherAudio:(id)sender {

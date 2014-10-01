@@ -14,6 +14,7 @@
 #import "LoginViewController.h"
 #import "UserLoginViewController.h"
 #import "Lib.h"
+#import "Lesson.h"
 
 @implementation UserTalesController
 
@@ -24,6 +25,7 @@
     [Lib setValue:@"" forKey:@"is_teacher"];
     [Lib setValue:@"" forKey:@"is_student"];
     [Lib setValue:@"" forKey:@"encrypted_user_id"];
+    [Lesson removeAll];
     UserLoginViewController* controller;
     if (IsIdiomPad) {
         controller = [[UserLoginViewController alloc] initWithNibName:@"UserLoginViewController-iPad" bundle:nil];

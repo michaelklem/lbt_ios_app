@@ -78,6 +78,10 @@ NSMutableArray* lessons;
     return lessons;
 }
 
++(void)removeAll {
+    lessons = nil;
+}
+
 // Create a new tale, but not add to tales list
 +(Lesson*)newLessonWithLesson:(Lesson*)_lesson{
     Lesson* lesson = [[Lesson alloc] init];
