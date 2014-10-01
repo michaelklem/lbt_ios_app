@@ -12,7 +12,7 @@
 #import "UIImage+Resize.h"
 
 @implementation Page
-@synthesize index, image, voice, teacher_voice, text, order, time, teacher_time, created, modified, isCover, pageFolder;
+@synthesize index, image, voice, teacher_voice, text, order, time, teacher_time, created, modified, isCover, pageFolder, text_locked, audio_locked, image_locked;
 
 + (Page*)newPage {
     Page *page = [[Page alloc] init];
@@ -195,6 +195,7 @@
     
     self.teacher_time = player.duration;
     self.teacher_voice = voiceName;
+    NSLog(@"Page Teacher Voice: %@",self.teacher_voice);
     self.modified = round([[NSDate date] timeIntervalSince1970]);
 }
 
@@ -320,7 +321,7 @@
         NSArray *voiceList = [fm contentsOfDirectoryAtPath:voicePath error:nil];
         for (NSString *fileName in voiceList) {
             NSString *voiceName = [NSString stringWithFormat:@"/%@/voices/%@",pageFolder,fileName];
-            if (![voiceName isEqualToString:self.voice]) {
+            if (![voiceName isEqualToString:self.voice] && ![voiceName isEqualToString:self.teacher_voice]) {
                 [fm removeItemAtPath:[NSString stringWithFormat:@"%@/%@", voicePath,fileName] error:nil];
             }
         }

@@ -213,7 +213,13 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    [super viewWillAppear:animated];
+    if([[Lib getValueOfKey:@"logged_in"]  isEqual: @"true"]) {
+        UserTalesController* controller;
+        controller = [[UserTalesController alloc] initWithNibName:@"UserTalesController-iPad" bundle:nil];
+        [self.navigationController pushViewController:controller animated:YES];
+    } else {
+        [super viewWillAppear:animated];
+    }
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

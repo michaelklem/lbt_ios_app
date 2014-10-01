@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Tale.h"
 
-@interface Lesson : NSObject
+@interface Lesson : Tale
 @property (nonatomic, assign) double index;
 @property (nonatomic, retain) NSString* title;
 @property (nonatomic, retain) NSString* author;

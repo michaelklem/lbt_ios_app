@@ -42,13 +42,20 @@ NSMutableArray* lessons;
         page.index = [[_page objectForKey:@"index"] doubleValue];
         page.pageFolder = [_page objectForKey:@"pageFolder"];
         page.text = [_page objectForKey:@"text"];
+        page.teacher_text = [_page objectForKey:@"teacher_text"];
         page.image = [_page objectForKey:@"image"];
         page.voice = [_page objectForKey:@"voice"];
-        page.time = [[_page objectForKey:@"time"] intValue];
+        page.teacher_voice = [_page objectForKey:@"teacher_voice"];
+        page.time = [[_page objectForKey:@"teacher_time"] intValue];
+        page.teacher_time = [[_page objectForKey:@"time"] intValue];
         page.created = [[_page objectForKey:@"created"] doubleValue];
         page.modified = [[_page objectForKey:@"modified"] doubleValue];
         page.order = [[_page objectForKey:@"order"] intValue];
         page.isCover = [[_page objectForKey:@"isCover"] boolValue];
+        page.isCover = [[_page objectForKey:@"isCover"] boolValue];
+        page.text_locked = [[_page objectForKey:@"text_locked"] boolValue];
+        page.image_locked = [[_page objectForKey:@"image_locked"] boolValue];
+        page.audio_locked = [[_page objectForKey:@"audio_locked"] boolValue];
         [lesson.pages addObject:page];
     }
     return lesson;
@@ -154,10 +161,16 @@ NSMutableArray* lessons;
                            page.image,@"image",
                            page.voice,@"voice",
                            page.text,@"text",
+                           page.teacher_voice,@"teacher_voice",
+                           page.teacher_text,@"teacher_text",
                            page.pageFolder,@"pageFolder",
+                           page.text_locked,@"text_locked",
+                           page.image_locked,@"image_locked",
+                           page.audio_locked,@"audio_locked",
                            [NSNumber numberWithDouble:page.created],@"created",
                            [NSNumber numberWithDouble:page.modified],@"modified",
                            [NSNumber numberWithInt:page.time],@"time",
+                           [NSNumber numberWithInt:page.teacher_time],@"teacher_time",
                            [NSNumber numberWithInt:page.order],@"order",
                            [NSNumber numberWithBool:page.isCover],@"isCover",
                           nil]];

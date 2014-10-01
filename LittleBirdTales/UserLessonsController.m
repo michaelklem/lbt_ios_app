@@ -86,16 +86,16 @@
 }
 
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    /*if (buttonIndex == 1) {
-        [Tale remove:currentLesson];
+    if (buttonIndex == 1) {
+        [Lesson remove:currentLesson];
         
-        if ([[Tale tales] count]) {
+        if ([[Lesson lessons] count]) {
             currentLessonIndex = 0;
-            [self reloadTaleList];
+            [self reloadLessonList];
             [self selectTale:nil];
         } else {
             noTaleBackground.hidden = NO;
-            for (UIView *view in talesScrollView.subviews) {
+            for (UIView *view in lessonsScrollView.subviews) {
                 [view removeFromSuperview];
             }
             
@@ -108,7 +108,7 @@
             
             [previewImage setImage:[UIImage new]];
         }
-    }*/
+    }
 }
 
 -(IBAction)playTale:(id)sender {

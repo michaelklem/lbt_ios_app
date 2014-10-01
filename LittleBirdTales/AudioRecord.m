@@ -10,7 +10,7 @@
 #import <AudioToolbox/AudioServices.h>
 
 @implementation AudioRecord
-@synthesize delegate, voiceName, pageFolder, pageText;
+@synthesize delegate, voiceName, pageFolder, pageText, playOnly;
 
 +(AudioRecord*)viewFromNib:(id)owner {
     NSString* nibName = @"AudioRecord-iPhone";
@@ -45,6 +45,9 @@
     [playButton setEnabled:NO];
     [stopButton setEnabled:NO];
     [saveButton setEnabled:NO];
+    if(playOnly) {
+        [recordButton setEnabled:NO];
+    }
     
     NSDictionary *recordSettings = [[NSDictionary alloc] initWithObjectsAndKeys:
                                     [NSNumber numberWithFloat: 8000.0], AVSampleRateKey,
@@ -187,7 +190,9 @@
     [stopButton setEnabled:YES];
     [saveButton setEnabled:hasRecorded];
     [cancelButton setEnabled:YES];
-    [recordButton setEnabled:YES];
+    if(!playOnly) {
+        [recordButton setEnabled:YES];
+    }
     
     [progressBar setCurrentValue:0];
     

@@ -24,6 +24,10 @@
 @property (nonatomic, assign) double modified; // time interval since 1970
 @property (nonatomic, assign) NSInteger order;
 @property (nonatomic, assign) BOOL isCover;
+@property (nonatomic, assign) BOOL image_locked;
+@property (nonatomic, assign) BOOL audio_locked;
+@property (nonatomic, assign) BOOL text_locked;
+
 
 + (Page*)newPage;
 + (Page*)newCover;

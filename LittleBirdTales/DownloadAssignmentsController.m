@@ -230,9 +230,15 @@ static int LoadingItemContext = 1;
                                      [page saveTeacherAudio:audioData];
                                  }
                                  
-                                 Page *page = [newLesson.pages objectAtIndex:0];
-                                 [page setTeacher_text:[json valueForKey:@"teacherText"]];
                                  
+                                 
+                                 Page *page = [newLesson.pages objectAtIndex:0];
+                                 [page setTeacher_text:[json valueForKey:@"teacher_text"]];
+                                 page.text_locked = [[json valueForKey:@"title_locked"] boolValue];
+                                 page.image_locked = [[json valueForKey:@"image_locked"]boolValue];
+                                 page.audio_locked = [[json valueForKey:@"audio_locked"] boolValue];
+
+                                 NSLog(@"TITLE_LOCKED: %hhd", page.text_locked);
                                  NSArray* pages = [json valueForKey:@"pages"];
                                  if ([pages count] > 0) {
                                      for (NSInteger i = 0; i < [pages count]; i++) {
@@ -241,6 +247,10 @@ static int LoadingItemContext = 1;
                                          samplePage.pageFolder = [NSString stringWithFormat:@"%@/%0.f",[Lib taleFolderPathFromIndex:newLesson.index],samplePage.index];
                                          samplePage.text = [[item valueForKey:@"text"] isEqual:[NSNull null]]?@"":[item valueForKey:@"text"];
                                          samplePage.teacher_text = [item valueForKey:@"teacher_text"];
+                                         samplePage.text_locked = [[item valueForKey:@"text_locked"] boolValue];
+                                         samplePage.image_locked = [[item valueForKey:@"image_locked"]boolValue];
+                                         samplePage.audio_locked = [[item valueForKey:@"audio_locked"] boolValue];
+                                         NSLog(@"Page image locked: %hhd", page.image_locked);
                                          NSLog(@"Here is the teacher text: %@", samplePage.teacher_text);
                                          NSLog(@"Here is the teacher text: %@", [item valueForKey:@"teacher_text"]);
                                          if([[item valueForKey:@"has_image"] boolValue]) {

@@ -156,11 +156,12 @@
     tView.pageFolder = page.pageFolder;
     tView.voiceName = page.voice;
     tView.pageText = page.text;
+    tView.playOnly = page.audio_locked;
     [tView showInView:self.view];
 }
 -(IBAction)deletePage:(id)sender {
     UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Little Bird Tales"
-                                                        message:@"Delete this page?" 
+                                                        message:@"Delete this lesson?"
                                                        delegate:self 
                                               cancelButtonTitle:@"Cancel" 
                                               otherButtonTitles:@"OK", nil];
@@ -179,7 +180,6 @@
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (alertView.tag == 101) {
         if (buttonIndex == 1) {
-            
             Page* page = [lesson.pages objectAtIndex:currentPage];
             
             //Undo
@@ -256,8 +256,19 @@
     Page *page = [lesson.pages objectAtIndex:currentPage];
     
     [teacherTextView setText:page.teacher_text];
-    NSLog(@"Selected page");
-    NSLog(@"%@", page.teacher_text);
+    [studentTextView setText:page.text];
+    uploadButton.enabled = !page.image_locked;
+    imageButton.enabled = !page.image_locked;
+    editButton.enabled = !page.text_locked;
+
+    if(page.teacher_voice != nil && page.teacher_voice.length > 0) {
+        stopButton.hidden = YES;
+        playButton.hidden = NO;
+    }
+    else {
+        stopButton.hidden = YES;
+        playButton.hidden = YES;
+    }
     [imageView setImage:[page pageImageWithDefaultBackground]];
 }
 #pragma mark - View lifecycle
@@ -291,7 +302,7 @@
         
         lesson.pages = pageArray;
     }
-        
+    
     titleLabel.text = lesson.title;
     
     pagesTableView.editing = YES;
@@ -308,7 +319,7 @@
     
     NSIndexPath *indexPath=[NSIndexPath indexPathForRow:currentPage inSection:0];
     [pagesTableView selectRowAtIndexPath:indexPath animated:YES  scrollPosition:UITableViewScrollPositionTop];
-    
+
     [super viewWillAppear:animated];
     
 }
@@ -595,16 +606,16 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
 }
 
 -(IBAction)preview:(id)sender {
-    /*PlayerController* controller;
+    PlayerController* controller;
     if (IsIdiomPad) {
         controller = [[PlayerController alloc] initWithNibName:@"PlayerController-iPad" bundle:nil];
     } else {
         controller = [[PlayerController alloc] initWithNibName:@"PlayerController-iPhone" bundle:nil];
     }
     
-    controller.lesson = lesson;
+    controller.tale = lesson;
     
-    [self.navigationController pushViewController:controller animated:YES];*/
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 - (void)saveImageFromGallery {
@@ -642,50 +653,38 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
 }
 
 -(IBAction)playTeacherAudio:(id)sender {
-    /*isRecording = NO;
-    
-    [playButton setEnabled:NO];
-    [stopButton setEnabled:YES];
-    [recordButton setEnabled:NO];
-    [saveButton setEnabled:hasRecorded];
-    [cancelButton setEnabled:NO];
-    NSString *fullPathToFile = [[Lib applicationDocumentsDirectory] stringByAppendingPathComponent:voiceName];
+    Page *page = [lesson.pages objectAtIndex:currentPage];
+    playButton.hidden = YES;
+    stopButton.hidden = NO;
+    NSString *fullPathToFile = [[Lib applicationDocumentsDirectory] stringByAppendingPathComponent:page.teacher_voice];
     
     NSURL *soundFileURL = [[NSURL alloc] initFileURLWithPath:fullPathToFile];
-    
-    soundPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:soundFileURL error:nil];
+
+    NSError *error1;
+    NSError *error2;
+    NSData *songFile = [[NSData alloc] initWithContentsOfURL:soundFileURL options:NSDataReadingMappedIfSafe error:&error1 ];
+    soundPlayer = [[AVAudioPlayer alloc] initWithData:songFile error:&error2];
     soundPlayer.meteringEnabled = YES;
     soundPlayer.numberOfLoops =  0;
     soundPlayer.volume = 1.0;
     soundPlayer.delegate = self;
     
-    [soundPlayer play];
+    NSLog(@"%@", error1);
+    NSLog(@"%@", error2);
     
-    levelTimer = [NSTimer scheduledTimerWithTimeInterval: 0.03 target: self selector: @selector(levelTimerCallback:) userInfo: nil repeats: YES];*/
+    [soundPlayer play];
 }
 
 -(IBAction)stopTeacherAudio:(id)sender {
-    /*isRecording = NO;
-    
-    [playButton setEnabled:NO];
-    [stopButton setEnabled:YES];
-    [recordButton setEnabled:NO];
-    [saveButton setEnabled:hasRecorded];
-    [cancelButton setEnabled:NO];
-    NSString *fullPathToFile = [[Lib applicationDocumentsDirectory] stringByAppendingPathComponent:voiceName];
-    
-    NSURL *soundFileURL = [[NSURL alloc] initFileURLWithPath:fullPathToFile];
-    
-    soundPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:soundFileURL error:nil];
-    soundPlayer.meteringEnabled = YES;
-    soundPlayer.numberOfLoops =  0;
-    soundPlayer.volume = 1.0;
-    soundPlayer.delegate = self;
-    
-    [soundPlayer play];
-    
-    levelTimer = [NSTimer scheduledTimerWithTimeInterval: 0.03 target: self selector: @selector(levelTimerCallback:) userInfo: nil repeats: YES];*/
+    playButton.hidden = NO;
+    stopButton.hidden = YES;
+    [soundPlayer stop];
 }
+
+- (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag {
+    [self stopTeacherAudio:nil];
+}
+
 //- (void)saveTaleHistory {
 //    undoButton.enabled = TRUE;
 //    
