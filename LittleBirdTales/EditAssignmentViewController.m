@@ -386,7 +386,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
             [self.popoverController dismissPopoverAnimated:YES];
         }
             
-        [picker dismissModalViewControllerAnimated:YES];
+        [picker dismissViewControllerAnimated:YES completion:nil];
         
         [NSTimer scheduledTimerWithTimeInterval: 0
                                          target: self
@@ -399,7 +399,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
                                        userInfo: info
                                         repeats: NO];
     } else {
-        [picker dismissModalViewControllerAnimated:YES];  
+       [picker dismissViewControllerAnimated:YES completion:nil];
         [NSTimer scheduledTimerWithTimeInterval: 0
                                          target: self
                                        selector: @selector(showLoadingViewOn)

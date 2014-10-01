@@ -82,7 +82,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-        
+
     if (!IsIdiomPad) {
     //ScrollView
         [scrollView setZoomScale:0.5];
@@ -100,13 +100,14 @@
     paintView = [[PaintView alloc] initWithFrame:layerManger.bounds];
     paintView.backgroundColor = [UIColor whiteColor];
     [layerManger addSubview:paintView];
-    
+    NSLog(@"Draw did load.2");
     // insert BG image 
     UIImage* image = [self.page pageImage];
     PaintPath* path = [[PaintPath alloc] init];
     path.type = kFigureImage;
     path.image = image;
     [paintView addPath:path];
+    
     
     touchView = [[TouchView alloc] initWithFrame:layerManger.bounds];
     touchView.backgroundColor = [UIColor clearColor];
@@ -126,7 +127,7 @@
     } else {
         fillColorView.textColor = [UIColor whiteColor];
     }
-
+    NSLog(@"Draw did load.3");
     touchView.paintPath.brushWide = brushSlider.value = [ColorHelper shared].lineWide;
     touchView.paintPath.shadowWide = shadownSlider.value = [ColorHelper shared].shadow;
     touchView.paintPath.font = fontView.font = [UIFont fontWithName:[ColorHelper shared].fontName
@@ -178,6 +179,7 @@
             break;
         }
     }
+    
     [self paint:btn];
     touchView.paintPath.type = kFigureDot;
     [self updateColors];

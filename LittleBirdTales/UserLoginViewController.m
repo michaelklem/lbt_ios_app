@@ -83,13 +83,13 @@
             [Lib setValue:userId forKey:@"user_id"];
             bucketPath = [obj objectForKey:@"bucket_path"];
             [Lib setValue:bucketPath forKey:@"bucket_path"];
-            isTeacher = [obj objectForKey:@"is_teacher"];
-            [Lib setValue:isTeacher forKey:@"is_teacher"];
-            isStudent = [obj objectForKey:@"is_student"];
-            [Lib setValue:isStudent forKey:@"is_student"];
+            //isTeacher = [obj objectForKey:@"is_teacher"];
+            //[Lib setValue:isTeacher forKey:@"is_teacher"];
+            //isStudent = [obj objectForKey:@"is_student"];
+            //[Lib setValue:isStudent forKey:@"is_student"];
             encryptedUserId = [obj objectForKey:@"encrypted_id"];
             [Lib setValue:encryptedUserId forKey:@"encrypted_user_id"];
-            [Lib setValue:@"true" forKey:@"logged_in"];
+            //[Lib setValue:@"true" forKey:@"logged_in"];
             sucessed = TRUE;
         }
         else if ([obj isKindOfClass:[NSDictionary class]] && [obj objectForKey:@"error"]) {
@@ -209,17 +209,18 @@
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    if([[Lib getValueOfKey:@"logged_in"]  isEqual: @"true"]) {
+    /**if([[Lib getValueOfKey:@"logged_in"]  isEqual: @"true"]) {
         UserTalesController* controller;
         controller = [[UserTalesController alloc] initWithNibName:@"UserTalesController-iPad" bundle:nil];
         [self.navigationController pushViewController:controller animated:YES];
-    } else {
+    } else {**/
         [super viewWillAppear:animated];
-    }
+//    }
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

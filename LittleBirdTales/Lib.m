@@ -22,7 +22,8 @@
 static NSMutableDictionary* settings;
 
 +(NSString*)getValueOfKey:(NSString*)key {	
-	if (!settings) {
+    NSLog(@"%@", settings);
+    if (!settings) {
 		settings = [[NSUserDefaults standardUserDefaults] objectForKey:@"LBTales.settings"];
 		if (!settings) {
 			settings = [[NSMutableDictionary alloc] init];
@@ -35,12 +36,14 @@ static NSMutableDictionary* settings;
 	return nil;
 }
 +(void)setValue:(NSString*)value forKey:(NSString*)key {
+    
 	if (!settings) {
 		settings = [[NSUserDefaults standardUserDefaults] objectForKey:@"LBTales.settings"];
 		if (!settings) {
 			settings = [[NSMutableDictionary alloc] init];
 		}
 	}
+    NSLog(@"%@", settings);
     if (value) {
         [settings setObject:value forKey:key];        
     } else {
@@ -49,6 +52,7 @@ static NSMutableDictionary* settings;
     
 	[[NSUserDefaults standardUserDefaults] setObject:settings forKey:@"LBTales.settings"];
 	[[NSUserDefaults standardUserDefaults] synchronize];
+    
 }
 
 

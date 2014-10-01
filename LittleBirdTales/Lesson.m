@@ -28,7 +28,7 @@ NSMutableArray* lessons;
     return dir;
 }
 +(Lesson*)lessonFromDictionary:(NSDictionary*)dic {
-    //NSLog(@"%@",dic);
+    NSLog(@"%@",dic);
     
     Lesson* lesson = [Lesson newLesson];
     lesson.index = [[dic objectForKey:@"index"] doubleValue];
@@ -145,6 +145,7 @@ NSMutableArray* lessons;
 }
 
 -(NSMutableDictionary*)lessonToDictionay {
+    NSLog(@"Lesson to Dictionary");
     NSMutableDictionary* dic = [NSMutableDictionary dictionary];
     [dic setObject:[NSNumber numberWithDouble:self.index] forKey:@"index"];
     [dic setObject:[NSNumber numberWithDouble:self.created] forKey:@"created"];
@@ -156,17 +157,20 @@ NSMutableArray* lessons;
     [dic setObject:_pages forKey:@"pages"];
     
     for (Page* page in self.pages) {
+        NSLog(@"Image Locked %hhd", page.image_locked);
+        NSLog(@"Text Locked %@", [NSNumber numberWithBool:page.text_locked]);
+        NSLog(@"Audio Locked %hhd", page.audio_locked);
         [_pages addObject:[NSDictionary dictionaryWithObjectsAndKeys:
                            [NSNumber numberWithDouble:page.index],@"index",
                            page.image,@"image",
                            page.voice,@"voice",
                            page.text,@"text",
-                           page.teacher_voice,@"teacher_voice",
-                           page.teacher_text,@"teacher_text",
-                           page.pageFolder,@"pageFolder",
-                           page.text_locked,@"text_locked",
-                           page.image_locked,@"image_locked",
-                           page.audio_locked,@"audio_locked",
+                           [NSNumber numberWithBool:page.text_locked],@"text_locked",
+                           [NSNumber numberWithBool:page.image_locked],@"image_locked",
+                           [NSNumber numberWithBool:page.audio_locked],@"audio_locked",
+                           page.teacher_voice == nil?@"":page.teacher_voice ,@"teacher_voice",
+                           page.teacher_text == nil?@"":page.teacher_text,@"teacher_text",
+                           page.pageFolder == nil?@"":page.pageFolder,@"pageFolder",
                            [NSNumber numberWithDouble:page.created],@"created",
                            [NSNumber numberWithDouble:page.modified],@"modified",
                            [NSNumber numberWithInt:page.time],@"time",
@@ -175,6 +179,7 @@ NSMutableArray* lessons;
                            [NSNumber numberWithBool:page.isCover],@"isCover",
                           nil]];
     }
+    NSLog(@"Lesson as dictionary: %@",dic);
     return dic;
 }   
 
