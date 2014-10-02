@@ -30,7 +30,7 @@
 }
 
  - (void)reloadTaleList;
- - (void)selectTale;
+ - (void)selectTale:(id)sender;
  - (void)back;
  - (void)downloadTale:(id)sender;
 

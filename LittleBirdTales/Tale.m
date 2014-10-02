@@ -172,9 +172,7 @@ NSMutableArray* tales;
     NSString *storyId = @"";
     
     NSString * uid = [NSString stringWithFormat:@"%.0f",[[NSDate date] timeIntervalSince1970]];
-    
-    BOOL success = NO;
-    
+        
     NSMutableURLRequest* theRequest = [[NSMutableURLRequest alloc] initWithURL: 
                                        [NSURL URLWithString:[NSString stringWithFormat: @"%@/services/add_tale_1_3_0.php",servicesURLPrefix]]];
 	[theRequest setHTTPMethod:@"POST"];
@@ -255,7 +253,7 @@ NSMutableArray* tales;
     }
    
     if (![storyId isEqualToString:@""] && storyId != NULL ) {
-                
+        
         NSInteger counter = 0;
         for (Page* page in pages) {
             [page uploadPageWithUser:userId userPath:bucketPath taleId:[NSString stringWithFormat:@"%.0f",index] storyId:storyId pageNumber:[NSString stringWithFormat:@"%d",counter] uid:uid];
