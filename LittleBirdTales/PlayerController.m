@@ -197,6 +197,7 @@
 
 
 - (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
     [myTicker invalidate];
     [[Sound sharedInstance] stopAll];
 }

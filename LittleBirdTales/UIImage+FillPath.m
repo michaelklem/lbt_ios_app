@@ -9,7 +9,7 @@
 #import "UIImage+FillPath.h"
 
 @implementation UIImage (FillPath)
-- (Pixel)pixelAtPoint:(int)x:(int)y:(int)bytesPerRow:(int)bytesPerPixel:(unsigned char*)data {
+- (Pixel)pixelAtPoint : (int)x : (int)y : (int)bytesPerRow : (int)bytesPerPixel : (unsigned char*)data {
     Pixel pixel;
     unsigned byteIndex = bytesPerRow*y + x*bytesPerPixel;
     //NSLog(@"%lu",sizeof(data));
@@ -22,7 +22,7 @@
     return pixel;
 }
 
-- (BOOL)isOutOfBounds:(int)x:(int)y {
+- (BOOL)isOutOfBounds : (int)x : (int)y {
     BOOL outOfBounds = YES;
     if (x < self.size.width && x >=0 && 
         y < self.size.height && y >=0) {
@@ -31,7 +31,7 @@
     return outOfBounds;
 }
 
-- (BOOL)reachedStopColor:(int)x:(int)y:(Pixel)fromColor:(int)bytesPerRow:(int)bytesPerPixel:(unsigned char*)data {
+- (BOOL)reachedStopColor : (int)x : (int)y : (Pixel)fromColor : (int)bytesPerRow : (int)bytesPerPixel : (unsigned char*)data {
     Pixel pixel = [self pixelAtPoint:x :y :bytesPerRow :bytesPerPixel :data];
     if (abs(pixel.red - fromColor.red) > PER_THREADHOLD ||
         abs(pixel.green - fromColor.green) > PER_THREADHOLD ||
@@ -42,7 +42,7 @@
     return NO;
 }
 
-- (BOOL)reachedFilledColor:(int)x:(int)y:(Pixel)fillColor:(int)bytesPerRow:(int)bytesPerPixel:(unsigned char*)toData {
+- (BOOL)reachedFilledColor : (int)x : (int)y : (Pixel)fillColor : (int)bytesPerRow : (int)bytesPerPixel : (unsigned char*)toData {
     Pixel pixel = [self pixelAtPoint:x :y :bytesPerRow :bytesPerPixel :toData];
     if (pixel.red > PER_THREADHOLD || 
         pixel.green > PER_THREADHOLD || 
@@ -53,7 +53,7 @@
     return NO;
 }
 
-- (void)fill_right:(int)x:(int)y:(Pixel)fromColor:(Pixel)fillColor:(unsigned char*)data:(int)bytesPerRow:(int)bytesPerPixel:(unsigned char*)toData { 
+- (void)fill_right : (int)x : (int)y : (Pixel)fromColor : (Pixel)fillColor : (unsigned char*)data : (int)bytesPerRow : (int)bytesPerPixel : (unsigned char*)toData {
     if (x < 0 || y < 0) return;
     if([self isOutOfBounds:x:y] || 
        [self reachedStopColor:x:y:fromColor:bytesPerRow:bytesPerPixel:data] ||
@@ -79,7 +79,7 @@
 }
 
 
-- (void)fill_left:(int)x:(int)y:(Pixel)fromColor:(Pixel)fillColor:(unsigned char*)data:(int)bytesPerRow:(int)bytesPerPixel:(unsigned char*)toData { 
+- (void)fill_left : (int)x : (int)y : (Pixel)fromColor : (Pixel)fillColor : (unsigned char*)data : (int)bytesPerRow : (int)bytesPerPixel : (unsigned char*)toData {
     if (x < 0 || y < 0) return;
     if([self isOutOfBounds:x:y] || 
        [self reachedStopColor:x:y:fromColor:bytesPerRow:bytesPerPixel:data] ||
@@ -108,7 +108,7 @@
     }
 }
 
-- (void)flood_fill:(int)x:(int)y:(Pixel)fromColor:(Pixel)fillColor:(unsigned char*)data:(int)bytesPerRow:(int)bytesPerPixel:(unsigned char*)toData {
+- (void)flood_fill : (int)x : (int)y : (Pixel)fromColor : (Pixel)fillColor : (unsigned char*)data : (int)bytesPerRow : (int)bytesPerPixel : (unsigned char*)toData {
     if (x < 0 || y < 0) return;
     if([self isOutOfBounds:x:y] || 
        [self reachedStopColor:x:y:fromColor:bytesPerRow:bytesPerPixel:data] ||
@@ -136,7 +136,7 @@
     [self flood_fill:x:y-1:fromColor:fillColor:data:bytesPerRow:bytesPerPixel:toData];
 }
 
-- (UIImage*)floodFill:(int)x:(int)y:(Pixel)fillColor { 
+- (UIImage*)floodFill : (int)x : (int)y : (Pixel)fillColor {
     UIImage* retVal = nil;
     CGImageRef imageRef = self.CGImage;
     NSUInteger width = CGImageGetWidth(imageRef);
@@ -191,8 +191,7 @@
 }
 
 
-- (UIImage*)floodFill:(CGPoint)point:(Pixel)fillColor {
-    UIImage* retVal = nil;
+- (UIImage*)floodFill:(CGPoint)point :(Pixel)fillColor {
     CGImageRef imageRef = self.CGImage;
     NSUInteger width = CGImageGetWidth(imageRef);
     NSUInteger height = CGImageGetHeight(imageRef);
@@ -224,7 +223,7 @@
                                 kCGImageAlphaPremultipliedLast ); 
     
     imageRef = CGBitmapContextCreateImage (context);
-    retVal = [UIImage imageWithCGImage:imageRef];  
+    UIImage* retVal = [UIImage imageWithCGImage:imageRef];
     
     CGContextRelease(context);  
     free(rawData);

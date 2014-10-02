@@ -310,6 +310,7 @@
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
     [tale deleteOrphanFiles];
     [Tale updateTale:tale at:taleNumber];
 }
@@ -405,15 +406,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
 		controller.delegate = self;
 		controller.sourceType = UIImagePickerControllerSourceTypeCamera;
 		
-		// Hide camera controls (iOS 5+) until view is shown to prevent console log
-		// "Snapshotting a view that has not been rendered results in an empty snapshot...
-		if ( [self respondsToSelector:@selector(presentViewController:animated:completion:)] ) {
-            [self presentViewController:controller animated:YES completion:nil];
-		}
-        else
-        {
-            [self presentModalViewController:controller animated:YES];
-        }
+        [self presentViewController:controller animated:YES completion:nil];
     } else if (buttonIndex == 0) { // Library
         
         UIImagePickerController* controller = [[UIImagePickerController alloc] init];
@@ -434,14 +427,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
                                                   animated:YES];            
             
         } else {
-            if ([self respondsToSelector:@selector(presentViewController:animated:completion:)])
-            {
-                [self presentViewController:controller animated:YES completion:NULL];
-            }
-            else
-            {
-                [self presentModalViewController:controller animated:YES];
-            }
+            [self presentViewController:controller animated:YES completion:NULL];
         }
     } else if (buttonIndex == 1) { // Gallery
         if (IsIdiomPad) {

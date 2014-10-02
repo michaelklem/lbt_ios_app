@@ -169,6 +169,7 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    
     if ([[Tale tales] count] > 0) {
         noTaleBackground.hidden = YES;
         [self selectTale:nil];
@@ -177,6 +178,7 @@
     }
     
     [self reloadTaleList];
+    [self viewWillAppear:animated];
     
 }
 

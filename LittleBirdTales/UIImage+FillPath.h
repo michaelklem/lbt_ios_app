@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 @interface UIImage (FillPath)
-- (UIImage*)floodFill:(CGPoint)point:(Pixel)fillColor;
-- (UIImage*)floodFill:(int)x:(int)y:(Pixel)fillColor;
-- (void)fill_left:(int)x:(int)y:(Pixel)fromColor:(Pixel)fillColor:(unsigned char*)data:(int)bytesPerRow:(int)bytesPerPixel:(unsigned char*)toData;
-- (void)fill_right:(int)x:(int)y:(Pixel)fromColor:(Pixel)fillColor:(unsigned char*)data:(int)bytesPerRow:(int)bytesPerPixel:(unsigned char*)toData;
+- (UIImage*)floodFill : (CGPoint)point : (Pixel)fillColor;
+- (UIImage*)floodFill : (int)x : (int)y : (Pixel)fillColor;
+- (void)fill_left : (int)x : (int)y : (Pixel)fromColor : (Pixel)fillColor : (unsigned char*)data : (int)bytesPerRow : (int)bytesPerPixel : (unsigned char*)toData;
+- (void)fill_right: (int)x :(int)y :(Pixel)fromColor :(Pixel)fillColor : (unsigned char*)data : (int)bytesPerRow : (int)bytesPerPixel : (unsigned char*)toData;
 @end

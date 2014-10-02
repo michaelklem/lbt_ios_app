@@ -37,5 +37,5 @@
 
 
 - (NSString*)uploadWithUserId: (NSString*)userId andBucketPath: (NSString*)bucketPath ;
-- (BOOL)deleteOrphanFiles;
+- (void)deleteOrphanFiles;
 @end

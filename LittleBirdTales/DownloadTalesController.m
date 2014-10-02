@@ -19,7 +19,6 @@
 
 @implementation DownloadTalesController
 
-static int LoadingItemContext = 1;
 - (void)reloadTaleList {
     for (UIView *view in talesScrollView.subviews) {
         [view removeFromSuperview];
@@ -301,11 +300,12 @@ static int LoadingItemContext = 1;
 -(BOOL)prefersStatusBarHidden { return YES; }
 
 - (void)viewDidLoad {
+    [super viewDidLoad];
+
     noTaleBackground.hidden = YES;
     downloadingView.hidden = NO;
     downloadingLabel.text = @"Getting tales list...";
     [activityIndicator startAnimating];
-    NSString* strData;
     NSString* url = [NSString stringWithFormat:@"%@/services/tales/",servicesURLPrefix];
     NSLog(@"%@", [Lib getValueOfKey:@"encrypted_user_id"]);
     [HttpHelper sendAsyncPostRequestToURL:url

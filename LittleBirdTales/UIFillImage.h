@@ -18,7 +18,7 @@
     Pixel fromColor;
     Pixel fillColor;
 }
-- (UIImage*)fillFlood:(int)x:(int)y:(Pixel)_fillColor:(UIImage*)image;
-- (void)fill_left:(int)x:(int)y;
-- (void)fill_right:(int)x:(int)y;
+- (UIImage*)fillFlood :(int)x :(int)y : (Pixel)_fillColor :(UIImage*)image;
+- (void)fill_left : (int)x : (int)y;
+- (void)fill_right: (int)x : (int)y;
 @end

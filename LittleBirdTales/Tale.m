@@ -179,7 +179,7 @@ NSMutableArray* tales;
                                        [NSURL URLWithString:[NSString stringWithFormat: @"%@/services/add_tale_1_3_0.php",servicesURLPrefix]]];
 	[theRequest setHTTPMethod:@"POST"];
 	
-	NSString *stringBoundary = [NSString stringWithString:@"0xKhTmLbOuNdArY"];
+	NSString *stringBoundary = @"0xKhTmLbOuNdArY";
 	NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@",stringBoundary];
 	[theRequest addValue:contentType forHTTPHeaderField: @"Content-Type"];
 	
@@ -255,9 +255,7 @@ NSMutableArray* tales;
     }
    
     if (![storyId isEqualToString:@""] && storyId != NULL ) {
-        
-        success = YES;
-        
+                
         NSInteger counter = 0;
         for (Page* page in pages) {
             [page uploadPageWithUser:userId userPath:bucketPath taleId:[NSString stringWithFormat:@"%.0f",index] storyId:storyId pageNumber:[NSString stringWithFormat:@"%d",counter] uid:uid];
@@ -269,13 +267,11 @@ NSMutableArray* tales;
     return storyId;
 }
 
-- (BOOL)deleteOrphanFiles {
-    BOOL success;
+- (void)deleteOrphanFiles {
     
     for (Page *page in self.pages) {
         [page deletePageOrphanFile];
     }
     
-    return success;
 }
 @end

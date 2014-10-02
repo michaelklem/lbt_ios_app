@@ -9,7 +9,7 @@
 #import "UIFillImage.h"
 #import "FloodFill.h"
 @implementation UIFillImage
-- (Pixel)pixelAtPoint:(int)x:(int)y:(unsigned char*)data {
+- (Pixel)pixelAtPoint : (int)x : (int)y : (unsigned char*)data {
     Pixel pixel;
     unsigned byteIndex = bytesPerRow*y + x*bytesPerPixel;
     pixel.red = data[byteIndex];
@@ -19,7 +19,7 @@
     return pixel;
 }
 
-- (void)fill_right:(int)x:(int)y { 
+- (void)fill_right : (int)x : (int)y {
     if (x < 0 || y < 0 || x >= width || y >= height)  return;
     unsigned int byteIndex = bytesPerRow*y + x*bytesPerPixel;
     if (abs(rawData[byteIndex] - fromColor.red) > PER_THREADHOLD ||
@@ -65,7 +65,7 @@
 }
 
 
-- (void)fill_left:(int)x:(int)y { 
+- (void)fill_left : (int)x : (int)y {
     if (x < 0 || y < 0 || x >= width || y >= height)  return;
     unsigned int byteIndex = bytesPerRow*y + x*bytesPerPixel;
     if (abs(rawData[byteIndex] - fromColor.red) > PER_THREADHOLD ||
@@ -112,7 +112,7 @@
     }
 }
 
-- (void)flood_fill:(int)x:(int)y {
+- (void)flood_fill : (int)x : (int)y {
     if (x < 0 || y < 0 || x >= width || y >= height)  return;
     unsigned int byteIndex = bytesPerRow*y + x*bytesPerPixel;
     if (abs(rawData[byteIndex] - fromColor.red) > PER_THREADHOLD ||
@@ -140,7 +140,7 @@
     [self flood_fill:x:y-1];
 }
 
-- (UIImage*)fillFlood:(int)x:(int)y:(Pixel)_fillColor:(UIImage*)image { 
+- (UIImage*)fillFlood : (int)x : (int)y : (Pixel)_fillColor : (UIImage*)image {
     UIImage* retVal = nil;
     CGImageRef imageRef = image.CGImage;
     width = CGImageGetWidth(imageRef);

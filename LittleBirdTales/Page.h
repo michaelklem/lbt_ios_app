@@ -31,7 +31,7 @@
 - (void)deleteImage;
 - (void)deleteVoice;
 
-- (BOOL)deletePageOrphanFile;
+- (void)deletePageOrphanFile;
 
 - (UIImage*)pageImage;
 - (UIImage*)pageThumbnail;
