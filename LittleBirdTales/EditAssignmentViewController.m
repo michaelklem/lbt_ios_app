@@ -375,6 +375,7 @@
 
 -(void)swipeleft:(UISwipeGestureRecognizer*)gestureRecognizer
 {
+    
     if([lesson.pages count] > currentPage+1) {
         [self setActivePage:currentPage+1];
     }

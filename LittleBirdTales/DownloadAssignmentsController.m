@@ -233,20 +233,21 @@ static int LoadingItemContext = 1;
                                  
                                  
                                  Page *page = [newLesson.pages objectAtIndex:0];
+
                                  [page setTeacher_text:[json valueForKey:@"teacher_text"]];
                                  page.text_locked = [[json valueForKey:@"title_locked"] boolValue];
                                  page.image_locked = [[json valueForKey:@"image_locked"]boolValue];
                                  page.audio_locked = [[json valueForKey:@"audio_locked"] boolValue];
 
-                                 NSLog(@"TITLE_LOCKED: %hhd", page.text_locked);
                                  NSArray* pages = [json valueForKey:@"pages"];
                                  if ([pages count] > 0) {
                                      for (NSInteger i = 0; i < [pages count]; i++) {
                                          NSDictionary *item = [pages objectAtIndex:i];
                                          Page *samplePage = [Page newPage];
                                          samplePage.pageFolder = [NSString stringWithFormat:@"%@/%0.f",[Lib taleFolderPathFromIndex:newLesson.index],samplePage.index];
-                                         samplePage.text = [[item valueForKey:@"text"] isEqual:[NSNull null]]?@"":[item valueForKey:@"text"];
-                                         samplePage.teacher_text = [item valueForKey:@"teacher_text"];
+
+                                         samplePage.text = [item valueForKey:@"text"];
+                                         samplePage.teacher_text = [item valueForKey:@"teacher_text"]==NULL?@"":[item valueForKey:@"teacher_text"] ;
                                          samplePage.text_locked = [[item valueForKey:@"text_locked"] boolValue];
                                          samplePage.image_locked = [[item valueForKey:@"image_locked"]boolValue];
                                          samplePage.audio_locked = [[item valueForKey:@"audio_locked"] boolValue];
