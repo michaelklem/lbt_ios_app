@@ -19,36 +19,39 @@
 @end
 @implementation Lib
 
-static NSMutableDictionary* settings;
-
-+(NSString*)getValueOfKey:(NSString*)key {	
-	if (!settings) {
-		settings = [[NSUserDefaults standardUserDefaults] objectForKey:@"LBTales.settings"];
-		if (!settings) {
-			settings = [[NSMutableDictionary alloc] init];
-		}
-	}
-	if ([settings objectForKey:key]) {
-		return [settings objectForKey:key];
-	}
-	
-	return nil;
-}
-+(void)setValue:(NSString*)value forKey:(NSString*)key {
-	if (!settings) {
-		settings = [[NSUserDefaults standardUserDefaults] objectForKey:@"LBTales.settings"];
-		if (!settings) {
-			settings = [[NSMutableDictionary alloc] init];
-		}
-	}
-    if (value) {
-        [settings setObject:value forKey:key];        
-    } else {
-        [settings removeObjectForKey:key];
-    }
++(NSString*)getValueOfKey:(NSString*)key {
     
-	[[NSUserDefaults standardUserDefaults] setObject:settings forKey:@"LBTales.settings"];
-	[[NSUserDefaults standardUserDefaults] synchronize];
+    NSString *result = nil;
+    NSMutableDictionary* settings =[[NSUserDefaults standardUserDefaults] objectForKey:@"LBTales.settings"];
+
+    result = [settings objectForKey:key];
+    return result;
+}
+
++(void)setValue:(NSString*)value forKey:(NSString*)key {
+    
+    NSMutableDictionary* settings =[[[NSUserDefaults standardUserDefaults] objectForKey:@"LBTales.settings"] mutableCopy];
+
+    if (settings) {
+        @try {
+            if (value) {
+                [settings setObject:value forKey:key];
+            } else {
+                [settings removeObjectForKey:key];
+            }
+            [[NSUserDefaults standardUserDefaults] setObject:settings forKey:@"LBTales.settings"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+        }
+        @catch (NSException *exception) {
+            NSLog(@"%@", exception.reason);
+        }
+
+    } else if (value) {
+        NSMutableDictionary *newSettings = [[NSMutableDictionary alloc] init];
+        [newSettings setObject:value forKey:key];
+        [[NSUserDefaults standardUserDefaults] setObject:newSettings forKey:@"LBTales.settings"];
+    }
+        
 }
 
 
