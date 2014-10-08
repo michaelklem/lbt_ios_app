@@ -107,7 +107,7 @@
 {
     // Return the number of rows in the section.
     if ([imageList count]) {
-        int count = (([imageList count]+3) / 4);
+        int count = (int)(([imageList count]+3) / 4);
         return count;
     }
     

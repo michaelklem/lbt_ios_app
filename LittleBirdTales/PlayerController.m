@@ -41,7 +41,7 @@
     timeArray = [[NSMutableArray alloc] init];
     
     NSInteger totalSecond = 0;
-    [timeArray addObject:[NSNumber numberWithInt:totalSecond]];
+    [timeArray addObject:[NSNumber numberWithInt:(int)totalSecond]];
     
     // Sample Data
 //    [timeArray addObject:[NSNumber numberWithInt:5]];
@@ -56,7 +56,7 @@
         else {
             totalSecond = totalSecond + page.time;
         }
-        [timeArray addObject:[NSNumber numberWithInt:totalSecond]];
+        [timeArray addObject:[NSNumber numberWithInt:(int)totalSecond]];
     }
     
     currentTime = 0;
@@ -91,7 +91,7 @@
     
     if (currentTime <= [[timeArray lastObject] intValue]) {
         int seconds = ([[timeArray lastObject] intValue] - currentTime) % 60;
-        int minutes = ( [[timeArray lastObject] intValue] - currentTime - seconds) / 60;
+        int minutes = (int)( [[timeArray lastObject] intValue] - currentTime - seconds) / 60;
         
         [timerLabel setText:[NSString stringWithFormat:@"%.2d:%.2d", minutes, seconds]];
         
@@ -132,7 +132,7 @@
     
     if (currentTime <= [[timeArray lastObject] intValue]) {
         int seconds = ([[timeArray lastObject] intValue] - currentTime) % 60;
-        int minutes = ( [[timeArray lastObject] intValue] - currentTime - seconds) / 60;
+        int minutes = (int)( [[timeArray lastObject] intValue] - currentTime - seconds) / 60;
         
         [timerLabel setText:[NSString stringWithFormat:@"%.2d:%.2d", minutes, seconds]];
         
@@ -282,7 +282,7 @@
     
     currentTime = [timerSlider value];
     int seconds = ([[timeArray lastObject] intValue] - currentTime) % 60;
-    int minutes = ( [[timeArray lastObject] intValue] - currentTime - seconds) / 60;
+    int minutes = (int)( [[timeArray lastObject] intValue] - currentTime - seconds) / 60;
     
     [timerLabel setText:[NSString stringWithFormat:@"%.2d:%.2d", minutes, seconds]];
     currentTime = currentTime+1;

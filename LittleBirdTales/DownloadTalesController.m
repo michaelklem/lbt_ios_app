@@ -213,7 +213,7 @@
                                      NSLog(@"has_audio");
                                      NSString *imageFilePath = [path stringByAppendingPathComponent:@"audio.mp3"];
                                      NSData *audioData = [NSData dataWithContentsOfFile:imageFilePath options:0 error:nil];
-                                     NSLog(@"has_audio:%d", audioData.length);
+                                     NSLog(@"has_audio:%lu", (unsigned long)audioData.length);
                                      Page *page = [newTale.pages objectAtIndex:0];
                                      [page saveAudio:audioData];
                                  }
@@ -228,7 +228,7 @@
                                          samplePage.text = [[item valueForKey:@"text"] isEqual:[NSNull null]]?@"":[item valueForKey:@"text"];
                                          
                                          if([[item valueForKey:@"has_image"] boolValue]) {
-                                             NSString *imageFilePath = [path stringByAppendingPathComponent:[NSString stringWithFormat:@"%d/page.jpg", i]];
+                                             NSString *imageFilePath = [path stringByAppendingPathComponent:[NSString stringWithFormat:@"%ld/page.jpg", (long)i]];
                                              NSData *imageData = [NSData dataWithContentsOfFile:imageFilePath options:0 error:nil];
                                              UIImage *img = [UIImage imageWithData:imageData];
                                              
@@ -237,9 +237,9 @@
                                          
                                          if([[item valueForKey:@"has_audio"] boolValue]) {
                                              NSLog(@"has_audio");
-                                             NSString *audioFilePath = [path stringByAppendingPathComponent:[NSString stringWithFormat:@"%d/page.mp3", i]];
+                                             NSString *audioFilePath = [path stringByAppendingPathComponent:[NSString stringWithFormat:@"%ld/page.mp3", (long)i]];
                                              NSData *audioData = [NSData dataWithContentsOfFile:audioFilePath options:0 error:nil];
-                                             NSLog(@"has_audio:%d", audioData.length);
+                                             NSLog(@"has_audio:%lu", (unsigned long)audioData.length);
                                              [samplePage saveAudio:audioData];
                                          }
                                          

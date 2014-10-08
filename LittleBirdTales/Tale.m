@@ -256,7 +256,7 @@ NSMutableArray* tales;
         
         NSInteger counter = 0;
         for (Page* page in pages) {
-            [page uploadPageWithUser:userId userPath:bucketPath taleId:[NSString stringWithFormat:@"%.0f",index] storyId:storyId pageNumber:[NSString stringWithFormat:@"%d",counter] uid:uid];
+            [page uploadPageWithUser:userId userPath:bucketPath taleId:[NSString stringWithFormat:@"%.0f",index] storyId:storyId pageNumber:[NSString stringWithFormat:@"%ld",(long)counter] uid:uid];
             
             counter = counter + 1;
         }

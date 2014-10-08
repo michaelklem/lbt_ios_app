@@ -61,7 +61,7 @@
     if (text != currentText) {
         [[undoManager prepareWithInvocationTarget:self] inputedText:currentText forPage:currentPage];
     
-        [undoManager setActionName:[NSString stringWithFormat:@"Change Text of Page #%d",currentPage]];
+        [undoManager setActionName:[NSString stringWithFormat:@"Change Text of Page #%ld",(long)currentPage]];
         
         
         [page setText:text];
@@ -114,7 +114,7 @@
     double currentDuration = page.time;
     if (voiceName != currentVoiceName) {
         [[undoManager prepareWithInvocationTarget:self] setVoice:currentVoiceName andDuration:currentDuration forPage:currentPage];
-        [undoManager setActionName:[NSString stringWithFormat:@"Change Voice of Page #%d",currentPage]];
+        [undoManager setActionName:[NSString stringWithFormat:@"Change Voice of Page #%ld",(long)currentPage]];
 
         
         [page setVoice:voiceName];
@@ -184,7 +184,7 @@
             
             //Undo
             [[undoManager prepareWithInvocationTarget:self] addPage:page atIndex:currentPage];
-            [undoManager setActionName:[NSString stringWithFormat:@"Delete Page #%d",currentPage]];
+            [undoManager setActionName:[NSString stringWithFormat:@"Delete Page #%ld",(long)currentPage]];
             
             [tale.pages removeObjectAtIndex:currentPage];
             [tale setModified:round([[NSDate date] timeIntervalSince1970])];
@@ -354,7 +354,7 @@
     NSString *currentImageName = page.image;
     
     [[undoManager prepareWithInvocationTarget:self] setImageName:currentImageName forPage:currentPage];
-    [undoManager setActionName:[NSString stringWithFormat:@"Change Image of Page #%d",currentPage]];
+    [undoManager setActionName:[NSString stringWithFormat:@"Change Image of Page #%ld",(long)currentPage]];
     
     [page saveImage:image];
     [page setModified:round([[NSDate date] timeIntervalSince1970])];
@@ -496,7 +496,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
     
     Page* page = [tale.pages objectAtIndex:indexPath.row];
     
-    cell.pageNumber.text = [NSString stringWithFormat:@"%d", indexPath.row];
+    cell.pageNumber.text = [NSString stringWithFormat:@"%ld", (long)indexPath.row];
     if ([page.text isEqualToString:@""] || page.text == NULL) {
         [cell.textIndicator setImage:[UIImage imageNamed:@"ipad_icon_text_false"]];
     }
@@ -625,7 +625,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
     NSString *currentImageName = page.image;
     
     [[undoManager prepareWithInvocationTarget:self] setImageName:currentImageName forPage:currentPage];
-    [undoManager setActionName:[NSString stringWithFormat:@"Change Image of Page #%d",currentPage]];
+    [undoManager setActionName:[NSString stringWithFormat:@"Change Image of Page #%ld",(long)currentPage]];
 }
 //- (void)saveTaleHistory {
 //    undoButton.enabled = TRUE;

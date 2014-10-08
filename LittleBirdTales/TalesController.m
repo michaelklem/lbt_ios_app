@@ -282,7 +282,7 @@
         
         [titleLabel setText:currentTale.title];
         [authorLabel setText:currentTale.author];
-        [pageLabel setText:[NSString stringWithFormat:@"%d",[[currentTale pages] count] - 1]];
+        [pageLabel setText:[NSString stringWithFormat:@"%lu",[[currentTale pages] count] - 1]];
         
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setTimeStyle:NSDateFormatterNoStyle];
