@@ -305,12 +305,19 @@
     NSIndexPath *indexPath=[NSIndexPath indexPathForRow:currentPage inSection:0];
     [pagesTableView selectRowAtIndexPath:indexPath animated:YES  scrollPosition:UITableViewScrollPositionTop];
     
+    // work-around for status bar hiding when using an ImagePicker
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
+
     [super viewWillAppear:animated];
     
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
+    
+    // work-around for status bar hiding when using an ImagePicker
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
+
     [tale deleteOrphanFiles];
     [Tale updateTale:tale at:taleNumber];
 }
