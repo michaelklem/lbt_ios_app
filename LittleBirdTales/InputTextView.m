@@ -42,7 +42,7 @@
 }
 
 -(void)textViewDidChange:(UITextView *)_textView {
-    textLeftLabel.text = [NSString stringWithFormat:@"%lu characters left", 400-_textView.text.length];
+    textLeftLabel.text = [NSString stringWithFormat:@"%u characters left", 400-_textView.text.length];
 }
 
 -(void)showInView:(UIView*)aView {
@@ -63,7 +63,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        textLeftLabel.text = [NSString stringWithFormat:@"%lu characters left", 400-textView.text.length];
+        textLeftLabel.text = [NSString stringWithFormat:@"%u characters left", 400-textView.text.length];
     }
     return self;
 }
