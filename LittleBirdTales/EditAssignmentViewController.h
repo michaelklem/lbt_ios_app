@@ -38,10 +38,13 @@
     IBOutlet UILabel *titleLabel;
     IBOutlet UILabel *pageNumberView;
     
+    IBOutlet UIScrollView *pagesScrollView;
+    
     NSUndoManager *undoManager;
     
     NSString *selectedImageName;
     NSInteger currentPage;
+    NSInteger lastPageIndex;
     
     NSMutableArray *taleHistory;
     NSMutableArray *activePageHistory;

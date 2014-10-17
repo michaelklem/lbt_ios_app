@@ -15,6 +15,7 @@
 
 
 -(IBAction)drawPage:(id)sender {
+
     //TODO: Check if there is a page to draw
     DrawController* controller;
     if (IsIdiomPad) {
@@ -194,6 +195,7 @@
             NSIndexPath *indexPath=[NSIndexPath indexPathForRow:currentPage-1 inSection:0];
             [pagesTableView selectRowAtIndexPath:indexPath animated:YES  scrollPosition:UITableViewScrollPositionBottom];
             [self setActivePage:currentPage-1];
+            [self reloadLessonList];
         }
     }
     else if (alertView.tag == 102) {
@@ -219,9 +221,18 @@
     [undoManager setActionName:[NSString stringWithFormat:@"Add New Page"]];
     
     [pagesTableView reloadData];
+    [self reloadLessonList];
     [lesson setModified:round([[NSDate date] timeIntervalSince1970])];
     NSIndexPath *indexPath=[NSIndexPath indexPathForRow:[lesson.pages count]-1 inSection:0];
     [pagesTableView selectRowAtIndexPath:indexPath animated:YES  scrollPosition:UITableViewScrollPositionBottom];
+    
+    float w = pagesScrollView.frame.size.width;
+    float h = pagesScrollView.frame.size.height;
+    float newPosition = pagesScrollView.contentOffset.x+w;
+    CGRect toVisible = CGRectMake(newPosition, 0, w, h);
+    
+    [pagesScrollView scrollRectToVisible:toVisible animated:YES];
+    
     [self setActivePage:[lesson.pages count]-1];
 }
 
@@ -245,6 +256,21 @@
 }
 
 - (void)setActivePage:(NSInteger)index {
+    
+    if (lastPageIndex != index) {
+        UIButton *lastButton = (UIButton*)[pagesScrollView viewWithTag:lastPageIndex+1000];
+        [lastButton.layer setMasksToBounds:YES];
+        [lastButton.layer setCornerRadius:2.0];
+        [lastButton.layer setBorderColor:[UIColorFromRGB(0x8FD866) CGColor]];
+        [lastButton.layer setBorderWidth:1.0];
+        
+        UIButton *button = (UIButton*)[pagesScrollView viewWithTag:index+1000];
+        [button.layer setMasksToBounds:YES];
+        [button.layer setCornerRadius:2.0];
+        [button.layer setBorderColor:[UIColorFromRGB(0xfa3737) CGColor]];
+        [button.layer setBorderWidth:2.0];
+    }
+    
     pageNumberView.text = [NSString stringWithFormat:@"Page %ld of %ld",(long)index+1, (long)lesson.pages.count];
     if (index == 0) {
         [editButton setImage:[UIImage imageNamed:@"btn-edittale-ipad.png"] forState:UIControlStateNormal];
@@ -256,6 +282,7 @@
     }
     
     currentPage = index;
+    lastPageIndex = index;
     Page *page = [lesson.pages objectAtIndex:currentPage];
     
     [teacherTextView setText:page.teacher_text];
@@ -275,6 +302,15 @@
     }
     [imageView setImage:[page pageImageWithDefaultBackground]];
 }
+
+-(void)setActivePage2:(id)sender {
+    if (sender != nil) {
+        UIButton *button = (UIButton*) sender;
+        currentPage = button.tag - 1000;
+        [self setActivePage:currentPage];
+    }
+}
+
 #pragma mark - View lifecycle
 
 -(BOOL)prefersStatusBarHidden { return YES; }
@@ -282,13 +318,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    UISwipeGestureRecognizer * swipeleft=[[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(swipeleft:)];
-    swipeleft.direction=UISwipeGestureRecognizerDirectionLeft;
-    [self.view addGestureRecognizer:swipeleft];
+    //UISwipeGestureRecognizer * swipeleft=[[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(swipeleft:)];
+    //swipeleft.direction=UISwipeGestureRecognizerDirectionLeft;
+    //[self.view addGestureRecognizer:swipeleft];
     
-    UISwipeGestureRecognizer * swiperight=[[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(swiperight:)];
-    swiperight.direction=UISwipeGestureRecognizerDirectionRight;
-    [self.view addGestureRecognizer:swiperight];
+    //UISwipeGestureRecognizer * swiperight=[[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(swiperight:)];
+    //swiperight.direction=UISwipeGestureRecognizerDirectionRight;
+    //[self.view addGestureRecognizer:swiperight];
     
     [studentTextView setDelegate:self];
     
@@ -358,9 +394,52 @@
     
     NSIndexPath *indexPath=[NSIndexPath indexPathForRow:currentPage inSection:0];
     [pagesTableView selectRowAtIndexPath:indexPath animated:YES  scrollPosition:UITableViewScrollPositionTop];
-
-    [super viewWillAppear:animated];
     
+    [self reloadLessonList];
+    
+    [super viewWillAppear:animated];
+}
+
+- (void)reloadLessonList {
+    NSLog(@"Reload lesson list");
+    for (UIButton *view in pagesScrollView.subviews) {
+        [view removeFromSuperview];
+    }
+    if ([[lesson pages] count] > 0) {
+        NSLog(@"Has lessons");
+        for (NSInteger i = 0; i < [[lesson pages] count]; i++) {
+            Page *page = [[lesson pages] objectAtIndex:i];
+            UIButton *button;
+            
+            
+            button = [[UIButton alloc] initWithFrame:CGRectMake(65*i, 3, 60, 40)];
+            if (i == currentPage) {
+                [button.layer setCornerRadius:2.0];
+                [button.layer setBorderColor:[UIColorFromRGB(0xfa3737) CGColor]];
+                [button.layer setBorderWidth:2.0];
+            } else {
+                [button.layer setCornerRadius:2.0];
+                [button.layer setBorderColor:[UIColorFromRGB(0x8FD866) CGColor]];
+                [button.layer setBorderWidth:1.0];
+            }
+            
+            
+            [button setImage:[page pageThumbnail] forState:UIControlStateNormal];
+            
+            
+            [button.layer setMasksToBounds:YES];
+            
+            
+            
+            button.tag = 1000 + i;
+            [button addTarget:self action:@selector(setActivePage2:) forControlEvents:UIControlEventTouchUpInside];
+            
+            [pagesScrollView addSubview:button];
+        }
+        
+        [pagesScrollView setContentSize:CGSizeMake(65*[[lesson pages] count] , 40)];
+
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

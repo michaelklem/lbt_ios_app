@@ -266,6 +266,14 @@
 		37F7D4AF14FB051A007C5B9A /* AudioRecord-iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37F7D4AE14FB051A007C5B9A /* AudioRecord-iPhone.xib */; };
 		37F7D4B314FB08B8007C5B9A /* iphone-bg-player.png in Resources */ = {isa = PBXBuildFile; fileRef = 37F7D4B114FB08B8007C5B9A /* iphone-bg-player.png */; };
 		37F7D4B414FB08B8007C5B9A /* iphone-bg-player@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 37F7D4B214FB08B8007C5B9A /* iphone-bg-player@2x.png */; };
+		4C43DA2319F0B0C00059E3E4 /* arrow395.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C43DA1B19F0B0C00059E3E4 /* arrow395.png */; };
+		4C43DA2419F0B0C00059E3E4 /* cloud32.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C43DA1C19F0B0C00059E3E4 /* cloud32.png */; };
+		4C43DA2519F0B0C00059E3E4 /* media26.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C43DA1D19F0B0C00059E3E4 /* media26.png */; };
+		4C43DA2619F0B0C00059E3E4 /* painter11.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C43DA1E19F0B0C00059E3E4 /* painter11.png */; };
+		4C43DA2719F0B0C00059E3E4 /* play87.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C43DA1F19F0B0C00059E3E4 /* play87.png */; };
+		4C43DA2819F0B0C00059E3E4 /* plus79.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C43DA2019F0B0C00059E3E4 /* plus79.png */; };
+		4C43DA2919F0B0C00059E3E4 /* recycling10.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C43DA2119F0B0C00059E3E4 /* recycling10.png */; };
+		4C43DA2A19F0B0C00059E3E4 /* voice15.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C43DA2219F0B0C00059E3E4 /* voice15.png */; };
 		BDAFD72A1901AA6E0082B7A3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BDAFD7291901AA6E0082B7A3 /* Images.xcassets */; };
 		BDDB6BA818FA11140093A543 /* ZipArchive in Resources */ = {isa = PBXBuildFile; fileRef = BDDB6BA718FA11140093A543 /* ZipArchive */; };
 		BDDB6BAA18FA13990093A543 /* libZipArchive-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BDDB6BA918FA13990093A543 /* libZipArchive-ios.a */; };
@@ -630,6 +638,14 @@
 		37F7D4AE14FB051A007C5B9A /* AudioRecord-iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "AudioRecord-iPhone.xib"; sourceTree = "<group>"; };
 		37F7D4B114FB08B8007C5B9A /* iphone-bg-player.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iphone-bg-player.png"; sourceTree = "<group>"; };
 		37F7D4B214FB08B8007C5B9A /* iphone-bg-player@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iphone-bg-player@2x.png"; sourceTree = "<group>"; };
+		4C43DA1B19F0B0C00059E3E4 /* arrow395.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow395.png; sourceTree = "<group>"; };
+		4C43DA1C19F0B0C00059E3E4 /* cloud32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cloud32.png; sourceTree = "<group>"; };
+		4C43DA1D19F0B0C00059E3E4 /* media26.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = media26.png; sourceTree = "<group>"; };
+		4C43DA1E19F0B0C00059E3E4 /* painter11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = painter11.png; sourceTree = "<group>"; };
+		4C43DA1F19F0B0C00059E3E4 /* play87.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play87.png; sourceTree = "<group>"; };
+		4C43DA2019F0B0C00059E3E4 /* plus79.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plus79.png; sourceTree = "<group>"; };
+		4C43DA2119F0B0C00059E3E4 /* recycling10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = recycling10.png; sourceTree = "<group>"; };
+		4C43DA2219F0B0C00059E3E4 /* voice15.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = voice15.png; sourceTree = "<group>"; };
 		BDAFD7291901AA6E0082B7A3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		BDDB6BA718FA11140093A543 /* ZipArchive */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ZipArchive; sourceTree = "<group>"; };
 		BDDB6BA918FA13990093A543 /* libZipArchive-ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libZipArchive-ios.a"; sourceTree = "<group>"; };
@@ -906,6 +922,7 @@
 		049F9F8714B9F47C0060D00D /* iPad */ = {
 			isa = PBXGroup;
 			children = (
+				4C47075019EF88AA00A74D08 /* 2.0 */,
 				0459B2D614DD414F0019ECB9 /* Draw */,
 				37F6E8D014C7ABD1003A278D /* Buttons */,
 				049F9F8E14B9F6150060D00D /* Backgrounds */,
@@ -1411,6 +1428,21 @@
 			name = "Edit Tale";
 			sourceTree = "<group>";
 		};
+		4C47075019EF88AA00A74D08 /* 2.0 */ = {
+			isa = PBXGroup;
+			children = (
+				4C43DA1B19F0B0C00059E3E4 /* arrow395.png */,
+				4C43DA1C19F0B0C00059E3E4 /* cloud32.png */,
+				4C43DA1D19F0B0C00059E3E4 /* media26.png */,
+				4C43DA1E19F0B0C00059E3E4 /* painter11.png */,
+				4C43DA1F19F0B0C00059E3E4 /* play87.png */,
+				4C43DA2019F0B0C00059E3E4 /* plus79.png */,
+				4C43DA2119F0B0C00059E3E4 /* recycling10.png */,
+				4C43DA2219F0B0C00059E3E4 /* voice15.png */,
+			);
+			name = 2.0;
+			sourceTree = "<group>";
+		};
 		F42D6BFF19B7AB110046D27C /* UserLogin */ = {
 			isa = PBXGroup;
 			children = (
@@ -1658,6 +1690,7 @@
 				04BC99BA14EAE37900218DF4 /* shadow_bg.png in Resources */,
 				04BC99BC14EAE53500218DF4 /* indicator.png in Resources */,
 				04BC99BE14EAEAD000218DF4 /* pin.png in Resources */,
+				4C43DA2819F0B0C00059E3E4 /* plus79.png in Resources */,
 				04BC99C014EAECD400218DF4 /* tran.png in Resources */,
 				3721D2DE14ECA4AF00AF8EEE /* cover_default.jpg in Resources */,
 				BDDB6BAC18FA14000093A543 /* TestFlightSDK2.0.2 in Resources */,
@@ -1669,6 +1702,7 @@
 				3721D2EE14ECC7C800AF8EEE /* ipad_bg_cropimage.png in Resources */,
 				3721D2F514ECC85400AF8EEE /* CropImage-iPad.xib in Resources */,
 				375F50D914EF88AE0025936A /* AudioRecord-iPad.xib in Resources */,
+				4C43DA2519F0B0C00059E3E4 /* media26.png in Resources */,
 				375F50DB14EF89F70025936A /* ipad_audiorecord_bg.png in Resources */,
 				375F50DD14EF8B410025936A /* ipad_btn_record.png in Resources */,
 				046AE68714EF9D650056C1DB /* save.png in Resources */,
@@ -1684,6 +1718,7 @@
 				372A5C3A14F70558004B6607 /* ipad_btn_viewonweb.png in Resources */,
 				372A5C3D14F706DD004B6607 /* ipad_bg_logininput.png in Resources */,
 				37D7CBE714F79438006E3CC5 /* btn-edittale-ipad.png in Resources */,
+				4C43DA2619F0B0C00059E3E4 /* painter11.png in Resources */,
 				370EC74814F8CC0A0047D099 /* iphone-bg-talelist.png in Resources */,
 				370EC74914F8CC0A0047D099 /* iphone-bg-talelist@2x.png in Resources */,
 				370EC74A14F8CC0A0047D099 /* iphone-bg.png in Resources */,
@@ -1703,9 +1738,11 @@
 				37F7D4B314FB08B8007C5B9A /* iphone-bg-player.png in Resources */,
 				37F7D4B414FB08B8007C5B9A /* iphone-bg-player@2x.png in Resources */,
 				37F10C3014FC57D8002E3D67 /* iphone-bg-login.png in Resources */,
+				4C43DA2919F0B0C00059E3E4 /* recycling10.png in Resources */,
 				37F10C3114FC57D8002E3D67 /* iphone-bg-login@2x.png in Resources */,
 				37F10C3514FC5936002E3D67 /* iphone-login-dialog.png in Resources */,
 				37F10C3614FC5936002E3D67 /* iphone-login-dialog@2x.png in Resources */,
+				4C43DA2319F0B0C00059E3E4 /* arrow395.png in Resources */,
 				37DA10F114FC68CC002C98F7 /* ipad_btn_record_active.png in Resources */,
 				04449F621503D5910055A780 /* upload_ipad.png in Resources */,
 				04449F651503D6B10055A780 /* clear_ipad.png in Resources */,
@@ -1723,6 +1760,7 @@
 				04449F8D1503E9BF0055A780 /* iphone_icon_fill.png in Resources */,
 				04449F8E1503E9BF0055A780 /* iphone_icon_fill@2x.png in Resources */,
 				04449F8F1503E9BF0055A780 /* iphone_icon_image.png in Resources */,
+				4C43DA2419F0B0C00059E3E4 /* cloud32.png in Resources */,
 				04449F901503E9BF0055A780 /* iphone_icon_image@2x.png in Resources */,
 				04449F911503E9BF0055A780 /* iphone_icon_line.png in Resources */,
 				04449F921503E9BF0055A780 /* iphone_icon_line@2x.png in Resources */,
@@ -1741,6 +1779,7 @@
 				37ABBFFF1511EB1600C3FB6E /* ipad_btn_preview.png in Resources */,
 				37ABC0371511EB3F00C3FB6E /* iphone_btn_preview.png in Resources */,
 				37ABC0381511EB3F00C3FB6E /* iphone_btn_preview@2x.png in Resources */,
+				4C43DA2A19F0B0C00059E3E4 /* voice15.png in Resources */,
 				37EA51661512D5E400E4599B /* ipad_btn_done.png in Resources */,
 				37EA51671512D5E400E4599B /* ipad_btn_edit.png in Resources */,
 				04B2D830151B066E00BC781A /* ColorPickerController.xib in Resources */,
@@ -1759,6 +1798,7 @@
 				F47876801846B48200B56B59 /* LoginViewController-iPhone.xib in Resources */,
 				F4EC4EF2184AE72900C21FDF /* ipad_btn_download_tale.png in Resources */,
 				F4EC4EF3184AE72900C21FDF /* ipad_btn_download_tales.png in Resources */,
+				4C43DA2719F0B0C00059E3E4 /* play87.png in Resources */,
 				F4EC4EF8184CF70400C21FDF /* iRate.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1952,8 +1992,8 @@
 					"$(PROJECT_DIR)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "2664cdcf-945a-40dd-b1f1-b507828529e7";
+				PROVISIONING_PROFILE = "cfb530a3-a784-4770-89e2-3e26295d03eb";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "cfb530a3-a784-4770-89e2-3e26295d03eb";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				WRAPPER_EXTENSION = app;
@@ -1981,8 +2021,8 @@
 					"$(PROJECT_DIR)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "2664cdcf-945a-40dd-b1f1-b507828529e7";
+				PROVISIONING_PROFILE = "cfb530a3-a784-4770-89e2-3e26295d03eb";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "cfb530a3-a784-4770-89e2-3e26295d03eb";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				WRAPPER_EXTENSION = app;
