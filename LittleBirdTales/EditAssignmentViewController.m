@@ -13,6 +13,12 @@
 @synthesize lesson, taleNumber, popoverController, soundPlayer;
 
 
+-(void)tapDetected{
+    Page *page = [lesson.pages objectAtIndex:currentPage];
+    if(!page.image_locked) {
+        [self drawPage:(nil)];
+    }
+}
 
 -(IBAction)drawPage:(id)sender {
 
@@ -163,8 +169,8 @@
     [tView showInView:self.view];
 }
 -(IBAction)deletePage:(id)sender {
-    UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Little Bird Tales"
-                                                        message:@"Delete this lesson?"
+    UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Little Bird Lesson"
+                                                        message:@"Delete this page?"
                                                        delegate:self 
                                               cancelButtonTitle:@"Cancel" 
                                               otherButtonTitles:@"OK", nil];
@@ -374,6 +380,11 @@
     
     pagesTableView.editing = YES;
     pagesTableView.allowsSelectionDuringEditing = YES;
+    
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapDetected)];
+    singleTap.numberOfTapsRequired = 1;
+    [imageView setUserInteractionEnabled:YES];
+    [imageView addGestureRecognizer:singleTap];
     
     [self setActivePage:0];
     

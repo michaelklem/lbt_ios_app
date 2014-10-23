@@ -78,8 +78,8 @@
     } 
 }
 -(IBAction)deleteTale:(id)sender {
-    UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Little Bird Tales"
-                                                        message:@"Delete this tale?" 
+    UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Little Bird Lessons"
+                                                        message:@"Delete this Lesson?"
                                                        delegate:self 
                                               cancelButtonTitle:@"Cancel" 
                                               otherButtonTitles:@"OK", nil];
