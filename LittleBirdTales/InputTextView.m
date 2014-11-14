@@ -48,10 +48,6 @@
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
 {
-    if ([text isEqualToString:@"\n"]) {
-        [self save:nil];
-        return NO;
-    }
     NSUInteger newLength = (textView.text.length - range.length) + text.length;
     if(newLength <= 400)
     {
