@@ -750,6 +750,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
 }
 
 -(IBAction)preview:(id)sender {
+    NSLog(@"Trying to play");
     PlayerController* controller;
     if (IsIdiomPad) {
         controller = [[PlayerController alloc] initWithNibName:@"PlayerController-iPad" bundle:nil];

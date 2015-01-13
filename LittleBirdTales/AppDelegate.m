@@ -9,9 +9,11 @@
 #import "AppDelegate.h"
 #import "LoginViewController.h"
 #import "TalesController.h"
+#import "UserTalesController.h"
 #import "UserLoginViewController.h"
 #import "Flurry.h"
 #import "iRate.h"
+#import "Lib.h"
 
 AppDelegate* _shared;
 @implementation AppDelegate
@@ -88,21 +90,17 @@ AppDelegate* _shared;
     // Override point for customization after application launch.
     UIViewController* controller;
     if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad) {
-        controller = [[UserLoginViewController alloc] initWithNibName:@"UserLoginViewController-iPad" bundle:nil];
+        if([[Lib getValueOfKey:@"user_id"]  isEqual: @""]) {
+            controller = [[UserLoginViewController alloc] initWithNibName:@"UserLoginViewController-iPad" bundle:nil];
+        } else {
+            controller = [[UserTalesController alloc] initWithNibName:@"UserTalesController-iPad" bundle:nil];
+        }
     } else {
         controller = [[TalesController alloc] initWithNibName:@"TalesController-iPhone" bundle:nil];
     }
 
     self.navController = [[UINavigationController alloc] initWithRootViewController:controller];
     self.navController.navigationBarHidden = YES;
-    
-//    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone) {
-//    } else {
-//        UIImageView* imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 20, 1024, 748)];
-//        imageView.image = [UIImage imageNamed:@"bg-ipad"];
-//        [self.navController.view insertSubview:imageView atIndex:0];
-//        //TT_RELEASE_SAFELY(imageView);
-//    }
 
     self.window.rootViewController = self.navController;
     [self.window makeKeyAndVisible];

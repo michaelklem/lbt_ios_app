@@ -1428,6 +1428,13 @@
 			name = "Edit Tale";
 			sourceTree = "<group>";
 		};
+		4C1EDE731A5CA3E10067C38D /* UploadTale */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = UploadTale;
+			sourceTree = "<group>";
+		};
 		4C47075019EF88AA00A74D08 /* 2.0 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1466,6 +1473,7 @@
 		F4B592C319BF7BFE0004493B /* UserTales */ = {
 			isa = PBXGroup;
 			children = (
+				4C1EDE731A5CA3E10067C38D /* UploadTale */,
 				F4B592C419BF7C1F0004493B /* UserTalesController-iPad.xib */,
 				F4B592C619BF7C1F0004493B /* UserTalesController.h */,
 				F4B592C719BF7C1F0004493B /* UserTalesController.m */,

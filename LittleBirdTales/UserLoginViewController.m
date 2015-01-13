@@ -135,7 +135,7 @@
 }
 
 - (IBAction)signup:(id)sender {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:servicesURLPrefix]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@signup/default/", servicesURLPrefix]]];
 }
 
 

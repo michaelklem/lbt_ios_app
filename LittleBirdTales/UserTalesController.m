@@ -56,28 +56,31 @@
     }
     [self.navigationController pushViewController:controller animated:NO];
 }
+
 -(IBAction)uploadTale:(id)sender {
     if ([[currentTale pages] count] == 1) {
         [Lib showAlert:@"Little Bird Tales" withMessage:@"Please add at least 1 page to your story to make it playable"];
         return;
     }
+    [activityIndicator startAnimating];
+    [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
     
-    LoginViewController* controller;
-    if (IsIdiomPad) {
-        controller = [[LoginViewController alloc] initWithNibName:@"LoginViewController-iPad" bundle:nil];
-    } else {
-        controller = [[LoginViewController alloc] initWithNibName:@"LoginViewController-iPhone" bundle:nil];
-    }
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{ // 1
+        NSString* storyId = [currentTale uploadWithUserId:[Lib getValueOfKey:@"user_id"] andBucketPath:[Lib getValueOfKey:@"bucket_path"]];
+        dispatch_async(dispatch_get_main_queue(), ^{ // 2
+            [activityIndicator stopAnimating];
+            [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success"
+                                                            message:@"Your story has successfully been uploaded."
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+            [alert show];
 
-    if ([[Tale tales] count] > 0) {
-        controller.tale = currentTale;
-        controller.taleNumber = currentTaleIndex;
-        [self.navigationController pushViewController:controller animated:YES];
+        });
+    });
+    
     }
-    else {
-        [Lib showAlert:@"Error" withMessage:@"No Tale to upload"];
-    } 
-}
 -(IBAction)deleteTale:(id)sender {
     UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Little Bird Tales"
                                                         message:@"Delete this tale?" 
@@ -173,12 +176,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-        
     if ([[Tale tales] count] > 0) {
         [self selectTale:nil];
     }
-
     currentTaleIndex = 0;
+    
+    activityIndicator.hidesWhenStopped=YES;
     
     [newButton.layer setMasksToBounds:YES];
    

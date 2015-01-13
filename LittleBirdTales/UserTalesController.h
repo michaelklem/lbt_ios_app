@@ -26,6 +26,7 @@
     NSInteger lastTaleIndex;
     NSInteger currentTaleIndex;
     IBOutlet UISegmentedControl *controlTab;
+    IBOutlet UIActivityIndicatorView *activityIndicator;
 }
 
 - (void)reloadTaleList;

@@ -242,7 +242,7 @@ NSMutableArray* tales;
 	NSData* responeData = [NSURLConnection sendSynchronousRequest:theRequest returningResponse:nil error:nil];	
 	
 	NSString *strData = [[NSString alloc] initWithData:responeData encoding:NSUTF8StringEncoding];
-    
+    NSLog(@"Upload completed");
     if (strData) {
         id obj = [strData JSONValue];
         if ([obj isKindOfClass:[NSDictionary class]]) {
