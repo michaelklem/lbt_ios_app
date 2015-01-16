@@ -11,6 +11,7 @@
 
 @interface Lesson : Tale
 @property (nonatomic, assign) double index;
+@property (nonatomic, retain) NSString* taleId;
 @property (nonatomic, retain) NSString* title;
 @property (nonatomic, retain) NSString* author;
 @property (nonatomic, assign) double created; // time interval since 1970

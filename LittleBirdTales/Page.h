@@ -11,6 +11,7 @@
 
 @interface Page : NSObject
 @property (nonatomic, assign) double index;
+@property (nonatomic, retain) NSString* pageId;
 @property (nonatomic, retain) NSString* pageFolder;
 // http:// with image from server and file:// with image saved in iPad
 @property (nonatomic, retain) NSString* image;
@@ -34,7 +35,7 @@
 
 - (void) playPageAtSecond: (NSInteger)second inView: (UIImageView*)imageView withTextView: (UITextView*)textView withAudio:(BOOL)isAudio;
 - (void)uploadPageWithUser: (NSString*)userid userPath: (NSString*)userPath taleId:(NSString*)taleId storyId:(NSString*)storyId pageNumber:(NSString*)pageNumber uid:(NSString*)uid;
-
+- (void)uploadLessonPageWithUser: (NSString*)userid userPath: (NSString*)userPath taleId:(NSString*)taleId storyId:(NSString*)storyId pageNumber:(NSString*)pageNumber uid:(NSString*)uid;
 - (void)deleteImage;
 - (void)deleteVoice;
 

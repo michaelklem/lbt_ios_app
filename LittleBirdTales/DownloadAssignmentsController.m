@@ -179,6 +179,7 @@ static int LoadingItemContext = 1;
                          NSLog(@"content: %@",myString);
                          
                          Lesson *newLesson = [Lesson newLessonwithTitle:[[json valueForKey:@"title"] isEqual:[NSNull null]]?@"My Little Bird Tale":[json valueForKey:@"title"] author:[[json valueForKey:@"author"] isEqual:[NSNull null]]?@"A Little Bird":[json valueForKey:@"author"]];
+                         newLesson.taleId = [json valueForKey:@"tale_id"];
                          
                          NSString *url2 = [NSString stringWithFormat:@"%@/services/taleData/",servicesURLPrefix];
                          NSLog(@"%@", url2);
@@ -244,6 +245,7 @@ static int LoadingItemContext = 1;
                                      for (NSInteger i = 0; i < [pages count]; i++) {
                                          NSDictionary *item = [pages objectAtIndex:i];
                                          Page *samplePage = [Page newPage];
+                                         samplePage.pageId = [item valueForKey:@"page_id"];
                                          samplePage.pageFolder = [NSString stringWithFormat:@"%@/%0.f",[Lib taleFolderPathFromIndex:newLesson.index],samplePage.index];
 
                                          samplePage.text = [item valueForKey:@"text"];

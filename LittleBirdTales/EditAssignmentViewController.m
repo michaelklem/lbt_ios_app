@@ -792,7 +792,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
     Page *page = [lesson.pages objectAtIndex:currentPage];
     
     NSString *currentImageName = page.image;
-    
+
     [[undoManager prepareWithInvocationTarget:self] setImageName:currentImageName forPage:currentPage];
     [undoManager setActionName:[NSString stringWithFormat:@"Change Image of Page #%ld",(long)currentPage]];
 }

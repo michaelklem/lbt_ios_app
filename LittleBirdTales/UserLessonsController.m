@@ -56,26 +56,23 @@
     [self.navigationController pushViewController:controller animated:NO];
 }
 -(IBAction)uploadTale:(id)sender {
-    if ([[currentLesson pages] count] == 1) {
-        [Lib showAlert:@"Little Bird Tales" withMessage:@"Please add at least 1 page to your story to make it playable"];
-        return;
-    }
+    [activityIndicator startAnimating];
+    [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
     
-    LoginViewController* controller;
-    if (IsIdiomPad) {
-        controller = [[LoginViewController alloc] initWithNibName:@"LoginViewController-iPad" bundle:nil];
-    } else {
-        controller = [[LoginViewController alloc] initWithNibName:@"LoginViewController-iPhone" bundle:nil];
-    }
-
-    if ([[Tale tales] count] > 0) {
-        //controller.tale = currentLesson;
-        //controller.taleNumber = currentLessonIndex;
-        //[self.navigationController pushViewController:controller animated:YES];
-    }
-    else {
-        [Lib showAlert:@"Error" withMessage:@"No Tale to upload"];
-    } 
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{ // 1
+        NSString* storyId = [currentLesson uploadWithUserId:[Lib getValueOfKey:@"user_id"] andBucketPath:[Lib getValueOfKey:@"bucket_path"]];
+        dispatch_async(dispatch_get_main_queue(), ^{ // 2
+            [activityIndicator stopAnimating];
+            [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success"
+                                                            message:@"Your lesson has successfully been uploaded."
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+            [alert show];
+            
+        });
+    });
 }
 -(IBAction)deleteTale:(id)sender {
     UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Little Bird Lessons"
@@ -189,7 +186,7 @@
         [newButton.layer setBorderWidth:1.0];
         [newButton.layer setCornerRadius:2.0];
     }
-    
+    activityIndicator.hidesWhenStopped=YES;
 }
 
 - (void)viewWillAppear:(BOOL)animated {

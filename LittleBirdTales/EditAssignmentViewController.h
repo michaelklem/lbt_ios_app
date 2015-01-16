@@ -39,7 +39,7 @@
     IBOutlet UILabel *pageNumberView;
     
     IBOutlet UIScrollView *pagesScrollView;
-    
+    IBOutlet UIActivityIndicatorView *activityIndicator;
     NSUndoManager *undoManager;
     
     NSString *selectedImageName;
@@ -50,6 +50,7 @@
     NSMutableArray *activePageHistory;
     
     AVAudioPlayer *soundPlayer;
+    
 }
 @property (nonatomic, retain) Lesson* lesson;
 @property (nonatomic, assign) NSInteger taleNumber;

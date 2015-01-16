@@ -26,6 +26,7 @@
     NSInteger lastLessonIndex;
     NSInteger currentLessonIndex;
     IBOutlet UISegmentedControl *controlTab;
+    IBOutlet UIActivityIndicatorView *activityIndicator;    
 }
 
 - (void)reloadLessonList;

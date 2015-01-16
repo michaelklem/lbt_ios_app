@@ -13,7 +13,7 @@
 
 NSMutableArray* lessons;
 @implementation Lesson
-@synthesize index, created, title, pages, modified, author;
+@synthesize taleId, index, created, title, pages, modified, author;
 
 +(NSString*)path {
     NSString* path = [NSString stringWithFormat:@"%@/%@", [Lesson dir], @"lessons.plist"];
@@ -36,10 +36,12 @@ NSMutableArray* lessons;
     lesson.modified = [[dic objectForKey:@"modified"] doubleValue];
     lesson.title = [dic objectForKey:@"title"];
     lesson.author = [dic objectForKey:@"author"];
+    lesson.taleId = [dic objectForKey:@"taleId"];
     
     for (NSDictionary* _page in [dic objectForKey:@"pages"]) {
         Page* page = [[Page alloc] init];
         page.index = [[_page objectForKey:@"index"] doubleValue];
+        page.pageId = [_page objectForKey:@"pageId"];
         page.pageFolder = [_page objectForKey:@"pageFolder"];
         page.text = [_page objectForKey:@"text"];
         page.teacher_text = [_page objectForKey:@"teacher_text"];
@@ -156,6 +158,7 @@ NSMutableArray* lessons;
     [dic setObject:[NSNumber numberWithDouble:self.modified] forKey:@"modified"];
     [dic setObject:self.title forKey:@"title"];
     [dic setObject:self.author forKey:@"author"];
+    [dic setObject:self.taleId forKey:@"taleId"];
     
     NSMutableArray* _pages = [NSMutableArray array];
     [dic setObject:_pages forKey:@"pages"];
@@ -166,6 +169,7 @@ NSMutableArray* lessons;
         NSLog(@"Audio Locked %hhd", page.audio_locked);
         [_pages addObject:[NSDictionary dictionaryWithObjectsAndKeys:
                            [NSNumber numberWithDouble:page.index],@"index",
+                           page.pageId==nil?@"":page.pageId,@"pageId",
                            page.image,@"image",
                            page.voice,@"voice",
                            page.text,@"text",
@@ -214,7 +218,7 @@ NSMutableArray* lessons;
     BOOL success = NO;
     
     NSMutableURLRequest* theRequest = [[NSMutableURLRequest alloc] initWithURL: 
-                                       [NSURL URLWithString:[NSString stringWithFormat: @"%@/services/add_tale_1_3_0.php",servicesURLPrefix]]];
+                                       [NSURL URLWithString:[NSString stringWithFormat: @"%@/services/update_lesson.php",servicesURLPrefix]]];
 	[theRequest setHTTPMethod:@"POST"];
 	
 	NSString *stringBoundary = @"0xKhTmLbOuNdArY";
@@ -240,12 +244,18 @@ NSMutableArray* lessons;
 	[postBody appendData:[[NSString stringWithFormat:@"%0.f",index] dataUsingEncoding:NSUTF8StringEncoding]];
 	[postBody appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",stringBoundary] dataUsingEncoding:NSUTF8StringEncoding]];
     
+    
+    // User Path
+    [postBody appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n",@"lesson_tale_id"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[[NSString stringWithFormat:@"%@",taleId] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",stringBoundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    
     // Tale Title
 	[postBody appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n",@"title"] dataUsingEncoding:NSUTF8StringEncoding]];
 	[postBody appendData:[[NSString stringWithFormat:@"%@",title] dataUsingEncoding:NSUTF8StringEncoding]];
 	[postBody appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",stringBoundary] dataUsingEncoding:NSUTF8StringEncoding]];
     
-    // Story Id
+    // Author
 	[postBody appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n",@"author"] dataUsingEncoding:NSUTF8StringEncoding]];
 	[postBody appendData:[[NSString stringWithFormat:@"%@",author] dataUsingEncoding:NSUTF8StringEncoding]];
 	[postBody appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",stringBoundary] dataUsingEncoding:NSUTF8StringEncoding]];
@@ -276,11 +286,11 @@ NSMutableArray* lessons;
     }
     
 	[theRequest setHTTPBody:postBody];
-    
+    NSLog(@"Sending lesson.");
 	NSData* responeData = [NSURLConnection sendSynchronousRequest:theRequest returningResponse:nil error:nil];	
-	
+    NSLog(@"Lesson sent.");
 	NSString *strData = [[NSString alloc] initWithData:responeData encoding:NSUTF8StringEncoding];
-    
+    NSLog(@"%@", strData);
     if (strData) {
         id obj = [strData JSONValue];
         if ([obj isKindOfClass:[NSDictionary class]]) {
@@ -298,7 +308,7 @@ NSMutableArray* lessons;
         
         NSInteger counter = 0;
         for (Page* page in pages) {
-            [page uploadPageWithUser:userId userPath:bucketPath taleId:[NSString stringWithFormat:@"%.0f",index] storyId:storyId pageNumber:[NSString stringWithFormat:@"%d",counter] uid:uid];
+            [page uploadLessonPageWithUser:userId userPath:bucketPath taleId:[NSString stringWithFormat:@"%.0f",index] storyId:taleId pageNumber:[NSString stringWithFormat:@"%d",counter] uid:uid];
             
             counter = counter + 1;
         }

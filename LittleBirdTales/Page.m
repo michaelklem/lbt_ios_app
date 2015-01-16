@@ -12,10 +12,11 @@
 #import "UIImage+Resize.h"
 
 @implementation Page
-@synthesize index, image, voice, teacher_voice, text, order, time, teacher_time, created, modified, isCover, pageFolder, text_locked, audio_locked, image_locked;
+@synthesize pageId, index, image, voice, teacher_voice, text, order, time, teacher_time, created, modified, isCover, pageFolder, text_locked, audio_locked, image_locked;
 
 + (Page*)newPage {
     Page *page = [[Page alloc] init];
+    page.pageId = @"";
     page.image = @"";
     page.voice = @"";
     page.text = @"";
@@ -244,7 +245,7 @@
 	[postBody appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n",@"pageid"] dataUsingEncoding:NSUTF8StringEncoding]];
 	[postBody appendData:[[NSString stringWithFormat:@"%@",pageNumber] dataUsingEncoding:NSUTF8StringEncoding]];
 	[postBody appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",stringBoundary] dataUsingEncoding:NSUTF8StringEncoding]];
-	
+    
 	// Text
 	[postBody appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n",@"text"] dataUsingEncoding:NSUTF8StringEncoding]];
 	[postBody appendData:[[NSString stringWithFormat:@"%@",self.text] dataUsingEncoding:NSUTF8StringEncoding]];
@@ -293,6 +294,107 @@
 
 	NSData* responeData = [NSURLConnection sendSynchronousRequest:theRequest returningResponse:nil error:nil];
 	NSString *a = [[NSString alloc] initWithData:responeData encoding:NSUTF8StringEncoding];
+    NSLog(@"%@",a);
+}
+
+- (void)uploadLessonPageWithUser: (NSString*)userid userPath: (NSString*)userPath taleId:(NSString*)taleId storyId:(NSString*)storyId pageNumber:(NSString*)pageNumber uid:(NSString*)uid{
+    
+    
+    NSMutableURLRequest* theRequest = [[NSMutableURLRequest alloc] initWithURL:
+                                       [NSURL URLWithString:[NSString stringWithFormat: @"%@/services/upload_lesson_page.php",servicesURLPrefix]]];
+    [theRequest setHTTPMethod:@"POST"];
+    
+    NSString *stringBoundary = [NSString stringWithString:@"0xKhTmLbOuNdArY"];
+    NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@",stringBoundary];
+    [theRequest addValue:contentType forHTTPHeaderField: @"Content-Type"];
+    
+    //create the body
+    NSMutableData *postBody = [NSMutableData data];
+    [postBody appendData:[[NSString stringWithFormat:@"--%@\r\n",stringBoundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    // User ID
+    [postBody appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n",@"userid"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[[NSString stringWithFormat:@"%@",userid] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",stringBoundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    // User Path
+    [postBody appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n",@"userpath"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[[NSString stringWithFormat:@"%@",userPath] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",stringBoundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    // Unique ID
+    [postBody appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n",@"uid"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[[NSString stringWithFormat:@"%@",uid] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",stringBoundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    // Tale ID
+    [postBody appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n",@"taleid"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[[NSString stringWithFormat:@"%@",taleId] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",stringBoundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    // Story Id
+    [postBody appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n",@"storyid"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[[NSString stringWithFormat:@"%@",storyId] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",stringBoundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    // Page Id
+    [postBody appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n",@"lessonPageId"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[[NSString stringWithFormat:@"%@",pageId] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",stringBoundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    // Page Number
+    [postBody appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n",@"pageid"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[[NSString stringWithFormat:@"%@",pageNumber] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",stringBoundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    // Text
+    [postBody appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n",@"text"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[[NSString stringWithFormat:@"%@",self.text] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",stringBoundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    // Date Created
+    [postBody appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n",@"date_created"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[[NSString stringWithFormat:@"%0.f",self.created] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",stringBoundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    // Date Modified
+    [postBody appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n",@"date_modified"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[[NSString stringWithFormat:@"%0.f",self.modified] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",stringBoundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    
+    // Image
+    
+    if (![image isEqualToString:@""] && image != NULL) {
+        NSData* imgData = [NSData dataWithContentsOfFile:[NSString stringWithFormat:@"%@/%@",[Lib applicationDocumentsDirectory], image]];
+        
+        if (imgData != nil) {
+            [postBody appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"image\"; filename=\"%@.jpg\"\r\n", uid] dataUsingEncoding:NSUTF8StringEncoding]];
+            [postBody appendData:[@"Content-Type: image/jpeg\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+            [postBody appendData:[@"Content-Transfer-Encoding: binary\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+            
+            [postBody appendData:[NSData dataWithData:imgData]];
+            [postBody appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n", stringBoundary] dataUsingEncoding:NSUTF8StringEncoding]];
+        }
+    }
+    //Sound
+    if (![voice isEqualToString:@""] && voice != NULL) {
+        NSData* audioData = [NSData dataWithContentsOfFile:[NSString stringWithFormat:@"%@/%@",[Lib applicationDocumentsDirectory], voice]];
+        
+        if (audioData != nil) {
+            [postBody appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"audio\"; filename=\"%@.caf\"\r\n",uid] dataUsingEncoding:NSUTF8StringEncoding]];
+            [postBody appendData:[@"Content-Type: audio/x-caf\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+            [postBody appendData:[@"Content-Transfer-Encoding: binary\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+            
+            [postBody appendData:[NSData dataWithData:audioData]];
+            [postBody appendData:[[NSString stringWithFormat:@"\r\n--%@--\r\n",stringBoundary] dataUsingEncoding:NSUTF8StringEncoding]];
+        }
+    }
+    
+    [theRequest setHTTPBody:postBody];
+    
+    NSData* responeData = [NSURLConnection sendSynchronousRequest:theRequest returningResponse:nil error:nil];
+    NSString *a = [[NSString alloc] initWithData:responeData encoding:NSUTF8StringEncoding];
     NSLog(@"%@",a);
 }
 
