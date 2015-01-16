@@ -11,7 +11,7 @@
 #import "Lesson.h"
 #import "InputTaleInfo.h"
 
-@interface UserLessonsController : UIViewController <InputTaleInfoDelegate, UIAlertViewDelegate> {
+@interface UserLessonsController : UIViewController <InputTaleInfoDelegate, UIAlertViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout> {
     IBOutlet UIView* taleInfoView;
     IBOutlet UILabel* titleLabel;
     IBOutlet UILabel* authorLabel;
@@ -19,6 +19,7 @@
     IBOutlet UILabel* createdLabel;
     IBOutlet UILabel* modifiedLabel;
     IBOutlet UIButton* newButton;
+    IBOutlet UIButton* navButton;
     IBOutlet UIImageView* previewImage;
     IBOutlet UIScrollView* lessonsScrollView;
     IBOutlet UIImageView *noTaleBackground;
@@ -26,8 +27,11 @@
     NSInteger lastLessonIndex;
     NSInteger currentLessonIndex;
     IBOutlet UISegmentedControl *controlTab;
-    IBOutlet UIActivityIndicatorView *activityIndicator;    
+    IBOutlet UIActivityIndicatorView *activityIndicator;
 }
+
+@property (nonatomic, strong) IBOutlet UICollectionView *collectionView;
+@property (nonatomic, strong) NSArray *dataArray;
 
 - (void)reloadLessonList;
 - (void)selectTale:(id)sender;

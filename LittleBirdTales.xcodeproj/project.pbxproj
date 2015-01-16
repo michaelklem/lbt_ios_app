@@ -266,6 +266,12 @@
 		37F7D4AF14FB051A007C5B9A /* AudioRecord-iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37F7D4AE14FB051A007C5B9A /* AudioRecord-iPhone.xib */; };
 		37F7D4B314FB08B8007C5B9A /* iphone-bg-player.png in Resources */ = {isa = PBXBuildFile; fileRef = 37F7D4B114FB08B8007C5B9A /* iphone-bg-player.png */; };
 		37F7D4B414FB08B8007C5B9A /* iphone-bg-player@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 37F7D4B214FB08B8007C5B9A /* iphone-bg-player@2x.png */; };
+		4C1EDE821A68CBCE0067C38D /* CVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1EDE801A68CBCE0067C38D /* CVCell.m */; };
+		4C1EDE831A68CBCE0067C38D /* CVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C1EDE811A68CBCE0067C38D /* CVCell.xib */; };
+		4C1EDE861A68E01C0067C38D /* button8.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C1EDE841A68E01C0067C38D /* button8.png */; };
+		4C1EDE871A68E01C0067C38D /* list26.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C1EDE851A68E01C0067C38D /* list26.png */; };
+		4C1EDE8B1A68EAB00067C38D /* apple-ios-macbook-air-77-desktop-background.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C1EDE8A1A68EAB00067C38D /* apple-ios-macbook-air-77-desktop-background.png */; };
+		4C1EDE8F1A6991B00067C38D /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1EDE8E1A6991B00067C38D /* SWRevealViewController.m */; };
 		4C43DA2319F0B0C00059E3E4 /* arrow395.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C43DA1B19F0B0C00059E3E4 /* arrow395.png */; };
 		4C43DA2419F0B0C00059E3E4 /* cloud32.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C43DA1C19F0B0C00059E3E4 /* cloud32.png */; };
 		4C43DA2519F0B0C00059E3E4 /* media26.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C43DA1D19F0B0C00059E3E4 /* media26.png */; };
@@ -638,6 +644,14 @@
 		37F7D4AE14FB051A007C5B9A /* AudioRecord-iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "AudioRecord-iPhone.xib"; sourceTree = "<group>"; };
 		37F7D4B114FB08B8007C5B9A /* iphone-bg-player.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iphone-bg-player.png"; sourceTree = "<group>"; };
 		37F7D4B214FB08B8007C5B9A /* iphone-bg-player@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iphone-bg-player@2x.png"; sourceTree = "<group>"; };
+		4C1EDE7F1A68CBCE0067C38D /* CVCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CVCell.h; sourceTree = "<group>"; };
+		4C1EDE801A68CBCE0067C38D /* CVCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CVCell.m; sourceTree = "<group>"; };
+		4C1EDE811A68CBCE0067C38D /* CVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CVCell.xib; sourceTree = "<group>"; };
+		4C1EDE841A68E01C0067C38D /* button8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button8.png; sourceTree = "<group>"; };
+		4C1EDE851A68E01C0067C38D /* list26.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = list26.png; sourceTree = "<group>"; };
+		4C1EDE8A1A68EAB00067C38D /* apple-ios-macbook-air-77-desktop-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "apple-ios-macbook-air-77-desktop-background.png"; sourceTree = "<group>"; };
+		4C1EDE8D1A6991B00067C38D /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		4C1EDE8E1A6991B00067C38D /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		4C43DA1B19F0B0C00059E3E4 /* arrow395.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow395.png; sourceTree = "<group>"; };
 		4C43DA1C19F0B0C00059E3E4 /* cloud32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cloud32.png; sourceTree = "<group>"; };
 		4C43DA1D19F0B0C00059E3E4 /* media26.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = media26.png; sourceTree = "<group>"; };
@@ -1395,6 +1409,7 @@
 		37F6E8DF14C7BBD7003A278D /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				4C1EDE8C1A6991B00067C38D /* SWRevealViewController */,
 				BDDB6BAB18FA14000093A543 /* TestFlightSDK2.0.2 */,
 				BDDB6BA918FA13990093A543 /* libZipArchive-ios.a */,
 				BDDB6BA718FA11140093A543 /* ZipArchive */,
@@ -1435,14 +1450,27 @@
 			name = UploadTale;
 			sourceTree = "<group>";
 		};
+		4C1EDE8C1A6991B00067C38D /* SWRevealViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4C1EDE8D1A6991B00067C38D /* SWRevealViewController.h */,
+				4C1EDE8E1A6991B00067C38D /* SWRevealViewController.m */,
+			);
+			name = SWRevealViewController;
+			path = LittleBirdTales/SWRevealViewController;
+			sourceTree = "<group>";
+		};
 		4C47075019EF88AA00A74D08 /* 2.0 */ = {
 			isa = PBXGroup;
 			children = (
+				4C1EDE841A68E01C0067C38D /* button8.png */,
+				4C1EDE851A68E01C0067C38D /* list26.png */,
 				4C43DA1B19F0B0C00059E3E4 /* arrow395.png */,
 				4C43DA1C19F0B0C00059E3E4 /* cloud32.png */,
 				4C43DA1D19F0B0C00059E3E4 /* media26.png */,
 				4C43DA1E19F0B0C00059E3E4 /* painter11.png */,
 				4C43DA1F19F0B0C00059E3E4 /* play87.png */,
+				4C1EDE8A1A68EAB00067C38D /* apple-ios-macbook-air-77-desktop-background.png */,
 				4C43DA2019F0B0C00059E3E4 /* plus79.png */,
 				4C43DA2119F0B0C00059E3E4 /* recycling10.png */,
 				4C43DA2219F0B0C00059E3E4 /* voice15.png */,
@@ -1484,6 +1512,9 @@
 		F4B592CB19BF8E520004493B /* UserLessons */ = {
 			isa = PBXGroup;
 			children = (
+				4C1EDE7F1A68CBCE0067C38D /* CVCell.h */,
+				4C1EDE801A68CBCE0067C38D /* CVCell.m */,
+				4C1EDE811A68CBCE0067C38D /* CVCell.xib */,
 				F4B592CC19BF8E5E0004493B /* UserLessonsController-iPad.xib */,
 				F4B592CD19BF8E5E0004493B /* UserLessonsController.h */,
 				F4B592CE19BF8E5E0004493B /* UserLessonsController.m */,
@@ -1700,6 +1731,7 @@
 				04BC99BE14EAEAD000218DF4 /* pin.png in Resources */,
 				4C43DA2819F0B0C00059E3E4 /* plus79.png in Resources */,
 				04BC99C014EAECD400218DF4 /* tran.png in Resources */,
+				4C1EDE8B1A68EAB00067C38D /* apple-ios-macbook-air-77-desktop-background.png in Resources */,
 				3721D2DE14ECA4AF00AF8EEE /* cover_default.jpg in Resources */,
 				BDDB6BAC18FA14000093A543 /* TestFlightSDK2.0.2 in Resources */,
 				3721D2DF14ECA4AF00AF8EEE /* cover_default_med.jpg in Resources */,
@@ -1719,6 +1751,7 @@
 				F4B592D619C8BD320004493B /* DownloadAssignmentsController-iPad.xib in Resources */,
 				37C4402914EFFE1900CCD609 /* GalleryTableViewController.xib in Resources */,
 				37C4402E14EFFF1700CCD609 /* GalleryCell.xib in Resources */,
+				4C1EDE831A68CBCE0067C38D /* CVCell.xib in Resources */,
 				37B1A78314F2037E00A661E2 /* ipad_notale_bg.png in Resources */,
 				F4B592CF19BF8E5E0004493B /* UserLessonsController-iPad.xib in Resources */,
 				37129B8214F6827C0089E7C4 /* ipad_btn_signup.png in Resources */,
@@ -1744,6 +1777,7 @@
 				3700257814F9CCB40065B6E5 /* GalleryViewController.xib in Resources */,
 				37F7D4AF14FB051A007C5B9A /* AudioRecord-iPhone.xib in Resources */,
 				37F7D4B314FB08B8007C5B9A /* iphone-bg-player.png in Resources */,
+				4C1EDE861A68E01C0067C38D /* button8.png in Resources */,
 				37F7D4B414FB08B8007C5B9A /* iphone-bg-player@2x.png in Resources */,
 				37F10C3014FC57D8002E3D67 /* iphone-bg-login.png in Resources */,
 				4C43DA2919F0B0C00059E3E4 /* recycling10.png in Resources */,
@@ -1778,6 +1812,7 @@
 				04449F961503E9BF0055A780 /* iphone_icon_rect@2x.png in Resources */,
 				04449F971503E9BF0055A780 /* iphone_icon_redo.png in Resources */,
 				04449F981503E9BF0055A780 /* iphone_icon_redo@2x.png in Resources */,
+				4C1EDE871A68E01C0067C38D /* list26.png in Resources */,
 				04449F991503E9BF0055A780 /* iphone_icon_text.png in Resources */,
 				04449F9A1503E9BF0055A780 /* iphone_icon_text@2x.png in Resources */,
 				04449F9B1503E9BF0055A780 /* iphone_icon_undo.png in Resources */,
@@ -1870,6 +1905,7 @@
 				376C212D14E4853800D540FB /* UIImage+Resize.m in Sources */,
 				376C212E14E4853800D540FB /* UIImage+RoundedCorner.m in Sources */,
 				04B941C714EC04080004FA0A /* PaintView.m in Sources */,
+				4C1EDE821A68CBCE0067C38D /* CVCell.m in Sources */,
 				04B941C814EC04080004FA0A /* PaintPath.m in Sources */,
 				04B941C914EC04080004FA0A /* TouchView.m in Sources */,
 				3721D2F314ECC83A00AF8EEE /* CropImage.m in Sources */,
@@ -1896,6 +1932,7 @@
 				3760C1F115104AE70086ECD6 /* SBJsonUTF8Stream.m in Sources */,
 				3760C1F215104AE70086ECD6 /* SBJsonWriter.m in Sources */,
 				3760C1F515104AFB0086ECD6 /* UIImage+Thumbnail.m in Sources */,
+				4C1EDE8F1A6991B00067C38D /* SWRevealViewController.m in Sources */,
 				3760C1FA15104B110086ECD6 /* ColorHelper.m in Sources */,
 				3760C1FB15104B110086ECD6 /* Gallery.m in Sources */,
 				04B2D82F151B066E00BC781A /* ColorPickerController.m in Sources */,

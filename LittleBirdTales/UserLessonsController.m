@@ -14,6 +14,7 @@
 #import "UserLoginViewController.h"
 #import "DownloadAssignmentsController.h"
 #import "Lib.h"
+#import "CVCell.h"
 
 @implementation UserLessonsController
 
@@ -169,7 +170,30 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-        
+    
+    NSMutableArray *firstSection = [[NSMutableArray alloc] init];
+    NSMutableArray *secondSection = [[NSMutableArray alloc] init];
+    
+    for (int i=0; i<50; i++) {
+        [firstSection addObject:[NSString stringWithFormat:@"Cell %d", i]];
+        [secondSection addObject:[NSString stringWithFormat:@"item %d", i]];
+    }
+    
+    
+    //self.navigationItem.leftBarButtonItem = revealButtonItem;
+    
+    self.dataArray = [[NSArray alloc] initWithObjects:[Lesson lessons], nil];
+    
+    [self.collectionView registerClass:[CVCell class] forCellWithReuseIdentifier:@"cvCell"];
+    /* end of subclass-based cells block */
+    
+    // Configure layout
+    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
+    [flowLayout setItemSize:CGSizeMake(325, 243)];
+    [flowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
+    [flowLayout setMinimumLineSpacing:15];
+    [self.collectionView setCollectionViewLayout:flowLayout];
+    
     if ([[Lesson lessons] count] > 0) {
         [self selectTale:nil];
     }
@@ -187,6 +211,50 @@
         [newButton.layer setCornerRadius:2.0];
     }
     activityIndicator.hidesWhenStopped=YES;
+}
+
+- (IBAction)pushExample:(id)sender
+{
+    UIViewController *stubController = [[UIViewController alloc] init];
+    stubController.view.backgroundColor = [UIColor whiteColor];
+    [self.navigationController pushViewController:stubController animated:YES];
+}
+
+-(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    return [self.dataArray count];
+}
+
+-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    
+    NSMutableArray *sectionArray = [self.dataArray objectAtIndex:section];
+    return [sectionArray count];
+    
+}
+
+-(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    // Setup cell identifier
+    static NSString *cellIdentifier = @"cvCell";
+    
+    /*  Uncomment this block to use nib-based cells */
+    // UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
+    // UILabel *titleLabel = (UILabel *)[cell viewWithTag:100];
+    // [titleLabel setText:cellData];
+    /* end of nib-based cell block */
+    
+    /* Uncomment this block to use subclass-based cells */
+    CVCell *cell = (CVCell *)[collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
+    NSMutableArray *data = [self.dataArray objectAtIndex:indexPath.section];
+    Lesson* lesson = [data objectAtIndex:indexPath.row];
+    [cell.titleLabel setText:lesson.title];
+    [cell.authorLabel setText:lesson.author];
+    Page *coverPage = [[lesson pages] objectAtIndex:0];
+    [cell.cover setImage: coverPage.pageThumbnail];
+    /* end of subclass-based cells block */
+    
+    // Return the cell
+    return cell;
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -214,30 +282,17 @@
             Page *coverPage = [[lesson pages] objectAtIndex:0];
             UIButton *button;
             
-            if (IsIdiomPad) {
-                button = [[UIButton alloc] initWithFrame:CGRectMake(210*i, 5, 200, 140)];
-                if (i == currentLessonIndex) {
-                    [button.layer setCornerRadius:5.0];
-                    [button.layer setBorderColor:[UIColorFromRGB(0xfa3737) CGColor]];
-                    [button.layer setBorderWidth:6.0];
-                } else {
-                    [button.layer setCornerRadius:5.0];
-                    [button.layer setBorderColor:[UIColorFromRGB(0x8FD866) CGColor]];
-                    [button.layer setBorderWidth:3.0];
-                }
+            button = [[UIButton alloc] initWithFrame:CGRectMake(210*i, 5, 200, 140)];
+            if (i == currentLessonIndex) {
+                [button.layer setCornerRadius:5.0];
+                [button.layer setBorderColor:[UIColorFromRGB(0xfa3737) CGColor]];
+                [button.layer setBorderWidth:6.0];
             } else {
-                button = [[UIButton alloc] initWithFrame:CGRectMake(95*i, 3, 90, 63)];
-                if (i == currentLessonIndex) {
-                    [button.layer setCornerRadius:2.0];
-                    [button.layer setBorderColor:[UIColorFromRGB(0xfa3737) CGColor]];
-                    [button.layer setBorderWidth:2.0];
-                } else {
-                    [button.layer setCornerRadius:2.0];
-                    [button.layer setBorderColor:[UIColorFromRGB(0x8FD866) CGColor]];
-                    [button.layer setBorderWidth:1.0];
-                }
+                [button.layer setCornerRadius:5.0];
+                [button.layer setBorderColor:[UIColorFromRGB(0x8FD866) CGColor]];
+                [button.layer setBorderWidth:3.0];
             }
-            
+                
             [button setImage:[coverPage pageThumbnail] forState:UIControlStateNormal];
           
             
