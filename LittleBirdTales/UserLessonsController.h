@@ -11,7 +11,7 @@
 #import "Lesson.h"
 #import "InputTaleInfo.h"
 
-@interface UserLessonsController : UIViewController <InputTaleInfoDelegate, UIAlertViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout> {
+@interface UserLessonsController : UIViewController <InputTaleInfoDelegate, UIAlertViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIActionSheetDelegate> {
     IBOutlet UIView* taleInfoView;
     IBOutlet UILabel* titleLabel;
     IBOutlet UILabel* authorLabel;
@@ -32,6 +32,7 @@
 
 @property (nonatomic, strong) IBOutlet UICollectionView *collectionView;
 @property (nonatomic, strong) NSArray *dataArray;
+@property (nonatomic, strong) UIActionSheet *actionSheet;
 
 - (void)reloadLessonList;
 - (void)selectTale:(id)sender;

@@ -280,6 +280,7 @@
 		4C43DA2819F0B0C00059E3E4 /* plus79.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C43DA2019F0B0C00059E3E4 /* plus79.png */; };
 		4C43DA2919F0B0C00059E3E4 /* recycling10.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C43DA2119F0B0C00059E3E4 /* recycling10.png */; };
 		4C43DA2A19F0B0C00059E3E4 /* voice15.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C43DA2219F0B0C00059E3E4 /* voice15.png */; };
+		4CA46BF31A6A1AEC000E57E3 /* more9.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CA46BF21A6A1AEC000E57E3 /* more9.png */; };
 		BDAFD72A1901AA6E0082B7A3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BDAFD7291901AA6E0082B7A3 /* Images.xcassets */; };
 		BDDB6BA818FA11140093A543 /* ZipArchive in Resources */ = {isa = PBXBuildFile; fileRef = BDDB6BA718FA11140093A543 /* ZipArchive */; };
 		BDDB6BAA18FA13990093A543 /* libZipArchive-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BDDB6BA918FA13990093A543 /* libZipArchive-ios.a */; };
@@ -660,6 +661,7 @@
 		4C43DA2019F0B0C00059E3E4 /* plus79.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plus79.png; sourceTree = "<group>"; };
 		4C43DA2119F0B0C00059E3E4 /* recycling10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = recycling10.png; sourceTree = "<group>"; };
 		4C43DA2219F0B0C00059E3E4 /* voice15.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = voice15.png; sourceTree = "<group>"; };
+		4CA46BF21A6A1AEC000E57E3 /* more9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = more9.png; sourceTree = "<group>"; };
 		BDAFD7291901AA6E0082B7A3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		BDDB6BA718FA11140093A543 /* ZipArchive */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ZipArchive; sourceTree = "<group>"; };
 		BDDB6BA918FA13990093A543 /* libZipArchive-ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libZipArchive-ios.a"; sourceTree = "<group>"; };
@@ -1466,6 +1468,7 @@
 				4C1EDE841A68E01C0067C38D /* button8.png */,
 				4C1EDE851A68E01C0067C38D /* list26.png */,
 				4C43DA1B19F0B0C00059E3E4 /* arrow395.png */,
+				4CA46BF21A6A1AEC000E57E3 /* more9.png */,
 				4C43DA1C19F0B0C00059E3E4 /* cloud32.png */,
 				4C43DA1D19F0B0C00059E3E4 /* media26.png */,
 				4C43DA1E19F0B0C00059E3E4 /* painter11.png */,
@@ -1638,6 +1641,7 @@
 				049F9FA514B9FC340060D00D /* btn-login-iphone.png in Resources */,
 				049F9FA614B9FC340060D00D /* btn-login-iphone@2x.png in Resources */,
 				37F6E8CB14C7AA67003A278D /* LoginViewController-iPad.xib in Resources */,
+				4CA46BF31A6A1AEC000E57E3 /* more9.png in Resources */,
 				37F6E8D314C7AC91003A278D /* bg-home-ipad.png in Resources */,
 				37F6E8D814C7B273003A278D /* btn-edit-ipad.png in Resources */,
 				37F6E8D914C7B273003A278D /* btn-delete-ipad.png in Resources */,

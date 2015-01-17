@@ -13,7 +13,6 @@
                 <outlet property="createdLabel" destination="64" id="71"/>
                 <outlet property="lessonsScrollView" destination="83" id="ZqX-y3-GXn"/>
                 <outlet property="modifiedLabel" destination="60" id="72"/>
-                <outlet property="navButton" destination="YIS-Uk-w8i" id="vqI-Gq-1CE"/>
                 <outlet property="pageLabel" destination="61" id="73"/>
                 <outlet property="previewImage" destination="69" id="77"/>
                 <outlet property="taleInfoView" destination="23" id="75"/>
@@ -161,7 +160,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ymP-zX-hD1">
-                    <rect key="frame" x="5" y="2" width="41" height="41"/>
+                    <rect key="frame" x="10" y="8" width="29" height="27"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" image="list26.png">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -227,15 +226,8 @@
                         <outlet property="delegate" destination="-1" id="MPl-A4-9Ks"/>
                     </connections>
                 </collectionView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="YIS-Uk-w8i">
-                    <rect key="frame" x="290" y="9" width="46" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="Button">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                </button>
             </subviews>
-            <color key="backgroundColor" red="0.094117656349999995" green="0.58039218189999997" blue="0.090196080509999998" alpha="1" colorSpace="deviceRGB"/>
+            <color key="backgroundColor" red="0.87790975765306123" green="0.86057141072842724" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
             <nil key="simulatedStatusBarMetrics"/>
             <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
         </view>

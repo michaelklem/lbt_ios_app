@@ -91,7 +91,6 @@
         if ([[Lesson lessons] count]) {
             currentLessonIndex = 0;
             [self reloadLessonList];
-            [self selectTale:nil];
         } else {
             noTaleBackground.hidden = NO;
             for (UIView *view in lessonsScrollView.subviews) {
@@ -194,10 +193,6 @@
     [flowLayout setMinimumLineSpacing:15];
     [self.collectionView setCollectionViewLayout:flowLayout];
     
-    if ([[Lesson lessons] count] > 0) {
-        [self selectTale:nil];
-    }
-
     currentLessonIndex = 0;
     
     [newButton.layer setMasksToBounds:YES];
@@ -249,7 +244,12 @@
     [cell.titleLabel setText:lesson.title];
     [cell.authorLabel setText:lesson.author];
     Page *coverPage = [[lesson pages] objectAtIndex:0];
-    [cell.cover setImage: coverPage.pageThumbnail];
+    [cell.cover setBackgroundImage:coverPage.pageThumbnail forState:UIControlStateNormal];
+    [cell.cover setTag:indexPath.row+1000];
+
+    [cell.cover addTarget:self action:@selector(selectTale:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [cell.menu addTarget:self action:@selector(menuOptions:) forControlEvents:UIControlEventTouchUpInside];
     /* end of subclass-based cells block */
     
     // Return the cell
@@ -261,7 +261,6 @@
     [[UISegmentedControl appearance] setTintColor:[UIColor whiteColor]];
     if ([[Lesson lessons] count] > 0) {
         noTaleBackground.hidden = YES;
-        [self selectTale:nil];
     } else {
         noTaleBackground.hidden = NO;
     }
@@ -271,7 +270,7 @@
 }
 
 - (void)reloadLessonList {
-    NSLog(@"Reload lesson list");
+    /*NSLog(@"Reload lesson list");
     for (UIView *view in lessonsScrollView.subviews) {
         [view removeFromSuperview];
     }
@@ -311,7 +310,7 @@
         else {
             [lessonsScrollView setContentSize:CGSizeMake(95*[[Tale tales] count] , 63)];
         }
-    }
+    }*/
 }
 
 -(void)selectTale:(id)sender {
@@ -326,39 +325,51 @@
             currentLessonIndex = button.tag - 1000;
         }
         
-        if (lastLessonIndex != currentLessonIndex && sender!= nil) {
-            UIButton *lastButton = (UIButton*)[lessonsScrollView viewWithTag:lastLessonIndex+1000];
-            [lastButton.layer setMasksToBounds:YES];
-            [lastButton.layer setCornerRadius:5.0];
-            [lastButton.layer setBorderColor:[UIColorFromRGB(0x8FD866) CGColor]];
-            [lastButton.layer setBorderWidth:3.0];
-                
-            [button.layer setMasksToBounds:YES];
-            [button.layer setCornerRadius:5.0];
-            [button.layer setBorderColor:[UIColorFromRGB(0xfa3737) CGColor]];
-            [button.layer setBorderWidth:6.0];
-        }
-        
         currentLesson = [[Lesson lessons] objectAtIndex:currentLessonIndex];
         
-        Page *coverPage = [[currentLesson pages] objectAtIndex:0];
+        EditAssignmentViewController* controller;
+        if (IsIdiomPad) {
+            controller = [[EditAssignmentViewController alloc] initWithNibName:@"EditAssignmentViewController-iPad" bundle:nil];
+        } else {
+            controller = [[EditAssignmentViewController alloc] initWithNibName:@"EditAssignmentViewController-iPhone" bundle:nil];
+        }
+        controller.lesson = currentLesson;
+        controller.taleNumber = currentLessonIndex;
+        [self.navigationController pushViewController:controller animated:YES];
         
-        [titleLabel setText:currentLesson.title];
-        [authorLabel setText:currentLesson.author];
-        [pageLabel setText:[NSString stringWithFormat:@"%d",[[currentLesson pages] count] - 1]];
-        
-        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-        [dateFormatter setTimeStyle:NSDateFormatterNoStyle];
-        [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
-        
-        NSDate *date = [NSDate dateWithTimeIntervalSince1970:currentLesson.created];
-        NSString *createdDate = [dateFormatter stringFromDate:date];
-        [createdLabel setText:createdDate];
-        date = [NSDate dateWithTimeIntervalSince1970:currentLesson.modified];
-        NSString *modifiedDate = [dateFormatter stringFromDate:date];
-        [modifiedLabel setText:modifiedDate];
-        
-        [previewImage setImage:coverPage.pageImageWithDefaultBackground];    
+    }
+}
+
+-(void)menuOptions:(id)sender {
+    
+    self.actionSheet = [[UIActionSheet alloc] initWithTitle:@"Choose Action"
+                                                       delegate:self
+                                              cancelButtonTitle:@"Cancel"
+                                         destructiveButtonTitle:nil
+                                              otherButtonTitles:@"Share", @"Play", @"Upload", nil];
+    
+    // Show the sheet
+
+    self.actionSheet.tag = ((UIButton*)sender).tag;
+    [self.actionSheet showFromRect:[(UIButton*)sender frame] inView:[(UIButton*)sender superview] animated:YES];
+
+}
+
+- (void)willPresentActionSheet:(UIActionSheet *)actionSheet {
+    for (UIView *_currentView in actionSheet.subviews) {
+        if ([_currentView isKindOfClass:[UILabel class]]) {
+            UILabel *l = [[UILabel alloc] initWithFrame:_currentView.frame];
+            l.text = [(UILabel *)_currentView text];
+            [l setFont:[UIFont fontWithName:@"Arial-BoldMT" size:20]];
+            l.textColor = [UIColor darkGrayColor];
+            l.backgroundColor = [UIColor clearColor];
+            [l sizeToFit];
+            [l setCenter:CGPointMake(actionSheet.center.x, 25)];
+            [l setFrame:CGRectIntegral(l.frame)];
+            [actionSheet addSubview:l];
+            _currentView.hidden = YES;
+            break;
+        }
     }
 }
 

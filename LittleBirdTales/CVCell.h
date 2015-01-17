@@ -12,6 +12,7 @@
 
 @property (nonatomic, strong) IBOutlet UILabel *titleLabel;
 @property (nonatomic, strong) IBOutlet UILabel *authorLabel;
-@property (nonatomic, strong) IBOutlet UIImageView *cover;
+@property (nonatomic, strong) IBOutlet UIButton *cover;
+@property (nonatomic, strong) IBOutlet UIButton *menu;
 
 @end
