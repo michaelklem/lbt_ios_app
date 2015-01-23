@@ -15,6 +15,7 @@
 #import "DownloadAssignmentsController.h"
 #import "Lib.h"
 #import "CVCell.h"
+#import "MFSideMenu.h"
 
 @implementation UserLessonsController
 
@@ -31,6 +32,9 @@
         controller = [[UserLoginViewController alloc] initWithNibName:@"UserLoginViewController-iPad" bundle:nil];
     }
     [self.navigationController pushViewController:controller animated:YES];
+}
+- (void)leftSideMenuButtonPressed:(id)sender {
+    [self.menuContainerViewController toggleLeftSideMenuCompletion:^{}];
 }
 -(IBAction)editTale:(id)sender {
     if ([[Lesson lessons] count] > 0) {

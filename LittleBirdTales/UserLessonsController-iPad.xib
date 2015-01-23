@@ -167,8 +167,7 @@
                         <color key="titleShadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="back:" destination="-1" eventType="touchUpInside" id="mDZ-7f-540"/>
-                        <action selector="downloadTales:" destination="-1" eventType="touchUpInside" id="Uvw-Tf-Exw"/>
+                        <action selector="leftSideMenuButtonPressed:" destination="-1" eventType="touchUpInside" id="vtK-8l-V3S"/>
                     </connections>
                 </button>
                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" id="umz-fc-TrL">

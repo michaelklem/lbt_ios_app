@@ -14,6 +14,8 @@
 #import "Flurry.h"
 #import "iRate.h"
 #import "Lib.h"
+#import "MFSideMenuContainerViewController.h"
+#import "SideMenuViewController.h"
 
 AppDelegate* _shared;
 @implementation AppDelegate
@@ -102,7 +104,15 @@ AppDelegate* _shared;
     self.navController = [[UINavigationController alloc] initWithRootViewController:controller];
     self.navController.navigationBarHidden = YES;
 
-    self.window.rootViewController = self.navController;
+    SideMenuViewController *leftMenuViewController = [[SideMenuViewController alloc] init];
+    SideMenuViewController *rightMenuViewController = [[SideMenuViewController alloc] init];
+    MFSideMenuContainerViewController *container = [MFSideMenuContainerViewController
+                                                    containerWithCenterViewController:[self navController]
+                                                    leftMenuViewController:leftMenuViewController
+                                                    rightMenuViewController:rightMenuViewController];
+
+    container.panMode = MFSideMenuPanModeNone;
+    self.window.rootViewController = container;
     [self.window makeKeyAndVisible];
     
     return YES;

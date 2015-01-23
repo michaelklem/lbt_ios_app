@@ -34,6 +34,7 @@
 @property (nonatomic, strong) NSArray *dataArray;
 @property (nonatomic, strong) UIActionSheet *actionSheet;
 
+- (IBAction)leftSideMenuButtonPressed:(id)sender;
 - (void)reloadLessonList;
 - (void)selectTale:(id)sender;
 - (IBAction)newTale:(id)sender;

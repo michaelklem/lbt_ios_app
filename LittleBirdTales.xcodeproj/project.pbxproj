@@ -281,6 +281,10 @@
 		4C43DA2919F0B0C00059E3E4 /* recycling10.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C43DA2119F0B0C00059E3E4 /* recycling10.png */; };
 		4C43DA2A19F0B0C00059E3E4 /* voice15.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C43DA2219F0B0C00059E3E4 /* voice15.png */; };
 		4CA46BF31A6A1AEC000E57E3 /* more9.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CA46BF21A6A1AEC000E57E3 /* more9.png */; };
+		4CA46BFC1A6B84A1000E57E3 /* MFSideMenuContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA46BF71A6B84A1000E57E3 /* MFSideMenuContainerViewController.m */; };
+		4CA46BFD1A6B84A1000E57E3 /* MFSideMenuShadow.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA46BF91A6B84A1000E57E3 /* MFSideMenuShadow.m */; };
+		4CA46BFE1A6B84A1000E57E3 /* UIViewController+MFSideMenuAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA46BFB1A6B84A1000E57E3 /* UIViewController+MFSideMenuAdditions.m */; };
+		4CA46C011A6B8508000E57E3 /* SideMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA46C001A6B8508000E57E3 /* SideMenuViewController.m */; };
 		BDAFD72A1901AA6E0082B7A3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BDAFD7291901AA6E0082B7A3 /* Images.xcassets */; };
 		BDDB6BA818FA11140093A543 /* ZipArchive in Resources */ = {isa = PBXBuildFile; fileRef = BDDB6BA718FA11140093A543 /* ZipArchive */; };
 		BDDB6BAA18FA13990093A543 /* libZipArchive-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BDDB6BA918FA13990093A543 /* libZipArchive-ios.a */; };
@@ -662,6 +666,15 @@
 		4C43DA2119F0B0C00059E3E4 /* recycling10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = recycling10.png; sourceTree = "<group>"; };
 		4C43DA2219F0B0C00059E3E4 /* voice15.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = voice15.png; sourceTree = "<group>"; };
 		4CA46BF21A6A1AEC000E57E3 /* more9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = more9.png; sourceTree = "<group>"; };
+		4CA46BF51A6B84A1000E57E3 /* MFSideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFSideMenu.h; sourceTree = "<group>"; };
+		4CA46BF61A6B84A1000E57E3 /* MFSideMenuContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFSideMenuContainerViewController.h; sourceTree = "<group>"; };
+		4CA46BF71A6B84A1000E57E3 /* MFSideMenuContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFSideMenuContainerViewController.m; sourceTree = "<group>"; };
+		4CA46BF81A6B84A1000E57E3 /* MFSideMenuShadow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFSideMenuShadow.h; sourceTree = "<group>"; };
+		4CA46BF91A6B84A1000E57E3 /* MFSideMenuShadow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFSideMenuShadow.m; sourceTree = "<group>"; };
+		4CA46BFA1A6B84A1000E57E3 /* UIViewController+MFSideMenuAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+MFSideMenuAdditions.h"; sourceTree = "<group>"; };
+		4CA46BFB1A6B84A1000E57E3 /* UIViewController+MFSideMenuAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+MFSideMenuAdditions.m"; sourceTree = "<group>"; };
+		4CA46BFF1A6B8508000E57E3 /* SideMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SideMenuViewController.h; sourceTree = "<group>"; };
+		4CA46C001A6B8508000E57E3 /* SideMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SideMenuViewController.m; sourceTree = "<group>"; };
 		BDAFD7291901AA6E0082B7A3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		BDDB6BA718FA11140093A543 /* ZipArchive */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ZipArchive; sourceTree = "<group>"; };
 		BDDB6BA918FA13990093A543 /* libZipArchive-ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libZipArchive-ios.a"; sourceTree = "<group>"; };
@@ -1411,6 +1424,7 @@
 		37F6E8DF14C7BBD7003A278D /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				4CA46BF41A6B84A1000E57E3 /* MFSideMenu */,
 				4C1EDE8C1A6991B00067C38D /* SWRevealViewController */,
 				BDDB6BAB18FA14000093A543 /* TestFlightSDK2.0.2 */,
 				BDDB6BA918FA13990093A543 /* libZipArchive-ios.a */,
@@ -1481,6 +1495,20 @@
 			name = 2.0;
 			sourceTree = "<group>";
 		};
+		4CA46BF41A6B84A1000E57E3 /* MFSideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				4CA46BF51A6B84A1000E57E3 /* MFSideMenu.h */,
+				4CA46BF61A6B84A1000E57E3 /* MFSideMenuContainerViewController.h */,
+				4CA46BF71A6B84A1000E57E3 /* MFSideMenuContainerViewController.m */,
+				4CA46BF81A6B84A1000E57E3 /* MFSideMenuShadow.h */,
+				4CA46BF91A6B84A1000E57E3 /* MFSideMenuShadow.m */,
+				4CA46BFA1A6B84A1000E57E3 /* UIViewController+MFSideMenuAdditions.h */,
+				4CA46BFB1A6B84A1000E57E3 /* UIViewController+MFSideMenuAdditions.m */,
+			);
+			path = MFSideMenu;
+			sourceTree = "<group>";
+		};
 		F42D6BFF19B7AB110046D27C /* UserLogin */ = {
 			isa = PBXGroup;
 			children = (
@@ -1521,6 +1549,8 @@
 				F4B592CC19BF8E5E0004493B /* UserLessonsController-iPad.xib */,
 				F4B592CD19BF8E5E0004493B /* UserLessonsController.h */,
 				F4B592CE19BF8E5E0004493B /* UserLessonsController.m */,
+				4CA46BFF1A6B8508000E57E3 /* SideMenuViewController.h */,
+				4CA46C001A6B8508000E57E3 /* SideMenuViewController.m */,
 			);
 			name = UserLessons;
 			sourceTree = "<group>";
@@ -1886,9 +1916,12 @@
 				0428004C14DE1FDB00122C8C /* LayerManager.m in Sources */,
 				0428004D14DE1FDB00122C8C /* TextLayer.m in Sources */,
 				F42D6C0819B7EBE00046D27C /* UserLoginViewController.m in Sources */,
+				4CA46BFC1A6B84A1000E57E3 /* MFSideMenuContainerViewController.m in Sources */,
 				0428005114DE21AB00122C8C /* Layer.m in Sources */,
 				0428005414DE265F00122C8C /* DrawSettings.m in Sources */,
+				4CA46BFD1A6B84A1000E57E3 /* MFSideMenuShadow.m in Sources */,
 				0428005B14DE99C400122C8C /* BottomLayer.m in Sources */,
+				4CA46C011A6B8508000E57E3 /* SideMenuViewController.m in Sources */,
 				0428006814DEA55A00122C8C /* CircleLayer.m in Sources */,
 				0428006B14DEA73D00122C8C /* RectangleLayer.m in Sources */,
 				BDDB6BAF18FA17240093A543 /* UINavigationController+Landscape.m in Sources */,
@@ -1908,6 +1941,7 @@
 				376C212C14E4853800D540FB /* UIImage+Alpha.m in Sources */,
 				376C212D14E4853800D540FB /* UIImage+Resize.m in Sources */,
 				376C212E14E4853800D540FB /* UIImage+RoundedCorner.m in Sources */,
+				4CA46BFE1A6B84A1000E57E3 /* UIViewController+MFSideMenuAdditions.m in Sources */,
 				04B941C714EC04080004FA0A /* PaintView.m in Sources */,
 				4C1EDE821A68CBCE0067C38D /* CVCell.m in Sources */,
 				04B941C814EC04080004FA0A /* PaintPath.m in Sources */,
