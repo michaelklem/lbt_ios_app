@@ -58,7 +58,7 @@
         });
     });
 }
--(IBAction)deleteTale:(id)sender {
+-(void)deleteTale {
     UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Little Bird Lessons"
                                                         message:@"Delete this Lesson?"
                                                        delegate:self 
@@ -70,24 +70,7 @@
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex == 1) {
         [Lesson remove:currentLesson];
-        
-        if ([[Lesson lessons] count]) {
-            currentLessonIndex = 0;
-        } else {
-            noTaleBackground.hidden = NO;
-            for (UIView *view in lessonsScrollView.subviews) {
-                [view removeFromSuperview];
-            }
-            
-            [titleLabel setText:@""];
-            [authorLabel setText:@""];
-            [pageLabel setText:@""];
-            
-            [createdLabel setText:@""];
-            [modifiedLabel setText:@""];
-            
-            [previewImage setImage:[UIImage new]];
-        }
+        [self.collectionView reloadData];
     }
 }
 
@@ -247,6 +230,8 @@
     } else {
         noTaleBackground.hidden = NO;
     }
+    
+    [self.collectionView reloadData];
 }
 
 -(void)selectTale:(id)sender {
@@ -287,7 +272,7 @@
                                                        delegate:self
                                               cancelButtonTitle:@"Cancel"
                                          destructiveButtonTitle:nil
-                                              otherButtonTitles:@"Play", @"Upload", nil];
+                                              otherButtonTitles:@"Play", @"Upload", @"Delete", nil];
     
     // Show the sheet
 
@@ -303,6 +288,9 @@
             break;
         case 1:
             [self uploadTale];
+            break;
+        case 2:
+            [self deleteTale];
             break;
     }
 }

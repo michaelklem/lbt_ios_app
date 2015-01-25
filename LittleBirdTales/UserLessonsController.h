@@ -41,7 +41,6 @@
 - (IBAction)newTale:(id)sender;
 - (IBAction)editTale:(id)sender;
 - (IBAction)uploadTale:(id)sender;
-- (IBAction)deleteTale:(id)sender;
 //- (IBAction)playTale:(id)sender;
 - (IBAction)downloadTales:(id)sender;
 - (IBAction)back:(id)sender;
