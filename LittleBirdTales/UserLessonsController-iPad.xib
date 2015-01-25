@@ -9,9 +9,7 @@
             <connections>
                 <outlet property="authorLabel" destination="66" id="70"/>
                 <outlet property="collectionView" destination="RzD-OR-1fS" id="XHh-eR-rBe"/>
-                <outlet property="controlTab" destination="umz-fc-TrL" id="eFE-rR-Wq1"/>
                 <outlet property="createdLabel" destination="64" id="71"/>
-                <outlet property="lessonsScrollView" destination="83" id="ZqX-y3-GXn"/>
                 <outlet property="modifiedLabel" destination="60" id="72"/>
                 <outlet property="pageLabel" destination="61" id="73"/>
                 <outlet property="previewImage" destination="69" id="77"/>
@@ -146,19 +144,6 @@
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" id="83">
-                    <rect key="frame" x="0.0" y="46" width="1029" height="722"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                </scrollView>
-                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" id="zEc-SA-m4w">
-                    <rect key="frame" x="10" y="68" width="20" height="20"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                </activityIndicatorView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="Lmk-at-niS">
-                    <rect key="frame" x="-3" y="45" width="1029" height="700"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ymP-zX-hD1">
                     <rect key="frame" x="10" y="8" width="29" height="27"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -170,22 +155,6 @@
                         <action selector="leftSideMenuButtonPressed:" destination="-1" eventType="touchUpInside" id="vtK-8l-V3S"/>
                     </connections>
                 </button>
-                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" id="umz-fc-TrL">
-                    <rect key="frame" x="772" y="10" width="237" height="29"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <segments>
-                        <segment title="Tales"/>
-                        <segment title="Lessons"/>
-                    </segments>
-                    <color key="tintColor" red="0.96896922829999999" green="0.96896922829999999" blue="0.96896922829999999" alpha="1" colorSpace="calibratedRGB"/>
-                    <connections>
-                        <action selector="tabChange:" destination="-1" eventType="valueChanged" id="okb-dR-Ad8"/>
-                    </connections>
-                </segmentedControl>
-                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" id="9IA-2n-6vA">
-                    <rect key="frame" x="527" y="383" width="20" height="20"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                </activityIndicatorView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Lessons" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fd4-In-8Ns">
                     <rect key="frame" x="56" y="11" width="243" height="26"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -213,30 +182,11 @@
                         <outlet property="delegate" destination="-1" id="MPl-A4-9Ks"/>
                     </connections>
                 </collectionView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="92">
-                    <rect key="frame" x="367" y="0.0" width="168" height="42"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                    <state key="normal" title="Download Lessons">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="downloadTales:" destination="-1" eventType="touchUpInside" id="93"/>
-                    </connections>
-                </button>
             </subviews>
             <color key="backgroundColor" red="0.094117656349999995" green="0.58039218189999997" blue="0.090196080509999998" alpha="1" colorSpace="deviceRGB"/>
             <nil key="simulatedStatusBarMetrics"/>
             <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
         </view>
-        <viewController id="Syu-wn-SdA">
-            <view key="view" contentMode="scaleToFill" id="rLs-jD-xD4">
-                <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
-                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-            </view>
-        </viewController>
     </objects>
     <resources>
         <image name="apple-ios-macbook-air-77-desktop-background.png" width="1680" height="1050"/>

@@ -6,23 +6,40 @@
 
 #import "SideMenuViewController.h"
 #import "MFSideMenu.h"
+#import "UserTalesController.h"
 #import "UserLessonsController.h"
+#import "UserLoginViewController.h"
+#import "DownloadAssignmentsController.h"
+#import "StudentDownloadTalesController.h"
+#import "Lesson.h"
+#import "Lib.h"
 
 @implementation SideMenuViewController
+
+NSArray *tableData;
 
 #pragma mark -
 #pragma mark - UITableViewDataSource
 
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    // Initialize table data
+    tableData = [NSArray arrayWithObjects:@"Lessons", @"Download Lesson", @"Tales", @"Download Tale", @"Logout", nil];
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+}
+
+
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return [NSString stringWithFormat:@"Section %d", section];
+    return @"Menu";
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;
+    return [tableData count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -34,7 +51,7 @@
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     
-    cell.textLabel.text = [NSString stringWithFormat:@"Item %d", indexPath.row];
+    cell.textLabel.text = [tableData objectAtIndex:indexPath.row];
     
     return cell;
 }
@@ -43,13 +60,35 @@
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    UserLessonsController *demoController = [[UserLessonsController alloc] initWithNibName:@"UserLessonsController" bundle:nil];
-    demoController.title = [NSString stringWithFormat:@"Demo #%d-%d", indexPath.section, indexPath.row];
+    UIViewController* controller;
+    switch(indexPath.row) {
+        case 0:
+            controller = [[UserLessonsController alloc] initWithNibName:@"UserLessonsController-iPad" bundle:nil];
+            break;
+        case 1:
+            controller = [[DownloadAssignmentsController alloc] initWithNibName:@"DownloadAssignmentsController-iPad" bundle:nil];
+            break;
+        case 2:
+            controller = [[UserTalesController alloc] initWithNibName:@"UserTalesController-iPad" bundle:nil];
+            break;
+        case 3:
+            controller = [[StudentDownloadTalesController alloc] initWithNibName:@"StudentDownloadTalesController-iPad" bundle:nil];
+            break;
+        case 4:
+            [Lib setValue:@"" forKey:@"logged_in"];
+            [Lib setValue:@"" forKey:@"user_id"];
+            [Lib setValue:@"" forKey:@"bucket_path"];
+            [Lib setValue:@"" forKey:@"is_teacher"];
+            [Lib setValue:@"" forKey:@"is_student"];
+            [Lib setValue:@"" forKey:@"encrypted_user_id"];
+            [Lesson removeAll];
+            controller = [[UserLoginViewController alloc] initWithNibName:@"UserLoginViewController-iPad" bundle:nil];
+            break;
+    }
     
-    UINavigationController *navigationController = self.menuContainerViewController.centerViewController;
-    NSArray *controllers = [NSArray arrayWithObject:demoController];
-    navigationController.viewControllers = controllers;
+    [self.menuContainerViewController.centerViewController pushViewController:controller animated:NO];
     [self.menuContainerViewController setMenuState:MFSideMenuStateClosed];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 @end

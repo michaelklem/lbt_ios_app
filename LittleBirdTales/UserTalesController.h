@@ -29,6 +29,7 @@
     IBOutlet UIActivityIndicatorView *activityIndicator;
 }
 
+- (IBAction)leftSideMenuButtonPressed:(id)sender;
 - (void)reloadTaleList;
 - (void)selectTale:(id)sender;
 - (IBAction)newTale:(id)sender;

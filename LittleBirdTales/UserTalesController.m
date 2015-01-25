@@ -15,22 +15,12 @@
 #import "UserLoginViewController.h"
 #import "Lib.h"
 #import "Lesson.h"
+#import "MFSideMenu.h"
 
 @implementation UserTalesController
 
--(IBAction)back:(id)sender {
-    [Lib setValue:@"" forKey:@"logged_in"];
-    [Lib setValue:@"" forKey:@"user_id"];
-    [Lib setValue:@"" forKey:@"bucket_path"];
-    [Lib setValue:@"" forKey:@"is_teacher"];
-    [Lib setValue:@"" forKey:@"is_student"];
-    [Lib setValue:@"" forKey:@"encrypted_user_id"];
-    [Lesson removeAll];
-    UserLoginViewController* controller;
-    if (IsIdiomPad) {
-        controller = [[UserLoginViewController alloc] initWithNibName:@"UserLoginViewController-iPad" bundle:nil];
-    }
-    [self.navigationController pushViewController:controller animated:YES];
+- (void)leftSideMenuButtonPressed:(id)sender {
+    [self.menuContainerViewController toggleLeftSideMenuCompletion:^{}];
 }
 -(IBAction)editTale:(id)sender {
     if ([[Tale tales] count] > 0) {

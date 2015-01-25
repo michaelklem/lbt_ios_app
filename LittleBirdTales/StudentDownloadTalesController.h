@@ -10,7 +10,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "InputTaleInfo.h"
 
-@interface DownloadAssignmentsController : UIViewController {
+@interface StudentDownloadTalesController : UIViewController {
     IBOutlet UIView* taleInfoView;
     IBOutlet UILabel* titleLabel;
     IBOutlet UILabel* authorLabel;
@@ -33,6 +33,6 @@
  - (void)reloadTaleList;
  - (void)selectTale;
  - (void)back;
- - (void)downloadLesson;
+ - (void)downloadTale:(id)sender;
 
 @end

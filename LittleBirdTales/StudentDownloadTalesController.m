@@ -6,23 +6,27 @@
 //
 //
 
-#import "DownloadAssignmentsController.h"
+#import "StudentDownloadTalesController.h"
 #import "EditTaleViewController.h"
-#import "UserLessonsController.h"
 #import "TalesController.h"
+#import "UserTalesController.h"
 #import "SBJson.h"
 #import "ServiceLib.h"
 #import "HttpHelper.h"
 #import "Lib.h"
-#import "Lesson.h"
 #import <AudioToolbox/AudioServices.h> 
 #import <AVFoundation/AVFoundation.h>
 #import "../ZipArchive/ZipArchive.h"
 #import "MFSideMenu.h"
 
-@implementation DownloadAssignmentsController
+@implementation StudentDownloadTalesController
 
 static int LoadingItemContext = 1;
+
+- (void)leftSideMenuButtonPressed:(id)sender {
+    [self.menuContainerViewController toggleLeftSideMenuCompletion:^{}];
+}
+
 - (void)reloadTaleList {
     for (UIView *view in talesScrollView.subviews) {
         [view removeFromSuperview];
@@ -157,15 +161,15 @@ static int LoadingItemContext = 1;
     
 }
 
-- (IBAction)downloadLesson:(id)sender  {
+- (void)downloadTale:(id)sender {
     downloadingView.hidden = NO;
-    downloadingLabel.text = @"Downloading lesson...";
+    downloadingLabel.text = @"Downloading tale...";
     talesPreviewView.hidden = YES;
     [activityIndicator startAnimating];
     
     NSDictionary *currentTale = [userTales objectAtIndex:currentTaleIndex];
     
-    NSString* url = [NSString stringWithFormat:@"%@/services/lesson/",servicesURLPrefix];
+    NSString* url = [NSString stringWithFormat:@"%@/services/tale/",servicesURLPrefix];
     
     [HttpHelper sendAsyncPostRequestToURL:url
                            withParameters:[NSMutableDictionary dictionaryWithObjectsAndKeys:
@@ -179,8 +183,7 @@ static int LoadingItemContext = 1;
                          NSLog(@"Title: %@",[json valueForKey:@"title"]);
                          NSLog(@"content: %@",myString);
                          
-                         Lesson *newLesson = [Lesson newLessonwithTitle:[[json valueForKey:@"title"] isEqual:[NSNull null]]?@"My Little Bird Tale":[json valueForKey:@"title"] author:[[json valueForKey:@"author"] isEqual:[NSNull null]]?@"A Little Bird":[json valueForKey:@"author"]];
-                         newLesson.taleId = [json valueForKey:@"tale_id"];
+                         Tale *newTale = [Tale newTalewithTitle:[[json valueForKey:@"title"] isEqual:[NSNull null]]?@"My Little Bird Tale":[json valueForKey:@"title"] author:[[json valueForKey:@"author"] isEqual:[NSNull null]]?@"A Little Bird":[json valueForKey:@"author"]];
                          
                          NSString *url2 = [NSString stringWithFormat:@"%@/services/taleData/",servicesURLPrefix];
                          NSLog(@"%@", url2);
@@ -209,7 +212,7 @@ static int LoadingItemContext = 1;
                                      NSData *imageData = [NSData dataWithContentsOfFile:imageFilePath options:0 error:nil];
                                      UIImage *img = [UIImage imageWithData:imageData];
                                      
-                                     Page *page = [newLesson.pages objectAtIndex:0];
+                                     Page *page = [newTale.pages objectAtIndex:0];
                                      
                                      [page saveImage:img];
                                  }
@@ -219,44 +222,19 @@ static int LoadingItemContext = 1;
                                      NSString *imageFilePath = [path stringByAppendingPathComponent:@"audio.mp3"];
                                      NSData *audioData = [NSData dataWithContentsOfFile:imageFilePath options:0 error:nil];
                                      NSLog(@"has_audio:%d", audioData.length);
-                                     Page *page = [newLesson.pages objectAtIndex:0];
+                                     Page *page = [newTale.pages objectAtIndex:0];
                                      [page saveAudio:audioData];
                                  }
                                  
-                                 if([[json valueForKey:@"has_teacher_audio"] boolValue]) {
-                                     NSLog(@"has_teacher_audio");
-                                     NSString *imageFilePath = [path stringByAppendingPathComponent:@"teacher_audio.mp3"];
-                                     NSData *audioData = [NSData dataWithContentsOfFile:imageFilePath options:0 error:nil];
-                                     NSLog(@"has_teacher_audio:%d", audioData.length);
-                                     Page *page = [newLesson.pages objectAtIndex:0];
-                                     [page saveTeacherAudio:audioData];
-                                 }
                                  
-                                 
-                                 
-                                 Page *page = [newLesson.pages objectAtIndex:0];
-
-                                 [page setTeacher_text:[json valueForKey:@"teacher_text"]];
-                                 page.text_locked = [[json valueForKey:@"title_locked"] boolValue];
-                                 page.image_locked = [[json valueForKey:@"image_locked"]boolValue];
-                                 page.audio_locked = [[json valueForKey:@"audio_locked"] boolValue];
-
                                  NSArray* pages = [json valueForKey:@"pages"];
                                  if ([pages count] > 0) {
                                      for (NSInteger i = 0; i < [pages count]; i++) {
                                          NSDictionary *item = [pages objectAtIndex:i];
                                          Page *samplePage = [Page newPage];
-                                         samplePage.pageId = [item valueForKey:@"page_id"];
-                                         samplePage.pageFolder = [NSString stringWithFormat:@"%@/%0.f",[Lib taleFolderPathFromIndex:newLesson.index],samplePage.index];
-
-                                         samplePage.text = [item valueForKey:@"text"];
-                                         samplePage.teacher_text = [item valueForKey:@"teacher_text"]==NULL?@"":[item valueForKey:@"teacher_text"] ;
-                                         samplePage.text_locked = [[item valueForKey:@"text_locked"] boolValue];
-                                         samplePage.image_locked = [[item valueForKey:@"image_locked"]boolValue];
-                                         samplePage.audio_locked = [[item valueForKey:@"audio_locked"] boolValue];
-                                         NSLog(@"Page image locked: %hhd", page.image_locked);
-                                         NSLog(@"Here is the teacher text: %@", samplePage.teacher_text);
-                                         NSLog(@"Here is the teacher text: %@", [item valueForKey:@"teacher_text"]);
+                                         samplePage.pageFolder = [NSString stringWithFormat:@"%@/%0.f",[Lib taleFolderPathFromIndex:newTale.index],samplePage.index];
+                                         samplePage.text = [[item valueForKey:@"text"] isEqual:[NSNull null]]?@"":[item valueForKey:@"text"];
+                                         
                                          if([[item valueForKey:@"has_image"] boolValue]) {
                                              NSString *imageFilePath = [path stringByAppendingPathComponent:[NSString stringWithFormat:@"%d/page.jpg", i]];
                                              NSData *imageData = [NSData dataWithContentsOfFile:imageFilePath options:0 error:nil];
@@ -273,15 +251,7 @@ static int LoadingItemContext = 1;
                                              [samplePage saveAudio:audioData];
                                          }
                                          
-                                         if([[item valueForKey:@"has_teacher_audio"] boolValue]) {
-                                             NSLog(@"has_teacher_audio");
-                                             NSString *audioFilePath = [path stringByAppendingPathComponent:[NSString stringWithFormat:@"%d/teacher_page.mp3", i]];
-                                             NSData *audioData = [NSData dataWithContentsOfFile:audioFilePath options:0 error:nil];
-                                             NSLog(@"has_teacher_audio:%d", audioData.length);
-                                             [samplePage saveTeacherAudio:audioData];
-                                         }
-                                         
-                                         [newLesson.pages addObject:samplePage];
+                                         [newTale.pages addObject:samplePage];
                                          
                                      }
                                  }
@@ -304,12 +274,20 @@ static int LoadingItemContext = 1;
                          
                          
                          
-                         [Lesson addLesson:newLesson];
-                         [Lesson save];
+                         [Tale addTale:newTale];
+                         [Tale save];
                          
-                         UserLessonsController* controller;
-                         controller = [[UserLessonsController alloc] initWithNibName:@"UserLessonsController-iPad" bundle:nil];
+                         EditTaleViewController* controller;
+                         if (IsIdiomPad) {
+                             controller = [[EditTaleViewController alloc] initWithNibName:@"EditTaleViewController-iPad" bundle:nil];
+                         } else {
+                             controller = [[EditTaleViewController alloc] initWithNibName:@"EditTaleViewController-iPhone" bundle:nil];
+                         }
+                         controller.tale = [[Tale tales] lastObject];
+                         NSLog(@"%@", controller.tale);
                          
+                         controller.taleNumber = [[Tale tales] count] - 1;
+                         NSLog(@"%ld", (long)controller.taleNumber);
                          [self.navigationController pushViewController:controller animated:YES];
                          downloadingView.hidden = YES;
                          talesPreviewView.hidden = NO;
@@ -317,19 +295,12 @@ static int LoadingItemContext = 1;
                      }];
 }
 
-- (void)leftSideMenuButtonPressed:(id)sender {
-    [self.menuContainerViewController toggleLeftSideMenuCompletion:^{}];
-}
-
--(BOOL)prefersStatusBarHidden { return YES; }
-
 - (void)viewDidLoad {
     noTaleBackground.hidden = YES;
     downloadingView.hidden = NO;
-    downloadingLabel.text = @"Getting lessons list...";
+    downloadingLabel.text = @"Getting tales list...";
     [activityIndicator startAnimating];
-    NSString* strData;
-    NSString* url = [NSString stringWithFormat:@"%@/services/lessons/",servicesURLPrefix];
+    NSString* url = [NSString stringWithFormat:@"%@/services/tales/",servicesURLPrefix];
     NSLog(@"%@", [Lib getValueOfKey:@"encrypted_user_id"]);
     [HttpHelper sendAsyncPostRequestToURL:url
                           withParameters:[NSMutableDictionary dictionaryWithObjectsAndKeys:

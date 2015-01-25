@@ -19,20 +19,6 @@
 
 @implementation UserLessonsController
 
--(IBAction)back:(id)sender {
-    [Lib setValue:@"" forKey:@"logged_in"];
-    [Lib setValue:@"" forKey:@"user_id"];
-    [Lib setValue:@"" forKey:@"bucket_path"];
-    [Lib setValue:@"" forKey:@"is_teacher"];
-    [Lib setValue:@"" forKey:@"is_student"];
-    [Lib setValue:@"" forKey:@"encrypted_user_id"];
-    [Lesson removeAll];
-    UserLoginViewController* controller;
-    if (IsIdiomPad) {
-        controller = [[UserLoginViewController alloc] initWithNibName:@"UserLoginViewController-iPad" bundle:nil];
-    }
-    [self.navigationController pushViewController:controller animated:YES];
-}
 - (void)leftSideMenuButtonPressed:(id)sender {
     [self.menuContainerViewController toggleLeftSideMenuCompletion:^{}];
 }
@@ -53,14 +39,7 @@
     }
 }
 
--(IBAction)tabChange:(id)sender {
-    UserTalesController* controller;
-    if (IsIdiomPad) {
-        controller = [[UserTalesController alloc] initWithNibName:@"UserTalesController-iPad" bundle:nil];
-    }
-    [self.navigationController pushViewController:controller animated:NO];
-}
--(IBAction)uploadTale:(id)sender {
+-(void)uploadTale {
     [activityIndicator startAnimating];
     [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
     
@@ -94,7 +73,6 @@
         
         if ([[Lesson lessons] count]) {
             currentLessonIndex = 0;
-            [self reloadLessonList];
         } else {
             noTaleBackground.hidden = NO;
             for (UIView *view in lessonsScrollView.subviews) {
@@ -113,7 +91,7 @@
     }
 }
 
--(IBAction)playTale:(id)sender {
+-(void)playTale {
     if ([[Lesson lessons] count] > 0) {
         PlayerController* controller;
         if (IsIdiomPad) {
@@ -254,6 +232,7 @@
     [cell.cover addTarget:self action:@selector(selectTale:) forControlEvents:UIControlEventTouchUpInside];
     
     [cell.menu addTarget:self action:@selector(menuOptions:) forControlEvents:UIControlEventTouchUpInside];
+    [cell.menu setTag:indexPath.row+1000];
     /* end of subclass-based cells block */
     
     // Return the cell
@@ -268,53 +247,6 @@
     } else {
         noTaleBackground.hidden = NO;
     }
-    
-    [self reloadLessonList];
-    
-}
-
-- (void)reloadLessonList {
-    /*NSLog(@"Reload lesson list");
-    for (UIView *view in lessonsScrollView.subviews) {
-        [view removeFromSuperview];
-    }
-    if ([[Lesson lessons] count] > 0) {
-        NSLog(@"Has lessons");
-        for (NSInteger i = 0; i < [[Lesson lessons] count]; i++) {
-            Lesson *lesson = [[Lesson lessons] objectAtIndex:i];
-            Page *coverPage = [[lesson pages] objectAtIndex:0];
-            UIButton *button;
-            
-            button = [[UIButton alloc] initWithFrame:CGRectMake(210*i, 5, 200, 140)];
-            if (i == currentLessonIndex) {
-                [button.layer setCornerRadius:5.0];
-                [button.layer setBorderColor:[UIColorFromRGB(0xfa3737) CGColor]];
-                [button.layer setBorderWidth:6.0];
-            } else {
-                [button.layer setCornerRadius:5.0];
-                [button.layer setBorderColor:[UIColorFromRGB(0x8FD866) CGColor]];
-                [button.layer setBorderWidth:3.0];
-            }
-                
-            [button setImage:[coverPage pageThumbnail] forState:UIControlStateNormal];
-          
-            
-            [button.layer setMasksToBounds:YES];
-            
-            
-            
-            button.tag = 1000 + i;
-            [button addTarget:self action:@selector(selectTale:) forControlEvents:UIControlEventTouchUpInside];
-            
-            [lessonsScrollView addSubview:button];
-        }
-        if (IsIdiomPad) {
-            [lessonsScrollView setContentSize:CGSizeMake(210*[[Tale tales] count] , 140)];
-        }
-        else {
-            [lessonsScrollView setContentSize:CGSizeMake(95*[[Tale tales] count] , 63)];
-        }
-    }*/
 }
 
 -(void)selectTale:(id)sender {
@@ -345,18 +277,34 @@
 }
 
 -(void)menuOptions:(id)sender {
-    
+    if (sender != nil) {
+        UIButton *button = (UIButton*) sender;
+        currentLessonIndex = button.tag - 1000;
+        currentLesson = [[Lesson lessons] objectAtIndex:currentLessonIndex];
+    }
+
     self.actionSheet = [[UIActionSheet alloc] initWithTitle:@"Choose Action"
                                                        delegate:self
                                               cancelButtonTitle:@"Cancel"
                                          destructiveButtonTitle:nil
-                                              otherButtonTitles:@"Share", @"Play", @"Upload", nil];
+                                              otherButtonTitles:@"Play", @"Upload", nil];
     
     // Show the sheet
 
     self.actionSheet.tag = ((UIButton*)sender).tag;
     [self.actionSheet showFromRect:[(UIButton*)sender frame] inView:[(UIButton*)sender superview] animated:YES];
 
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    switch (buttonIndex) {
+        case 0:
+            [self playTale];
+            break;
+        case 1:
+            [self uploadTale];
+            break;
+    }
 }
 
 - (void)willPresentActionSheet:(UIActionSheet *)actionSheet {

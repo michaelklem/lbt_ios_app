@@ -9,7 +9,6 @@
             <connections>
                 <outlet property="activityIndicator" destination="i5P-SL-by5" id="S0h-am-GTp"/>
                 <outlet property="authorLabel" destination="66" id="70"/>
-                <outlet property="controlTab" destination="umz-fc-TrL" id="lER-ks-1JN"/>
                 <outlet property="createdLabel" destination="64" id="71"/>
                 <outlet property="modifiedLabel" destination="60" id="72"/>
                 <outlet property="newButton" destination="82" id="87"/>
@@ -180,40 +179,17 @@
                     <rect key="frame" x="0.0" y="58" width="1024" height="472"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="92">
-                    <rect key="frame" x="10" y="718" width="140" height="42"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                    <state key="normal" title="Download Tales">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="downloadTales:" destination="-1" eventType="touchUpInside" id="93"/>
-                    </connections>
-                </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ymP-zX-hD1">
-                    <rect key="frame" x="10" y="8" width="58" height="30"/>
+                    <rect key="frame" x="10" y="8" width="29" height="27"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="Logout">
+                    <state key="normal" backgroundImage="list26.png">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="back:" destination="-1" eventType="touchUpInside" id="mDZ-7f-540"/>
+                        <action selector="leftSideMenuButtonPressed:" destination="-1" eventType="touchUpInside" id="wXx-aP-2ki"/>
                     </connections>
                 </button>
-                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="umz-fc-TrL">
-                    <rect key="frame" x="772" y="10" width="237" height="29"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <segments>
-                        <segment title="Tales"/>
-                        <segment title="Lessons"/>
-                    </segments>
-                    <connections>
-                        <action selector="tabChange:" destination="-1" eventType="valueChanged" id="okb-dR-Ad8"/>
-                    </connections>
-                </segmentedControl>
                 <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" id="i5P-SL-by5">
                     <rect key="frame" x="502" y="374" width="20" height="20"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -234,6 +210,7 @@
         <image name="ipad_btn_create_tale.png" width="200" height="140"/>
         <image name="ipad_btn_play_big.png" width="513" height="362"/>
         <image name="ipad_notale_bg.png" width="1024" height="472"/>
+        <image name="list26.png" width="64" height="64"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

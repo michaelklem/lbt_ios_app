@@ -37,11 +37,12 @@
 - (IBAction)leftSideMenuButtonPressed:(id)sender;
 - (void)reloadLessonList;
 - (void)selectTale:(id)sender;
+- (void)menuOptions:(id)sender;
 - (IBAction)newTale:(id)sender;
 - (IBAction)editTale:(id)sender;
 - (IBAction)uploadTale:(id)sender;
 - (IBAction)deleteTale:(id)sender;
-- (IBAction)playTale:(id)sender;
+//- (IBAction)playTale:(id)sender;
 - (IBAction)downloadTales:(id)sender;
 - (IBAction)back:(id)sender;
 - (IBAction)tabChange:(id)sender;

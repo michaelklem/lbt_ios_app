@@ -285,6 +285,8 @@
 		4CA46BFD1A6B84A1000E57E3 /* MFSideMenuShadow.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA46BF91A6B84A1000E57E3 /* MFSideMenuShadow.m */; };
 		4CA46BFE1A6B84A1000E57E3 /* UIViewController+MFSideMenuAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA46BFB1A6B84A1000E57E3 /* UIViewController+MFSideMenuAdditions.m */; };
 		4CA46C011A6B8508000E57E3 /* SideMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA46C001A6B8508000E57E3 /* SideMenuViewController.m */; };
+		4CA46C071A734244000E57E3 /* StudentDownloadTalesController-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CA46C031A734244000E57E3 /* StudentDownloadTalesController-iPad.xib */; };
+		4CA46C091A734244000E57E3 /* StudentDownloadTalesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA46C061A734244000E57E3 /* StudentDownloadTalesController.m */; };
 		BDAFD72A1901AA6E0082B7A3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BDAFD7291901AA6E0082B7A3 /* Images.xcassets */; };
 		BDDB6BA818FA11140093A543 /* ZipArchive in Resources */ = {isa = PBXBuildFile; fileRef = BDDB6BA718FA11140093A543 /* ZipArchive */; };
 		BDDB6BAA18FA13990093A543 /* libZipArchive-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BDDB6BA918FA13990093A543 /* libZipArchive-ios.a */; };
@@ -675,6 +677,9 @@
 		4CA46BFB1A6B84A1000E57E3 /* UIViewController+MFSideMenuAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+MFSideMenuAdditions.m"; sourceTree = "<group>"; };
 		4CA46BFF1A6B8508000E57E3 /* SideMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SideMenuViewController.h; sourceTree = "<group>"; };
 		4CA46C001A6B8508000E57E3 /* SideMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SideMenuViewController.m; sourceTree = "<group>"; };
+		4CA46C031A734244000E57E3 /* StudentDownloadTalesController-iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "StudentDownloadTalesController-iPad.xib"; sourceTree = "<group>"; };
+		4CA46C051A734244000E57E3 /* StudentDownloadTalesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudentDownloadTalesController.h; sourceTree = "<group>"; };
+		4CA46C061A734244000E57E3 /* StudentDownloadTalesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudentDownloadTalesController.m; sourceTree = "<group>"; };
 		BDAFD7291901AA6E0082B7A3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		BDDB6BA718FA11140093A543 /* ZipArchive */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ZipArchive; sourceTree = "<group>"; };
 		BDDB6BA918FA13990093A543 /* libZipArchive-ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libZipArchive-ios.a"; sourceTree = "<group>"; };
@@ -1459,13 +1464,6 @@
 			name = "Edit Tale";
 			sourceTree = "<group>";
 		};
-		4C1EDE731A5CA3E10067C38D /* UploadTale */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = UploadTale;
-			sourceTree = "<group>";
-		};
 		4C1EDE8C1A6991B00067C38D /* SWRevealViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1509,6 +1507,16 @@
 			path = MFSideMenu;
 			sourceTree = "<group>";
 		};
+		4CA46C021A734230000E57E3 /* DownloadTale */ = {
+			isa = PBXGroup;
+			children = (
+				4CA46C031A734244000E57E3 /* StudentDownloadTalesController-iPad.xib */,
+				4CA46C051A734244000E57E3 /* StudentDownloadTalesController.h */,
+				4CA46C061A734244000E57E3 /* StudentDownloadTalesController.m */,
+			);
+			name = DownloadTale;
+			sourceTree = "<group>";
+		};
 		F42D6BFF19B7AB110046D27C /* UserLogin */ = {
 			isa = PBXGroup;
 			children = (
@@ -1532,7 +1540,6 @@
 		F4B592C319BF7BFE0004493B /* UserTales */ = {
 			isa = PBXGroup;
 			children = (
-				4C1EDE731A5CA3E10067C38D /* UploadTale */,
 				F4B592C419BF7C1F0004493B /* UserTalesController-iPad.xib */,
 				F4B592C619BF7C1F0004493B /* UserTalesController.h */,
 				F4B592C719BF7C1F0004493B /* UserTalesController.m */,
@@ -1558,6 +1565,7 @@
 		F4B592D119C8B9FC0004493B /* Student */ = {
 			isa = PBXGroup;
 			children = (
+				4CA46C021A734230000E57E3 /* DownloadTale */,
 				F47419DB19D785150024AAF6 /* EditAssignment */,
 				F4B592D219C8BD220004493B /* DownloadAssignments */,
 				F4B592CB19BF8E520004493B /* UserLessons */,
@@ -1858,6 +1866,7 @@
 				37ABC0381511EB3F00C3FB6E /* iphone_btn_preview@2x.png in Resources */,
 				4C43DA2A19F0B0C00059E3E4 /* voice15.png in Resources */,
 				37EA51661512D5E400E4599B /* ipad_btn_done.png in Resources */,
+				4CA46C071A734244000E57E3 /* StudentDownloadTalesController-iPad.xib in Resources */,
 				37EA51671512D5E400E4599B /* ipad_btn_edit.png in Resources */,
 				04B2D830151B066E00BC781A /* ColorPickerController.xib in Resources */,
 				373DBEDA151ECBBF0091DCCB /* Default.png in Resources */,
@@ -1957,6 +1966,7 @@
 				0490EEE114FE1466006F125F /* UIImage+FillPath.m in Sources */,
 				3760C1CD15104A980086ECD6 /* ServiceLib.m in Sources */,
 				3760C1DC15104AC90086ECD6 /* SBJsonStreamParser.m in Sources */,
+				4CA46C091A734244000E57E3 /* StudentDownloadTalesController.m in Sources */,
 				F4B592D719C8BD320004493B /* DownloadAssignmentsController.m in Sources */,
 				3760C1DD15104AC90086ECD6 /* SBJsonStreamParserAccumulator.m in Sources */,
 				3760C1DE15104AC90086ECD6 /* SBJsonStreamParserAdapter.m in Sources */,
