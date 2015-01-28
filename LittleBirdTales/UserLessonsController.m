@@ -160,16 +160,6 @@
     
     currentLessonIndex = 0;
     
-    [newButton.layer setMasksToBounds:YES];
-   
-    [newButton.layer setBorderColor:[UIColorFromRGB(0x70b7ff) CGColor]];
-    if (IsIdiomPad) {
-        [newButton.layer setBorderWidth:3.0];
-        [newButton.layer setCornerRadius:5.0];
-    } else {
-        [newButton.layer setBorderWidth:1.0];
-        [newButton.layer setCornerRadius:2.0];
-    }
     activityIndicator.hidesWhenStopped=YES;
 }
 
@@ -225,11 +215,6 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [[UISegmentedControl appearance] setTintColor:[UIColor whiteColor]];
-    if ([[Lesson lessons] count] > 0) {
-        noTaleBackground.hidden = YES;
-    } else {
-        noTaleBackground.hidden = NO;
-    }
     
     [self.collectionView reloadData];
 }
@@ -272,7 +257,7 @@
                                                        delegate:self
                                               cancelButtonTitle:@"Cancel"
                                          destructiveButtonTitle:nil
-                                              otherButtonTitles:@"Play", @"Upload", @"Delete", nil];
+                                              otherButtonTitles:@"Play", @"Upload", @"Edit", @"Delete", nil];
     
     // Show the sheet
 
@@ -290,6 +275,9 @@
             [self uploadTale];
             break;
         case 2:
+            [self editTale:nil];
+            break;
+        case 3:
             [self deleteTale];
             break;
     }

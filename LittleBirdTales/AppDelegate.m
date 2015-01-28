@@ -110,6 +110,7 @@ AppDelegate* _shared;
                                                     containerWithCenterViewController:[self navController]
                                                     leftMenuViewController:leftMenuViewController
                                                     rightMenuViewController:rightMenuViewController];
+
     container.panMode = MFSideMenuPanModeNone;
     self.window.rootViewController = container;
     [self.window makeKeyAndVisible];

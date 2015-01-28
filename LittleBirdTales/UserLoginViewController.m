@@ -14,6 +14,8 @@
 #import "ServiceLib.h"
 #import "SBJson.h"
 #import "Lib.h"
+#import "MFSideMenu.h"
+#import "SideMenuViewController.h"
 
 @implementation UserLoginViewController
 
@@ -90,6 +92,7 @@
             encryptedUserId = [obj objectForKey:@"encrypted_id"];
             [Lib setValue:encryptedUserId forKey:@"encrypted_user_id"];
             [Lib setValue:@"true" forKey:@"logged_in"];
+            [Lib setValue:[obj objectForKey:@"name"] forKey:@"user_name"];
             sucessed = TRUE;
         }
         else if ([obj isKindOfClass:[NSDictionary class]] && [obj objectForKey:@"error"]) {
@@ -108,6 +111,8 @@
         UserTalesController* controller;
         controller = [[UserTalesController alloc] initWithNibName:@"UserTalesController-iPad" bundle:nil];
         [self.navigationController pushViewController:controller animated:YES];
+        SideMenuViewController* menu = self.menuContainerViewController.leftMenuViewController;
+        [menu.tableView reloadData];
     } else {
         [activityIndicator stopAnimating];
         loginView.hidden = NO;

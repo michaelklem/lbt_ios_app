@@ -31,7 +31,7 @@ NSArray *tableData;
 
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return @"Menu";
+    return [NSString stringWithFormat:@"%@%@", @"Logged in as ", [Lib getValueOfKey:@"user_name"]];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -81,6 +81,7 @@ NSArray *tableData;
             [Lib setValue:@"" forKey:@"is_teacher"];
             [Lib setValue:@"" forKey:@"is_student"];
             [Lib setValue:@"" forKey:@"encrypted_user_id"];
+            [Lib setValue:@"" forKey:@"user_name"];            
             [Lesson removeAll];
             controller = [[UserLoginViewController alloc] initWithNibName:@"UserLoginViewController-iPad" bundle:nil];
             break;
