@@ -423,7 +423,7 @@
             UIButton *button;
             
             
-            button = [[UIButton alloc] initWithFrame:CGRectMake(65*i, 3, 60, 40)];
+            button = [[UIButton alloc] initWithFrame:CGRectMake(105*i, 3, 100, 70)];
             if (i == currentPage) {
                 [button.layer setCornerRadius:2.0];
                 [button.layer setBorderColor:[UIColorFromRGB(0xfa3737) CGColor]];

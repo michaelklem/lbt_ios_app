@@ -16,6 +16,7 @@
 #import "Lib.h"
 #import "Lesson.h"
 #import "MFSideMenu.h"
+#import "CVCell.h"
 
 @implementation UserTalesController
 
@@ -47,10 +48,9 @@
     [self.navigationController pushViewController:controller animated:NO];
 }
 
--(IBAction)uploadTale:(id)sender {
+-(void)uploadTale {
     if ([[currentTale pages] count] == 1) {
         [Lib showAlert:@"Little Bird Tales" withMessage:@"Please add at least 1 page to your story to make it playable"];
-        return;
     }
     [activityIndicator startAnimating];
     [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
@@ -69,9 +69,9 @@
 
         });
     });
-    
-    }
--(IBAction)deleteTale:(id)sender {
+}
+
+-(void)deleteTale {
     UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Little Bird Tales"
                                                         message:@"Delete this tale?" 
                                                        delegate:self 
@@ -83,30 +83,11 @@
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex == 1) {
         [Tale remove:currentTale];
-        
-        if ([[Tale tales] count]) {
-            currentTaleIndex = 0;
-            [self reloadTaleList];
-            [self selectTale:nil];
-        } else {
-            noTaleBackground.hidden = NO;
-            for (UIView *view in talesScrollView.subviews) {
-                [view removeFromSuperview];
-            }
-            
-            [titleLabel setText:@""];
-            [authorLabel setText:@""];
-            [pageLabel setText:@""];
-            
-            [createdLabel setText:@""];
-            [modifiedLabel setText:@""];
-            
-            [previewImage setImage:[UIImage new]];
-        }
+        [self.collectionView reloadData];
     }
 }
 
--(IBAction)playTale:(id)sender {
+-(void)playTale {
     if ([[Tale tales] count] > 0) {
         PlayerController* controller;
         if (IsIdiomPad) {
@@ -164,105 +145,8 @@
 }
 #pragma mark - View lifecycle
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    if ([[Tale tales] count] > 0) {
-        [self selectTale:nil];
-    }
-    currentTaleIndex = 0;
-    
-    activityIndicator.hidesWhenStopped=YES;
-    
-    [newButton.layer setMasksToBounds:YES];
-   
-    [newButton.layer setBorderColor:[UIColorFromRGB(0x70b7ff) CGColor]];
-    if (IsIdiomPad) {
-        [newButton.layer setBorderWidth:3.0];
-        [newButton.layer setCornerRadius:5.0];
-    } else {
-        [newButton.layer setBorderWidth:1.0];
-        [newButton.layer setCornerRadius:2.0];
-    }
-    
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [[UISegmentedControl appearance] setTintColor:[UIColor whiteColor]];
-    if ([[Tale tales] count] > 0) {
-        noTaleBackground.hidden = YES;
-        [self selectTale:nil];
-    } else {
-        noTaleBackground.hidden = NO;
-    }
-    
-    if([[Lib getValueOfKey:@"is_student"] boolValue]==false &&
-       [[Lib getValueOfKey:@"is_teacher"] boolValue]==false) {
-        controlTab.hidden = YES;
-    }
-    else {
-        controlTab.hidden = NO;
-    }
-    
-    [self reloadTaleList];
-    
-}
-
-- (void)reloadTaleList {
-    for (UIView *view in talesScrollView.subviews) {
-        [view removeFromSuperview];
-    }
-    if ([[Tale tales] count] > 0) {
-        for (NSInteger i = 0; i < [[Tale tales] count]; i++) {
-            Tale *tale = [[Tale tales] objectAtIndex:i];
-            Page *coverPage = [[tale pages] objectAtIndex:0];
-            UIButton *button;
-            
-            if (IsIdiomPad) {
-                button = [[UIButton alloc] initWithFrame:CGRectMake(210*i, 5, 200, 140)];
-                if (i == currentTaleIndex) {
-                    [button.layer setCornerRadius:5.0];
-                    [button.layer setBorderColor:[UIColorFromRGB(0xfa3737) CGColor]];
-                    [button.layer setBorderWidth:6.0];
-                } else {
-                    [button.layer setCornerRadius:5.0];
-                    [button.layer setBorderColor:[UIColorFromRGB(0x8FD866) CGColor]];
-                    [button.layer setBorderWidth:3.0];
-                }
-            } else {
-                button = [[UIButton alloc] initWithFrame:CGRectMake(95*i, 3, 90, 63)];
-                if (i == currentTaleIndex) {
-                    [button.layer setCornerRadius:2.0];
-                    [button.layer setBorderColor:[UIColorFromRGB(0xfa3737) CGColor]];
-                    [button.layer setBorderWidth:2.0];
-                } else {
-                    [button.layer setCornerRadius:2.0];
-                    [button.layer setBorderColor:[UIColorFromRGB(0x8FD866) CGColor]];
-                    [button.layer setBorderWidth:1.0];
-                }
-            }
-            
-            [button setImage:[coverPage pageThumbnail] forState:UIControlStateNormal];
-          
-            
-            [button.layer setMasksToBounds:YES];
-            
-            
-            
-            button.tag = 1000 + i;
-            [button addTarget:self action:@selector(selectTale:) forControlEvents:UIControlEventTouchUpInside];
-            
-            [talesScrollView addSubview:button];
-        }
-        if (IsIdiomPad) {
-            [talesScrollView setContentSize:CGSizeMake(210*[[Tale tales] count] , 140)];
-        }
-        else {
-            [talesScrollView setContentSize:CGSizeMake(95*[[Tale tales] count] , 63)];
-        }
-    }
-}
-
 -(void)selectTale:(id)sender {
+    NSLog(@"selecting tale");
     if ([[Tale tales] count] > 0) {
         lastTaleIndex = currentTaleIndex;
         UIButton *button;
@@ -273,52 +157,139 @@
             currentTaleIndex = button.tag - 1000;
         }
         
-        if (lastTaleIndex != currentTaleIndex && sender!= nil) {
-            if (IsIdiomPad) {
-                UIButton *lastButton = (UIButton*)[talesScrollView viewWithTag:lastTaleIndex+1000];
-                [lastButton.layer setMasksToBounds:YES];
-                [lastButton.layer setCornerRadius:5.0];
-                [lastButton.layer setBorderColor:[UIColorFromRGB(0x8FD866) CGColor]];
-                [lastButton.layer setBorderWidth:3.0];
-                
-                [button.layer setMasksToBounds:YES];
-                [button.layer setCornerRadius:5.0];
-                [button.layer setBorderColor:[UIColorFromRGB(0xfa3737) CGColor]];
-                [button.layer setBorderWidth:6.0];
-            } else {
-                UIButton *lastButton = (UIButton*)[talesScrollView viewWithTag:lastTaleIndex+1000];
-                [lastButton.layer setMasksToBounds:YES];
-                [lastButton.layer setCornerRadius:2.0];
-                [lastButton.layer setBorderColor:[UIColorFromRGB(0x8FD866) CGColor]];
-                [lastButton.layer setBorderWidth:1.0];
-                
-                [button.layer setMasksToBounds:YES];
-                [button.layer setCornerRadius:2.0];
-                [button.layer setBorderColor:[UIColorFromRGB(0xfa3737) CGColor]];
-                [button.layer setBorderWidth:2.0];
-            }
-        }
-        
         currentTale = [[Tale tales] objectAtIndex:currentTaleIndex];
         
-        Page *coverPage = [[currentTale pages] objectAtIndex:0];
+        EditTaleViewController* controller;
+        controller = [[EditTaleViewController alloc] initWithNibName:@"EditTaleViewController-iPad" bundle:nil];
         
-        [titleLabel setText:currentTale.title];
-        [authorLabel setText:currentTale.author];
-        [pageLabel setText:[NSString stringWithFormat:@"%d",[[currentTale pages] count] - 1]];
+        controller.tale = currentTale;
+        controller.taleNumber = currentTaleIndex;
+        [self.navigationController pushViewController:controller animated:YES];
         
-        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-        [dateFormatter setTimeStyle:NSDateFormatterNoStyle];
-        [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
-        
-        NSDate *date = [NSDate dateWithTimeIntervalSince1970:currentTale.created];
-        NSString *createdDate = [dateFormatter stringFromDate:date];
-        [createdLabel setText:createdDate];
-        date = [NSDate dateWithTimeIntervalSince1970:currentTale.modified];
-        NSString *modifiedDate = [dateFormatter stringFromDate:date];
-        [modifiedLabel setText:modifiedDate];
-        
-        [previewImage setImage:coverPage.pageImageWithDefaultBackground];    
+    }
+}
+
+-(void)menuOptions:(id)sender {
+    if (sender != nil) {
+        UIButton *button = (UIButton*) sender;
+        currentTaleIndex = button.tag - 1000;
+        currentTale = [[Tale tales] objectAtIndex:currentTaleIndex];
+    }
+    
+    self.actionSheet = [[UIActionSheet alloc] initWithTitle:@"Choose Action"
+                                                   delegate:self
+                                          cancelButtonTitle:@"Cancel"
+                                     destructiveButtonTitle:nil
+                                          otherButtonTitles:@"Play", @"Upload", @"Edit", @"Delete", nil];
+    
+    // Show the sheet
+    
+    self.actionSheet.tag = ((UIButton*)sender).tag;
+    [self.actionSheet showFromRect:[(UIButton*)sender frame] inView:[(UIButton*)sender superview] animated:YES];
+    
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    switch (buttonIndex) {
+        case 0:
+            [self playTale];
+            break;
+        case 1:
+            [self uploadTale];
+            break;
+        case 2:
+            [self editTale:nil];
+            break;
+        case 3:
+            [self deleteTale];
+            break;
+    }
+}
+
+-(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    return [self.dataArray count];
+}
+
+-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    
+    NSMutableArray *sectionArray = [self.dataArray objectAtIndex:section];
+    return [sectionArray count];
+    
+}
+
+-(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    // Setup cell identifier
+    static NSString *cellIdentifier = @"cvCell";
+    
+    /*  Uncomment this block to use nib-based cells */
+    // UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
+    // UILabel *titleLabel = (UILabel *)[cell viewWithTag:100];
+    // [titleLabel setText:cellData];
+    /* end of nib-based cell block */
+    
+    /* Uncomment this block to use subclass-based cells */
+    CVCell *cell = (CVCell *)[collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
+    NSMutableArray *data = [self.dataArray objectAtIndex:indexPath.section];
+    Tale* lesson = [data objectAtIndex:indexPath.row];
+    [cell.titleLabel setText:lesson.title];
+    [cell.authorLabel setText:lesson.author];
+    Page *coverPage = [[lesson pages] objectAtIndex:0];
+    [cell.cover setBackgroundImage:coverPage.pageThumbnail forState:UIControlStateNormal];
+    [cell.cover setTag:indexPath.row+1000];
+    
+    [cell.cover addTarget:self action:@selector(selectTale:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [cell.menu addTarget:self action:@selector(menuOptions:) forControlEvents:UIControlEventTouchUpInside];
+    [cell.menu setTag:indexPath.row+1000];
+    /* end of subclass-based cells block */
+    
+    // Return the cell
+    return cell;
+    
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    self.dataArray = [[NSArray alloc] initWithObjects:[Tale tales], nil];
+    
+    [self.collectionView registerClass:[CVCell class] forCellWithReuseIdentifier:@"cvCell"];
+    /* end of subclass-based cells block */
+    
+    // Configure layout
+    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
+    [flowLayout setItemSize:CGSizeMake(325, 243)];
+    [flowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
+    [flowLayout setMinimumLineSpacing:15];
+    [self.collectionView setCollectionViewLayout:flowLayout];
+    
+    currentTaleIndex = 0;
+    
+    activityIndicator.hidesWhenStopped=YES;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [[UISegmentedControl appearance] setTintColor:[UIColor whiteColor]];
+    
+    [self.collectionView reloadData];
+}
+
+- (void)willPresentActionSheet:(UIActionSheet *)actionSheet {
+    for (UIView *_currentView in actionSheet.subviews) {
+        if ([_currentView isKindOfClass:[UILabel class]]) {
+            UILabel *l = [[UILabel alloc] initWithFrame:_currentView.frame];
+            l.text = [(UILabel *)_currentView text];
+            [l setFont:[UIFont fontWithName:@"Arial-BoldMT" size:20]];
+            l.textColor = [UIColor darkGrayColor];
+            l.backgroundColor = [UIColor clearColor];
+            [l sizeToFit];
+            [l setCenter:CGPointMake(actionSheet.center.x, 25)];
+            [l setFrame:CGRectIntegral(l.frame)];
+            [actionSheet addSubview:l];
+            _currentView.hidden = YES;
+            break;
+        }
     }
 }
 
