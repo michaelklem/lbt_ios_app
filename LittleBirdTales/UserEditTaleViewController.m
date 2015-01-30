@@ -6,22 +6,13 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "EditAssignmentViewController.h"
+#import "UserEditTaleViewController.h"
 
 
-@implementation EditAssignmentViewController
-@synthesize lesson, taleNumber, popoverController, soundPlayer;
-
-
--(void)tapDetected{
-    Page *page = [lesson.pages objectAtIndex:currentPage];
-    if(!page.image_locked) {
-        [self drawPage:(nil)];
-    }
-}
+@implementation UserEditTaleViewController
+@synthesize tale, taleNumber, popoverController;
 
 -(IBAction)drawPage:(id)sender {
-
     //TODO: Check if there is a page to draw
     DrawEditorController* controller;
     if (IsIdiomPad) {
@@ -29,24 +20,24 @@
     } else {
         controller = [[DrawEditorController alloc] initWithNibName:@"DrawEditorController-iPhone" bundle:nil];
     }
-    Page* page = [lesson.pages objectAtIndex:currentPage];
+    Page* page = [tale.pages objectAtIndex:currentPage];
     controller.delegate = self;
     controller.page = page;
-    controller.taleTitle = lesson.title;
+    controller.taleTitle = tale.title;
     [self.navigationController pushViewController:controller animated:YES];
 }
 -(IBAction)textPage:(id)sender {
     if (currentPage == 0) {
         InputTaleInfo* tView = [InputTaleInfo viewFromNib:self];
         tView.delegate = self;
-        [tView.titleField setText:lesson.title];
-        [tView.authorField setText:lesson.author];
+        [tView.titleField setText:tale.title];
+        [tView.authorField setText:tale.author];
         [tView showInView:self.view];
     }
     else {
         InputTextView* tView = [InputTextView viewFromNib:self];
         tView.delegate = self;
-        Page *page = [lesson.pages objectAtIndex:currentPage];
+        Page *page = [tale.pages objectAtIndex:currentPage];
         [tView.textView setText:page.text];
         [tView showInView:self.view];
     }
@@ -54,11 +45,11 @@
 
 
 -(void)inputedText:(NSString*)text forPage:(NSInteger)pid {
-    Page *page = [lesson.pages objectAtIndex:pid];
+    Page *page = [tale.pages objectAtIndex:pid];
     
     [page setText:text];
     [page setModified:round([[NSDate date] timeIntervalSince1970])];
-    [lesson setModified:round([[NSDate date] timeIntervalSince1970])];
+    [tale setModified:round([[NSDate date] timeIntervalSince1970])];
     [pagesTableView reloadData];
     NSIndexPath *indexPath=[NSIndexPath indexPathForRow:currentPage inSection:0];
     [pagesTableView selectRowAtIndexPath:indexPath animated:YES  scrollPosition:UITableViewScrollPositionNone];
@@ -66,17 +57,17 @@
 }
 
 -(void)inputedText:(NSString*)text {
-    Page *page = [lesson.pages objectAtIndex:currentPage];
+    Page *page = [tale.pages objectAtIndex:currentPage];
     NSString *currentText = page.text;
     if (text != currentText) {
         [[undoManager prepareWithInvocationTarget:self] inputedText:currentText forPage:currentPage];
     
-        [undoManager setActionName:[NSString stringWithFormat:@"Change Text of Page #%ld",(long)currentPage]];
+        [undoManager setActionName:[NSString stringWithFormat:@"Change Text of Page #%d",currentPage]];
         
         
         [page setText:text];
         [page setModified:round([[NSDate date] timeIntervalSince1970])];
-        [lesson setModified:round([[NSDate date] timeIntervalSince1970])];
+        [tale setModified:round([[NSDate date] timeIntervalSince1970])];
         [pagesTableView reloadData];
         NSIndexPath *indexPath=[NSIndexPath indexPathForRow:currentPage inSection:0];
         [pagesTableView selectRowAtIndexPath:indexPath animated:YES  scrollPosition:UITableViewScrollPositionNone];
@@ -85,8 +76,8 @@
 
 -(void)inputedTitle:(NSString*)title author:(NSString*)author {
    
-    NSString* currentTitle = lesson.title;
-    NSString* currentAuthor = lesson.author;
+    NSString* currentTitle = tale.title;
+    NSString* currentAuthor = tale.author;
     
     if (currentAuthor != author || currentTitle != title) {
         [[undoManager prepareWithInvocationTarget:self] inputedTitle:currentTitle author:currentAuthor];
@@ -94,10 +85,10 @@
         if (![undoManager isUndoing]) {
             [undoManager setActionName:NSLocalizedString(@"Change Tale Info", @"Change Tale Info")];
         }
-        [lesson setTitle:title];
-        [lesson setAuthor:author];
-        [lesson setModified:round([[NSDate date] timeIntervalSince1970])];
-        Page *cover = [[lesson pages] objectAtIndex:0];
+        [tale setTitle:title];
+        [tale setAuthor:author];
+        [tale setModified:round([[NSDate date] timeIntervalSince1970])];
+        Page *cover = [[tale pages] objectAtIndex:0];
         cover.text = title;
         titleLabel.text = title;
     }
@@ -107,11 +98,11 @@
 };
 
 - (void)setVoice:(NSString *)voiceName andDuration:(double)duration forPage:(NSInteger)pid{
-    Page *page = [lesson.pages objectAtIndex:pid];
+    Page *page = [tale.pages objectAtIndex:pid];
     [page setVoice:voiceName];
     [page setTime:duration + 1];
     [page setModified:round([[NSDate date] timeIntervalSince1970])];
-    [lesson setModified:round([[NSDate date] timeIntervalSince1970])];
+    [tale setModified:round([[NSDate date] timeIntervalSince1970])];
     [pagesTableView reloadData];
     NSIndexPath *indexPath=[NSIndexPath indexPathForRow:pid inSection:0];
     [pagesTableView selectRowAtIndexPath:indexPath animated:YES  scrollPosition:UITableViewScrollPositionBottom];
@@ -119,18 +110,18 @@
 }
 
 - (void)setVoice:(NSString *)voiceName andDuration:(double)duration{
-    Page *page = [lesson.pages objectAtIndex:currentPage];
+    Page *page = [tale.pages objectAtIndex:currentPage];
     NSString *currentVoiceName = page.voice;
     double currentDuration = page.time;
     if (voiceName != currentVoiceName) {
         [[undoManager prepareWithInvocationTarget:self] setVoice:currentVoiceName andDuration:currentDuration forPage:currentPage];
-        [undoManager setActionName:[NSString stringWithFormat:@"Change Voice of Page #%ld",(long)currentPage]];
+        [undoManager setActionName:[NSString stringWithFormat:@"Change Voice of Page #%d",currentPage]];
 
         
         [page setVoice:voiceName];
         [page setTime:duration + 1];
         [page setModified:round([[NSDate date] timeIntervalSince1970])];
-        [lesson setModified:round([[NSDate date] timeIntervalSince1970])];
+        [tale setModified:round([[NSDate date] timeIntervalSince1970])];
         [pagesTableView reloadData];
         NSIndexPath *indexPath=[NSIndexPath indexPathForRow:currentPage inSection:0];
         [pagesTableView selectRowAtIndexPath:indexPath animated:YES  scrollPosition:UITableViewScrollPositionBottom];
@@ -161,17 +152,16 @@
 }
 -(IBAction)soundPage:(id)sender {
     AudioRecord* tView = [AudioRecord viewFromNib:self];
-    Page* page = [lesson.pages objectAtIndex:currentPage];
+    Page* page = [tale.pages objectAtIndex:currentPage];
     tView.delegate = self;
     tView.pageFolder = page.pageFolder;
     tView.voiceName = page.voice;
     tView.pageText = page.text;
-    tView.playOnly = page.audio_locked;
     [tView showInView:self.view];
 }
 -(IBAction)deletePage:(id)sender {
-    UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Little Bird Lesson"
-                                                        message:@"Delete this page?"
+    UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Little Bird Tales"
+                                                        message:@"Delete this page?" 
                                                        delegate:self 
                                               cancelButtonTitle:@"Cancel" 
                                               otherButtonTitles:@"OK", nil];
@@ -180,7 +170,7 @@
 }
 
 -(void)addPage:(Page*)page atIndex:(NSInteger)index {
-    [lesson.pages insertObject:page atIndex:index];
+    [tale.pages insertObject:page atIndex:index];
     [pagesTableView reloadData];
     NSIndexPath *indexPath=[NSIndexPath indexPathForRow:index inSection:0];
     [pagesTableView selectRowAtIndexPath:indexPath animated:YES  scrollPosition:UITableViewScrollPositionBottom];
@@ -190,19 +180,19 @@
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (alertView.tag == 101) {
         if (buttonIndex == 1) {
-            Page* page = [lesson.pages objectAtIndex:currentPage];
+            
+            Page* page = [tale.pages objectAtIndex:currentPage];
             
             //Undo
             [[undoManager prepareWithInvocationTarget:self] addPage:page atIndex:currentPage];
-            [undoManager setActionName:[NSString stringWithFormat:@"Delete Page #%ld",(long)currentPage]];
+            [undoManager setActionName:[NSString stringWithFormat:@"Delete Page #%d",currentPage]];
             
-            [lesson.pages removeObjectAtIndex:currentPage];
-            [lesson setModified:round([[NSDate date] timeIntervalSince1970])];
+            [tale.pages removeObjectAtIndex:currentPage];
+            [tale setModified:round([[NSDate date] timeIntervalSince1970])];
             [pagesTableView reloadData];
             NSIndexPath *indexPath=[NSIndexPath indexPathForRow:currentPage-1 inSection:0];
             [pagesTableView selectRowAtIndexPath:indexPath animated:YES  scrollPosition:UITableViewScrollPositionBottom];
             [self setActivePage:currentPage-1];
-            [self reloadLessonList];
         }
     }
     else if (alertView.tag == 102) {
@@ -211,7 +201,7 @@
 }
 
 - (void)deleteLastPageFromPage:(NSInteger)pid {
-    [lesson.pages removeLastObject];
+    [tale.pages removeLastObject];
     [pagesTableView reloadData];
     NSIndexPath *indexPath=[NSIndexPath indexPathForRow:pid inSection:0];
     [pagesTableView selectRowAtIndexPath:indexPath animated:YES  scrollPosition:UITableViewScrollPositionBottom];
@@ -221,26 +211,17 @@
 -(IBAction)newPage:(id)sender {
     
     Page *samplePage = [Page newPage];
-    samplePage.pageFolder = [NSString stringWithFormat:@"%@/%0.f",[Lib taleFolderPathFromIndex:lesson.index],samplePage.index];
-    [lesson.pages addObject:samplePage];
+    samplePage.pageFolder = [NSString stringWithFormat:@"%@/%0.f",[Lib taleFolderPathFromIndex:tale.index],samplePage.index];
+    [tale.pages addObject:samplePage];
     
     [[undoManager prepareWithInvocationTarget:self] deleteLastPageFromPage:currentPage];
     [undoManager setActionName:[NSString stringWithFormat:@"Add New Page"]];
     
     [pagesTableView reloadData];
-    [self reloadLessonList];
-    [lesson setModified:round([[NSDate date] timeIntervalSince1970])];
-    NSIndexPath *indexPath=[NSIndexPath indexPathForRow:[lesson.pages count]-1 inSection:0];
+    [tale setModified:round([[NSDate date] timeIntervalSince1970])];
+    NSIndexPath *indexPath=[NSIndexPath indexPathForRow:[tale.pages count]-1 inSection:0];
     [pagesTableView selectRowAtIndexPath:indexPath animated:YES  scrollPosition:UITableViewScrollPositionBottom];
-    
-    float w = pagesScrollView.frame.size.width;
-    float h = pagesScrollView.frame.size.height;
-    float newPosition = pagesScrollView.contentOffset.x+w;
-    CGRect toVisible = CGRectMake(newPosition, 0, w, h);
-    
-    [pagesScrollView scrollRectToVisible:toVisible animated:YES];
-    
-    [self setActivePage:[lesson.pages count]-1];
+    [self setActivePage:[tale.pages count]-1];
 }
 
 -(IBAction)undo:(id)sender {
@@ -263,22 +244,6 @@
 }
 
 - (void)setActivePage:(NSInteger)index {
-    
-    if (lastPageIndex != index) {
-        UIButton *lastButton = (UIButton*)[pagesScrollView viewWithTag:lastPageIndex+1000];
-        [lastButton.layer setMasksToBounds:YES];
-        [lastButton.layer setCornerRadius:2.0];
-        [lastButton.layer setBorderColor:[UIColorFromRGB(0x8FD866) CGColor]];
-        [lastButton.layer setBorderWidth:1.0];
-        
-        UIButton *button = (UIButton*)[pagesScrollView viewWithTag:index+1000];
-        [button.layer setMasksToBounds:YES];
-        [button.layer setCornerRadius:2.0];
-        [button.layer setBorderColor:[UIColorFromRGB(0xfa3737) CGColor]];
-        [button.layer setBorderWidth:2.0];
-    }
-    
-    pageNumberView.text = [NSString stringWithFormat:@"Page %ld of %ld",(long)index+1, (long)lesson.pages.count];
     if (index == 0) {
         [editButton setImage:[UIImage imageNamed:@"btn-edittale-ipad.png"] forState:UIControlStateNormal];
         deleteButton.hidden = YES;
@@ -289,35 +254,9 @@
     }
     
     currentPage = index;
-    lastPageIndex = index;
-    Page *page = [lesson.pages objectAtIndex:currentPage];
-    
-    [teacherTextView setText:page.teacher_text];
-    [studentTextView setText:page.text];
-    studentTextView.editable = !page.text_locked;
-    uploadButton.enabled = !page.image_locked;
-    imageButton.enabled = !page.image_locked;
-    editButton.enabled = !page.text_locked;
-
-    if(page.teacher_voice != nil && page.teacher_voice.length > 0) {
-        stopButton.hidden = YES;
-        playButton.hidden = NO;
-    }
-    else {
-        stopButton.hidden = YES;
-        playButton.hidden = YES;
-    }
+    Page *page = [tale.pages objectAtIndex:currentPage];
     [imageView setImage:[page pageImageWithDefaultBackground]];
 }
-
--(void)setActivePage2:(id)sender {
-    if (sender != nil) {
-        UIButton *button = (UIButton*) sender;
-        currentPage = button.tag - 1000;
-        [self setActivePage:currentPage];
-    }
-}
-
 #pragma mark - View lifecycle
 
 -(BOOL)prefersStatusBarHidden { return YES; }
@@ -325,33 +264,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    //UISwipeGestureRecognizer * swipeleft=[[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(swipeleft:)];
-    //swipeleft.direction=UISwipeGestureRecognizerDirectionLeft;
-    //[self.view addGestureRecognizer:swipeleft];
-    
-    //UISwipeGestureRecognizer * swiperight=[[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(swiperight:)];
-    //swiperight.direction=UISwipeGestureRecognizerDirectionRight;
-    //[self.view addGestureRecognizer:swiperight];
-    
-    [studentTextView setDelegate:self];
-    
-    //To make the border look very close to a UITextField
-    [studentTextView.layer setBorderColor:[[[UIColor grayColor] colorWithAlphaComponent:0.5] CGColor]];
-    [studentTextView.layer setBorderWidth:2.0];
-    
-    //The rounded corner part, where you specify your view's corner radius:
-    studentTextView.layer.cornerRadius = 5;
-    studentTextView.clipsToBounds = YES;
-    
-    //To make the border look very close to a UITextField
-    [teacherTextView.layer setBorderColor:[[[UIColor grayColor] colorWithAlphaComponent:0.5] CGColor]];
-    [teacherTextView.layer setBorderWidth:2.0];
-    
-    //The rounded corner part, where you specify your view's corner radius:
-    teacherTextView.layer.cornerRadius = 5;
-    teacherTextView.clipsToBounds = YES;
-    [teacherTextView.layer setBackgroundColor:[[[UIColor lightGrayColor] colorWithAlphaComponent:0.5] CGColor]];
-    
     //Undo Manager
     undoManager = [[NSUndoManager alloc] init];
     [undoManager setLevelsOfUndo:5];
@@ -360,8 +272,8 @@
     activePageHistory = [[NSMutableArray alloc] init];
     
     // Do any additional setup after loading the view from its nib.
-    if (lesson == nil) {
-        lesson = [[Lesson alloc] init];
+    if (tale == nil) {
+        tale = [[Tale alloc] init];
         
         NSMutableArray *pageArray = [[NSMutableArray alloc] init];
         
@@ -374,109 +286,38 @@
         
         [pageArray addObject:samplePage];
         
-        lesson.pages = pageArray;
+        tale.pages = pageArray;
     }
-    
-    titleLabel.text = lesson.title;
+        
+    titleLabel.text = tale.title;
     
     pagesTableView.editing = YES;
     pagesTableView.allowsSelectionDuringEditing = YES;
-    
-    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapDetected)];
-    singleTap.numberOfTapsRequired = 1;
-    [imageView setUserInteractionEnabled:YES];
-    [imageView addGestureRecognizer:singleTap];
     
     [self setActivePage:0];
     
 }
 
-- (void)textViewDidEndEditing:(UITextView *)textView {
-    Page *page = [lesson.pages objectAtIndex:currentPage];
-    
-    [page setText:studentTextView.text];
-    [page setModified:round([[NSDate date] timeIntervalSince1970])];
-    [lesson setModified:round([[NSDate date] timeIntervalSince1970])];
-}
-
 - (void)viewWillAppear:(BOOL)animated {
-    Page *page = [lesson.pages objectAtIndex:currentPage];
+    Page *page = [tale.pages objectAtIndex:currentPage];
     [pagesTableView reloadData];
     [imageView setImage:[page pageImageWithDefaultBackground]];
     
     NSIndexPath *indexPath=[NSIndexPath indexPathForRow:currentPage inSection:0];
     [pagesTableView selectRowAtIndexPath:indexPath animated:YES  scrollPosition:UITableViewScrollPositionTop];
     
-    [self reloadLessonList];
-    
     [super viewWillAppear:animated];
-}
-
-- (void)reloadLessonList {
-    NSLog(@"Reload lesson list");
-    for (UIButton *view in pagesScrollView.subviews) {
-        [view removeFromSuperview];
-    }
-    if ([[lesson pages] count] > 0) {
-        NSLog(@"Has lessons");
-        for (NSInteger i = 0; i < [[lesson pages] count]; i++) {
-            Page *page = [[lesson pages] objectAtIndex:i];
-            UIButton *button;
-            
-            
-            button = [[UIButton alloc] initWithFrame:CGRectMake(105*i, 3, 100, 70)];
-            if (i == currentPage) {
-                [button.layer setCornerRadius:2.0];
-                [button.layer setBorderColor:[UIColorFromRGB(0xfa3737) CGColor]];
-                [button.layer setBorderWidth:2.0];
-            } else {
-                [button.layer setCornerRadius:2.0];
-                [button.layer setBorderColor:[UIColorFromRGB(0x8FD866) CGColor]];
-                [button.layer setBorderWidth:1.0];
-            }
-            
-            
-            [button setImage:[page pageThumbnail] forState:UIControlStateNormal];
-            
-            
-            [button.layer setMasksToBounds:YES];
-            
-            
-            
-            button.tag = 1000 + i;
-            [button addTarget:self action:@selector(setActivePage2:) forControlEvents:UIControlEventTouchUpInside];
-            
-            [pagesScrollView addSubview:button];
-        }
-        
-        [pagesScrollView setContentSize:CGSizeMake(65*[[lesson pages] count] , 40)];
-
-    }
+    
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
-    [lesson deleteOrphanFiles];
-    [Lesson updateLesson:lesson at:taleNumber];
+    [tale deleteOrphanFiles];
+    [Tale updateTale:tale at:taleNumber];
 }
 
-- (NSUInteger)supportedInterfaceOrientations {
-    
-    return UIInterfaceOrientationMaskAll;
-}
-
--(void)swipeleft:(UISwipeGestureRecognizer*)gestureRecognizer
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    
-    if([lesson.pages count] > currentPage+1) {
-        [self setActivePage:currentPage+1];
-    }
-}
-
--(void)swiperight:(UISwipeGestureRecognizer*)gestureRecognizer
-{
-    if(currentPage > 0) {
-        [self setActivePage:currentPage-1];
-    }
+    return UIInterfaceOrientationIsLandscape(interfaceOrientation);
 }
 
 - (void)showLoadingViewOn{
@@ -499,7 +340,7 @@
 }
 
 - (void)setImageName:(NSString*)imageName forPage:(NSInteger)pid{
-    Page *page = [lesson.pages objectAtIndex:pid];
+    Page *page = [tale.pages objectAtIndex:pid];
     [page setImage:imageName];
     [imageView setImage:page.pageImageWithDefaultBackground];
     [pagesTableView reloadData];
@@ -509,15 +350,15 @@
 
 - (void)saveImageAs:(UIImage *)image {
     
-    Page *page = [lesson.pages objectAtIndex:currentPage];
+    Page *page = [tale.pages objectAtIndex:currentPage];
     NSString *currentImageName = page.image;
     
     [[undoManager prepareWithInvocationTarget:self] setImageName:currentImageName forPage:currentPage];
-    [undoManager setActionName:[NSString stringWithFormat:@"Change Image of Page #%ld",(long)currentPage]];
+    [undoManager setActionName:[NSString stringWithFormat:@"Change Image of Page #%d",currentPage]];
     
     [page saveImage:image];
     [page setModified:round([[NSDate date] timeIntervalSince1970])];
-    [lesson setModified:round([[NSDate date] timeIntervalSince1970])];
+    [tale setModified:round([[NSDate date] timeIntervalSince1970])];
     [imageView setImage:page.pageImageWithDefaultBackground];
     [pagesTableView reloadData];
     NSIndexPath *indexPath=[NSIndexPath indexPathForRow:currentPage inSection:0];
@@ -544,7 +385,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
                                        userInfo: info
                                         repeats: NO];
     } else {
-       [picker dismissViewControllerAnimated:YES completion:nil];
+        [picker dismissViewControllerAnimated:YES completion:nil];  
         [NSTimer scheduledTimerWithTimeInterval: 0
                                          target: self
                                        selector: @selector(showLoadingViewOn)
@@ -633,8 +474,8 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (lesson)
-        return [lesson.pages count];
+    if (tale)
+        return [tale.pages count];
     return 0;
 }
 
@@ -663,9 +504,9 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
         }   
     }
     
-    Page* page = [lesson.pages objectAtIndex:indexPath.row];
+    Page* page = [tale.pages objectAtIndex:indexPath.row];
     
-    cell.pageNumber.text = [NSString stringWithFormat:@"%ld", (long)indexPath.row];
+    cell.pageNumber.text = [NSString stringWithFormat:@"%d", indexPath.row];
     if ([page.text isEqualToString:@""] || page.text == NULL) {
         [cell.textIndicator setImage:[UIImage imageNamed:@"ipad_icon_text_false"]];
     }
@@ -697,15 +538,15 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
         return;
     }
     
-    Page* movePage = [lesson.pages objectAtIndex:sourceIndexPath.row];
+    Page* movePage = [tale.pages objectAtIndex:sourceIndexPath.row];
     
-    if (destinationIndexPath.row > [lesson.pages count]) {
-        [lesson.pages addObject:movePage];
-        [lesson.pages removeObjectAtIndex:sourceIndexPath.row];
+    if (destinationIndexPath.row > [tale.pages count]) {
+        [tale.pages addObject:movePage];
+        [tale.pages removeObjectAtIndex:sourceIndexPath.row];
     }
     else {
-        [lesson.pages removeObjectAtIndex:sourceIndexPath.row];
-        [lesson.pages insertObject:movePage atIndex:destinationIndexPath.row];
+        [tale.pages removeObjectAtIndex:sourceIndexPath.row];
+        [tale.pages insertObject:movePage atIndex:destinationIndexPath.row];
     }
     
     if (currentPage == sourceIndexPath.row) {
@@ -751,7 +592,6 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
 }
 
 -(IBAction)preview:(id)sender {
-    NSLog(@"Trying to play");
     PlayerController* controller;
     if (IsIdiomPad) {
         controller = [[PlayerController alloc] initWithNibName:@"PlayerController-iPad" bundle:nil];
@@ -759,7 +599,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
         controller = [[PlayerController alloc] initWithNibName:@"PlayerController-iPhone" bundle:nil];
     }
     
-    controller.tale = lesson;
+    controller.tale = tale;
     
     [self.navigationController pushViewController:controller animated:YES];
 }
@@ -790,47 +630,13 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
 }
 
 -(void)drawPageSaved {
-    Page *page = [lesson.pages objectAtIndex:currentPage];
+    Page *page = [tale.pages objectAtIndex:currentPage];
     
     NSString *currentImageName = page.image;
-
+    
     [[undoManager prepareWithInvocationTarget:self] setImageName:currentImageName forPage:currentPage];
-    [undoManager setActionName:[NSString stringWithFormat:@"Change Image of Page #%ld",(long)currentPage]];
+    [undoManager setActionName:[NSString stringWithFormat:@"Change Image of Page #%d",currentPage]];
 }
-
--(IBAction)playTeacherAudio:(id)sender {
-    Page *page = [lesson.pages objectAtIndex:currentPage];
-    playButton.hidden = YES;
-    stopButton.hidden = NO;
-    NSString *fullPathToFile = [[Lib applicationDocumentsDirectory] stringByAppendingPathComponent:page.teacher_voice];
-    
-    NSURL *soundFileURL = [[NSURL alloc] initFileURLWithPath:fullPathToFile];
-
-    NSError *error1;
-    NSError *error2;
-    NSData *songFile = [[NSData alloc] initWithContentsOfURL:soundFileURL options:NSDataReadingMappedIfSafe error:&error1 ];
-    soundPlayer = [[AVAudioPlayer alloc] initWithData:songFile error:&error2];
-    soundPlayer.meteringEnabled = YES;
-    soundPlayer.numberOfLoops =  0;
-    soundPlayer.volume = 1.0;
-    soundPlayer.delegate = self;
-    
-    NSLog(@"%@", error1);
-    NSLog(@"%@", error2);
-    
-    [soundPlayer play];
-}
-
--(IBAction)stopTeacherAudio:(id)sender {
-    playButton.hidden = NO;
-    stopButton.hidden = YES;
-    [soundPlayer stop];
-}
-
-- (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag {
-    [self stopTeacherAudio:nil];
-}
-
 //- (void)saveTaleHistory {
 //    undoButton.enabled = TRUE;
 //    

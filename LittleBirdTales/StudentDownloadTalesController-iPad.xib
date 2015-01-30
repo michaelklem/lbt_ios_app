@@ -229,7 +229,7 @@
         <image name="bg-ipad.png" width="1024" height="768"/>
         <image name="bg-login-ipad.png" width="1024" height="511"/>
         <image name="ipad_notale_bg.png" width="1024" height="472"/>
-        <image name="list26.png" width="64" height="64"/>
+        <image name="list26.png" width="35" height="35"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

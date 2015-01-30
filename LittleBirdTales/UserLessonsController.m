@@ -17,6 +17,7 @@
 #import "CVCell.h"
 #import "MFSideMenu.h"
 
+
 @implementation UserLessonsController
 
 - (void)leftSideMenuButtonPressed:(id)sender {
@@ -134,6 +135,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [Lib setValue:@"false" forKey:@"is_tales_view"];
     
     NSMutableArray *firstSection = [[NSMutableArray alloc] init];
     NSMutableArray *secondSection = [[NSMutableArray alloc] init];

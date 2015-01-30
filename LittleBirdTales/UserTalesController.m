@@ -9,7 +9,7 @@
 #import "UserTalesController.h"
 #import "UserLessonsController.h"
 #import "PlayerController.h"
-#import "EditTaleViewController.h"
+#import "UserEditTaleViewController.h"
 #import "DownloadTalesController.h"
 #import "LoginViewController.h"
 #import "UserLoginViewController.h"
@@ -25,11 +25,11 @@
 }
 -(IBAction)editTale:(id)sender {
     if ([[Tale tales] count] > 0) {
-        EditTaleViewController* controller;
+        UserEditTaleViewController* controller;
         if (IsIdiomPad) {
-            controller = [[EditTaleViewController alloc] initWithNibName:@"EditTaleViewController-iPad" bundle:nil];
+            controller = [[UserEditTaleViewController alloc] initWithNibName:@"UserEditTaleViewController-iPad" bundle:nil];
         } else {
-            controller = [[EditTaleViewController alloc] initWithNibName:@"EditTaleViewController-iPhone" bundle:nil];
+            controller = [[UserEditTaleViewController alloc] initWithNibName:@"UserEditTaleViewController-iPhone" bundle:nil];
         }
         controller.tale = currentTale;
         controller.taleNumber = currentTaleIndex;
@@ -133,11 +133,11 @@
     
     currentTaleIndex = [[Tale tales] count] - 1;
     
-    EditTaleViewController* controller;
+    UserEditTaleViewController* controller;
     if (IsIdiomPad) {
-        controller = [[EditTaleViewController alloc] initWithNibName:@"EditTaleViewController-iPad" bundle:nil];
+        controller = [[UserEditTaleViewController alloc] initWithNibName:@"UserEditTaleViewController-iPad" bundle:nil];
     } else {
-        controller = [[EditTaleViewController alloc] initWithNibName:@"EditTaleViewController-iPhone" bundle:nil];
+        controller = [[UserEditTaleViewController alloc] initWithNibName:@"UserEditTaleViewController-iPhone" bundle:nil];
     }
     controller.tale = [[Tale tales] lastObject];
     controller.taleNumber = [[Tale tales] count] - 1;
@@ -159,8 +159,8 @@
         
         currentTale = [[Tale tales] objectAtIndex:currentTaleIndex];
         
-        EditTaleViewController* controller;
-        controller = [[EditTaleViewController alloc] initWithNibName:@"EditTaleViewController-iPad" bundle:nil];
+        UserEditTaleViewController* controller;
+        controller = [[UserEditTaleViewController alloc] initWithNibName:@"UserEditTaleViewController-iPad" bundle:nil];
         
         controller.tale = currentTale;
         controller.taleNumber = currentTaleIndex;
@@ -251,7 +251,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    [Lib setValue:@"true" forKey:@"is_tales_view"];
     self.dataArray = [[NSArray alloc] initWithObjects:[Tale tales], nil];
     
     [self.collectionView registerClass:[CVCell class] forCellWithReuseIdentifier:@"cvCell"];
