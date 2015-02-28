@@ -319,6 +319,7 @@
     return UIInterfaceOrientationIsLandscape(interfaceOrientation);
 }
 
+
 - (void)showLoadingViewOn{
     [Lib showLoadingViewOn:self.view withAlert:@"Saving image..."];
 }

@@ -93,14 +93,6 @@
     }
     
 }
--(IBAction)newTale:(id)sender {
-    InputTaleInfo* tView = [InputTaleInfo viewFromNib:self];
-    tView.delegate = self;
-    tView.titleField.text = @"My Little Bird Tale";
-    tView.authorField.text = @"A Little Bird";
-    [tView showInView:self.view];
-    
-}
 
 -(IBAction)downloadTales:(id)sender {
     DownloadAssignmentsController* controller;
@@ -113,24 +105,6 @@
     [self.navigationController pushViewController:controller animated:YES];
 }
 
--(void)inputedTitle:(NSString*)title author:(NSString*)author {
-    
-    /*Tale *newTale = [Tale newTalewithTitle:title author:author];
-    [Tale addTale:newTale];
-    [Tale save];
-    
-    currentLessonIndex = [[Tale tales] count] - 1;
-    
-    EditTaleViewController* controller;
-    if (IsIdiomPad) {
-        controller = [[EditTaleViewController alloc] initWithNibName:@"EditTaleViewController-iPad" bundle:nil];
-    } else {
-        controller = [[EditTaleViewController alloc] initWithNibName:@"EditTaleViewController-iPhone" bundle:nil];
-    }
-    controller.tale = [[Tale tales] lastObject];
-    controller.taleNumber = [[Tale tales] count] - 1;
-    [self.navigationController pushViewController:controller animated:YES];*/
-}
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad {
