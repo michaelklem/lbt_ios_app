@@ -2113,8 +2113,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Mike Klem (94A5586Y4U)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Mike Klem (94A5586Y4U)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LittleBirdTales/LittleBirdTales-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
@@ -2129,8 +2129,8 @@
 					"$(PROJECT_DIR)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "cfb530a3-a784-4770-89e2-3e26295d03eb";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "cfb530a3-a784-4770-89e2-3e26295d03eb";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "LittleBirdTales-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2145,8 +2145,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Mike Klem (94A5586Y4U)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Mike Klem (94A5586Y4U)";
 				CURRENT_PROJECT_VERSION = 1.3.1;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LittleBirdTales/LittleBirdTales-Prefix.pch";
@@ -2162,8 +2162,8 @@
 					"$(PROJECT_DIR)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "cfb530a3-a784-4770-89e2-3e26295d03eb";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "cfb530a3-a784-4770-89e2-3e26295d03eb";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "LittleBirdTales-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
