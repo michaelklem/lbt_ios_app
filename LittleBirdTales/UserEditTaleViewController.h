@@ -41,7 +41,8 @@
 @property (nonatomic, retain) Tale* tale;
 @property (nonatomic, assign) NSInteger taleNumber;
 @property (nonatomic, retain) UIPopoverController *popoverController;
-
+@property (nonatomic) IBOutlet UIView *overlayView;
+@property (nonatomic) UIImagePickerController *imagePickerController;
 
 -(IBAction)drawPage:(id)sender;
 -(IBAction)textPage:(id)sender;
