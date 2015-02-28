@@ -401,15 +401,13 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
 
 - (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex {
     if (buttonIndex == 2 && [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) { // Take Photo
-        
-        UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
-        imagePickerController.modalPresentationStyle = UIModalPresentationCurrentContext;
-        imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
-        imagePickerController.delegate = self;
-        imagePickerController.showsCameraControls = YES;
+        BOOL hasLoadedCamera = [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera];
 
-        self.imagePickerController = imagePickerController;
-        [self presentViewController:self.imagePickerController animated:YES completion:nil];
+        if (!hasLoadedCamera)
+            [self performSelector:@selector(showcamera) withObject:nil afterDelay:0.3];
+        else
+            [self showcamera];
+        
         
     } else if (buttonIndex == 0) { // Library
         
@@ -464,6 +462,17 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
 
     }
 
+}
+
+- (void)showcamera {
+    UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
+    imagePickerController.modalPresentationStyle = UIModalPresentationCurrentContext;
+    imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
+    imagePickerController.delegate = self;
+    imagePickerController.showsCameraControls = YES;
+    
+    self.imagePickerController = imagePickerController;
+    [self presentViewController:self.imagePickerController animated:YES completion:nil];
 }
 
 
