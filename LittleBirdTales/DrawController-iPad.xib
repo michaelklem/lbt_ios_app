@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none">
     <dependencies>
-        <deployment defaultVersion="1792" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DrawController">
@@ -42,7 +42,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                    <state key="normal" image="icon_brush.png" backgroundImage="icon_bg.png">
+                                    <state key="normal" image="ipad_icon_paint2.png" backgroundImage="icon_bg.png">
                                         <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
@@ -57,7 +57,7 @@
                                     <rect key="frame" x="68" y="0.0" width="60" height="60"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                    <state key="normal" image="icon_draw.png" backgroundImage="icon_bg.png">
+                                    <state key="normal" image="ipad_icon_erase.png" backgroundImage="icon_bg.png">
                                         <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
@@ -72,7 +72,7 @@
                                     <rect key="frame" x="69" y="141" width="60" height="60"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                    <state key="normal" image="icon_rect.png" backgroundImage="icon_bg.png">
+                                    <state key="normal" image="ipad_icon_rect.png" backgroundImage="icon_bg.png">
                                         <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
@@ -87,7 +87,7 @@
                                     <rect key="frame" x="0.0" y="70" width="60" height="60"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                    <state key="normal" image="icon_line.png" backgroundImage="icon_bg.png">
+                                    <state key="normal" image="ipad_icon_line.png" backgroundImage="icon_bg.png">
                                         <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
@@ -102,7 +102,7 @@
                                     <rect key="frame" x="68" y="70" width="60" height="60"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                    <state key="normal" image="icon_paint.png" backgroundImage="icon_bg.png">
+                                    <state key="normal" image="ipad_icon_fill.png" backgroundImage="icon_bg.png">
                                         <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
@@ -117,7 +117,7 @@
                                     <rect key="frame" x="0.0" y="141" width="60" height="60"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                    <state key="normal" image="icon_circle.png" backgroundImage="icon_bg.png">
+                                    <state key="normal" image="ipad_icon_circle.png" backgroundImage="icon_bg.png">
                                         <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
@@ -132,7 +132,7 @@
                                     <rect key="frame" x="0.0" y="210" width="60" height="60"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                    <state key="normal" image="icon_text.png" backgroundImage="icon_bg.png">
+                                    <state key="normal" image="ipad_icon_text.png" backgroundImage="icon_bg.png">
                                         <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
@@ -165,7 +165,7 @@
                             <rect key="frame" x="81" y="311" width="60" height="60"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                            <state key="normal" image="icon_redo.png" backgroundImage="icon_bg.png">
+                            <state key="normal" image="ipad_icon_redo.png" backgroundImage="icon_bg.png">
                                 <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
@@ -180,7 +180,7 @@
                             <rect key="frame" x="13" y="311" width="60" height="60"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                            <state key="normal" image="icon_undo.png" backgroundImage="icon_bg.png">
+                            <state key="normal" image="ipad_icon_undo.png" backgroundImage="icon_bg.png">
                                 <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
@@ -359,17 +359,17 @@
         <image name="color_bg.png" width="65" height="30"/>
         <image name="icon_bg.png" width="30" height="30"/>
         <image name="icon_bg_actived.png" width="30" height="30"/>
-        <image name="icon_brush.png" width="32" height="32"/>
-        <image name="icon_circle.png" width="32" height="32"/>
-        <image name="icon_draw.png" width="32" height="32"/>
         <image name="icon_image.png" width="31" height="32"/>
-        <image name="icon_line.png" width="32" height="32"/>
-        <image name="icon_paint.png" width="32" height="32"/>
-        <image name="icon_rect.png" width="32" height="32"/>
-        <image name="icon_redo.png" width="33" height="33"/>
-        <image name="icon_text.png" width="32" height="32"/>
-        <image name="icon_undo.png" width="33" height="33"/>
         <image name="ipad_btn_back.png" width="36" height="30"/>
+        <image name="ipad_icon_circle.png" width="64" height="64"/>
+        <image name="ipad_icon_erase.png" width="64" height="64"/>
+        <image name="ipad_icon_fill.png" width="64" height="64"/>
+        <image name="ipad_icon_line.png" width="64" height="64"/>
+        <image name="ipad_icon_paint2.png" width="60" height="60"/>
+        <image name="ipad_icon_rect.png" width="64" height="64"/>
+        <image name="ipad_icon_redo.png" width="67" height="67"/>
+        <image name="ipad_icon_text.png" width="64" height="65"/>
+        <image name="ipad_icon_undo.png" width="67" height="67"/>
         <image name="pen_bg.png" width="130" height="48"/>
         <image name="save.png" width="135" height="55"/>
         <image name="shadow_bg.png" width="122" height="28"/>

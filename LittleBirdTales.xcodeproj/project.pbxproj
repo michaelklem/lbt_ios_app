@@ -291,6 +291,17 @@
 		4CA46C181A7B2D10000E57E3 /* UserEditTaleViewController-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CA46C151A7B2D10000E57E3 /* UserEditTaleViewController-iPad.xib */; };
 		4CA46C191A7B2D10000E57E3 /* UserEditTaleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA46C171A7B2D10000E57E3 /* UserEditTaleViewController.m */; };
 		BDAFD72A1901AA6E0082B7A3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BDAFD7291901AA6E0082B7A3 /* Images.xcassets */; };
+		BDB44C491AA2760E00A61F2F /* ipad_icon_paint.png in Resources */ = {isa = PBXBuildFile; fileRef = BDB44C471AA2760E00A61F2F /* ipad_icon_paint.png */; };
+		BDB44C4A1AA2760E00A61F2F /* ipad_icon_paint@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BDB44C481AA2760E00A61F2F /* ipad_icon_paint@2x.png */; };
+		BDB44C4C1AA277EA00A61F2F /* ipad_icon_erase.png in Resources */ = {isa = PBXBuildFile; fileRef = BDB44C4B1AA277EA00A61F2F /* ipad_icon_erase.png */; };
+		BDB44C4E1AA2784B00A61F2F /* ipad_icon_line.png in Resources */ = {isa = PBXBuildFile; fileRef = BDB44C4D1AA2784B00A61F2F /* ipad_icon_line.png */; };
+		BDB44C501AA278EB00A61F2F /* ipad_icon_fill.png in Resources */ = {isa = PBXBuildFile; fileRef = BDB44C4F1AA278EB00A61F2F /* ipad_icon_fill.png */; };
+		BDB44C521AA2791D00A61F2F /* ipad_icon_circle.png in Resources */ = {isa = PBXBuildFile; fileRef = BDB44C511AA2791D00A61F2F /* ipad_icon_circle.png */; };
+		BDB44C541AA279B200A61F2F /* ipad_icon_rect.png in Resources */ = {isa = PBXBuildFile; fileRef = BDB44C531AA279B200A61F2F /* ipad_icon_rect.png */; };
+		BDB44C561AA279DC00A61F2F /* ipad_icon_text.png in Resources */ = {isa = PBXBuildFile; fileRef = BDB44C551AA279DC00A61F2F /* ipad_icon_text.png */; };
+		BDB44C581AA27A0D00A61F2F /* ipad_icon_undo.png in Resources */ = {isa = PBXBuildFile; fileRef = BDB44C571AA27A0D00A61F2F /* ipad_icon_undo.png */; };
+		BDB44C5A1AA27A3000A61F2F /* ipad_icon_redo.png in Resources */ = {isa = PBXBuildFile; fileRef = BDB44C591AA27A3000A61F2F /* ipad_icon_redo.png */; };
+		BDB44C5C1AA27F0A00A61F2F /* ipad_icon_paint2.png in Resources */ = {isa = PBXBuildFile; fileRef = BDB44C5B1AA27F0A00A61F2F /* ipad_icon_paint2.png */; };
 		BDDB6BA818FA11140093A543 /* ZipArchive in Resources */ = {isa = PBXBuildFile; fileRef = BDDB6BA718FA11140093A543 /* ZipArchive */; };
 		BDDB6BAA18FA13990093A543 /* libZipArchive-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BDDB6BA918FA13990093A543 /* libZipArchive-ios.a */; };
 		BDDB6BAC18FA14000093A543 /* TestFlightSDK2.0.2 in Resources */ = {isa = PBXBuildFile; fileRef = BDDB6BAB18FA14000093A543 /* TestFlightSDK2.0.2 */; };
@@ -690,6 +701,17 @@
 		4CA46C171A7B2D10000E57E3 /* UserEditTaleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserEditTaleViewController.m; sourceTree = "<group>"; };
 		4CA46C1B1A7B5161000E57E3 /* UAMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UAMacros.h; sourceTree = "<group>"; };
 		BDAFD7291901AA6E0082B7A3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		BDB44C471AA2760E00A61F2F /* ipad_icon_paint.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ipad_icon_paint.png; sourceTree = "<group>"; };
+		BDB44C481AA2760E00A61F2F /* ipad_icon_paint@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ipad_icon_paint@2x.png"; sourceTree = "<group>"; };
+		BDB44C4B1AA277EA00A61F2F /* ipad_icon_erase.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ipad_icon_erase.png; sourceTree = "<group>"; };
+		BDB44C4D1AA2784B00A61F2F /* ipad_icon_line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ipad_icon_line.png; sourceTree = "<group>"; };
+		BDB44C4F1AA278EB00A61F2F /* ipad_icon_fill.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ipad_icon_fill.png; sourceTree = "<group>"; };
+		BDB44C511AA2791D00A61F2F /* ipad_icon_circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ipad_icon_circle.png; sourceTree = "<group>"; };
+		BDB44C531AA279B200A61F2F /* ipad_icon_rect.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ipad_icon_rect.png; sourceTree = "<group>"; };
+		BDB44C551AA279DC00A61F2F /* ipad_icon_text.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ipad_icon_text.png; sourceTree = "<group>"; };
+		BDB44C571AA27A0D00A61F2F /* ipad_icon_undo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ipad_icon_undo.png; sourceTree = "<group>"; };
+		BDB44C591AA27A3000A61F2F /* ipad_icon_redo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ipad_icon_redo.png; sourceTree = "<group>"; };
+		BDB44C5B1AA27F0A00A61F2F /* ipad_icon_paint2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ipad_icon_paint2.png; sourceTree = "<group>"; };
 		BDDB6BA718FA11140093A543 /* ZipArchive */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ZipArchive; sourceTree = "<group>"; };
 		BDDB6BA918FA13990093A543 /* libZipArchive-ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libZipArchive-ios.a"; sourceTree = "<group>"; };
 		BDDB6BAB18FA14000093A543 /* TestFlightSDK2.0.2 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = TestFlightSDK2.0.2; sourceTree = "<group>"; };
@@ -880,6 +902,16 @@
 		0459B2D614DD414F0019ECB9 /* Draw */ = {
 			isa = PBXGroup;
 			children = (
+				BDB44C591AA27A3000A61F2F /* ipad_icon_redo.png */,
+				BDB44C571AA27A0D00A61F2F /* ipad_icon_undo.png */,
+				BDB44C551AA279DC00A61F2F /* ipad_icon_text.png */,
+				BDB44C531AA279B200A61F2F /* ipad_icon_rect.png */,
+				BDB44C511AA2791D00A61F2F /* ipad_icon_circle.png */,
+				BDB44C4F1AA278EB00A61F2F /* ipad_icon_fill.png */,
+				BDB44C4D1AA2784B00A61F2F /* ipad_icon_line.png */,
+				BDB44C4B1AA277EA00A61F2F /* ipad_icon_erase.png */,
+				BDB44C471AA2760E00A61F2F /* ipad_icon_paint.png */,
+				BDB44C481AA2760E00A61F2F /* ipad_icon_paint@2x.png */,
 				0459B34414DD48140019ECB9 /* color_bg.png */,
 				0459B34514DD48150019ECB9 /* color_bg@2x.png */,
 				0459B2D814DD41820019ECB9 /* icon_bg_actived.png */,
@@ -1474,6 +1506,7 @@
 		4C47075019EF88AA00A74D08 /* 2.0 */ = {
 			isa = PBXGroup;
 			children = (
+				BDB44C5B1AA27F0A00A61F2F /* ipad_icon_paint2.png */,
 				4C1EDE841A68E01C0067C38D /* button8.png */,
 				4C1EDE851A68E01C0067C38D /* list26.png */,
 				4C43DA1B19F0B0C00059E3E4 /* arrow395.png */,
@@ -1725,6 +1758,7 @@
 				37F6E8D914C7B273003A278D /* btn-delete-ipad.png in Resources */,
 				37F6E8DA14C7B273003A278D /* btn-play-ipad.png in Resources */,
 				37F6E8DB14C7B273003A278D /* btn-upload-ipad.png in Resources */,
+				BDB44C561AA279DC00A61F2F /* ipad_icon_text.png in Resources */,
 				37F6E8FD14C7C2D3003A278D /* EditTaleViewController-iPhone.xib in Resources */,
 				F47419DF19D7AFB40024AAF6 /* EditAssignmentViewController-iPad.xib in Resources */,
 				37F6E8FF14C7C30E003A278D /* EditTaleViewController-iPad.xib in Resources */,
@@ -1734,6 +1768,7 @@
 				049845F914D83FA30095370C /* icon72.png in Resources */,
 				049845FA14D83FA30095370C /* icon114.png in Resources */,
 				049845FD14D83FF40095370C /* icon57.png in Resources */,
+				BDB44C541AA279B200A61F2F /* ipad_icon_rect.png in Resources */,
 				049845FF14D847A90095370C /* ipad_btn_create_tale.png in Resources */,
 				F4B592C819BF7C1F0004493B /* UserTalesController-iPad.xib in Resources */,
 				0498460414D847E10095370C /* TalesController-iPhone.xib in Resources */,
@@ -1809,6 +1844,7 @@
 				376C211A14E46E9E00D540FB /* readme.txt in Resources */,
 				04BC99B914EAE37900218DF4 /* pen_bg.png in Resources */,
 				04BC99BA14EAE37900218DF4 /* shadow_bg.png in Resources */,
+				BDB44C4C1AA277EA00A61F2F /* ipad_icon_erase.png in Resources */,
 				04BC99BC14EAE53500218DF4 /* indicator.png in Resources */,
 				04BC99BE14EAEAD000218DF4 /* pin.png in Resources */,
 				4C43DA2819F0B0C00059E3E4 /* plus79.png in Resources */,
@@ -1817,10 +1853,13 @@
 				3721D2DE14ECA4AF00AF8EEE /* cover_default.jpg in Resources */,
 				BDDB6BAC18FA14000093A543 /* TestFlightSDK2.0.2 in Resources */,
 				3721D2DF14ECA4AF00AF8EEE /* cover_default_med.jpg in Resources */,
+				BDB44C491AA2760E00A61F2F /* ipad_icon_paint.png in Resources */,
+				BDB44C5A1AA27A3000A61F2F /* ipad_icon_redo.png in Resources */,
 				BDDB6BA818FA11140093A543 /* ZipArchive in Resources */,
 				3721D2E014ECA4AF00AF8EEE /* page_default.jpg in Resources */,
 				3721D2E114ECA4AF00AF8EEE /* page_default_med.jpg in Resources */,
 				3721D2E314ECB52A00AF8EEE /* ipad_btn_play_big.png in Resources */,
+				BDB44C4A1AA2760E00A61F2F /* ipad_icon_paint@2x.png in Resources */,
 				3721D2EE14ECC7C800AF8EEE /* ipad_bg_cropimage.png in Resources */,
 				3721D2F514ECC85400AF8EEE /* CropImage-iPad.xib in Resources */,
 				375F50D914EF88AE0025936A /* AudioRecord-iPad.xib in Resources */,
@@ -1849,6 +1888,7 @@
 				370EC74F14F8D27A0047D099 /* iphone-bg-notale.png in Resources */,
 				370EC75114F8D3A80047D099 /* iphone-bg-notale@2x.png in Resources */,
 				370EC75814F8DEC80047D099 /* iphone-bg-edittale.png in Resources */,
+				BDB44C581AA27A0D00A61F2F /* ipad_icon_undo.png in Resources */,
 				370EC75914F8DEC80047D099 /* iphone-bg-edittale@2x.png in Resources */,
 				370EC75B14F8DEE70047D099 /* InputTaleInfo-iPhone.xib in Resources */,
 				BDAFD72A1901AA6E0082B7A3 /* Images.xcassets in Resources */,
@@ -1885,6 +1925,7 @@
 				04449F8D1503E9BF0055A780 /* iphone_icon_fill.png in Resources */,
 				04449F8E1503E9BF0055A780 /* iphone_icon_fill@2x.png in Resources */,
 				04449F8F1503E9BF0055A780 /* iphone_icon_image.png in Resources */,
+				BDB44C4E1AA2784B00A61F2F /* ipad_icon_line.png in Resources */,
 				4C43DA2419F0B0C00059E3E4 /* cloud32.png in Resources */,
 				04449F901503E9BF0055A780 /* iphone_icon_image@2x.png in Resources */,
 				04449F911503E9BF0055A780 /* iphone_icon_line.png in Resources */,
@@ -1908,13 +1949,16 @@
 				4C43DA2A19F0B0C00059E3E4 /* voice15.png in Resources */,
 				37EA51661512D5E400E4599B /* ipad_btn_done.png in Resources */,
 				4CA46C071A734244000E57E3 /* StudentDownloadTalesController-iPad.xib in Resources */,
+				BDB44C5C1AA27F0A00A61F2F /* ipad_icon_paint2.png in Resources */,
 				37EA51671512D5E400E4599B /* ipad_btn_edit.png in Resources */,
 				04B2D830151B066E00BC781A /* ColorPickerController.xib in Resources */,
 				373DBEDA151ECBBF0091DCCB /* Default.png in Resources */,
 				373DBEDB151ECBC40091DCCB /* Default@2x.png in Resources */,
 				373DBEDF151ECEBA0091DCCB /* Default-Landscape@2x~ipad.png in Resources */,
 				373DBEFE151ED6170091DCCB /* colorlist.txt in Resources */,
+				BDB44C521AA2791D00A61F2F /* ipad_icon_circle.png in Resources */,
 				373DBF03151ED6740091DCCB /* color_bar.png in Resources */,
+				BDB44C501AA278EB00A61F2F /* ipad_icon_fill.png in Resources */,
 				375647EE15201AD600305E57 /* Default-Portrait~ipad.png in Resources */,
 				375647F115201B0A00305E57 /* icon144.png in Resources */,
 				375647F315201B3100305E57 /* Default-Portrait@2x~ipad.png in Resources */,
