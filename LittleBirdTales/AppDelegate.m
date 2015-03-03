@@ -92,7 +92,7 @@ AppDelegate* _shared;
     // Override point for customization after application launch.
     UIViewController* controller;
     if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad) {
-        if([[Lib getValueOfKey:@"user_id"]  isEqual: @""]) {
+        if([[Lib getValueOfKey:@"user_id"]  isEqual: @""]  || ![Lib getValueOfKey:@"user_id"]) {
             controller = [[UserLoginViewController alloc] initWithNibName:@"UserLoginViewController-iPad" bundle:nil];
         } else {
             controller = [[UserTalesController alloc] initWithNibName:@"UserTalesController-iPad" bundle:nil];
