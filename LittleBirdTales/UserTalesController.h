@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 #import "Tale.h"
-#import "InputTaleInfo.h"
+#import "UserInputTaleInfo.h"
 
 @interface UserTalesController : UIViewController <InputTaleInfoDelegate, UIAlertViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIAlertViewDelegate> {
     Tale *currentTale;
@@ -17,6 +17,7 @@
     NSInteger currentTaleIndex;
     IBOutlet UISegmentedControl *controlTab;
     IBOutlet UIActivityIndicatorView *activityIndicator;
+    IBOutlet UITextView* noTalesMessage;
 }
 
 @property (nonatomic, strong) IBOutlet UICollectionView *collectionView;

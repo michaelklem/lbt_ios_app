@@ -83,6 +83,7 @@
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex == 1) {
         [Tale remove:currentTale];
+        [noTalesMessage setHidden:!([Tale tales].count == 0)];
         [self.collectionView reloadData];
     }
 }
@@ -106,7 +107,7 @@
     
 }
 -(IBAction)newTale:(id)sender {
-    InputTaleInfo* tView = [InputTaleInfo viewFromNib:self];
+    UserInputTaleInfo* tView = [UserInputTaleInfo viewFromNib:self];
     tView.delegate = self;
     tView.titleField.text = @"My Little Bird Tale";
     tView.authorField.text = @"A Little Bird";
@@ -272,6 +273,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [[UISegmentedControl appearance] setTintColor:[UIColor whiteColor]];
     
+    [noTalesMessage setHidden:!([Tale tales].count == 0)];
     [self.collectionView reloadData];
 }
 

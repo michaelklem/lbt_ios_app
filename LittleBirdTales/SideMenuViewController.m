@@ -25,7 +25,7 @@ NSArray *tableData;
 {
     [super viewDidLoad];
     // Initialize table data
-    tableData = [NSArray arrayWithObjects:@"Lessons", @"Download Lesson", @"Tales", @"Download Tale", @"Logout", nil];
+    tableData = [NSArray arrayWithObjects:@"Tales", @"Download Tale", @"Lessons", @"Download Lesson", @"Logout", nil];
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 }
 
@@ -63,16 +63,16 @@ NSArray *tableData;
     UIViewController* controller;
     switch(indexPath.row) {
         case 0:
-            controller = [[UserLessonsController alloc] initWithNibName:@"UserLessonsController-iPad" bundle:nil];
-            break;
-        case 1:
-            controller = [[DownloadAssignmentsController alloc] initWithNibName:@"DownloadAssignmentsController-iPad" bundle:nil];
-            break;
-        case 2:
             controller = [[UserTalesController alloc] initWithNibName:@"UserTalesController-iPad" bundle:nil];
             break;
-        case 3:
+        case 1:
             controller = [[StudentDownloadTalesController alloc] initWithNibName:@"StudentDownloadTalesController-iPad" bundle:nil];
+            break;
+        case 2:
+            controller = [[UserLessonsController alloc] initWithNibName:@"UserLessonsController-iPad" bundle:nil];
+            break;
+        case 3:
+            controller = [[DownloadAssignmentsController alloc] initWithNibName:@"DownloadAssignmentsController-iPad" bundle:nil];
             break;
         case 4:
             [Lib setValue:@"" forKey:@"logged_in"];

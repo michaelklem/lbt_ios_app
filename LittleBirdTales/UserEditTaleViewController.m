@@ -28,14 +28,14 @@
 }
 -(IBAction)textPage:(id)sender {
     if (currentPage == 0) {
-        InputTaleInfo* tView = [InputTaleInfo viewFromNib:self];
+        UserInputTaleInfo* tView = [UserInputTaleInfo viewFromNib:self];
         tView.delegate = self;
         [tView.titleField setText:tale.title];
         [tView.authorField setText:tale.author];
         [tView showInView:self.view];
     }
     else {
-        InputTextView* tView = [InputTextView viewFromNib:self];
+        UserInputTextView* tView = [UserInputTextView viewFromNib:self];
         tView.delegate = self;
         Page *page = [tale.pages objectAtIndex:currentPage];
         [tView.textView setText:page.text];

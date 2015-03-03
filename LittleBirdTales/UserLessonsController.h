@@ -17,6 +17,7 @@
     NSInteger currentLessonIndex;
     IBOutlet UISegmentedControl *controlTab;
     IBOutlet UIActivityIndicatorView *activityIndicator;
+    IBOutlet UITextView* noLessonsMessage;
 }
 
 @property (nonatomic, strong) IBOutlet UICollectionView *collectionView;

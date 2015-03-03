@@ -71,6 +71,8 @@
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex == 1) {
         [Lesson remove:currentLesson];
+        [noLessonsMessage setHidden:!([Lesson lessons].count == 0)];
+        
         [self.collectionView reloadData];
     }
 }
@@ -191,7 +193,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [[UISegmentedControl appearance] setTintColor:[UIColor whiteColor]];
-    
+    [noLessonsMessage setHidden:!([Lesson lessons].count == 0)];
     [self.collectionView reloadData];
 }
 
