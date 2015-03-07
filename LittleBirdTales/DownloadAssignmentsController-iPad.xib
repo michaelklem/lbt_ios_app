@@ -1,24 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DownloadAssignmentsController">
             <connections>
                 <outlet property="activityIndicator" destination="421" id="940"/>
-                <outlet property="authorLabel" destination="278" id="391"/>
-                <outlet property="createdLabel" destination="279" id="393"/>
-                <outlet property="downloadingLabel" destination="422" id="943"/>
+                <outlet property="collectionView" destination="MOH-ko-OiA" id="EzS-vq-pur"/>
                 <outlet property="downloadingView" destination="420" id="489"/>
-                <outlet property="modifiedLabel" destination="280" id="394"/>
-                <outlet property="noTaleBackground" destination="161" id="274"/>
-                <outlet property="pageLabel" destination="283" id="392"/>
-                <outlet property="previewImage" destination="282" id="395"/>
-                <outlet property="taleInfoView" destination="275" id="390"/>
+                <outlet property="pageTitle" destination="bXv-W7-U1Z" id="bHA-LS-pnl"/>
                 <outlet property="talesPreviewView" destination="708" id="857"/>
-                <outlet property="talesScrollView" destination="231" id="273"/>
-                <outlet property="titleLabel" destination="281" id="389"/>
                 <outlet property="view" destination="87" id="160"/>
             </connections>
         </placeholder>
@@ -27,149 +20,9 @@
             <rect key="frame" x="0.0" y="0.0" width="1004" height="768"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="420" userLabel="Downloading">
-                    <rect key="frame" x="0.0" y="0.0" width="1004" height="768"/>
-                    <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="bg-ipad.png" translatesAutoresizingMaskIntoConstraints="NO" id="441">
-                            <rect key="frame" x="-10" y="0.0" width="1024" height="768"/>
-                        </imageView>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="bg-login-ipad.png" translatesAutoresizingMaskIntoConstraints="NO" id="434">
-                            <rect key="frame" x="-10" y="129" width="1024" height="511"/>
-                        </imageView>
-                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="421">
-                            <rect key="frame" x="484" y="185" width="37" height="37"/>
-                            <color key="color" red="1" green="0.56078433989999998" blue="0.25098040700000002" alpha="1" colorSpace="deviceRGB"/>
-                        </activityIndicatorView>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Downloading..." textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="422">
-                            <rect key="frame" x="20" y="308" width="964" height="42"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="42" id="428"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="23"/>
-                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                    </subviews>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="trailing" secondItem="422" secondAttribute="trailing" constant="20" symbolic="YES" id="424"/>
-                        <constraint firstItem="422" firstAttribute="centerX" secondItem="421" secondAttribute="centerX" id="425"/>
-                        <constraint firstItem="422" firstAttribute="leading" secondItem="420" secondAttribute="leading" constant="20" symbolic="YES" id="426"/>
-                        <constraint firstItem="434" firstAttribute="centerY" secondItem="441" secondAttribute="centerY" id="448"/>
-                        <constraint firstItem="434" firstAttribute="leading" secondItem="441" secondAttribute="leading" id="449"/>
-                        <constraint firstItem="441" firstAttribute="top" secondItem="420" secondAttribute="top" id="696"/>
-                        <constraint firstItem="422" firstAttribute="top" secondItem="420" secondAttribute="top" constant="308" id="699"/>
-                        <constraint firstItem="421" firstAttribute="top" secondItem="420" secondAttribute="top" constant="185" id="700"/>
-                        <constraint firstItem="422" firstAttribute="centerX" secondItem="434" secondAttribute="centerX" id="717"/>
-                    </constraints>
-                </view>
                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="708">
                     <rect key="frame" x="0.0" y="0.0" width="1004" height="768"/>
                     <subviews>
-                        <imageView contentMode="scaleToFill" image="ipad_notale_bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="161">
-                            <rect key="frame" x="0.0" y="138" width="1004" height="492"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="492" id="208"/>
-                            </constraints>
-                        </imageView>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="bg-ipad.png" translatesAutoresizingMaskIntoConstraints="NO" id="89">
-                            <rect key="frame" x="-10" y="0.0" width="1024" height="768"/>
-                        </imageView>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="bg-home-ipad.png" translatesAutoresizingMaskIntoConstraints="NO" id="162">
-                            <rect key="frame" x="-10" y="0.0" width="1024" height="768"/>
-                        </imageView>
-                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="231">
-                            <rect key="frame" x="1" y="541" width="1003" height="150"/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        </scrollView>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="275" userLabel="TaleView">
-                            <rect key="frame" x="-10" y="64" width="1024" height="444"/>
-                            <subviews>
-                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="281">
-                                    <rect key="frame" x="26" y="9" width="992" height="40"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="992" id="293"/>
-                                        <constraint firstAttribute="height" constant="40" id="294"/>
-                                    </constraints>
-                                    <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="36"/>
-                                    <color key="textColor" red="0.9450981021" green="0.55294120309999995" blue="0.40392160420000001" alpha="1" colorSpace="deviceRGB"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" minimumFontSize="10" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="278">
-                                    <rect key="frame" x="171" y="84" width="180" height="35"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="35" id="323"/>
-                                        <constraint firstAttribute="width" constant="180" id="324"/>
-                                    </constraints>
-                                    <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="22"/>
-                                    <color key="textColor" red="0.8980392814" green="0.35294118520000001" blue="0.19215688110000001" alpha="1" colorSpace="deviceRGB"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" minimumFontSize="10" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="283">
-                                    <rect key="frame" x="171" y="124" width="180" height="35"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="35" id="325"/>
-                                    </constraints>
-                                    <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="22"/>
-                                    <color key="textColor" red="0.8980392814" green="0.35294118520000001" blue="0.19215688110000001" alpha="1" colorSpace="deviceRGB"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" minimumFontSize="10" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="279">
-                                    <rect key="frame" x="170" y="162" width="180" height="35"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="180" id="295"/>
-                                        <constraint firstAttribute="height" constant="35" id="296"/>
-                                    </constraints>
-                                    <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="22"/>
-                                    <color key="textColor" red="0.8980392814" green="0.35294118520000001" blue="0.19215688110000001" alpha="1" colorSpace="deviceRGB"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" minimumFontSize="10" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="280">
-                                    <rect key="frame" x="170" y="198" width="180" height="35"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="35" id="287"/>
-                                    </constraints>
-                                    <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="22"/>
-                                    <color key="textColor" red="0.8980392814" green="0.35294118520000001" blue="0.19215688110000001" alpha="1" colorSpace="deviceRGB"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="282">
-                                    <rect key="frame" x="483" y="82" width="513" height="362"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="362" id="326"/>
-                                        <constraint firstAttribute="width" constant="513" id="327"/>
-                                    </constraints>
-                                </imageView>
-                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dai-TU-MEE">
-                                    <rect key="frame" x="18" y="275" width="180" height="30"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                    <state key="normal" title="Download Lesson">
-                                        <color key="titleColor" red="0.83918563180000005" green="0.48214310970000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                    </state>
-                                    <connections>
-                                        <action selector="downloadLesson:" destination="-1" eventType="touchUpInside" id="4sX-QZ-EQ1"/>
-                                    </connections>
-                                </button>
-                            </subviews>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            <constraints>
-                                <constraint firstItem="278" firstAttribute="top" secondItem="275" secondAttribute="top" constant="84" id="297"/>
-                                <constraint firstItem="280" firstAttribute="top" secondItem="275" secondAttribute="top" constant="198" id="298"/>
-                                <constraint firstItem="278" firstAttribute="trailing" secondItem="283" secondAttribute="trailing" id="300"/>
-                                <constraint firstItem="283" firstAttribute="top" secondItem="275" secondAttribute="top" constant="124" id="304"/>
-                                <constraint firstItem="280" firstAttribute="trailing" secondItem="279" secondAttribute="trailing" id="305"/>
-                                <constraint firstItem="281" firstAttribute="leading" secondItem="275" secondAttribute="leading" constant="26" id="306"/>
-                                <constraint firstItem="278" firstAttribute="leading" secondItem="275" secondAttribute="leading" constant="171" id="307"/>
-                                <constraint firstItem="279" firstAttribute="leading" secondItem="275" secondAttribute="leading" constant="170" id="312"/>
-                                <constraint firstItem="283" firstAttribute="leading" secondItem="278" secondAttribute="leading" id="313"/>
-                                <constraint firstItem="280" firstAttribute="leading" secondItem="279" secondAttribute="leading" id="315"/>
-                                <constraint firstItem="282" firstAttribute="leading" secondItem="275" secondAttribute="leading" constant="483" id="317"/>
-                                <constraint firstItem="281" firstAttribute="top" secondItem="275" secondAttribute="top" constant="9" id="319"/>
-                                <constraint firstItem="279" firstAttribute="top" secondItem="275" secondAttribute="top" constant="162" id="320"/>
-                                <constraint firstItem="282" firstAttribute="bottom" secondItem="275" secondAttribute="bottom" id="322"/>
-                            </constraints>
-                        </view>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wjg-Ro-haF">
                             <rect key="frame" x="8" y="8" width="27" height="27"/>
                             <state key="normal" backgroundImage="list26.png">
@@ -179,28 +32,50 @@
                                 <action selector="leftSideMenuButtonPressed:" destination="-1" eventType="touchUpInside" id="edB-Dn-1t3"/>
                             </connections>
                         </button>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" image="apple-ios-macbook-air-77-desktop-background.png" translatesAutoresizingMaskIntoConstraints="NO" id="w6Y-Lp-PIa">
+                            <rect key="frame" x="0.0" y="45" width="1024" height="723"/>
+                        </imageView>
+                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="MOH-ko-OiA">
+                            <rect key="frame" x="0.0" y="45" width="1004" height="721"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="6bo-ev-vL2">
+                                <size key="itemSize" width="50" height="50"/>
+                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            </collectionViewFlowLayout>
+                            <connections>
+                                <outlet property="dataSource" destination="-1" id="eZb-5c-6LU"/>
+                                <outlet property="delegate" destination="-1" id="ifI-3C-ZxZ"/>
+                            </connections>
+                        </collectionView>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="0.094117656349999995" green="0.58039218189999997" blue="0.090196080509999998" alpha="1" colorSpace="deviceRGB"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="420" userLabel="Downloading">
+                    <rect key="frame" x="0.0" y="0.0" width="1004" height="768"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" image="apple-ios-macbook-air-77-desktop-background.png" translatesAutoresizingMaskIntoConstraints="NO" id="434">
+                            <rect key="frame" x="0.0" y="45" width="1024" height="723"/>
+                        </imageView>
+                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="421">
+                            <rect key="frame" x="484" y="365" width="37" height="37"/>
+                            <color key="color" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        </activityIndicatorView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstItem="89" firstAttribute="top" secondItem="708" secondAttribute="top" id="779"/>
-                        <constraint firstItem="161" firstAttribute="leading" secondItem="708" secondAttribute="leading" id="780"/>
-                        <constraint firstItem="161" firstAttribute="trailing" secondItem="708" secondAttribute="trailing" id="781"/>
-                        <constraint firstItem="162" firstAttribute="top" secondItem="708" secondAttribute="top" id="784"/>
-                        <constraint firstItem="162" firstAttribute="centerY" secondItem="161" secondAttribute="centerY" id="864"/>
-                        <constraint firstItem="275" firstAttribute="centerX" secondItem="161" secondAttribute="centerX" id="926"/>
-                        <constraint firstItem="275" firstAttribute="trailing" secondItem="89" secondAttribute="trailing" id="927"/>
-                        <constraint firstAttribute="bottom" secondItem="275" secondAttribute="bottom" constant="260" id="932"/>
-                        <constraint firstItem="275" firstAttribute="leading" secondItem="162" secondAttribute="leading" id="933"/>
-                        <constraint firstItem="275" firstAttribute="top" secondItem="708" secondAttribute="top" constant="64" id="934"/>
-                        <constraint firstItem="231" firstAttribute="trailing" secondItem="708" secondAttribute="trailing" id="935"/>
-                        <constraint firstItem="231" firstAttribute="centerX" secondItem="161" secondAttribute="centerX" id="936"/>
-                        <constraint firstItem="89" firstAttribute="leading" secondItem="275" secondAttribute="leading" id="937"/>
-                        <constraint firstItem="231" firstAttribute="top" secondItem="708" secondAttribute="top" constant="541" id="938"/>
-                        <constraint firstAttribute="bottom" secondItem="231" secondAttribute="bottom" constant="77" id="939"/>
+                        <constraint firstItem="421" firstAttribute="top" secondItem="420" secondAttribute="top" constant="185" id="700"/>
                     </constraints>
                 </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Download Lesson" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bXv-W7-U1Z">
+                    <rect key="frame" x="285" y="8" width="435" height="31"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="21"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="0.094117656349999995" green="0.58039218189999997" blue="0.090196080509999998" alpha="1" colorSpace="deviceRGB"/>
             <constraints>
                 <constraint firstItem="420" firstAttribute="bottom" secondItem="87" secondAttribute="bottom" id="686"/>
                 <constraint firstItem="420" firstAttribute="leading" secondItem="87" secondAttribute="leading" id="690"/>
@@ -217,10 +92,7 @@
         </view>
     </objects>
     <resources>
-        <image name="bg-home-ipad.png" width="1024" height="768"/>
-        <image name="bg-ipad.png" width="1024" height="768"/>
-        <image name="bg-login-ipad.png" width="1024" height="511"/>
-        <image name="ipad_notale_bg.png" width="1024" height="472"/>
+        <image name="apple-ios-macbook-air-77-desktop-background.png" width="1680" height="1050"/>
         <image name="list26.png" width="35" height="35"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

@@ -160,7 +160,7 @@
     [actionSheet showInView:self.view];
 }
 -(IBAction)soundPage:(id)sender {
-    AudioRecord* tView = [AudioRecord viewFromNib:self];
+    UserAudioRecord* tView = [UserAudioRecord viewFromNib:self];
     Page* page = [lesson.pages objectAtIndex:currentPage];
     tView.delegate = self;
     tView.pageFolder = page.pageFolder;

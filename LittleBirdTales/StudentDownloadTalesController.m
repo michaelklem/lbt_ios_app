@@ -7,7 +7,7 @@
 //
 
 #import "StudentDownloadTalesController.h"
-#import "EditTaleViewController.h"
+#import "UserEditTaleViewController.h"
 #import "TalesController.h"
 #import "UserTalesController.h"
 #import "SBJson.h"
@@ -27,147 +27,21 @@ static int LoadingItemContext = 1;
     [self.menuContainerViewController toggleLeftSideMenuCompletion:^{}];
 }
 
-- (void)reloadTaleList {
-    for (UIView *view in talesScrollView.subviews) {
-        [view removeFromSuperview];
-    }
-    if ([userTales count] > 0) {
-        for (NSInteger i = 0; i < [userTales count]; i++) {
-            NSDictionary *item = [userTales objectAtIndex:i];
-            
-            UIButton *button;
-            
-            if (IsIdiomPad) {
-                button = [[UIButton alloc] initWithFrame:CGRectMake(210*i, 5, 200, 140)];
-                if (i == currentTaleIndex) {
-                    [button.layer setCornerRadius:5.0];
-                    [button.layer setBorderColor:[UIColorFromRGB(0xfa3737) CGColor]];
-                    [button.layer setBorderWidth:6.0];
-                } else {
-                    [button.layer setCornerRadius:5.0];
-                    [button.layer setBorderColor:[UIColorFromRGB(0x8FD866) CGColor]];
-                    [button.layer setBorderWidth:3.0];
-                }
-            } else {
-                button = [[UIButton alloc] initWithFrame:CGRectMake(95*i, 3, 90, 63)];
-                if (i == currentTaleIndex) {
-                    [button.layer setCornerRadius:2.0];
-                    [button.layer setBorderColor:[UIColorFromRGB(0xfa3737) CGColor]];
-                    [button.layer setBorderWidth:2.0];
-                } else {
-                    [button.layer setCornerRadius:2.0];
-                    [button.layer setBorderColor:[UIColorFromRGB(0x8FD866) CGColor]];
-                    [button.layer setBorderWidth:1.0];
-                }
-            }
-            
-            NSString *imageData = [item valueForKey:@"image_small"];
-            NSLog(@"Image: %@",imageData);
-            if([imageData length]== 0) {
-                [button setImage:[UIImage imageNamed:@"cover_default_med.jpg"]  forState:UIControlStateNormal];
-            }
-            else {
-                NSString *imageUrl = [NSString stringWithFormat:@"%@%@", servicesURLPrefix,imageData];
-                [HttpHelper sendAsyncGetRequestToURL:imageUrl
-                                      withParameters:[NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                                      @"1",@"test",
-                                                      nil]
-                                 andCompletionHandler:^(NSURLResponse *response, NSData *taleContent, NSError *error) {
-                                     UIImage *pImage=[UIImage imageWithData:taleContent];
-                                     [button setImage:pImage forState:UIControlStateNormal];
-                                 }];
-                
-                
-            }
-            
-            
-            
-            [button.layer setMasksToBounds:YES];
-            
-            
-            
-            button.tag = 1000 + i;
-            [button addTarget:self action:@selector(selectTale:) forControlEvents:UIControlEventTouchUpInside];
-            
-            [talesScrollView addSubview:button];
-            
-        }
-        if (IsIdiomPad) {
-            [talesScrollView setContentSize:CGSizeMake(210*[userTales count] , 140)];
-        }
-        else {
-            [talesScrollView setContentSize:CGSizeMake(95*[userTales count] , 63)];
-        }
-        
-    }
-    [activityIndicator stopAnimating];
-}
-
 -(void)selectTale:(id)sender {
-        lastTaleIndex = currentTaleIndex;
-        UIButton *button;
-        
-        if (sender != nil) {
-            
-            button = (UIButton*) sender;
-            currentTaleIndex = button.tag - 1000;
-        }
-        
-        if (lastTaleIndex != currentTaleIndex && sender!= nil) {
-            if (IsIdiomPad) {
-                UIButton *lastButton = (UIButton*)[talesScrollView viewWithTag:lastTaleIndex+1000];
-                [lastButton.layer setMasksToBounds:YES];
-                [lastButton.layer setCornerRadius:5.0];
-                [lastButton.layer setBorderColor:[UIColorFromRGB(0x8FD866) CGColor]];
-                [lastButton.layer setBorderWidth:3.0];
-                
-                [button.layer setMasksToBounds:YES];
-                [button.layer setCornerRadius:5.0];
-                [button.layer setBorderColor:[UIColorFromRGB(0xfa3737) CGColor]];
-                [button.layer setBorderWidth:6.0];
-            } else {
-                UIButton *lastButton = (UIButton*)[talesScrollView viewWithTag:lastTaleIndex+1000];
-                [lastButton.layer setMasksToBounds:YES];
-                [lastButton.layer setCornerRadius:2.0];
-                [lastButton.layer setBorderColor:[UIColorFromRGB(0x8FD866) CGColor]];
-                [lastButton.layer setBorderWidth:1.0];
-                
-                [button.layer setMasksToBounds:YES];
-                [button.layer setCornerRadius:2.0];
-                [button.layer setBorderColor:[UIColorFromRGB(0xfa3737) CGColor]];
-                [button.layer setBorderWidth:2.0];
-            }
-        }
-        
-        NSDictionary *currentTale = [userTales objectAtIndex:currentTaleIndex];
-        NSLog(@"Title: %@",[currentTale valueForKey:@"title"]);
-       
-        [titleLabel setText:[[currentTale valueForKey:@"title"] isEqual:[NSNull null]]? @"My Little Bird Tale" : [currentTale valueForKey:@"title"]];
-        [authorLabel setText:[[currentTale valueForKey:@"author"] isEqual:[NSNull null]] ? @"A Little Bird" : [currentTale valueForKey:@"author"]];
-        [pageLabel setText:[NSString stringWithFormat:@"%@",[currentTale valueForKey:@"pages"]]];
-        [createdLabel setText:[currentTale valueForKey:@"created"]];
-        [modifiedLabel setText:[currentTale valueForKey:@"modified"]];
-        
-        NSString *imageData = [currentTale valueForKey:@"image"];
-        NSLog(@"Image: %@",imageData);
-        if([imageData length]== 0) {
-            [previewImage setImage:[UIImage imageNamed:@"cover_default.jpg"]];
-        }
-        else {
-            NSString *imageUrl = [NSString stringWithFormat:@"%@%@", servicesURLPrefix,imageData];
-            UIImage *pImage=[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageUrl]]];
-            [previewImage setImage:pImage];
-        }
+    pageTitle.text = @"Downloading Tale";
+    UIButton *button;
+    int currentTaleIndex;
     
-}
-
-- (void)downloadTale:(id)sender {
+    if (sender != nil) {
+        button = (UIButton*) sender;
+        currentTaleIndex = button.tag - 1000;
+    }
+    
     downloadingView.hidden = NO;
-    downloadingLabel.text = @"Downloading tale...";
     talesPreviewView.hidden = YES;
     [activityIndicator startAnimating];
     
-    NSDictionary *currentTale = [userTales objectAtIndex:currentTaleIndex];
+    NSDictionary *currentTale = [[_dataArray objectAtIndex:0] objectAtIndex:currentTaleIndex];
     
     NSString* url = [NSString stringWithFormat:@"%@/services/tale/",servicesURLPrefix];
     
@@ -277,11 +151,11 @@ static int LoadingItemContext = 1;
                          [Tale addTale:newTale];
                          [Tale save];
                          
-                         EditTaleViewController* controller;
+                         UserEditTaleViewController* controller;
                          if (IsIdiomPad) {
-                             controller = [[EditTaleViewController alloc] initWithNibName:@"EditTaleViewController-iPad" bundle:nil];
+                             controller = [[UserEditTaleViewController alloc] initWithNibName:@"UserEditTaleViewController-iPad" bundle:nil];
                          } else {
-                             controller = [[EditTaleViewController alloc] initWithNibName:@"EditTaleViewController-iPhone" bundle:nil];
+                             controller = [[UserEditTaleViewController alloc] initWithNibName:@"UserEditTaleViewController-iPhone" bundle:nil];
                          }
                          controller.tale = [[Tale tales] lastObject];
                          NSLog(@"%@", controller.tale);
@@ -296,9 +170,17 @@ static int LoadingItemContext = 1;
 }
 
 - (void)viewDidLoad {
-    noTaleBackground.hidden = YES;
     downloadingView.hidden = NO;
-    downloadingLabel.text = @"Getting tales list...";
+    
+    NSString *connect = [NSString stringWithContentsOfURL:[NSURL URLWithString:servicesURLPrefix] encoding:NSUTF8StringEncoding error:nil];
+    
+    if (connect == NULL) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No Internet Connection!"
+                                                        message:@"Connect to internet and try again" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+        return;
+    }
+    
     [activityIndicator startAnimating];
     NSString* url = [NSString stringWithFormat:@"%@/services/tales/",servicesURLPrefix];
     NSLog(@"%@", [Lib getValueOfKey:@"encrypted_user_id"]);
@@ -309,21 +191,96 @@ static int LoadingItemContext = 1;
                     andCompletionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
                         NSError *e = nil;
                         NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData: data options: NSJSONReadingMutableContainers error: &e];
-                        userTales = jsonArray;
-                        [self reloadTaleList];
-                        if([userTales count] > 0) {
-                            [self selectTale:nil];
-                            noTaleBackground.hidden = YES;
+                        if([jsonArray count] > 0) {
+                            pageTitle.text = @"Select a Tale to Download";
                             downloadingView.hidden = YES;
                             talesPreviewView.hidden = NO;
+                            
+                            self.dataArray = [[NSArray alloc] initWithObjects:jsonArray, nil];
+                            
+                            [self.collectionView registerClass:[CVCell class] forCellWithReuseIdentifier:@"cvCell"];
+                            /* end of subclass-based cells block */
+                            
+                            // Configure layout
+                            UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
+                            [flowLayout setItemSize:CGSizeMake(325, 243)];
+                            [flowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
+                            [flowLayout setMinimumLineSpacing:15];
+                            [self.collectionView setCollectionViewLayout:flowLayout];
+                            [self.collectionView reloadData];
                         }
                         else {
                             [activityIndicator stopAnimating];
-                            noTaleBackground.hidden = NO;
                             talesPreviewView.hidden = NO;
                             [Lib showAlert:@"Warning" withMessage:@"You have no Tales to Download."];
                         }
                     }];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [self.collectionView reloadData];
+}
+
+- (void)alertView:(UIAlertView *)alertV didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    UserTalesController* controller;
+    controller = [[UserTalesController alloc] initWithNibName:@"UserTalesController-iPad" bundle:nil];
+    [self.navigationController pushViewController:controller animated:YES];
+}
+
+-(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    return [self.dataArray count];
+}
+
+-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    
+    NSMutableArray *sectionArray = [self.dataArray objectAtIndex:section];
+    return [sectionArray count];
+    
+}
+
+-(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    // Setup cell identifier
+    static NSString *cellIdentifier = @"cvCell";
+    
+    /*  Uncomment this block to use nib-based cells */
+    // UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
+    // UILabel *titleLabel = (UILabel *)[cell viewWithTag:100];
+    // [titleLabel setText:cellData];
+    /* end of nib-based cell block */
+    
+    /* Uncomment this block to use subclass-based cells */
+    CVCell *cell = (CVCell *)[collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
+    NSMutableArray *data = [self.dataArray objectAtIndex:indexPath.section];
+    NSDictionary* lesson = [data objectAtIndex:indexPath.row];
+    [cell.titleLabel setText:[[lesson valueForKey:@"title"] isEqual:[NSNull null]]? @"My Little Bird Tale" : [lesson valueForKey:@"title"]];
+    [cell.authorLabel setText:[[lesson valueForKey:@"author"] isEqual:[NSNull null]]? @"My Little Bird Tale" : [lesson valueForKey:@"author"]];
+    
+    
+    NSString *imageData = [lesson valueForKey:@"image"];
+    NSLog(@"Image: %@",imageData);
+    if([imageData length]== 0) {
+        [cell.cover setBackgroundImage:[UIImage imageNamed:@"cover_default.jpg"] forState:UIControlStateNormal];
+    }
+    else {
+        NSString *imageUrl = [NSString stringWithFormat:@"%@%@", servicesURLPrefix,imageData];
+        UIImage *pImage=[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageUrl]]];
+        [cell.cover setBackgroundImage:pImage forState:UIControlStateNormal];
+    }
+    
+    
+    
+    [cell.cover setTag:indexPath.row+1000];
+    
+    [cell.cover addTarget:self action:@selector(selectTale:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [cell.menu setHidden:TRUE];
+    /* end of subclass-based cells block */
+    
+    // Return the cell
+    return cell;
+    
 }
 
 @end

@@ -86,10 +86,10 @@
     
     [titleLabel setText:_taleTitle];
     if([[Lib getValueOfKey:@"is_tales_view"] isEqualToString:@"true"] ) {
-        self.view.backgroundColor = Rgb2UIColor(243, 194, 42);
+        self.view.backgroundColor = [UIColor colorWithRed:1 green:0.631 blue:0.31 alpha:1];
     }
     else {
-        self.view.backgroundColor = Rgb2UIColor(33, 132, 30);
+        self.view.backgroundColor = [UIColor colorWithRed:0.094 green:0.58 blue:0.09 alpha:1];
     }
     if (!IsIdiomPad) {
     //ScrollView

@@ -8,7 +8,7 @@
 
 #import "UserLessonsController.h"
 #import "UserTalesController.h"
-#import "PlayerController.h"
+#import "UserPlayerController.h"
 #import "EditAssignmentViewController.h"
 #import "LoginViewController.h"
 #import "UserLoginViewController.h"
@@ -41,6 +41,15 @@
 }
 
 -(void)uploadTale {
+    NSString *connect = [NSString stringWithContentsOfURL:[NSURL URLWithString:servicesURLPrefix] encoding:NSUTF8StringEncoding error:nil];
+    
+    if (connect == NULL) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No Internet Connection!"
+                                                        message:@"Connect to internet and try again" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+        return;
+    }
+    
     [activityIndicator startAnimating];
     [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
     
@@ -79,11 +88,11 @@
 
 -(void)playTale {
     if ([[Lesson lessons] count] > 0) {
-        PlayerController* controller;
+        UserPlayerController* controller;
         if (IsIdiomPad) {
-            controller = [[PlayerController alloc] initWithNibName:@"PlayerController-iPad" bundle:nil];
+            controller = [[UserPlayerController alloc] initWithNibName:@"UserPlayerController-iPad" bundle:nil];
         } else {
-            controller = [[PlayerController alloc] initWithNibName:@"PlayerController-iPhone" bundle:nil];
+            controller = [[UserPlayerController alloc] initWithNibName:@"UserPlayerController-iPhone" bundle:nil];
         }
 
         controller.tale = currentLesson;
@@ -112,15 +121,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [Lib setValue:@"false" forKey:@"is_tales_view"];
-    
-    NSMutableArray *firstSection = [[NSMutableArray alloc] init];
-    NSMutableArray *secondSection = [[NSMutableArray alloc] init];
-    
-    for (int i=0; i<50; i++) {
-        [firstSection addObject:[NSString stringWithFormat:@"Cell %d", i]];
-        [secondSection addObject:[NSString stringWithFormat:@"item %d", i]];
-    }
-    
     
     //self.navigationItem.leftBarButtonItem = revealButtonItem;
     

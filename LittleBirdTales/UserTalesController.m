@@ -8,7 +8,7 @@
 
 #import "UserTalesController.h"
 #import "UserLessonsController.h"
-#import "PlayerController.h"
+#import "UserPlayerController.h"
 #import "UserEditTaleViewController.h"
 #import "DownloadTalesController.h"
 #import "LoginViewController.h"
@@ -49,6 +49,16 @@
 }
 
 -(void)uploadTale {
+    
+    NSString *connect = [NSString stringWithContentsOfURL:[NSURL URLWithString:servicesURLPrefix] encoding:NSUTF8StringEncoding error:nil];
+    
+    if (connect == NULL) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No Internet Connection!"
+                                                        message:@"Connect to internet and try again" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+        return;
+    }
+    
     if ([[currentTale pages] count] == 1) {
         [Lib showAlert:@"Little Bird Tales" withMessage:@"Please add at least 1 page to your story to make it playable"];
     }
@@ -90,11 +100,11 @@
 
 -(void)playTale {
     if ([[Tale tales] count] > 0) {
-        PlayerController* controller;
+        UserPlayerController* controller;
         if (IsIdiomPad) {
-            controller = [[PlayerController alloc] initWithNibName:@"PlayerController-iPad" bundle:nil];
+            controller = [[UserPlayerController alloc] initWithNibName:@"UserPlayerController-iPad" bundle:nil];
         } else {
-            controller = [[PlayerController alloc] initWithNibName:@"PlayerController-iPhone" bundle:nil];
+            controller = [[UserPlayerController alloc] initWithNibName:@"UserPlayerController-iPhone" bundle:nil];
         }
 
         controller.tale = currentTale;

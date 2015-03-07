@@ -9,30 +9,18 @@
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 #import "InputTaleInfo.h"
+#import "CVCell.h"
 
-@interface DownloadAssignmentsController : UIViewController {
-    IBOutlet UIView* taleInfoView;
-    IBOutlet UILabel* titleLabel;
-    IBOutlet UILabel* authorLabel;
-    IBOutlet UILabel* pageLabel;
-    IBOutlet UILabel* createdLabel;
-    IBOutlet UILabel* modifiedLabel;
-    IBOutlet UIImageView* previewImage;
-    IBOutlet UIImageView *noTaleBackground;
-    IBOutlet UIScrollView *talesScrollView;
+@interface DownloadAssignmentsController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout> {
     IBOutlet UIView *downloadingView;
     IBOutlet UIView *talesPreviewView;
     IBOutlet UIActivityIndicatorView *activityIndicator;
-    IBOutlet UILabel *downloadingLabel;
-    NSInteger lastTaleIndex;
-    NSInteger currentTaleIndex;
-    NSArray* userTales;
+    IBOutlet UILabel *pageTitle;
 }
 
+@property (nonatomic, strong) IBOutlet UICollectionView *collectionView;
+@property (nonatomic, strong) NSArray *dataArray;
+
  - (IBAction)leftSideMenuButtonPressed:(id)sender;
- - (void)reloadTaleList;
- - (void)selectTale;
- - (void)back;
- - (void)downloadLesson;
 
 @end

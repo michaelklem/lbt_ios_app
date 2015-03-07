@@ -290,6 +290,11 @@
 		4CA46C141A7B2C49000E57E3 /* DrawEditorController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA46C121A7B2C49000E57E3 /* DrawEditorController.m */; };
 		4CA46C181A7B2D10000E57E3 /* UserEditTaleViewController-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CA46C151A7B2D10000E57E3 /* UserEditTaleViewController-iPad.xib */; };
 		4CA46C191A7B2D10000E57E3 /* UserEditTaleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA46C171A7B2D10000E57E3 /* UserEditTaleViewController.m */; };
+		4CB851CD1AA96F48004CA3E5 /* UserAudioRecord-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CB851C91AA96F48004CA3E5 /* UserAudioRecord-iPad.xib */; };
+		4CB851CF1AA96F48004CA3E5 /* UserAudioRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CB851CC1AA96F48004CA3E5 /* UserAudioRecord.m */; };
+		4CB851D91AAAC5E4004CA3E5 /* UserPlayerController-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CB851D61AAAC5E4004CA3E5 /* UserPlayerController-iPad.xib */; };
+		4CB851DA1AAAC5E4004CA3E5 /* UserPlayerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CB851D81AAAC5E4004CA3E5 /* UserPlayerController.m */; };
+		4CB851DC1AAAC7FC004CA3E5 /* ipad_bg_player2.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CB851DB1AAAC7FC004CA3E5 /* ipad_bg_player2.png */; };
 		4CF116321AA55DF8005C11CD /* UserInputTaleInfo-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CF1162A1AA55DF8005C11CD /* UserInputTaleInfo-iPad.xib */; };
 		4CF116341AA55DF8005C11CD /* UserInputTaleInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CF1162D1AA55DF8005C11CD /* UserInputTaleInfo.m */; };
 		4CF116351AA55DF8005C11CD /* UserInputTextView-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CF1162E1AA55DF8005C11CD /* UserInputTextView-iPad.xib */; };
@@ -704,6 +709,13 @@
 		4CA46C161A7B2D10000E57E3 /* UserEditTaleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserEditTaleViewController.h; sourceTree = "<group>"; };
 		4CA46C171A7B2D10000E57E3 /* UserEditTaleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserEditTaleViewController.m; sourceTree = "<group>"; };
 		4CA46C1B1A7B5161000E57E3 /* UAMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UAMacros.h; sourceTree = "<group>"; };
+		4CB851C91AA96F48004CA3E5 /* UserAudioRecord-iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "UserAudioRecord-iPad.xib"; sourceTree = "<group>"; };
+		4CB851CB1AA96F48004CA3E5 /* UserAudioRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserAudioRecord.h; sourceTree = "<group>"; };
+		4CB851CC1AA96F48004CA3E5 /* UserAudioRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserAudioRecord.m; sourceTree = "<group>"; };
+		4CB851D61AAAC5E4004CA3E5 /* UserPlayerController-iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "UserPlayerController-iPad.xib"; sourceTree = "<group>"; };
+		4CB851D71AAAC5E4004CA3E5 /* UserPlayerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserPlayerController.h; sourceTree = "<group>"; };
+		4CB851D81AAAC5E4004CA3E5 /* UserPlayerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserPlayerController.m; sourceTree = "<group>"; };
+		4CB851DB1AAAC7FC004CA3E5 /* ipad_bg_player2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ipad_bg_player2.png; sourceTree = "<group>"; };
 		4CF1162A1AA55DF8005C11CD /* UserInputTaleInfo-iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "UserInputTaleInfo-iPad.xib"; sourceTree = "<group>"; };
 		4CF1162C1AA55DF8005C11CD /* UserInputTaleInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInputTaleInfo.h; sourceTree = "<group>"; };
 		4CF1162D1AA55DF8005C11CD /* UserInputTaleInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInputTaleInfo.m; sourceTree = "<group>"; };
@@ -1134,9 +1146,6 @@
 				0498461214D853DB0095370C /* Objs */,
 				4CA46C0A1A79CAFA000E57E3 /* 1.0 */,
 				F4B592D119C8B9FC0004493B /* 2.0 */,
-				F4D1572F18219EEB00806778 /* DownloadTale */,
-				37AAD01214DCD50E00D9EF53 /* Player */,
-				0452267714D8C0B800049C1E /* DrawTale */,
 				37F6E8C614C7A9EA003A278D /* AppDelegate */,
 				04F1219114B9F3C90003E733 /* Supporting Files */,
 				BDDB6BAD18FA16E00093A543 /* UINavigationController+Landscape.h */,
@@ -1516,6 +1525,7 @@
 		4C47075019EF88AA00A74D08 /* 2.0 */ = {
 			isa = PBXGroup;
 			children = (
+				4CB851DB1AAAC7FC004CA3E5 /* ipad_bg_player2.png */,
 				BDB44C5B1AA27F0A00A61F2F /* ipad_icon_paint2.png */,
 				4C1EDE841A68E01C0067C38D /* button8.png */,
 				4C1EDE851A68E01C0067C38D /* list26.png */,
@@ -1560,6 +1570,9 @@
 		4CA46C0A1A79CAFA000E57E3 /* 1.0 */ = {
 			isa = PBXGroup;
 			children = (
+				0452267714D8C0B800049C1E /* DrawTale */,
+				F4D1572F18219EEB00806778 /* DownloadTale */,
+				37AAD01214DCD50E00D9EF53 /* Player */,
 				37F6E8C214C7A9AA003A278D /* Login */,
 				375F50D414EF871E0025936A /* Dialogs */,
 				37F6E8C514C7A9E2003A278D /* Tale List */,
@@ -1596,9 +1609,30 @@
 			name = util;
 			sourceTree = "<group>";
 		};
+		4CB851C81AA96F3B004CA3E5 /* AudioRecord */ = {
+			isa = PBXGroup;
+			children = (
+				4CB851C91AA96F48004CA3E5 /* UserAudioRecord-iPad.xib */,
+				4CB851CB1AA96F48004CA3E5 /* UserAudioRecord.h */,
+				4CB851CC1AA96F48004CA3E5 /* UserAudioRecord.m */,
+			);
+			name = AudioRecord;
+			sourceTree = "<group>";
+		};
+		4CB851D01AAAC5A6004CA3E5 /* Preview */ = {
+			isa = PBXGroup;
+			children = (
+				4CB851D61AAAC5E4004CA3E5 /* UserPlayerController-iPad.xib */,
+				4CB851D71AAAC5E4004CA3E5 /* UserPlayerController.h */,
+				4CB851D81AAAC5E4004CA3E5 /* UserPlayerController.m */,
+			);
+			name = Preview;
+			sourceTree = "<group>";
+		};
 		4CF116291AA55DE9005C11CD /* Dialogs */ = {
 			isa = PBXGroup;
 			children = (
+				4CB851C81AA96F3B004CA3E5 /* AudioRecord */,
 				4CF116391AA55F5C005C11CD /* InputText */,
 				4CF116381AA55F52005C11CD /* InputTale */,
 			);
@@ -1673,6 +1707,7 @@
 		F4B592D119C8B9FC0004493B /* 2.0 */ = {
 			isa = PBXGroup;
 			children = (
+				4CB851D01AAAC5A6004CA3E5 /* Preview */,
 				4CF116291AA55DE9005C11CD /* Dialogs */,
 				4CA46C1A1A7B513E000E57E3 /* util */,
 				4CA46C0F1A7B2BBF000E57E3 /* DrawEditor */,
@@ -1872,6 +1907,7 @@
 				0459B30914DD41820019ECB9 /* icon_text@2x.png in Resources */,
 				0459B30A14DD41820019ECB9 /* icon_undo.png in Resources */,
 				0459B30B14DD41820019ECB9 /* icon_undo@2x.png in Resources */,
+				4CB851D91AAAC5E4004CA3E5 /* UserPlayerController-iPad.xib in Resources */,
 				0459B34214DD43C60019ECB9 /* btn_back.png in Resources */,
 				0459B34314DD43C60019ECB9 /* btn_back@2x.png in Resources */,
 				0459B34614DD48160019ECB9 /* color_bg.png in Resources */,
@@ -1890,6 +1926,7 @@
 				04BC99BC14EAE53500218DF4 /* indicator.png in Resources */,
 				04BC99BE14EAEAD000218DF4 /* pin.png in Resources */,
 				4C43DA2819F0B0C00059E3E4 /* plus79.png in Resources */,
+				4CB851DC1AAAC7FC004CA3E5 /* ipad_bg_player2.png in Resources */,
 				04BC99C014EAECD400218DF4 /* tran.png in Resources */,
 				4C1EDE8B1A68EAB00067C38D /* apple-ios-macbook-air-77-desktop-background.png in Resources */,
 				3721D2DE14ECA4AF00AF8EEE /* cover_default.jpg in Resources */,
@@ -1997,6 +2034,7 @@
 				373DBEDA151ECBBF0091DCCB /* Default.png in Resources */,
 				373DBEDB151ECBC40091DCCB /* Default@2x.png in Resources */,
 				373DBEDF151ECEBA0091DCCB /* Default-Landscape@2x~ipad.png in Resources */,
+				4CB851CD1AA96F48004CA3E5 /* UserAudioRecord-iPad.xib in Resources */,
 				373DBEFE151ED6170091DCCB /* colorlist.txt in Resources */,
 				BDB44C521AA2791D00A61F2F /* ipad_icon_circle.png in Resources */,
 				373DBF03151ED6740091DCCB /* color_bar.png in Resources */,
@@ -2088,6 +2126,7 @@
 				3721D2F314ECC83A00AF8EEE /* CropImage.m in Sources */,
 				375F50D714EF885F0025936A /* AudioRecord.m in Sources */,
 				4CF116371AA55DF8005C11CD /* UserInputTextView.m in Sources */,
+				4CB851DA1AAAC5E4004CA3E5 /* UserPlayerController.m in Sources */,
 				046AE68E14EFA40C0056C1DB /* FontController.m in Sources */,
 				37C4402814EFFE1900CCD609 /* GalleryTableViewController.m in Sources */,
 				37C4402C14EFFE4500CCD609 /* GalleryCell.m in Sources */,
@@ -2107,6 +2146,7 @@
 				3760C1E215104AC90086ECD6 /* SBJsonStreamWriterState.m in Sources */,
 				3760C1EE15104AE70086ECD6 /* NSObject+SBJson.m in Sources */,
 				3760C1EF15104AE70086ECD6 /* SBJsonParser.m in Sources */,
+				4CB851CF1AA96F48004CA3E5 /* UserAudioRecord.m in Sources */,
 				3760C1F015104AE70086ECD6 /* SBJsonTokeniser.m in Sources */,
 				3760C1F115104AE70086ECD6 /* SBJsonUTF8Stream.m in Sources */,
 				3760C1F215104AE70086ECD6 /* SBJsonWriter.m in Sources */,

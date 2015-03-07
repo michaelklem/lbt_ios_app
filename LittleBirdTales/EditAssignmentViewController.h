@@ -16,7 +16,7 @@
 #import "InputTaleInfo.h"
 #import "Lib.h"
 #import "UIImage+Resize.h"
-#import "AudioRecord.h"
+#import "UserAudioRecord.h"
 #import "GalleryTableViewController.h"
 #import "GalleryViewController.h"
 #import "CropImage.h"

@@ -15,11 +15,11 @@
 #import "UserInputTaleInfo.h"
 #import "Lib.h"
 #import "UIImage+Resize.h"
-#import "AudioRecord.h"
+#import "UserAudioRecord.h"
 #import "GalleryTableViewController.h"
 #import "GalleryViewController.h"
 #import "CropImage.h"
-#import "PlayerController.h"
+#import "UserPlayerController.h"
 
 @interface UserEditTaleViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, InputTextViewDelegate, InputTaleInfoDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate,UINavigationControllerDelegate, UIPopoverControllerDelegate, UIAlertViewDelegate, AudioRecordDelegate, GalleryDelegate, CropImageDelegate,DrawControllerDelegate, GalleryViewDelegate > {
     IBOutlet UITableView* pagesTableView;

@@ -151,7 +151,7 @@
     [actionSheet showInView:self.view];
 }
 -(IBAction)soundPage:(id)sender {
-    AudioRecord* tView = [AudioRecord viewFromNib:self];
+    UserAudioRecord* tView = [UserAudioRecord viewFromNib:self];
     Page* page = [tale.pages objectAtIndex:currentPage];
     tView.delegate = self;
     tView.pageFolder = page.pageFolder;
@@ -595,11 +595,11 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
 }
 
 -(IBAction)preview:(id)sender {
-    PlayerController* controller;
+    UserPlayerController* controller;
     if (IsIdiomPad) {
-        controller = [[PlayerController alloc] initWithNibName:@"PlayerController-iPad" bundle:nil];
+        controller = [[UserPlayerController alloc] initWithNibName:@"UserPlayerController-iPad" bundle:nil];
     } else {
-        controller = [[PlayerController alloc] initWithNibName:@"PlayerController-iPhone" bundle:nil];
+        controller = [[UserPlayerController alloc] initWithNibName:@"UserPlayerController-iPhone" bundle:nil];
     }
     
     controller.tale = tale;
