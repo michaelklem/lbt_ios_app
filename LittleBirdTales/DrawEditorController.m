@@ -754,15 +754,9 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
         [self.delegate drawPageSaved];
     }
     [self.page saveImage:[paintView toImage]];
+    [Gallery saveImage:[paintView toImage]];
     [self.page setModified:round([[NSDate date] timeIntervalSince1970])];
     [Lib showAlert:@"A Little Bird Tale" withMessage:@"Image has been saved"];
-}
-
-#pragma mark - Gallery Delegate
--(IBAction)saveToGallery:(id)sender {
-    if ([Gallery saveImage:[paintView toImage]]) {
-        [Lib showAlert:@"A Little Bird Tale" withMessage:@"Image has been saved to Gallery"];
-    }
 }
 
 - (void) selectImage:(NSString *)imageName {
