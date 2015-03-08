@@ -35,6 +35,7 @@
 // Save tales list to .plist
 +(void)save;
 
++(void)removeAll;
 
 - (NSString*)uploadWithUserId: (NSString*)userId andBucketPath: (NSString*)bucketPath ;
 - (BOOL)deleteOrphanFiles;

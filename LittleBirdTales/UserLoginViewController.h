@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <MessageUI/MFMailComposeViewController.h>
 #import "Tale.h"
+#import "Lesson.h"
 
 @interface UserLoginViewController : UIViewController <MFMailComposeViewControllerDelegate, UITextFieldDelegate> {
     IBOutlet UITextField* emailText;

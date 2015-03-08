@@ -16,11 +16,20 @@ NSMutableArray* tales;
 @synthesize index, created, title, pages, modified, author;
 
 +(NSString*)path {
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString* path = [paths objectAtIndex:0];
-    path = [path stringByAppendingString:@"/tales.plist"];
+    NSString* path = [NSString stringWithFormat:@"%@/%@", [Tale dir], @"lessons.plist"];
+    NSLog(path);
     return path;
 }
++(NSString*)dir {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString* dir = [paths objectAtIndex:0];
+    if([Lib getValueOfKey:@"user_id"] && ![[Lib getValueOfKey:@"user_id"]  isEqual: @""]) {
+        dir = [NSString stringWithFormat:@"%@/tales/%@", dir, [Lib getValueOfKey:@"user_id"]];
+    }
+    NSLog(dir);
+    return dir;
+}
+
 +(Tale*)taleFromDictionary:(NSDictionary*)dic {
     //NSLog(@"%@",dic);
     
@@ -60,6 +69,10 @@ NSMutableArray* tales;
         }
     }
     return tales;
+}
+
++(void)removeAll {
+    tales = nil;
 }
 
 // Create a new tale, but not add to tales list

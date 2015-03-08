@@ -83,6 +83,7 @@ NSArray *tableData;
             [Lib setValue:@"" forKey:@"encrypted_user_id"];
             [Lib setValue:@"" forKey:@"user_name"];            
             [Lesson removeAll];
+            [Tale removeAll];
             controller = [[UserLoginViewController alloc] initWithNibName:@"UserLoginViewController-iPad" bundle:nil];
             break;
     }

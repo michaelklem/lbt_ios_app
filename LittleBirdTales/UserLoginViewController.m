@@ -185,6 +185,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [Lesson removeAll];
+    [Tale removeAll];
+    
     [emailText becomeFirstResponder];
     
     NSString *userName = [Lib getValueOfKey:@"username"];

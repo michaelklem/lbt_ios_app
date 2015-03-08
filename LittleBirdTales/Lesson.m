@@ -23,7 +23,7 @@ NSMutableArray* lessons;
 +(NSString*)dir {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString* dir = [paths objectAtIndex:0];
-    dir = [NSString stringWithFormat:@"%@/%@", dir, [Lib getValueOfKey:@"user_id"]];
+    dir = [NSString stringWithFormat:@"%@/lessons/%@", dir, [Lib getValueOfKey:@"user_id"]];
     NSLog(dir);
     return dir;
 }
