@@ -16,7 +16,7 @@ NSMutableArray* tales;
 @synthesize index, created, title, pages, modified, author;
 
 +(NSString*)path {
-    NSString* path = [NSString stringWithFormat:@"%@/%@", [Tale dir], @"lessons.plist"];
+    NSString* path = [NSString stringWithFormat:@"%@/%@", [Tale dir], @"tales.plist"];
     NSLog(path);
     return path;
 }
@@ -24,7 +24,7 @@ NSMutableArray* tales;
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString* dir = [paths objectAtIndex:0];
     if([Lib getValueOfKey:@"user_id"] && ![[Lib getValueOfKey:@"user_id"]  isEqual: @""]) {
-        dir = [NSString stringWithFormat:@"%@/tales/%@", dir, [Lib getValueOfKey:@"user_id"]];
+        dir = [NSString stringWithFormat:@"%@/%@", dir, [Lib getValueOfKey:@"user_id"]];
     }
     NSLog(dir);
     return dir;

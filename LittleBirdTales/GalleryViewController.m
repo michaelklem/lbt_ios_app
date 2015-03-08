@@ -8,6 +8,7 @@
 
 #import "GalleryViewController.h"
 #import "Lib.h"
+#import "Gallery.h"
 
 @implementation GalleryViewController
 @synthesize delegate;
@@ -41,7 +42,7 @@
     [super viewDidLoad];
     
     editMode = false;
-    galleryPath = [NSString stringWithFormat:@"%@/gallery",[Lib applicationDocumentsDirectory]];
+    galleryPath = [Gallery dir];
     
     NSFileManager *fm = [NSFileManager defaultManager];
     NSArray *fileList = [fm contentsOfDirectoryAtPath:galleryPath error:nil];
@@ -86,7 +87,7 @@
 
 - (UIImage*) getThumbnailAtIndex:(NSInteger)index{
     NSString *imageName = [imageList objectAtIndex:index];
-    NSString *filePath = [NSString stringWithFormat:@"%@/gallery/%@",[Lib applicationDocumentsDirectory],imageName];
+    NSString *filePath = [NSString stringWithFormat:@"%@%@",[Gallery dir],imageName];
     UIImage *thumbnail = [UIImage imageWithContentsOfFile:filePath];
     return thumbnail;
 }
@@ -122,12 +123,12 @@
             NSInteger tag = alertView.tag;
             NSString *imageName = [imageList objectAtIndex:tag];
             
-            NSString *path = [NSString stringWithFormat:@"%@/gallery/%@", [Lib applicationDocumentsDirectory],imageName];
+            NSString *path = [NSString stringWithFormat:@"%@%@", [Gallery dir],imageName];
             if ([[NSFileManager defaultManager] fileExistsAtPath:path]) {
                 [[NSFileManager defaultManager] removeItemAtPath:path error:NULL];
             }
             imageName = [imageName stringByReplacingOccurrencesOfString:@".jpg_iphone.jpg" withString:@".jpg"];
-            path = [NSString stringWithFormat:@"%@/gallery/%@", [Lib applicationDocumentsDirectory],imageName];
+            path = [NSString stringWithFormat:@"%@%@", [Gallery dir],imageName];
             if ([[NSFileManager defaultManager] fileExistsAtPath:path]) {
                 [[NSFileManager defaultManager] removeItemAtPath:path error:NULL];
                 [[NSFileManager defaultManager] removeItemAtPath:[NSString stringWithFormat:@"%@.jpg",path] error:NULL];

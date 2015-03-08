@@ -761,24 +761,13 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
 
 - (void) selectImage:(NSString *)imageName {
     
-    NSString *filePath = [NSString stringWithFormat:@"%@/gallery/%@",[Lib applicationDocumentsDirectory],imageName];
+    NSString *filePath = [NSString stringWithFormat:@"%@%@",[Gallery dir],imageName];
     UIImage *original = [UIImage imageWithContentsOfFile:filePath];
     
     CropImage* tView = [CropImage viewFromNib:self];
     tView.delegate = self;
     [tView receivingImage:original];
     [tView showInView:self.view];
-    
-//    PaintPath* path = [[PaintPath alloc] init];
-//    path.type = kFigureImage;
-//    path.drawMode = kDrawCenter;
-//    NSString *filePath = [NSString stringWithFormat:@"%@/gallery/%@",[Lib applicationDocumentsDirectory],imageName];
-//    path.image = [UIImage imageWithContentsOfFile:filePath];
-//    [paintView addPath:path];
-//    [paintView setNeedsDisplay];
-//    
-//    undoBtn.enabled = [paintView canUndo];
-//    redoBtn.enabled = [paintView canRedo];
     
     if (IsIdiomPad) {
         [self.popoverController dismissPopoverAnimated:YES];

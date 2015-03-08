@@ -12,4 +12,6 @@
 
 + (BOOL)saveImage:(UIImage*)original;
 
++ (NSString *)dir;
+
 @end

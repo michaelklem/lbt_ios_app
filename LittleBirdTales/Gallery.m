@@ -12,12 +12,23 @@
 
 @implementation Gallery
 
++ (NSString*)dir {
+    
+    if([Lib getValueOfKey:@"user_id"] && ![[Lib getValueOfKey:@"user_id"]  isEqual: @""]) {
+        return [NSString stringWithFormat:@"%@/gallery/%@/",
+                [Lib applicationDocumentsDirectory], [Lib getValueOfKey:@"user_id"]];
+    }
+    else {
+        return [NSString stringWithFormat:@"%@/gallery/",
+                [Lib applicationDocumentsDirectory]];
+    }
+}
+
 + (BOOL)saveImage:(UIImage*)original {
     
     double number = round([[NSDate date] timeIntervalSince1970]);
     
-    NSString *folderPath = [NSString stringWithFormat:@"%@/gallery/",
-                            [Lib applicationDocumentsDirectory]];
+    NSString *folderPath = [self dir];
     NSString *imageName = [NSString stringWithFormat:@"%.0f.jpg",number];
     
     if (![[NSFileManager defaultManager] fileExistsAtPath:folderPath]){

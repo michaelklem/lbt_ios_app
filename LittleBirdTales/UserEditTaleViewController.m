@@ -7,7 +7,7 @@
 //
 
 #import "UserEditTaleViewController.h"
-
+#import "Gallery.h"
 
 @implementation UserEditTaleViewController
 @synthesize tale, taleNumber, popoverController;
@@ -609,7 +609,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
 
 - (void)saveImageFromGallery {
     
-    NSString *filePath = [NSString stringWithFormat:@"%@/gallery/%@",[Lib applicationDocumentsDirectory],selectedImageName];
+    NSString *filePath = [NSString stringWithFormat:@"%@%@",[Gallery dir],selectedImageName];
     UIImage *original = [UIImage imageWithContentsOfFile:filePath];
     
     CropImage* tView = [CropImage viewFromNib:self];
