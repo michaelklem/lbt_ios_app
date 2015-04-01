@@ -5,7 +5,7 @@
 //  Created by Mac on 2/1/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
-
+#import <AVFoundation/AVFoundation.h>
 #import "DrawEditorController.h"
 #import "BottomLayer.h"
 #import "RectangleLayer.h"
@@ -36,6 +36,10 @@
         [self.navigationController popViewControllerAnimated:YES];
     } else if (buttonIndex == 2){
         [self.navigationController popViewControllerAnimated:YES];
+    } else if (alertView.tag == 3491832) {
+        BOOL canOpenSettings = (&UIApplicationOpenSettingsURLString != NULL);
+        if (canOpenSettings)
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
     }
 }
 
@@ -492,16 +496,101 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
             }
 
         } else if (buttonIndex == 2) { // take photo
-            if ([UIImagePickerController isCameraDeviceAvailable:UIImagePickerControllerSourceTypeCamera]) {
-                UIImagePickerController* controller = [[UIImagePickerController alloc] init];
-                controller.delegate = self;
-                controller.sourceType = UIImagePickerControllerSourceTypeCamera;
-                [self presentModalViewController:controller animated:YES];                   
-            }
+            [self goToCamera];
         }
     }
 }
 
+- (IBAction)goToCamera
+{
+    AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
+    if(authStatus == AVAuthorizationStatusAuthorized)
+    {
+        [self popCamera];
+    }
+    else if(authStatus == AVAuthorizationStatusNotDetermined)
+    {
+        NSLog(@"%@", @"Camera access not determined. Ask for permission.");
+        
+        [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted)
+         {
+             if(granted)
+             {
+                 NSLog(@"Granted access to %@", AVMediaTypeVideo);
+                 [self popCamera];
+             }
+             else
+             {
+                 NSLog(@"Not granted access to %@", AVMediaTypeVideo);
+                 [self camDenied];
+             }
+         }];
+    }
+    else if (authStatus == AVAuthorizationStatusRestricted)
+    {
+        // My own Helper class is used here to pop a dialog in one simple line.
+        UIAlertView *alert = [[UIAlertView alloc]
+                              initWithTitle:@"Error"
+                              message:@"You've been restricted from using the camera on this device. Without camera access this feature won't work. Please contact the device owner so they can give you access."
+                              delegate:self
+                              cancelButtonTitle:@"Cancel"
+                              otherButtonTitles:nil];
+    }
+    else
+    {
+        [self camDenied];
+    }
+}
+
+-(void)popCamera {
+    BOOL hasLoadedCamera = [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera];
+    
+    if (!hasLoadedCamera)
+        [self performSelector:@selector(showcamera) withObject:nil afterDelay:0.3];
+    else
+        [self showcamera];
+}
+
+- (void)showcamera {
+    UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
+    imagePickerController.modalPresentationStyle = UIModalPresentationCurrentContext;
+    imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
+    imagePickerController.delegate = self;
+    imagePickerController.showsCameraControls = YES;
+    
+    [self presentViewController:imagePickerController animated:YES completion:nil];
+}
+
+- (void)camDenied
+{
+    NSLog(@"%@", @"Denied camera access");
+    
+    NSString *alertText;
+    NSString *alertButton;
+    
+    BOOL canOpenSettings = (&UIApplicationOpenSettingsURLString != NULL);
+    if (canOpenSettings)
+    {
+        alertText = @"It looks like your privacy settings are preventing us from accessing your camera to do barcode scanning. You can fix this by doing the following:\n\n1. Touch the Go button below to open the Settings app.\n\n2. Touch Privacy.\n\n3. Turn the Camera on.\n\n4. Open this app and try again.";
+        
+        alertButton = @"Go";
+    }
+    else
+    {
+        alertText = @"It looks like your privacy settings are preventing us from accessing your camera to do barcode scanning. You can fix this by doing the following:\n\n1. Close this app.\n\n2. Open the Settings app.\n\n3. Scroll to the bottom and select this app in the list.\n\n4. Touch Privacy.\n\n5. Turn the Camera on.\n\n6. Open this app and try again.";
+        
+        alertButton = @"OK";
+    }
+    
+    UIAlertView *alert = [[UIAlertView alloc]
+                          initWithTitle:@"Error"
+                          message:alertText
+                          delegate:self
+                          cancelButtonTitle:alertButton
+                          otherButtonTitles:nil];
+    alert.tag = 3491832;
+    [alert show];
+}
 
 -(IBAction)undo:(id)sender {
     [paintView undo];
