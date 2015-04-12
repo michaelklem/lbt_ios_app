@@ -24,22 +24,28 @@
         if ([object isKindOfClass:[AudioRecord class]]) {
             return object;
         }
-    }   
+    }
     return nil;
 }
 
 -(void)showInView:(UIView*)aView {
     
-    
     hasRecorded = NO;
-
+    
     [[AVAudioSession sharedInstance] setCategory: AVAudioSessionCategoryPlayAndRecord error: nil];
-
+    
     // Make the default sound route for the session be to use the speaker.
     // This resolves the issue where the recorded audio is too low.
-    UInt32 doChangeDefaultRoute = 1;
-    AudioSessionSetProperty (kAudioSessionProperty_OverrideCategoryDefaultToSpeaker, sizeof (doChangeDefaultRoute), &doChangeDefaultRoute);
-
+    //UInt32 doChangeDefaultRoute = 1;
+    //    AudioSessionSetProperty (kAudioSessionProperty_OverrideCategoryDefaultToSpeaker, sizeof (doChangeDefaultRoute), &doChangeDefaultRoute);
+    
+    NSError *setCategoryError = nil;
+    BOOL success = [[AVAudioSession sharedInstance] overrideOutputAudioPort:AVAudioSessionPortOverrideSpeaker error:&setCategoryError];
+    if(!success)
+    {
+        NSLog(@"error doing outputaudioportoverride - %@", [setCategoryError localizedDescription]);
+    }
+    
     [[AVAudioSession sharedInstance] setActive: YES error: nil];
     
     [playButton setEnabled:NO];
@@ -73,7 +79,7 @@
                   pageFolder,number];
     
     if (![[NSFileManager defaultManager] fileExistsAtPath:folderPath]){
-        [[NSFileManager defaultManager] createDirectoryAtPath:folderPath withIntermediateDirectories:YES attributes:nil error:nil]; 
+        [[NSFileManager defaultManager] createDirectoryAtPath:folderPath withIntermediateDirectories:YES attributes:nil error:nil];
     }
     
     // Find the path to the documents directory
@@ -81,7 +87,7 @@
     NSString *fullPathToFile = [[Lib applicationDocumentsDirectory] stringByAppendingPathComponent:recordName];
     
     NSURL *soundFileURL = [[NSURL alloc] initFileURLWithPath: fullPathToFile];
-
+    
     
     soundRecorder =[[AVAudioRecorder alloc] initWithURL: soundFileURL settings: recordSettings error: nil];
     
@@ -92,7 +98,7 @@
     CGRect frame = self.frame;
     frame.origin.x = frame.origin.y = 0.0;
     self.frame = frame;
-
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(stop:) name:@"FinishPlaybackVoice" object:nil];
     
     if (IsIdiomPad) {
@@ -122,6 +128,129 @@
     [aView addSubview:self];
 }
 
+-(void)checkRecordPermission
+{
+#ifndef __IPHONE_7_0
+    typedef void (^PermissionBlock)(BOOL granted);
+#endif
+    NSLog(@"%@", @"checkRecordPermission called .");
+    PermissionBlock permissionBlock = ^(BOOL granted) {
+        if (granted)
+        {
+            NSLog(@"%@", @"checkRecordPermission granted .");
+            [self doActualRecording];
+        }
+        else
+        {
+            // Warn no access to microphone
+            NSLog(@"%@", @"Microphone access not determined. Ask for permission.");
+            [[AVAudioSession sharedInstance] requestRecordPermission:^(BOOL granted) {
+                if(granted)
+                {
+                    NSLog(@"Granted access to %@", AVMediaTypeVideo);
+                    [self doActualRecording];
+                }
+                else
+                {
+                    NSLog(@"Not granted access to %@", AVMediaTypeVideo);
+                    [self recordingDenied];
+                }
+            }];
+        }
+    };
+    
+    // iOS7+
+    if([[AVAudioSession sharedInstance] respondsToSelector:@selector(requestRecordPermission:)])
+    {
+        [[AVAudioSession sharedInstance] performSelector:@selector(requestRecordPermission:)
+                                              withObject:permissionBlock];
+    }
+    else
+    {
+        NSLog(@"%@", @"doing the recording .");
+        
+        [self doActualRecording];
+    }
+}
+
+-(IBAction)record:(id)sender {
+    [self checkRecordPermission];
+    
+    //    hasRecorded = YES;
+    //    if (!isRecording) {
+    //        [soundRecorder prepareToRecord];
+    //        isRecording = YES;
+    //        [recordButton startAnimation];
+    //        [playButton setEnabled:NO];
+    //        [stopButton setEnabled:YES];
+    //        [saveButton setEnabled:NO];
+    //        [cancelButton setEnabled:NO];
+    //        [soundRecorder record];
+    //        levelTimer = [NSTimer scheduledTimerWithTimeInterval: 0.03 target: self selector: @selector(levelTimerCallback:) userInfo: nil repeats: YES];
+    //    }
+    //    else {
+    //        [self stop:NULL];
+    //    }
+}
+-(IBAction)doActualRecording {
+    
+    hasRecorded = YES;
+    if (!isRecording) {
+        [soundRecorder prepareToRecord];
+        isRecording = YES;
+        [recordButton startAnimation];
+        [playButton setEnabled:NO];
+        [stopButton setEnabled:YES];
+        [saveButton setEnabled:NO];
+        [cancelButton setEnabled:NO];
+        [soundRecorder record];
+        levelTimer = [NSTimer scheduledTimerWithTimeInterval: 0.03 target: self selector: @selector(levelTimerCallback:) userInfo: nil repeats: YES];
+    }
+    else {
+        [self stop:NULL];
+    }
+}
+
+- (void)recordingDenied
+{
+    NSLog(@"%@", @"Denied microphone access");
+    
+    NSString *alertText;
+    NSString *alertButton;
+    
+    BOOL canOpenSettings = (&UIApplicationOpenSettingsURLString != NULL);
+    if (canOpenSettings)
+    {
+        alertText = @"It looks like your privacy settings are preventing us from accessing your microphone to record. You can fix this by doing the following:\n\n1. Touch the Go button below to open the Settings app.\n\n2. Touch Privacy.\n\n3. Turn the Microphone on.\n\n4. Open this app and try again.";
+        
+        alertButton = @"Go";
+    }
+    else
+    {
+        alertText = @"It looks like your privacy settings are preventing us from accessing your microphone to record. You can fix this by doing the following:\n\n1. Close this app.\n\n2. Open the Settings app.\n\n3. Scroll to the bottom and select this app in the list.\n\n4. Touch Privacy.\n\n5. Turn the Microphone on.\n\n6. Open this app and try again.";
+        
+        alertButton = @"OK";
+    }
+    
+    UIAlertView *alert = [[UIAlertView alloc]
+                          initWithTitle:@"Error"
+                          message:alertText
+                          delegate:self
+                          cancelButtonTitle:alertButton
+                          otherButtonTitles:nil];
+    alert.tag = 3491832;
+    [alert show];
+}
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    if (alertView.tag == 3491832)
+    {
+        BOOL canOpenSettings = (&UIApplicationOpenSettingsURLString != NULL);
+        if (canOpenSettings)
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+    }
+}
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -146,23 +275,7 @@
     [self removeFromSuperview];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"FinishPlaybackVoice" object:nil];
 }
--(IBAction)record:(id)sender {
-    hasRecorded = YES;
-    if (!isRecording) {
-        [soundRecorder prepareToRecord];
-        isRecording = YES;
-        [recordButton startAnimation];
-        [playButton setEnabled:NO];
-        [stopButton setEnabled:YES];
-        [saveButton setEnabled:NO];
-        [cancelButton setEnabled:NO];
-        [soundRecorder record];
-        levelTimer = [NSTimer scheduledTimerWithTimeInterval: 0.03 target: self selector: @selector(levelTimerCallback:) userInfo: nil repeats: YES];
-    }
-    else {
-        [self stop:NULL];
-    }
-}
+
 -(IBAction)play:(id)sender {
     isRecording = NO;
     
@@ -214,7 +327,7 @@
 }
 
 - (void)levelTimerCallback:(NSTimer *)timer {
-	float level;
+    float level;
     if (isRecording) {
         [soundRecorder updateMeters];
         level = [soundRecorder averagePowerForChannel:0] + 35;
@@ -231,13 +344,5 @@
 - (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag {
     [self stop:nil];
 }
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
 
 @end
