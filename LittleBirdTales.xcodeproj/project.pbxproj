@@ -2257,8 +2257,8 @@
 					"$(PROJECT_DIR)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				PROVISIONING_PROFILE = "8d6fc1a9-2a60-4084-ab44-fe7d8e0ab2e0";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "8d6fc1a9-2a60-4084-ab44-fe7d8e0ab2e0";
 				SWIFT_OBJC_BRIDGING_HEADER = "LittleBirdTales-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2290,8 +2290,8 @@
 					"$(PROJECT_DIR)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				PROVISIONING_PROFILE = "8d6fc1a9-2a60-4084-ab44-fe7d8e0ab2e0";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "8d6fc1a9-2a60-4084-ab44-fe7d8e0ab2e0";
 				SWIFT_OBJC_BRIDGING_HEADER = "LittleBirdTales-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";

@@ -387,7 +387,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
         if (self.popoverController) {
             [self.popoverController dismissPopoverAnimated:YES];
         } else {
-            [picker dismissModalViewControllerAnimated:YES];
+            [picker dismissViewControllerAnimated:YES completion:nil];
         }
         [NSTimer scheduledTimerWithTimeInterval: 0
                                          target: self
@@ -400,7 +400,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
                                        userInfo: info
                                         repeats: NO];            
     } else {
-        [picker dismissModalViewControllerAnimated:YES];  
+        [picker dismissViewControllerAnimated:YES completion:nil];
         [NSTimer scheduledTimerWithTimeInterval: 0
                                          target: self
                                        selector: @selector(showLoadingViewOn)
@@ -464,7 +464,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
                                                       animated:YES];            
                 
             } else {
-                [self presentModalViewController:controller animated:YES];
+                [self presentViewController:controller animated:YES completion:nil];
             }
         } else if (buttonIndex == 1) { // libray
                  
@@ -820,7 +820,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
         picker.fontSize = [ColorHelper shared].fontSize;
         
         self.popoverController = [ [ UIPopoverController alloc ] initWithContentViewController: picker];
-        [self setContentSizeForViewInPopover:CGSizeMake(320, 416)];
+        [self setPreferredContentSize:CGSizeMake(320, 416)];
         self.popoverController.delegate = self;
         
         UIView* aView = (UIView*)sender;

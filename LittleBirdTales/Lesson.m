@@ -17,14 +17,14 @@ NSMutableArray* lessons;
 
 +(NSString*)path {
     NSString* path = [NSString stringWithFormat:@"%@/%@", [Lesson dir], @"lessons.plist"];
-    NSLog(path);
+//    NSLog(path);
     return path;
 }
 +(NSString*)dir {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString* dir = [paths objectAtIndex:0];
     dir = [NSString stringWithFormat:@"%@/%@", dir, [Lib getValueOfKey:@"user_id"]];
-    NSLog(dir);
+//    NSLog(dir);
     return dir;
 }
 +(Lesson*)lessonFromDictionary:(NSDictionary*)dic {

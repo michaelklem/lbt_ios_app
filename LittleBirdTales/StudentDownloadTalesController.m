@@ -21,7 +21,6 @@
 
 @implementation StudentDownloadTalesController
 
-static int LoadingItemContext = 1;
 
 - (void)leftSideMenuButtonPressed:(id)sender {
     [self.menuContainerViewController toggleLeftSideMenuCompletion:^{}];

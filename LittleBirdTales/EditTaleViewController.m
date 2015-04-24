@@ -427,7 +427,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
                                                   animated:YES];            
             
         } else {
-            [self presentModalViewController:controller animated:YES];
+            [self presentViewController:controller animated:YES completion:nil];
         }
     } else if (buttonIndex == 1) { // Gallery
         if (IsIdiomPad) {

@@ -209,7 +209,6 @@
         return;
     }
     
-    NSString* strData;
     NSString* url = [NSString stringWithFormat:@"%@/services/lessons/",servicesURLPrefix];
     NSLog(@"%@", [Lib getValueOfKey:@"encrypted_user_id"]);
     [HttpHelper sendAsyncPostRequestToURL:url

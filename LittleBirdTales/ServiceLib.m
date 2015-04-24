@@ -46,7 +46,7 @@ static ServiceLib* serviceLib;
 	
 	if (paramStr.length > 0) {
 		NSData* requestData = [paramStr dataUsingEncoding:NSUTF8StringEncoding];
-		NSString* requestDataLengthString = [NSString stringWithFormat:@"%f", [requestData length]];
+		NSString* requestDataLengthString = [NSString stringWithFormat:@"%lu", (unsigned long)[requestData length]];
 		[theRequest setHTTPBody: requestData];
 		[theRequest setValue:requestDataLengthString forHTTPHeaderField:@"Content-Length"];		
 	}

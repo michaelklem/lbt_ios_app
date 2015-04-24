@@ -20,7 +20,6 @@
 
 @implementation DownloadTalesController
 
-static int LoadingItemContext = 1;
 - (void)reloadTaleList {
     for (UIView *view in talesScrollView.subviews) {
         [view removeFromSuperview];

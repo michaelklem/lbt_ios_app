@@ -17,7 +17,7 @@ NSMutableArray* tales;
 
 +(NSString*)path {
     NSString* path = [NSString stringWithFormat:@"%@/%@", [Tale dir], @"tales.plist"];
-    NSLog(path);
+//    NSLog(path);
     return path;
 }
 +(NSString*)dir {
@@ -26,7 +26,7 @@ NSMutableArray* tales;
     if([Lib getValueOfKey:@"user_id"] && ![[Lib getValueOfKey:@"user_id"]  isEqual: @""]) {
         dir = [NSString stringWithFormat:@"%@/%@", dir, [Lib getValueOfKey:@"user_id"]];
     }
-    NSLog(dir);
+//    NSLog(dir);
     return dir;
 }
 
@@ -192,7 +192,7 @@ NSMutableArray* tales;
                                        [NSURL URLWithString:[NSString stringWithFormat: @"%@/services/add_tale_1_3_0.php",servicesURLPrefix]]];
 	[theRequest setHTTPMethod:@"POST"];
 	
-	NSString *stringBoundary = [NSString stringWithString:@"0xKhTmLbOuNdArY"];
+	NSString *stringBoundary = @"0xKhTmLbOuNdArY";
 	NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@",stringBoundary];
 	[theRequest addValue:contentType forHTTPHeaderField: @"Content-Type"];
 	

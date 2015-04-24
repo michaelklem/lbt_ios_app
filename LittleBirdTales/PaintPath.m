@@ -41,8 +41,8 @@
         }
         [self.text drawInRect:textFrame 
                      withFont:self.font 
-           lineBreakMode:UILineBreakModeWordWrap 
-               alignment:UITextAlignmentLeft];
+           lineBreakMode:NSLineBreakByWordWrapping
+               alignment:NSTextAlignmentLeft];
         
 //        CGContextSetTextDrawingMode(context, kCGTextStroke);
 //        CGContextSelectFont(context, "Times", 12.0, kCGEncodingMacRoman);

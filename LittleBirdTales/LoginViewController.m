@@ -211,7 +211,7 @@
     NSString *password = [Lib getValueOfKey:@"password"];
     NSString *schoolCode = [Lib getValueOfKey:@"schoolcode"];
     
-    if (userName != @"" && password != @"" && userName!= NULL & password != NULL) {
+    if (![userName  isEqual: @""] && ![password  isEqual: @""] && userName!= NULL & password != NULL) {
         [rememberMe setOn:YES];
         [emailText setText:userName];
         [pwdText setText:password];
@@ -264,7 +264,7 @@
     [picker setSubject:subject];
     [picker setMessageBody:emailBody isHTML:YES];
 	
-	[self presentModalViewController:picker animated:YES];
+	[self presentViewController:picker animated:YES completion:nil];
 }
 
 
@@ -290,7 +290,7 @@
 			NSLog(@"Result: not sent");
 			break;
 	}
-	[self dismissModalViewControllerAnimated:YES];
+	[self dismissViewControllerAnimated:YES completion:nil];
 }
 
 

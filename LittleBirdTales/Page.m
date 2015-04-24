@@ -207,7 +207,7 @@
                                         [NSURL URLWithString:[NSString stringWithFormat: @"%@/services/upload_page_1_3_0.php",servicesURLPrefix]]];
 	[theRequest setHTTPMethod:@"POST"];
 	
-	NSString *stringBoundary = [NSString stringWithString:@"0xKhTmLbOuNdArY"];
+	NSString *stringBoundary = @"0xKhTmLbOuNdArY";
 	NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@",stringBoundary];
 	[theRequest addValue:contentType forHTTPHeaderField: @"Content-Type"];
 	
@@ -304,7 +304,7 @@
                                        [NSURL URLWithString:[NSString stringWithFormat: @"%@/services/upload_lesson_page.php",servicesURLPrefix]]];
     [theRequest setHTTPMethod:@"POST"];
     
-    NSString *stringBoundary = [NSString stringWithString:@"0xKhTmLbOuNdArY"];
+    NSString *stringBoundary = @"0xKhTmLbOuNdArY";
     NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@",stringBoundary];
     [theRequest addValue:contentType forHTTPHeaderField: @"Content-Type"];
     
