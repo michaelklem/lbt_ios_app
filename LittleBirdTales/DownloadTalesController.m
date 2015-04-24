@@ -335,7 +335,7 @@
                             [activityIndicator stopAnimating];
                             noTaleBackground.hidden = NO;
                             talesPreviewView.hidden = NO;
-                            [Lib showAlert:@"Warning" withMessage:@"You have no Tales to Download."];
+                            [Lib showAlert:@"Warning" withMessage:@"You have no Tales to download."];
                         }
                     }];
 }
