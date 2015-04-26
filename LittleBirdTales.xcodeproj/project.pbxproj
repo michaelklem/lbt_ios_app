@@ -299,6 +299,17 @@
 		4CF116341AA55DF8005C11CD /* UserInputTaleInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CF1162D1AA55DF8005C11CD /* UserInputTaleInfo.m */; };
 		4CF116351AA55DF8005C11CD /* UserInputTextView-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CF1162E1AA55DF8005C11CD /* UserInputTextView-iPad.xib */; };
 		4CF116371AA55DF8005C11CD /* UserInputTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CF116311AA55DF8005C11CD /* UserInputTextView.m */; };
+		BD288F311AED4F8600797B4E /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F425CDCD183C86D300AB9367 /* libz.dylib */; };
+		BD288F451AED537D00797B4E /* ChangeLogUnzip in Resources */ = {isa = PBXBuildFile; fileRef = BD288F341AED537D00797B4E /* ChangeLogUnzip */; };
+		BD288F461AED537D00797B4E /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = BD288F361AED537D00797B4E /* ioapi.c */; };
+		BD288F471AED537D00797B4E /* make_vms.com in Resources */ = {isa = PBXBuildFile; fileRef = BD288F381AED537D00797B4E /* make_vms.com */; };
+		BD288F4A1AED537D00797B4E /* MiniZip64_Changes.txt in Resources */ = {isa = PBXBuildFile; fileRef = BD288F3B1AED537D00797B4E /* MiniZip64_Changes.txt */; };
+		BD288F4B1AED537D00797B4E /* MiniZip64_info.txt in Resources */ = {isa = PBXBuildFile; fileRef = BD288F3C1AED537D00797B4E /* MiniZip64_info.txt */; };
+		BD288F4C1AED537D00797B4E /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = BD288F3D1AED537D00797B4E /* mztools.c */; };
+		BD288F4D1AED537D00797B4E /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = BD288F3F1AED537D00797B4E /* unzip.c */; };
+		BD288F4E1AED537D00797B4E /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = BD288F411AED537D00797B4E /* zip.c */; };
+		BD288F4F1AED537D00797B4E /* ZipArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = BD288F441AED537D00797B4E /* ZipArchive.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		BD288F511AED56B300797B4E /* readme.txt in Resources */ = {isa = PBXBuildFile; fileRef = BD288F501AED56B300797B4E /* readme.txt */; };
 		BDAFD72A1901AA6E0082B7A3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BDAFD7291901AA6E0082B7A3 /* Images.xcassets */; };
 		BDB44C491AA2760E00A61F2F /* ipad_icon_paint.png in Resources */ = {isa = PBXBuildFile; fileRef = BDB44C471AA2760E00A61F2F /* ipad_icon_paint.png */; };
 		BDB44C4A1AA2760E00A61F2F /* ipad_icon_paint@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BDB44C481AA2760E00A61F2F /* ipad_icon_paint@2x.png */; };
@@ -311,10 +322,7 @@
 		BDB44C581AA27A0D00A61F2F /* ipad_icon_undo.png in Resources */ = {isa = PBXBuildFile; fileRef = BDB44C571AA27A0D00A61F2F /* ipad_icon_undo.png */; };
 		BDB44C5A1AA27A3000A61F2F /* ipad_icon_redo.png in Resources */ = {isa = PBXBuildFile; fileRef = BDB44C591AA27A3000A61F2F /* ipad_icon_redo.png */; };
 		BDB44C5C1AA27F0A00A61F2F /* ipad_icon_paint2.png in Resources */ = {isa = PBXBuildFile; fileRef = BDB44C5B1AA27F0A00A61F2F /* ipad_icon_paint2.png */; };
-		BDDB6BA818FA11140093A543 /* ZipArchive in Resources */ = {isa = PBXBuildFile; fileRef = BDDB6BA718FA11140093A543 /* ZipArchive */; };
-		BDDB6BAA18FA13990093A543 /* libZipArchive-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BDDB6BA918FA13990093A543 /* libZipArchive-ios.a */; };
 		BDDB6BAF18FA17240093A543 /* UINavigationController+Landscape.m in Sources */ = {isa = PBXBuildFile; fileRef = BDDB6BAE18FA17240093A543 /* UINavigationController+Landscape.m */; };
-		F425CDCE183C86D300AB9367 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F425CDCD183C86D300AB9367 /* libz.dylib */; };
 		F42B4642183B203F001D9BE3 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F42B4641183B203F001D9BE3 /* libz.1.2.5.dylib */; };
 		F42D6C0619B7EBE00046D27C /* UserLoginViewController-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = F42D6C0219B7EBE00046D27C /* UserLoginViewController-iPad.xib */; };
 		F42D6C0819B7EBE00046D27C /* UserLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F42D6C0519B7EBE00046D27C /* UserLoginViewController.m */; };
@@ -721,6 +729,22 @@
 		4CF1162E1AA55DF8005C11CD /* UserInputTextView-iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "UserInputTextView-iPad.xib"; sourceTree = "<group>"; };
 		4CF116301AA55DF8005C11CD /* UserInputTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInputTextView.h; sourceTree = "<group>"; };
 		4CF116311AA55DF8005C11CD /* UserInputTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInputTextView.m; sourceTree = "<group>"; };
+		BD288F341AED537D00797B4E /* ChangeLogUnzip */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ChangeLogUnzip; sourceTree = "<group>"; };
+		BD288F351AED537D00797B4E /* crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt.h; sourceTree = "<group>"; };
+		BD288F361AED537D00797B4E /* ioapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ioapi.c; sourceTree = "<group>"; };
+		BD288F371AED537D00797B4E /* ioapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ioapi.h; sourceTree = "<group>"; };
+		BD288F381AED537D00797B4E /* make_vms.com */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = make_vms.com; sourceTree = "<group>"; };
+		BD288F3B1AED537D00797B4E /* MiniZip64_Changes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MiniZip64_Changes.txt; sourceTree = "<group>"; };
+		BD288F3C1AED537D00797B4E /* MiniZip64_info.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MiniZip64_info.txt; sourceTree = "<group>"; };
+		BD288F3D1AED537D00797B4E /* mztools.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mztools.c; sourceTree = "<group>"; };
+		BD288F3E1AED537D00797B4E /* mztools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mztools.h; sourceTree = "<group>"; };
+		BD288F3F1AED537D00797B4E /* unzip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = unzip.c; sourceTree = "<group>"; };
+		BD288F401AED537D00797B4E /* unzip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = unzip.h; sourceTree = "<group>"; };
+		BD288F411AED537D00797B4E /* zip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zip.c; sourceTree = "<group>"; };
+		BD288F421AED537D00797B4E /* zip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zip.h; sourceTree = "<group>"; };
+		BD288F431AED537D00797B4E /* ZipArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZipArchive.h; sourceTree = "<group>"; };
+		BD288F441AED537D00797B4E /* ZipArchive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZipArchive.m; sourceTree = "<group>"; };
+		BD288F501AED56B300797B4E /* readme.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = readme.txt; sourceTree = "<group>"; };
 		BDAFD7291901AA6E0082B7A3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		BDB44C471AA2760E00A61F2F /* ipad_icon_paint.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ipad_icon_paint.png; sourceTree = "<group>"; };
 		BDB44C481AA2760E00A61F2F /* ipad_icon_paint@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ipad_icon_paint@2x.png"; sourceTree = "<group>"; };
@@ -733,7 +757,6 @@
 		BDB44C571AA27A0D00A61F2F /* ipad_icon_undo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ipad_icon_undo.png; sourceTree = "<group>"; };
 		BDB44C591AA27A3000A61F2F /* ipad_icon_redo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ipad_icon_redo.png; sourceTree = "<group>"; };
 		BDB44C5B1AA27F0A00A61F2F /* ipad_icon_paint2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ipad_icon_paint2.png; sourceTree = "<group>"; };
-		BDDB6BA718FA11140093A543 /* ZipArchive */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ZipArchive; sourceTree = "<group>"; };
 		BDDB6BA918FA13990093A543 /* libZipArchive-ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libZipArchive-ios.a"; sourceTree = "<group>"; };
 		BDDB6BAD18FA16E00093A543 /* UINavigationController+Landscape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+Landscape.h"; sourceTree = "<group>"; };
 		BDDB6BAE18FA17240093A543 /* UINavigationController+Landscape.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+Landscape.m"; sourceTree = "<group>"; };
@@ -780,9 +803,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD288F311AED4F8600797B4E /* libz.dylib in Frameworks */,
 				F4EC4F01184D0E7E00C21FDF /* SystemConfiguration.framework in Frameworks */,
 				F4EC4EFF184D0E4000C21FDF /* Security.framework in Frameworks */,
-				F425CDCE183C86D300AB9367 /* libz.dylib in Frameworks */,
 				F42B4642183B203F001D9BE3 /* libz.1.2.5.dylib in Frameworks */,
 				3760BF7A1510436D0086ECD6 /* AudioToolbox.framework in Frameworks */,
 				37DA10F314FC8D14002C98F7 /* MediaPlayer.framework in Frameworks */,
@@ -792,7 +815,6 @@
 				04F1218B14B9F3C90003E733 /* UIKit.framework in Frameworks */,
 				04F1218D14B9F3C90003E733 /* Foundation.framework in Frameworks */,
 				04F1218F14B9F3C90003E733 /* CoreGraphics.framework in Frameworks */,
-				BDDB6BAA18FA13990093A543 /* libZipArchive-ios.a in Frameworks */,
 				F4EC4EFD184D0AD300C21FDF /* libFlurry_4.3.0.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1486,9 +1508,9 @@
 		37F6E8DF14C7BBD7003A278D /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				BD288F321AED537D00797B4E /* ZipArchive */,
 				4CA46BF41A6B84A1000E57E3 /* MFSideMenu */,
 				BDDB6BA918FA13990093A543 /* libZipArchive-ios.a */,
-				BDDB6BA718FA11140093A543 /* ZipArchive */,
 				F4EC4EFA184D0AD300C21FDF /* Flurry */,
 				F4EC4EF4184CF70300C21FDF /* iRate */,
 				F44433A71845A023001F59C7 /* HttpHelper.h */,
@@ -1654,6 +1676,37 @@
 				4CF116311AA55DF8005C11CD /* UserInputTextView.m */,
 			);
 			name = InputText;
+			sourceTree = "<group>";
+		};
+		BD288F321AED537D00797B4E /* ZipArchive */ = {
+			isa = PBXGroup;
+			children = (
+				BD288F331AED537D00797B4E /* minizip */,
+				BD288F431AED537D00797B4E /* ZipArchive.h */,
+				BD288F441AED537D00797B4E /* ZipArchive.m */,
+				BD288F501AED56B300797B4E /* readme.txt */,
+			);
+			path = ZipArchive;
+			sourceTree = "<group>";
+		};
+		BD288F331AED537D00797B4E /* minizip */ = {
+			isa = PBXGroup;
+			children = (
+				BD288F341AED537D00797B4E /* ChangeLogUnzip */,
+				BD288F351AED537D00797B4E /* crypt.h */,
+				BD288F361AED537D00797B4E /* ioapi.c */,
+				BD288F371AED537D00797B4E /* ioapi.h */,
+				BD288F381AED537D00797B4E /* make_vms.com */,
+				BD288F3B1AED537D00797B4E /* MiniZip64_Changes.txt */,
+				BD288F3C1AED537D00797B4E /* MiniZip64_info.txt */,
+				BD288F3D1AED537D00797B4E /* mztools.c */,
+				BD288F3E1AED537D00797B4E /* mztools.h */,
+				BD288F3F1AED537D00797B4E /* unzip.c */,
+				BD288F401AED537D00797B4E /* unzip.h */,
+				BD288F411AED537D00797B4E /* zip.c */,
+				BD288F421AED537D00797B4E /* zip.h */,
+			);
+			path = minizip;
 			sourceTree = "<group>";
 		};
 		F42D6BFF19B7AB110046D27C /* UserLogin */ = {
@@ -1838,6 +1891,7 @@
 				049845F814D83FA30095370C /* icon54.png in Resources */,
 				F42D6C0619B7EBE00046D27C /* UserLoginViewController-iPad.xib in Resources */,
 				049845F914D83FA30095370C /* icon72.png in Resources */,
+				BD288F4A1AED537D00797B4E /* MiniZip64_Changes.txt in Resources */,
 				049845FA14D83FA30095370C /* icon114.png in Resources */,
 				049845FD14D83FF40095370C /* icon57.png in Resources */,
 				BDB44C541AA279B200A61F2F /* ipad_icon_rect.png in Resources */,
@@ -1908,6 +1962,7 @@
 				0459B34214DD43C60019ECB9 /* btn_back.png in Resources */,
 				0459B34314DD43C60019ECB9 /* btn_back@2x.png in Resources */,
 				0459B34614DD48160019ECB9 /* color_bg.png in Resources */,
+				BD288F511AED56B300797B4E /* readme.txt in Resources */,
 				0459B34714DD48160019ECB9 /* color_bg@2x.png in Resources */,
 				0459B34D14DD4A480019ECB9 /* InputTextView-iPad.xib in Resources */,
 				0459B35114DD4A6D0019ECB9 /* ipad_btn_cancel.png in Resources */,
@@ -1930,9 +1985,9 @@
 				3721D2DF14ECA4AF00AF8EEE /* cover_default_med.jpg in Resources */,
 				BDB44C491AA2760E00A61F2F /* ipad_icon_paint.png in Resources */,
 				BDB44C5A1AA27A3000A61F2F /* ipad_icon_redo.png in Resources */,
-				BDDB6BA818FA11140093A543 /* ZipArchive in Resources */,
 				3721D2E014ECA4AF00AF8EEE /* page_default.jpg in Resources */,
 				3721D2E114ECA4AF00AF8EEE /* page_default_med.jpg in Resources */,
+				BD288F4B1AED537D00797B4E /* MiniZip64_info.txt in Resources */,
 				3721D2E314ECB52A00AF8EEE /* ipad_btn_play_big.png in Resources */,
 				BDB44C4A1AA2760E00A61F2F /* ipad_icon_paint@2x.png in Resources */,
 				3721D2EE14ECC7C800AF8EEE /* ipad_bg_cropimage.png in Resources */,
@@ -1956,6 +2011,7 @@
 				372A5C3D14F706DD004B6607 /* ipad_bg_logininput.png in Resources */,
 				37D7CBE714F79438006E3CC5 /* btn-edittale-ipad.png in Resources */,
 				4C43DA2619F0B0C00059E3E4 /* painter11.png in Resources */,
+				BD288F451AED537D00797B4E /* ChangeLogUnzip in Resources */,
 				370EC74814F8CC0A0047D099 /* iphone-bg-talelist.png in Resources */,
 				370EC74914F8CC0A0047D099 /* iphone-bg-talelist@2x.png in Resources */,
 				370EC74A14F8CC0A0047D099 /* iphone-bg.png in Resources */,
@@ -2011,6 +2067,7 @@
 				04449F961503E9BF0055A780 /* iphone_icon_rect@2x.png in Resources */,
 				04449F971503E9BF0055A780 /* iphone_icon_redo.png in Resources */,
 				04449F981503E9BF0055A780 /* iphone_icon_redo@2x.png in Resources */,
+				BD288F471AED537D00797B4E /* make_vms.com in Resources */,
 				4C1EDE871A68E01C0067C38D /* list26.png in Resources */,
 				04449F991503E9BF0055A780 /* iphone_icon_text.png in Resources */,
 				04449F9A1503E9BF0055A780 /* iphone_icon_text@2x.png in Resources */,
@@ -2097,6 +2154,7 @@
 				BDDB6BAF18FA17240093A543 /* UINavigationController+Landscape.m in Sources */,
 				041A87E514DEDBE7006AE392 /* ImageLayer.m in Sources */,
 				371222BD14E1D881002DCBBD /* InputTaleInfo.m in Sources */,
+				BD288F4C1AED537D00797B4E /* mztools.c in Sources */,
 				376C210B14E46E8300D540FB /* InfColorBarPicker.m in Sources */,
 				F47419E019D7AFB40024AAF6 /* EditAssignmentViewController.m in Sources */,
 				376C210C14E46E8300D540FB /* InfColorIndicatorView.m in Sources */,
@@ -2122,6 +2180,7 @@
 				3721D2F314ECC83A00AF8EEE /* CropImage.m in Sources */,
 				375F50D714EF885F0025936A /* AudioRecord.m in Sources */,
 				4CF116371AA55DF8005C11CD /* UserInputTextView.m in Sources */,
+				BD288F4E1AED537D00797B4E /* zip.c in Sources */,
 				4CB851DA1AAAC5E4004CA3E5 /* UserPlayerController.m in Sources */,
 				046AE68E14EFA40C0056C1DB /* FontController.m in Sources */,
 				37C4402814EFFE1900CCD609 /* GalleryTableViewController.m in Sources */,
@@ -2140,6 +2199,7 @@
 				3760C1E015104AC90086ECD6 /* SBJsonStreamWriter.m in Sources */,
 				3760C1E115104AC90086ECD6 /* SBJsonStreamWriterAccumulator.m in Sources */,
 				3760C1E215104AC90086ECD6 /* SBJsonStreamWriterState.m in Sources */,
+				BD288F4F1AED537D00797B4E /* ZipArchive.m in Sources */,
 				3760C1EE15104AE70086ECD6 /* NSObject+SBJson.m in Sources */,
 				3760C1EF15104AE70086ECD6 /* SBJsonParser.m in Sources */,
 				4CB851CF1AA96F48004CA3E5 /* UserAudioRecord.m in Sources */,
@@ -2147,6 +2207,7 @@
 				3760C1F115104AE70086ECD6 /* SBJsonUTF8Stream.m in Sources */,
 				3760C1F215104AE70086ECD6 /* SBJsonWriter.m in Sources */,
 				3760C1F515104AFB0086ECD6 /* UIImage+Thumbnail.m in Sources */,
+				BD288F461AED537D00797B4E /* ioapi.c in Sources */,
 				3760C1FA15104B110086ECD6 /* ColorHelper.m in Sources */,
 				3760C1FB15104B110086ECD6 /* Gallery.m in Sources */,
 				04B2D82F151B066E00BC781A /* ColorPickerController.m in Sources */,
@@ -2159,6 +2220,7 @@
 				F4B592D019BF8E5E0004493B /* UserLessonsController.m in Sources */,
 				F4D157381821C3E700806778 /* DownloadTalesController.m in Sources */,
 				F44433A91845A023001F59C7 /* HttpHelper.m in Sources */,
+				BD288F4D1AED537D00797B4E /* unzip.c in Sources */,
 				F4EC4EF9184CF70400C21FDF /* iRate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

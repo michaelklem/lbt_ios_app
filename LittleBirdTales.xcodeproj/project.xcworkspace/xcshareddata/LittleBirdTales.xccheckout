@@ -10,6 +10,8 @@
 	<string>project</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
+		<key>487FC0E2BC7E6A96C3FF26A33F2EC97C87656C1C</key>
+		<string>github.com:michaelklem/real_estate_packets.git</string>
 		<key>A679B03409F74174C47A02F69AD906298C9BE051</key>
 		<string>github.com:michaelklem/lbt_ios_app.git</string>
 	</dict>
@@ -17,6 +19,8 @@
 	<string>LittleBirdTales.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
+		<key>487FC0E2BC7E6A96C3FF26A33F2EC97C87656C1C</key>
+		<string>../../../../../../../tmp</string>
 		<key>A679B03409F74174C47A02F69AD906298C9BE051</key>
 		<string>../..</string>
 	</dict>
@@ -35,6 +39,14 @@
 			<string>A679B03409F74174C47A02F69AD906298C9BE051</string>
 			<key>IDESourceControlWCCName</key>
 			<string>lbt_ios_app</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>487FC0E2BC7E6A96C3FF26A33F2EC97C87656C1C</string>
+			<key>IDESourceControlWCCName</key>
+			<string>tmp</string>
 		</dict>
 	</array>
 </dict>
