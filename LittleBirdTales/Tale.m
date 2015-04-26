@@ -15,19 +15,36 @@ NSMutableArray* tales;
 @implementation Tale
 @synthesize index, created, title, pages, modified, author;
 
+// Returns the path to the tales.plist file.
 +(NSString*)path {
-    NSString* path = [NSString stringWithFormat:@"%@/%@", [Tale dir], @"tales.plist"];
-//    NSLog(path);
-    return path;
-}
-+(NSString*)dir {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString* dir = [paths objectAtIndex:0];
-    if([Lib getValueOfKey:@"user_id"] && ![[Lib getValueOfKey:@"user_id"]  isEqual: @""]) {
-        dir = [NSString stringWithFormat:@"%@/%@", dir, [Lib getValueOfKey:@"user_id"]];
+    NSString* path = [NSString stringWithFormat:@"%@/%@", dir, @"tales.plist"];
+    
+    // If the user_id is present, the plist file will be found in the directory with the
+    // name of the user_id. So create the directory if needed and add it to the path.
+    if([Lib getValueOfKey:@"user_id"] && ![[Lib getValueOfKey:@"user_id"] isEqual: @""]) {
+        path = [NSString stringWithFormat:@"%@/%@", [Lib dir], @"tales.plist"];
     }
-//    NSLog(dir);
-    return dir;
+
+    // Create the plist file if it does not exist.
+//    NSFileManager *fileManager = [NSFileManager defaultManager];
+//    Boolean success = [fileManager fileExistsAtPath:path];
+//    if (success)
+//    {
+//        NSLog(@"FILE PATH EXISTS %@",path);
+//    }
+//    else
+//    {
+//        NSLog(@"FILE PATH DOES NOT EXIST %@",path);
+//        [@{} writeToFile: path atomically: YES];
+//        Boolean success2 = [fileManager fileExistsAtPath:path];
+//        if (success2)
+//        {
+//            NSLog(@"FILE PATH EXISTS NOW %@",path);
+//        }
+//    }
+    return path;
 }
 
 +(Tale*)taleFromDictionary:(NSDictionary*)dic {

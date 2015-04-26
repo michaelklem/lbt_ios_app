@@ -26,4 +26,7 @@
 
 + (NSString *)applicationDocumentsDirectory;
 + (NSString*)taleFolderPathFromIndex:(double)index;
++(void) createDirectory:(NSString *)dirName;
++(NSString*)dir;
+
 @end

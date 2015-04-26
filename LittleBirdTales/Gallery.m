@@ -12,9 +12,9 @@
 
 @implementation Gallery
 
-+ (NSString*)dir {
-    
-    if([Lib getValueOfKey:@"user_id"] && ![[Lib getValueOfKey:@"user_id"]  isEqual: @""]) {
++ (NSString*)dir
+{
+    if([Lib getValueOfKey:@"user_id"] && ![[Lib getValueOfKey:@"user_id"] isEqual: @""]) {
         return [NSString stringWithFormat:@"%@/gallery/%@/",
                 [Lib applicationDocumentsDirectory], [Lib getValueOfKey:@"user_id"]];
     }

@@ -156,8 +156,8 @@
 + (NSString *)applicationDocumentsDirectory
 {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *basePath = ([paths count] > 0) ? [paths objectAtIndex:0] : nil;
-    return basePath;
+    NSString* dir = [paths objectAtIndex:0];
+    return dir;
 }
 
 + (NSString*)taleFolderPathFromIndex:(double)index {
@@ -169,6 +169,49 @@
     NSString *path = [NSString stringWithFormat:@"%@/%.0f",[dateFormatter stringFromDate:[NSDate dateWithTimeIntervalSince1970:createdDate]],index];
     
     return path;
+}
+
+// Returns the path to the documents directory with the user_id directory appended
+// to the end of the path if the user_id exists.
+// Usage:
+// NSString* dir = [paths objectAtIndex:0];
+// dir = [NSString stringWithFormat:@"%@/%@", [Lib dir], [Lib getValueOfKey:@"user_id"]];
++(NSString*)dir {
+    NSString* dir = [self applicationDocumentsDirectory];
+    NSString* user_id = [Lib getValueOfKey:@"user_id"];
+    if(user_id && ![user_id isEqual: @""])
+    {
+        dir = [NSString stringWithFormat:@"%@/%@", dir, user_id];
+        [Lib createDirectory:user_id];
+    }
+    NSLog(@"Directory path: %@",dir);
+    return dir;
+}
+
+// Creates a directory if it does not exist in the documents directory.
+// Usage:
+// [Lib createDirectory:@"MyDirectory"];
++(void) createDirectory : (NSString *) dirName {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0]; // Get documents folder
+    NSString *dataPath = [documentsDirectory stringByAppendingPathComponent:dirName];
+    NSError* error = nil;
+    
+    if (![[NSFileManager defaultManager] fileExistsAtPath:dataPath])
+    {
+        if ([[NSFileManager defaultManager] createDirectoryAtPath:dataPath withIntermediateDirectories:NO attributes:nil error:&error])
+        {
+            NSLog(@"Directory created : %@ ",dataPath); // Path of folder created
+        }
+        else
+        {
+            NSLog(@"Couldn't create directory error: %@", error);
+        }
+    }
+    else
+    {
+        NSLog(@"Directory exists already");
+    }
 }
 
 @end

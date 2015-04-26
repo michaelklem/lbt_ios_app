@@ -71,7 +71,7 @@
                                    andUrl:[NSString stringWithFormat:@"%@/services/authenticate.php",servicesURLPrefix]];
     }
     BOOL sucessed = FALSE;
-    //NSLog(@"--%@",strData);
+//    NSLog(@"--%@",strData);
     
     if (strData) {
         id obj = [strData JSONValue];
