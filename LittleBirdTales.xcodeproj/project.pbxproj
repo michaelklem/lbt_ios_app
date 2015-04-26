@@ -313,7 +313,6 @@
 		BDB44C5C1AA27F0A00A61F2F /* ipad_icon_paint2.png in Resources */ = {isa = PBXBuildFile; fileRef = BDB44C5B1AA27F0A00A61F2F /* ipad_icon_paint2.png */; };
 		BDDB6BA818FA11140093A543 /* ZipArchive in Resources */ = {isa = PBXBuildFile; fileRef = BDDB6BA718FA11140093A543 /* ZipArchive */; };
 		BDDB6BAA18FA13990093A543 /* libZipArchive-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BDDB6BA918FA13990093A543 /* libZipArchive-ios.a */; };
-		BDDB6BAC18FA14000093A543 /* TestFlightSDK2.0.2 in Resources */ = {isa = PBXBuildFile; fileRef = BDDB6BAB18FA14000093A543 /* TestFlightSDK2.0.2 */; };
 		BDDB6BAF18FA17240093A543 /* UINavigationController+Landscape.m in Sources */ = {isa = PBXBuildFile; fileRef = BDDB6BAE18FA17240093A543 /* UINavigationController+Landscape.m */; };
 		F425CDCE183C86D300AB9367 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F425CDCD183C86D300AB9367 /* libz.dylib */; };
 		F42B4642183B203F001D9BE3 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F42B4641183B203F001D9BE3 /* libz.1.2.5.dylib */; };
@@ -736,7 +735,6 @@
 		BDB44C5B1AA27F0A00A61F2F /* ipad_icon_paint2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ipad_icon_paint2.png; sourceTree = "<group>"; };
 		BDDB6BA718FA11140093A543 /* ZipArchive */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ZipArchive; sourceTree = "<group>"; };
 		BDDB6BA918FA13990093A543 /* libZipArchive-ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libZipArchive-ios.a"; sourceTree = "<group>"; };
-		BDDB6BAB18FA14000093A543 /* TestFlightSDK2.0.2 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = TestFlightSDK2.0.2; sourceTree = "<group>"; };
 		BDDB6BAD18FA16E00093A543 /* UINavigationController+Landscape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+Landscape.h"; sourceTree = "<group>"; };
 		BDDB6BAE18FA17240093A543 /* UINavigationController+Landscape.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+Landscape.m"; sourceTree = "<group>"; };
 		F425CDCD183C86D300AB9367 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -1489,7 +1487,6 @@
 			isa = PBXGroup;
 			children = (
 				4CA46BF41A6B84A1000E57E3 /* MFSideMenu */,
-				BDDB6BAB18FA14000093A543 /* TestFlightSDK2.0.2 */,
 				BDDB6BA918FA13990093A543 /* libZipArchive-ios.a */,
 				BDDB6BA718FA11140093A543 /* ZipArchive */,
 				F4EC4EFA184D0AD300C21FDF /* Flurry */,
@@ -1930,7 +1927,6 @@
 				04BC99C014EAECD400218DF4 /* tran.png in Resources */,
 				4C1EDE8B1A68EAB00067C38D /* apple-ios-macbook-air-77-desktop-background.png in Resources */,
 				3721D2DE14ECA4AF00AF8EEE /* cover_default.jpg in Resources */,
-				BDDB6BAC18FA14000093A543 /* TestFlightSDK2.0.2 in Resources */,
 				3721D2DF14ECA4AF00AF8EEE /* cover_default_med.jpg in Resources */,
 				BDB44C491AA2760E00A61F2F /* ipad_icon_paint.png in Resources */,
 				BDB44C5A1AA27A3000A61F2F /* ipad_icon_redo.png in Resources */,
