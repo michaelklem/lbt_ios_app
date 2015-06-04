@@ -21,6 +21,7 @@
 #import "GalleryViewController.h"
 #import "CropImage.h"
 #import "PlayerController.h"
+#import "UserLessonsController.h"
 
 @interface EditAssignmentViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, InputTextViewDelegate, InputTaleInfoDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate,UINavigationControllerDelegate, UIPopoverControllerDelegate, UIAlertViewDelegate, AudioRecordDelegate, GalleryDelegate, CropImageDelegate,DrawControllerDelegate, GalleryViewDelegate, AVAudioPlayerDelegate, UIGestureRecognizerDelegate > {
     

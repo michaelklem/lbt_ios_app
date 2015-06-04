@@ -241,7 +241,8 @@
 }
 
 - (IBAction)back:(id)sender {
-    [self.navigationController popViewControllerAnimated:TRUE];
+    UserTalesController* controller = [[UserTalesController alloc] initWithNibName:@"UserTalesController-iPad" bundle:nil];
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 - (void)setActivePage:(NSInteger)index {

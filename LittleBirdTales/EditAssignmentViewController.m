@@ -260,7 +260,8 @@
 }
 
 - (IBAction)back:(id)sender {
-    [self.navigationController popViewControllerAnimated:TRUE];
+    UserLessonsController* controller = [[UserLessonsController alloc] initWithNibName:@"UserLessonsController-iPad" bundle:nil];
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 - (void)setActivePage:(NSInteger)index {

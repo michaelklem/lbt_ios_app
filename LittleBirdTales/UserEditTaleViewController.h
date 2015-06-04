@@ -20,6 +20,7 @@
 #import "GalleryViewController.h"
 #import "CropImage.h"
 #import "UserPlayerController.h"
+#import "UserTalesController.h"
 
 @interface UserEditTaleViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, InputTextViewDelegate, InputTaleInfoDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate,UINavigationControllerDelegate, UIPopoverControllerDelegate, UIAlertViewDelegate, AudioRecordDelegate, GalleryDelegate, CropImageDelegate,DrawControllerDelegate, GalleryViewDelegate > {
     IBOutlet UITableView* pagesTableView;
