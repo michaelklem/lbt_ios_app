@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="StudentDownloadTalesController">
             <connections>
                 <outlet property="activityIndicator" destination="421" id="940"/>
+                <outlet property="activityMessage" destination="rIu-9f-0BC" id="pNw-99-z9h"/>
                 <outlet property="collectionView" destination="FlO-an-07x" id="7GO-dZ-pFx"/>
                 <outlet property="downloadingView" destination="420" id="489"/>
                 <outlet property="pageTitle" destination="422" id="jK9-zD-QTn"/>
@@ -23,30 +24,6 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="apple-ios-macbook-air-77-desktop-background.png" translatesAutoresizingMaskIntoConstraints="NO" id="pER-ho-mKy">
                     <rect key="frame" x="0.0" y="45" width="1024" height="723"/>
                 </imageView>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" ambiguous="YES" misplaced="YES" text="Downloading Tales" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="422">
-                    <rect key="frame" x="20" y="1" width="964" height="42"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="42" id="428"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="27"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                </label>
-                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="420" userLabel="Downloading">
-                    <rect key="frame" x="0.0" y="45" width="1004" height="768"/>
-                    <subviews>
-                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="421">
-                            <rect key="frame" x="484" y="285" width="37" height="37"/>
-                            <color key="color" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                        </activityIndicatorView>
-                    </subviews>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstItem="421" firstAttribute="top" secondItem="420" secondAttribute="top" constant="185" id="700"/>
-                    </constraints>
-                </view>
                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="708">
                     <rect key="frame" x="0.0" y="0.0" width="1004" height="768"/>
                     <subviews>
@@ -75,6 +52,35 @@
                         </collectionView>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </view>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" ambiguous="YES" misplaced="YES" text="Downloading Tales" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="422">
+                    <rect key="frame" x="20" y="1" width="964" height="42"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="42" id="428"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="27"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </label>
+                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="420" userLabel="Downloading">
+                    <rect key="frame" x="0.0" y="45" width="1004" height="768"/>
+                    <subviews>
+                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="421">
+                            <rect key="frame" x="484" y="285" width="37" height="37"/>
+                            <color key="color" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        </activityIndicatorView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Downloading Tales" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rIu-9f-0BC">
+                            <rect key="frame" x="423" y="373" width="158" height="21"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="421" firstAttribute="top" secondItem="420" secondAttribute="top" constant="185" id="700"/>
+                    </constraints>
                 </view>
             </subviews>
             <color key="backgroundColor" red="1" green="0.64152705669403076" blue="0.25935441255569458" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

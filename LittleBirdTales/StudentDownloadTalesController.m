@@ -38,6 +38,7 @@
     
     downloadingView.hidden = NO;
     talesPreviewView.hidden = YES;
+    activityMessage.text = @"Downloading Tale";
     [activityIndicator startAnimating];
     
     NSDictionary *currentTale = [[_dataArray objectAtIndex:0] objectAtIndex:currentTaleIndex];
@@ -179,8 +180,9 @@
         [alert show];
         return;
     }
-    
+    activityMessage.text = @"Downloading Tales";
     [activityIndicator startAnimating];
+
     NSString* url = [NSString stringWithFormat:@"%@/services/tales/",servicesURLPrefix];
     NSLog(@"%@", [Lib getValueOfKey:@"encrypted_user_id"]);
     [HttpHelper sendAsyncPostRequestToURL:url

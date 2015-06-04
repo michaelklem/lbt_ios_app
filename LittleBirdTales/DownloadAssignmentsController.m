@@ -34,6 +34,7 @@
     
     downloadingView.hidden = NO;
     talesPreviewView.hidden = YES;
+    activityMessage.text = @"Downloading Lesson";
     [activityIndicator startAnimating];
 
     NSDictionary *currentTale = [[_dataArray objectAtIndex:0] objectAtIndex:currentTaleIndex];
@@ -198,6 +199,7 @@
 
 - (void)viewDidLoad {
     downloadingView.hidden = NO;
+    activityMessage.text = @"Downloading Lessons";
     [activityIndicator startAnimating];
     
     NSString *connect = [NSString stringWithContentsOfURL:[NSURL URLWithString:servicesURLPrefix] encoding:NSUTF8StringEncoding error:nil];

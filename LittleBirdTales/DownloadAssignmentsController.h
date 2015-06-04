@@ -16,6 +16,7 @@
     IBOutlet UIView *talesPreviewView;
     IBOutlet UIActivityIndicatorView *activityIndicator;
     IBOutlet UILabel *pageTitle;
+    IBOutlet UILabel *activityMessage;
 }
 
 @property (nonatomic, strong) IBOutlet UICollectionView *collectionView;
