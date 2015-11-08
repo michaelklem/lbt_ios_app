@@ -243,6 +243,8 @@
                             [activityIndicator stopAnimating];
                             talesPreviewView.hidden = NO;
                             [Lib showAlert:@"Warning" withMessage:@"You have no Lessons to download."];
+                            downloadingView.hidden = YES;
+                            [self.collectionView reloadData];
                         }
                     }];
 }
