@@ -323,6 +323,7 @@
 		BDB44C5A1AA27A3000A61F2F /* ipad_icon_redo.png in Resources */ = {isa = PBXBuildFile; fileRef = BDB44C591AA27A3000A61F2F /* ipad_icon_redo.png */; };
 		BDB44C5C1AA27F0A00A61F2F /* ipad_icon_paint2.png in Resources */ = {isa = PBXBuildFile; fileRef = BDB44C5B1AA27F0A00A61F2F /* ipad_icon_paint2.png */; };
 		BDDB6BAF18FA17240093A543 /* UINavigationController+Landscape.m in Sources */ = {isa = PBXBuildFile; fileRef = BDDB6BAE18FA17240093A543 /* UINavigationController+Landscape.m */; };
+		BDFA9FDC1BF1210700678BC0 /* libFlurry_7.3.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BDFA9FDB1BF1210700678BC0 /* libFlurry_7.3.0.a */; };
 		F42B4642183B203F001D9BE3 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F42B4641183B203F001D9BE3 /* libz.1.2.5.dylib */; };
 		F42D6C0619B7EBE00046D27C /* UserLoginViewController-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = F42D6C0219B7EBE00046D27C /* UserLoginViewController-iPad.xib */; };
 		F42D6C0819B7EBE00046D27C /* UserLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F42D6C0519B7EBE00046D27C /* UserLoginViewController.m */; };
@@ -345,7 +346,6 @@
 		F4EC4EF3184AE72900C21FDF /* ipad_btn_download_tales.png in Resources */ = {isa = PBXBuildFile; fileRef = F4EC4EF1184AE72900C21FDF /* ipad_btn_download_tales.png */; };
 		F4EC4EF8184CF70400C21FDF /* iRate.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F4EC4EF5184CF70300C21FDF /* iRate.bundle */; };
 		F4EC4EF9184CF70400C21FDF /* iRate.m in Sources */ = {isa = PBXBuildFile; fileRef = F4EC4EF7184CF70400C21FDF /* iRate.m */; };
-		F4EC4EFD184D0AD300C21FDF /* libFlurry_4.3.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F4EC4EFC184D0AD300C21FDF /* libFlurry_4.3.0.a */; };
 		F4EC4EFF184D0E4000C21FDF /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4EC4EFE184D0E4000C21FDF /* Security.framework */; };
 		F4EC4F01184D0E7E00C21FDF /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4EC4F00184D0E7E00C21FDF /* SystemConfiguration.framework */; };
 /* End PBXBuildFile section */
@@ -760,6 +760,9 @@
 		BDDB6BA918FA13990093A543 /* libZipArchive-ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libZipArchive-ios.a"; sourceTree = "<group>"; };
 		BDDB6BAD18FA16E00093A543 /* UINavigationController+Landscape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+Landscape.h"; sourceTree = "<group>"; };
 		BDDB6BAE18FA17240093A543 /* UINavigationController+Landscape.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+Landscape.m"; sourceTree = "<group>"; };
+		BDFA9FD91BF1210700678BC0 /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
+		BDFA9FDA1BF1210700678BC0 /* FlurryWatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryWatch.h; sourceTree = "<group>"; };
+		BDFA9FDB1BF1210700678BC0 /* libFlurry_7.3.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_7.3.0.a; sourceTree = "<group>"; };
 		F425CDCD183C86D300AB9367 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		F42B4641183B203F001D9BE3 /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
 		F42D6C0219B7EBE00046D27C /* UserLoginViewController-iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "UserLoginViewController-iPad.xib"; sourceTree = "<group>"; };
@@ -792,8 +795,6 @@
 		F4EC4EF5184CF70300C21FDF /* iRate.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = iRate.bundle; sourceTree = "<group>"; };
 		F4EC4EF6184CF70400C21FDF /* iRate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iRate.h; sourceTree = "<group>"; };
 		F4EC4EF7184CF70400C21FDF /* iRate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iRate.m; sourceTree = "<group>"; };
-		F4EC4EFB184D0AD300C21FDF /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
-		F4EC4EFC184D0AD300C21FDF /* libFlurry_4.3.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_4.3.0.a; sourceTree = "<group>"; };
 		F4EC4EFE184D0E4000C21FDF /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		F4EC4F00184D0E7E00C21FDF /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -813,9 +814,9 @@
 				0428006414DEA36B00122C8C /* AVFoundation.framework in Frameworks */,
 				37BC3F3A14DA100600035E83 /* QuartzCore.framework in Frameworks */,
 				04F1218B14B9F3C90003E733 /* UIKit.framework in Frameworks */,
+				BDFA9FDC1BF1210700678BC0 /* libFlurry_7.3.0.a in Frameworks */,
 				04F1218D14B9F3C90003E733 /* Foundation.framework in Frameworks */,
 				04F1218F14B9F3C90003E733 /* CoreGraphics.framework in Frameworks */,
-				F4EC4EFD184D0AD300C21FDF /* libFlurry_4.3.0.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1508,10 +1509,10 @@
 		37F6E8DF14C7BBD7003A278D /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				BDFA9FD81BF1210700678BC0 /* Flurry */,
 				BD288F321AED537D00797B4E /* ZipArchive */,
 				4CA46BF41A6B84A1000E57E3 /* MFSideMenu */,
 				BDDB6BA918FA13990093A543 /* libZipArchive-ios.a */,
-				F4EC4EFA184D0AD300C21FDF /* Flurry */,
 				F4EC4EF4184CF70300C21FDF /* iRate */,
 				F44433A71845A023001F59C7 /* HttpHelper.h */,
 				F44433A81845A023001F59C7 /* HttpHelper.m */,
@@ -1709,6 +1710,16 @@
 			path = minizip;
 			sourceTree = "<group>";
 		};
+		BDFA9FD81BF1210700678BC0 /* Flurry */ = {
+			isa = PBXGroup;
+			children = (
+				BDFA9FD91BF1210700678BC0 /* Flurry.h */,
+				BDFA9FDA1BF1210700678BC0 /* FlurryWatch.h */,
+				BDFA9FDB1BF1210700678BC0 /* libFlurry_7.3.0.a */,
+			);
+			path = Flurry;
+			sourceTree = "<group>";
+		};
 		F42D6BFF19B7AB110046D27C /* UserLogin */ = {
 			isa = PBXGroup;
 			children = (
@@ -1801,15 +1812,6 @@
 				F4EC4EF7184CF70400C21FDF /* iRate.m */,
 			);
 			path = iRate;
-			sourceTree = "<group>";
-		};
-		F4EC4EFA184D0AD300C21FDF /* Flurry */ = {
-			isa = PBXGroup;
-			children = (
-				F4EC4EFB184D0AD300C21FDF /* Flurry.h */,
-				F4EC4EFC184D0AD300C21FDF /* libFlurry_4.3.0.a */,
-			);
-			path = Flurry;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -2313,6 +2315,7 @@
 					"\"$(SRCROOT)/TestFlightSDK2.0.2\"",
 					"\"$(SRCROOT)/Flurry\"",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Flurry",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "8d6fc1a9-2a60-4084-ab44-fe7d8e0ab2e0";
@@ -2346,6 +2349,7 @@
 					"\"$(SRCROOT)/TestFlightSDK2.0.2\"",
 					"\"$(SRCROOT)/Flurry\"",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Flurry",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "8d6fc1a9-2a60-4084-ab44-fe7d8e0ab2e0";
