@@ -66,8 +66,9 @@
                                                                 andUrl:url2];
                          
                          
-                         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
-                         NSString *path = [paths objectAtIndex:0];
+//                         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+//                         NSString *path = [paths objectAtIndex:0];
+                         NSString* path = [Lib applicationDocumentsDirectory];
                          NSString *zipPath = [path stringByAppendingPathComponent:@"tale_data.zip"];
                          [data writeToFile:zipPath options:0 error:&error2];
                          
@@ -260,8 +261,17 @@
     [self.navigationController pushViewController:controller animated:YES];
 }
 
--(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return [self.dataArray count];
+-(NSInteger) :(UICollectionView *)collectionView {
+    NSInteger x = 1;
+    if (self.dataArray == nil)
+    {
+        x = 1;
+    }
+    else
+    {
+        x = [self.dataArray count];
+    }
+    return x;
 }
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {

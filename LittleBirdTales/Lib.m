@@ -153,11 +153,20 @@
     [alertView show];
 }
 
+// Returns the URL to the application's Documents directory.
+// https://developer.apple.com/library/ios/technotes/tn2406/_index.html
 + (NSString *)applicationDocumentsDirectory
 {
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString* dir = [paths objectAtIndex:0];
-    return dir;
+    NSURL *dir2 = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+    NSLog(@"Directory path: %@",dir2);
+    NSLog(@"Directory path: %@",[dir2 absoluteString]);
+    NSLog(@"Directory path: %@",[dir2 path]);
+    NSString *path = [dir2 path];
+    return path;
+//    
+//    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+//    NSString* dir = [paths objectAtIndex:0];
+//    return dir;
 }
 
 + (NSString*)taleFolderPathFromIndex:(double)index {
@@ -192,8 +201,9 @@
 // Usage:
 // [Lib createDirectory:@"MyDirectory"];
 +(void) createDirectory : (NSString *) dirName {
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0]; // Get documents folder
+//    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+//    NSString *documentsDirectory = [paths objectAtIndex:0]; // Get documents folder
+    NSString* documentsDirectory = [self applicationDocumentsDirectory];
     NSString *dataPath = [documentsDirectory stringByAppendingPathComponent:dirName];
     NSError* error = nil;
     

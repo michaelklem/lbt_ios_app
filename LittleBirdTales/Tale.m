@@ -17,8 +17,9 @@ NSMutableArray* tales;
 
 // Returns the path to the tales.plist file.
 +(NSString*)path {
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString* dir = [paths objectAtIndex:0];
+//    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+//    NSString* dir = [paths objectAtIndex:0];
+    NSString* dir = [Lib applicationDocumentsDirectory];
     NSString* path = [NSString stringWithFormat:@"%@/%@", dir, @"tales.plist"];
     
     // If the user_id is present, the plist file will be found in the directory with the

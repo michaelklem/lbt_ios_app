@@ -69,8 +69,9 @@
                                                                 andUrl:url2];
                          
                          
-                         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
-                         NSString *path = [paths objectAtIndex:0];
+//                         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+//                         NSString *path = [paths objectAtIndex:0];
+                         NSString* path = [Lib applicationDocumentsDirectory];
                          NSString *zipPath = [path stringByAppendingPathComponent:@"tale_data.zip"];
                          [data writeToFile:zipPath options:0 error:&error2];
                          
@@ -198,7 +199,7 @@
                             talesPreviewView.hidden = NO;
                             
                             self.dataArray = [[NSArray alloc] initWithObjects:jsonArray, nil];
-                            
+
                             [self.collectionView registerClass:[CVCell class] forCellWithReuseIdentifier:@"cvCell"];
                             /* end of subclass-based cells block */
                             
@@ -232,7 +233,17 @@
 }
 
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return [self.dataArray count];
+    NSInteger x = 1;
+    if (self.dataArray == nil)
+    {
+        x = 1;
+    }
+    else
+    {
+        x = [self.dataArray count];
+    }
+ 
+    return x;
 }
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {

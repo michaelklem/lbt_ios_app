@@ -21,8 +21,9 @@ NSMutableArray* lessons;
     return path;
 }
 +(NSString*)dir {
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString* dir = [paths objectAtIndex:0];
+//    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+//    NSString* dir = [paths objectAtIndex:0];
+    NSString* dir = [Lib applicationDocumentsDirectory];
     dir = [NSString stringWithFormat:@"%@/%@", [Lib dir], [Lib getValueOfKey:@"user_id"]];
 //    NSLog(dir);
     return dir;

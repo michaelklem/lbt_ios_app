@@ -188,8 +188,9 @@
                                                                 andUrl:url2];
                          
                          
-                         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
-                         NSString *path = [paths objectAtIndex:0];
+//                         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+//                         NSString *path = [paths objectAtIndex:0];
+                         NSString* path = [Lib applicationDocumentsDirectory];
                          NSString *zipPath = [path stringByAppendingPathComponent:@"tale_data.zip"];
                          [data writeToFile:zipPath options:0 error:&error2];
                          

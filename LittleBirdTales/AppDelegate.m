@@ -20,6 +20,19 @@
 AppDelegate* _shared;
 @implementation AppDelegate
 
+/*
+void onUncaughtException(NSException *exception)
+{
+    NSLog(@"uncaught exception: %@", exception.description);
+    NSLog(@"Stack trace: %@", [exception callStackSymbols]);
+}
+
+-(void) applicationDidFinishLaunching:(UIApplication*)application
+{
+    NSSetUncaughtExceptionHandler(&onUncaughtException);
+}
+*/
+
 + (void)initialize
 {
     //configure iRate
@@ -60,6 +73,8 @@ AppDelegate* _shared;
    return UIInterfaceOrientationMaskLandscape;
 }
 
+
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
 //    unsigned char a = 100;
@@ -81,7 +96,8 @@ AppDelegate* _shared;
 //    NSLog(@"%i %i",x,y+1);
     [Flurry setCrashReportingEnabled:YES];
     [Flurry startSession:@"68NHTPWPGX3QNMXSTG9R"];
-                           
+//    NSSetUncaughtExceptionHandler(&onUncaughtException);
+
     
     //As client request to display Splash Screen a little longer
     [NSThread sleepForTimeInterval:1.0];
