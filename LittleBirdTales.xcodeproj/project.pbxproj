@@ -131,7 +131,6 @@
 		1F4E077219A626B80080D324 /* icon29.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F4E076C19A626B80080D324 /* icon29.png */; };
 		1F4E077319A626B80080D324 /* icon40.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F4E076D19A626B80080D324 /* icon40.png */; };
 		1F4E077419A626B80080D324 /* icon50.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F4E076E19A626B80080D324 /* icon50.png */; };
-		1F4E077519A626B80080D324 /* icon58.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F4E076F19A626B80080D324 /* icon58.png */; };
 		1F4E077619A626B80080D324 /* icon80.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F4E077019A626B80080D324 /* icon80.png */; };
 		1F4E077719A626B80080D324 /* icon100.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F4E077119A626B80080D324 /* icon100.png */; };
 		1FC208C01906AE76009D22F7 /* icon120.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FC208BF1906AE76009D22F7 /* icon120.png */; };
@@ -1859,7 +1858,7 @@
 		04F1217D14B9F3C80003E733 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0720;
 				TargetAttributes = {
 					04F1218514B9F3C80003E733 = {
 						DevelopmentTeam = X732Y7H96H;
@@ -2271,6 +2270,7 @@
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -2340,6 +2340,7 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Flurry",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.littlewings.littlebirdtales;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "8d6fc1a9-2a60-4084-ab44-fe7d8e0ab2e0";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "8d6fc1a9-2a60-4084-ab44-fe7d8e0ab2e0";
@@ -2374,6 +2375,7 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Flurry",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.littlewings.littlebirdtales;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "8d6fc1a9-2a60-4084-ab44-fe7d8e0ab2e0";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "8d6fc1a9-2a60-4084-ab44-fe7d8e0ab2e0";

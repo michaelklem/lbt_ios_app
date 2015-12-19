@@ -42,12 +42,7 @@
 }
 
 -(void)textViewDidChange:(UITextView *)_textView {
-<<<<<<< HEAD
-    textLeftLabel.text = [NSString stringWithFormat:@"%u characters left", 400-_textView.text.length];
-=======
-
     textLeftLabel.text = [NSString stringWithFormat:@"%i characters left", 400-_textView.text.length];
->>>>>>> new_ui
 }
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text

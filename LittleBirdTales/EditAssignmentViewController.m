@@ -265,7 +265,7 @@
 }
 
 - (void)setActivePage:(NSInteger)index {
-    
+    CGRect frame;
     if (lastPageIndex != index) {
         UIButton *lastButton = (UIButton*)[pagesScrollView viewWithTag:lastPageIndex+1000];
         [lastButton.layer setMasksToBounds:YES];
@@ -278,6 +278,8 @@
         [button.layer setCornerRadius:2.0];
         [button.layer setBorderColor:[UIColorFromRGB(0xfa3737) CGColor]];
         [button.layer setBorderWidth:2.0];
+
+        frame = [button frame];
     }
     
     pageNumberView.text = [NSString stringWithFormat:@"Page %ld of %ld",(long)index+1, (long)lesson.pages.count];
@@ -310,6 +312,11 @@
         playButton.hidden = YES;
     }
     [imageView setImage:[page pageImageWithDefaultBackground]];
+
+    float newPosition =  frame.origin.x;
+    CGRect toVisible = CGRectMake(newPosition, 0, 110, 70);
+    [pagesScrollView scrollRectToVisible:toVisible animated:YES];
+
 }
 
 -(void)setActivePage2:(id)sender {
@@ -327,13 +334,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    //UISwipeGestureRecognizer * swipeleft=[[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(swipeleft:)];
-    //swipeleft.direction=UISwipeGestureRecognizerDirectionLeft;
-    //[self.view addGestureRecognizer:swipeleft];
+    UISwipeGestureRecognizer * swipeleft=[[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(swipeleft:)];
+    swipeleft.direction=UISwipeGestureRecognizerDirectionLeft;
+    [imageView addGestureRecognizer:swipeleft];
     
-    //UISwipeGestureRecognizer * swiperight=[[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(swiperight:)];
-    //swiperight.direction=UISwipeGestureRecognizerDirectionRight;
-    //[self.view addGestureRecognizer:swiperight];
+    UISwipeGestureRecognizer * swiperight=[[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(swiperight:)];
+    swiperight.direction=UISwipeGestureRecognizerDirectionRight;
+    [imageView addGestureRecognizer:swiperight];
     
     [studentTextView setDelegate:self];
     
@@ -450,9 +457,9 @@
             
             [pagesScrollView addSubview:button];
         }
-        
-        [pagesScrollView setContentSize:CGSizeMake(65*[[lesson pages] count] , 40)];
+//        [pagesScrollView setContentOffset:CGPointZero animated:YES];
 
+        [pagesScrollView setContentSize:CGSizeMake(110*[[lesson pages] count] , 3)];
     }
 }
 
