@@ -54,6 +54,7 @@
     [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{ // 1
+        NSString* storyId = [currentLesson uploadWithUserId:[Lib getValueOfKey:@"user_id"] andBucketPath:[Lib getValueOfKey:@"bucket_path"]];
         dispatch_async(dispatch_get_main_queue(), ^{ // 2
             [activityIndicator stopAnimating];
             [[UIApplication sharedApplication] endIgnoringInteractionEvents];
