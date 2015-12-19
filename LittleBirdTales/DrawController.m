@@ -18,7 +18,7 @@
 //#import "UIImage+FillPath.h"
 #import "UIFillImage.h"
 #define IMAGETAG 101
-@interface DrawController () 
+@interface DrawController ()
 -(void)updateColors;
 @end
 
@@ -36,12 +36,18 @@
     } else if (buttonIndex == 2){
         [self.navigationController popViewControllerAnimated:YES];
     }
+    else if (alertView.tag == 3491832)
+    {
+        BOOL canOpenSettings = (&UIApplicationOpenSettingsURLString != NULL);
+        if (canOpenSettings)
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+    }
 }
 
 -(IBAction)back:(id)sender {
     if ([paintView isChanged] && changed) {
-        UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"" 
-                                                            message:@"Do you want to save your changes?" 
+        UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@""
+                                                            message:@"Do you want to save your changes?"
                                                            delegate:self
                                                   cancelButtonTitle:@"Cancel"
                                                   otherButtonTitles:@"Yes", @"No", nil];
@@ -82,37 +88,38 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-        
+
     if (!IsIdiomPad) {
     //ScrollView
         [scrollView setZoomScale:0.5];
         [scrollView setMaximumZoomScale:0.5];
         [scrollView setMinimumZoomScale:0.5];
     }
-    
+
     layerManger = [[LayerManager alloc] initWithFrame:drawingView.bounds];
     [drawingView addSubview:layerManger];
     bottomLayer = [[BottomLayer alloc] initWithFrame:layerManger.bounds];
     bottomLayer.imageView.image = [self.page pageImage];
     [layerManger addSubview:bottomLayer];
     bottomLayer.delegate = layerManger;
-    
+
     paintView = [[PaintView alloc] initWithFrame:layerManger.bounds];
     paintView.backgroundColor = [UIColor whiteColor];
     [layerManger addSubview:paintView];
-    
-    // insert BG image 
+    NSLog(@"Draw did load.2");
+    // insert BG image
     UIImage* image = [self.page pageImage];
     PaintPath* path = [[PaintPath alloc] init];
     path.type = kFigureImage;
     path.image = image;
     [paintView addPath:path];
-    
+
+
     touchView = [[TouchView alloc] initWithFrame:layerManger.bounds];
     touchView.backgroundColor = [UIColor clearColor];
     [layerManger addSubview:touchView];
     touchView.delegate = self;
-    
+
     edgeColorView.backgroundColor = [ColorHelper colorWithNoAlpha:[ColorHelper shared].edgeColor];
     if ([ColorHelper isBrightnessColor:edgeColorView.backgroundColor]) {
         edgeColorView.textColor = [UIColor blackColor];
@@ -126,12 +133,12 @@
     } else {
         fillColorView.textColor = [UIColor whiteColor];
     }
-
+    NSLog(@"Draw did load.3");
     touchView.paintPath.brushWide = brushSlider.value = [ColorHelper shared].lineWide;
     touchView.paintPath.shadowWide = shadownSlider.value = [ColorHelper shared].shadow;
     touchView.paintPath.font = fontView.font = [UIFont fontWithName:[ColorHelper shared].fontName
-                                                               size:[ColorHelper shared].fontSize]; 
-    
+                                                               size:[ColorHelper shared].fontSize];
+
     [brushSlider setMaximumTrackImage:[UIImage imageNamed:@"tran"] forState:UIControlStateNormal];
     [brushSlider setMaximumTrackImage:[UIImage imageNamed:@"tran"] forState:UIControlStateHighlighted];
     [brushSlider setMaximumTrackImage:[UIImage imageNamed:@"tran"] forState:UIControlStateSelected];
@@ -140,36 +147,36 @@
     [brushSlider setMaximumTrackImage:[UIImage imageNamed:@"tran"] forState:UIControlStateHighlighted];
     [brushSlider setMaximumTrackImage:[UIImage imageNamed:@"tran"] forState:UIControlStateSelected];
 
-    
-    [brushSlider setThumbImage:[UIImage imageNamed:@"pin.png"] forState:UIControlStateNormal];   
-    [brushSlider setThumbImage:[UIImage imageNamed:@"pin.png"] forState:UIControlStateHighlighted];    
-    [brushSlider setThumbImage:[UIImage imageNamed:@"pin.png"] forState:UIControlStateSelected];    
-    
+
+    [brushSlider setThumbImage:[UIImage imageNamed:@"pin.png"] forState:UIControlStateNormal];
+    [brushSlider setThumbImage:[UIImage imageNamed:@"pin.png"] forState:UIControlStateHighlighted];
+    [brushSlider setThumbImage:[UIImage imageNamed:@"pin.png"] forState:UIControlStateSelected];
+
     [shadownSlider setThumbImage:[UIImage imageNamed:@"pin.png"] forState:UIControlStateNormal];
-    [shadownSlider setThumbImage:[UIImage imageNamed:@"pin.png"] forState:UIControlStateHighlighted];    
-    [shadownSlider setThumbImage:[UIImage imageNamed:@"pin.png"] forState:UIControlStateSelected];    
+    [shadownSlider setThumbImage:[UIImage imageNamed:@"pin.png"] forState:UIControlStateHighlighted];
+    [shadownSlider setThumbImage:[UIImage imageNamed:@"pin.png"] forState:UIControlStateSelected];
 
     [shadownSlider setMaximumTrackImage:[UIImage imageNamed:@"tran"] forState:UIControlStateNormal];
     [shadownSlider setMaximumTrackImage:[UIImage imageNamed:@"tran"] forState:UIControlStateHighlighted];
     [shadownSlider setMaximumTrackImage:[UIImage imageNamed:@"tran"] forState:UIControlStateSelected];
-    
+
     [shadownSlider setMinimumTrackImage:[UIImage imageNamed:@"tran"] forState:UIControlStateNormal];
     [shadownSlider setMaximumTrackImage:[UIImage imageNamed:@"tran"] forState:UIControlStateHighlighted];
     [shadownSlider setMaximumTrackImage:[UIImage imageNamed:@"tran"] forState:UIControlStateSelected];
 
-    
+
     [alphaSlider setMaximumTrackImage:[UIImage imageNamed:@"tran"] forState:UIControlStateNormal];
     [alphaSlider setMaximumTrackImage:[UIImage imageNamed:@"tran"] forState:UIControlStateHighlighted];
     [alphaSlider setMaximumTrackImage:[UIImage imageNamed:@"tran"] forState:UIControlStateSelected];
-    
+
     [alphaSlider setMinimumTrackImage:[UIImage imageNamed:@"tran"] forState:UIControlStateNormal];
     [alphaSlider setMaximumTrackImage:[UIImage imageNamed:@"tran"] forState:UIControlStateHighlighted];
     [alphaSlider setMaximumTrackImage:[UIImage imageNamed:@"tran"] forState:UIControlStateSelected];
-    
-    
-    [alphaSlider setThumbImage:[UIImage imageNamed:@"pin.png"] forState:UIControlStateNormal];   
-    [alphaSlider setThumbImage:[UIImage imageNamed:@"pin.png"] forState:UIControlStateHighlighted];    
-    [alphaSlider setThumbImage:[UIImage imageNamed:@"pin.png"] forState:UIControlStateSelected];  
+
+
+    [alphaSlider setThumbImage:[UIImage imageNamed:@"pin.png"] forState:UIControlStateNormal];
+    [alphaSlider setThumbImage:[UIImage imageNamed:@"pin.png"] forState:UIControlStateHighlighted];
+    [alphaSlider setThumbImage:[UIImage imageNamed:@"pin.png"] forState:UIControlStateSelected];
     // Do any additional setup after loading the view from its nib.
     UIButton* btn;
     for (UIView* aView in toolView.subviews) {
@@ -178,6 +185,7 @@
             break;
         }
     }
+
     [self paint:btn];
     touchView.paintPath.type = kFigureDot;
     [self updateColors];
@@ -194,7 +202,7 @@
     }
 }
 
-#pragma TouchViewDelegate 
+#pragma TouchViewDelegate
 -(void)inputedText:(NSString*)text {
     if(touchView.paintPath.type == kFigureText) {
         PaintPath* path = [touchView.paintPath copy];
@@ -207,7 +215,7 @@
         [paintView addPath:path];
         [paintView setNeedsDisplay];
         [touchView setNeedsDisplay];
-        
+
         undoBtn.enabled = [paintView canUndo];
         redoBtn.enabled = [paintView canRedo];
 
@@ -231,15 +239,15 @@
         CGPoint point;
         point.x = (int)[[dic objectForKey:@"x"] floatValue];
         point.y = (int)[[dic objectForKey:@"y"] floatValue];
-        
+
         UIColor* color = [[ColorHelper shared] fillColor];
         const CGFloat *rgb = CGColorGetComponents(color.CGColor);
-        
+
         float red = rgb[0];
         float green = rgb[1];
         float blue = rgb[2];
         float alpha = 1.0;//CGColorGetAlpha(color.CGColor);
-        
+
         Pixel pixel;
         pixel.red = red*255;
         pixel.green = green*255;
@@ -252,48 +260,48 @@
         paintPath.type = kFigureImage;
         paintPath.drawMode = kDrawCenter;
     }
-    
+
     [paintView addPath:paintPath];
     [touchView.paintPath.points removeAllObjects];
 
     [paintView setNeedsDisplay];
     [touchView setNeedsDisplay];
-    
+
     undoBtn.enabled = [paintView canUndo];
     redoBtn.enabled = [paintView canRedo];
 }
 
-#pragma mark - Draw actions 
+#pragma mark - Draw actions
 -(IBAction)paint:(id)sender {
     [self resetAllBtns];
     [self objectLayersShow:NO];
     touchView.paintPath.type = kFigureDot;
-    [(UIButton*)sender setBackgroundImage:[UIImage imageNamed:@"icon_bg_actived@2x.png"] forState:UIControlStateNormal];    
+    [(UIButton*)sender setBackgroundImage:[UIImage imageNamed:@"icon_bg_actived@2x.png"] forState:UIControlStateNormal];
 }
--(IBAction)clear:(id)sender { 
+-(IBAction)clear:(id)sender {
     [self resetAllBtns];
     [self objectLayersShow:NO];
     touchView.paintPath.type = kFigureClear;
-    [(UIButton*)sender setBackgroundImage:[UIImage imageNamed:@"icon_bg_actived@2x.png"] forState:UIControlStateNormal];    
+    [(UIButton*)sender setBackgroundImage:[UIImage imageNamed:@"icon_bg_actived@2x.png"] forState:UIControlStateNormal];
 }
 
 -(IBAction)line:(id)sender {
     [self resetAllBtns];
     [self objectLayersShow:NO];
     touchView.paintPath.type = kFigureLine;
-    [(UIButton*)sender setBackgroundImage:[UIImage imageNamed:@"icon_bg_actived@2x.png"] forState:UIControlStateNormal];    
+    [(UIButton*)sender setBackgroundImage:[UIImage imageNamed:@"icon_bg_actived@2x.png"] forState:UIControlStateNormal];
 }
 -(IBAction)fill:(id)sender {
     [self resetAllBtns];
     [self objectLayersShow:NO];
     touchView.paintPath.type = kFigureFill;
-    [(UIButton*)sender setBackgroundImage:[UIImage imageNamed:@"icon_bg_actived@2x.png"] forState:UIControlStateNormal];    
+    [(UIButton*)sender setBackgroundImage:[UIImage imageNamed:@"icon_bg_actived@2x.png"] forState:UIControlStateNormal];
 }
 
 -(IBAction)text:(id)sender {
     [self resetAllBtns];
     [self objectLayersShow:YES];
-    [(UIButton*)sender setBackgroundImage:[UIImage imageNamed:@"icon_bg_actived@2x.png"] forState:UIControlStateNormal];    
+    [(UIButton*)sender setBackgroundImage:[UIImage imageNamed:@"icon_bg_actived@2x.png"] forState:UIControlStateNormal];
     touchView.paintPath.type = kFigureText;
 }
 
@@ -301,21 +309,21 @@
     [self resetAllBtns];
     [self objectLayersShow:YES];
     touchView.paintPath.type = kFigureEclipse;
-    [(UIButton*)sender setBackgroundImage:[UIImage imageNamed:@"icon_bg_actived@2x.png"] forState:UIControlStateNormal];    
+    [(UIButton*)sender setBackgroundImage:[UIImage imageNamed:@"icon_bg_actived@2x.png"] forState:UIControlStateNormal];
 }
 -(IBAction)rectangle:(id)sender {
     [self resetAllBtns];
     [self objectLayersShow:YES];
     touchView.paintPath.type = kFigureRect;
-    [(UIButton*)sender setBackgroundImage:[UIImage imageNamed:@"icon_bg_actived@2x.png"] forState:UIControlStateNormal];    
+    [(UIButton*)sender setBackgroundImage:[UIImage imageNamed:@"icon_bg_actived@2x.png"] forState:UIControlStateNormal];
 }
 
 -(IBAction)insertImage:(id)sender {
     [self resetAllBtns];
     [self objectLayersShow:YES];
-    
+
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-        UIActionSheet* actionSheet = [[UIActionSheet alloc] 
+        UIActionSheet* actionSheet = [[UIActionSheet alloc]
                                       initWithTitle:@"Choose image"
                                       delegate:self
                                       cancelButtonTitle:@"Cancel"
@@ -324,7 +332,7 @@
         actionSheet.tag = IMAGETAG;
         [actionSheet showInView:self.view];
     } else {
-        UIActionSheet* actionSheet = [[UIActionSheet alloc] 
+        UIActionSheet* actionSheet = [[UIActionSheet alloc]
                                       initWithTitle:@"Choose image"
                                       delegate:self
                                       cancelButtonTitle:@"Cancel"
@@ -337,15 +345,15 @@
 
 -(void)objectLayersShow:(BOOL)showed {
     for (UIView* aView in layerManger.subviews) {
-        if ([aView isKindOfClass:[TextLayer class]] || 
-            [aView isKindOfClass:[RectangleLayer class]] || 
-            [aView isKindOfClass:[CircleLayer class]] || 
+        if ([aView isKindOfClass:[TextLayer class]] ||
+            [aView isKindOfClass:[RectangleLayer class]] ||
+            [aView isKindOfClass:[CircleLayer class]] ||
             [aView isKindOfClass:[ImageLayer class]] ) {
             aView.hidden = showed;
         }
     }
 }
-        
+
 -(IBAction)clearAll:(id)sender {
     PaintPath* path = [[PaintPath alloc] init];
     path.type = kFigureClearAll;
@@ -367,7 +375,7 @@
     [Lib showLoadingViewOn:self.view withAlert:@"Saving image..."];
 }
 
-- (void)imagePickerController:(UIImagePickerController *)picker 
+- (void)imagePickerController:(UIImagePickerController *)picker
 didFinishPickingMediaWithInfo:(NSDictionary *)info {
     if (IsIdiomPad) {
         if (self.popoverController) {
@@ -384,7 +392,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
                                          target: self
                                        selector: @selector(cropImage:)
                                        userInfo: info
-                                        repeats: NO];            
+                                        repeats: NO];
     } else {
         [picker dismissViewControllerAnimated:YES completion:nil];
         [NSTimer scheduledTimerWithTimeInterval: 0
@@ -404,14 +412,14 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
 - (void)cropImage:(NSTimer*)theTimer {
     NSDictionary *info = theTimer.userInfo;
     if ([[info objectForKey:UIImagePickerControllerMediaType] isEqualToString:@"public.image"]) {
-        
+
         UIImage *original = [info objectForKey:UIImagePickerControllerOriginalImage];
-        
+
         CropImage* tView = [CropImage viewFromNib:self];
         tView.delegate = self;
         [tView receivingImage:original];
         [tView showInView:self.view];
-        
+
     }
     [Lib removeLoadingViewOn:self.view];
 }
@@ -423,7 +431,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
     path.image = image;
     [paintView addPath:path];
     [paintView setNeedsDisplay];
-    
+
     undoBtn.enabled = [paintView canUndo];
     redoBtn.enabled = [paintView canRedo];
     changed = YES;
@@ -439,21 +447,21 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
                 if (self.popoverController && [self.popoverController isPopoverVisible]) {
                     [self.popoverController dismissPopoverAnimated:NO];
                 }
-                
+
                 self.popoverController = [[UIPopoverController alloc]
-                                          initWithContentViewController:controller];                    
+                                          initWithContentViewController:controller];
                 self.popoverController.delegate = self;
                 UIView* aView = (UIView*)insertImageBtn;
                 [self.popoverController presentPopoverFromRect:[aView bounds]
                                                         inView:aView
                                       permittedArrowDirections:UIPopoverArrowDirectionAny
-                                                      animated:YES];            
-                
+                                                      animated:YES];
+
             } else {
-                [self presentViewController:controller animated:YES completion:NULL];
+                [self presentViewController:controller animated:YES completion:nil];
             }
         } else if (buttonIndex == 1) { // libray
-                 
+
             GalleryTableViewController* controller = [[GalleryTableViewController alloc] init];
             controller.delegate = self;
             controller.title = @"Gallery";
@@ -463,17 +471,17 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
                 if (self.popoverController && [self.popoverController isPopoverVisible]) {
                     [self.popoverController dismissPopoverAnimated:NO];
                 }
-                
+
                 self.popoverController = [[UIPopoverController alloc]
-                                          initWithContentViewController:nav];                    
+                                          initWithContentViewController:nav];
                 self.popoverController.delegate = self;
                 [self.popoverController setPopoverContentSize:CGSizeMake(345, 465)];
                 UIView* aView = (UIView*)insertImageBtn;
                 [self.popoverController presentPopoverFromRect:[aView bounds]
                                                         inView:aView
                                       permittedArrowDirections:UIPopoverArrowDirectionAny
-                                                      animated:YES];            
-                
+                                                      animated:YES];
+
             } else {
                 GalleryViewController *galleryController = [[GalleryViewController alloc] initWithNibName:@"GalleryViewController" bundle:nil];
                 galleryController.delegate = self;
@@ -482,27 +490,111 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
             }
 
         } else if (buttonIndex == 2) { // take photo
-            if ([UIImagePickerController isCameraDeviceAvailable:UIImagePickerControllerSourceTypeCamera]) {
-                UIImagePickerController* controller = [[UIImagePickerController alloc] init];
-                controller.delegate = self;
-                controller.sourceType = UIImagePickerControllerSourceTypeCamera;
- 
-                [self presentViewController:controller animated:YES completion:NULL];
-            }
+            [self goToCamera];
         }
     }
 }
 
+- (IBAction)goToCamera
+{
+    AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
+    if(authStatus == AVAuthorizationStatusAuthorized)
+    {
+        [self popCamera];
+    }
+    else if(authStatus == AVAuthorizationStatusNotDetermined)
+    {
+        NSLog(@"%@", @"Camera access not determined. Ask for permission.");
+
+        [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted)
+         {
+             if(granted)
+             {
+                 NSLog(@"Granted access to %@", AVMediaTypeVideo);
+                 [self popCamera];
+             }
+             else
+             {
+                 NSLog(@"Not granted access to %@", AVMediaTypeVideo);
+                 [self camDenied];
+             }
+         }];
+    }
+    else if (authStatus == AVAuthorizationStatusRestricted)
+    {
+        // My own Helper class is used here to pop a dialog in one simple line.
+        UIAlertView *alert = [[UIAlertView alloc]
+                              initWithTitle:@"Error"
+                              message:@"You've been restricted from using the camera on this device. Without camera access this feature won't work. Please contact the device owner so they can give you access."
+                              delegate:self
+                              cancelButtonTitle:@"Cancel"
+                              otherButtonTitles:nil];
+    }
+    else
+    {
+        [self camDenied];
+    }
+}
+
+-(void)popCamera {
+    BOOL hasLoadedCamera = [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera];
+
+    if (!hasLoadedCamera)
+        [self performSelector:@selector(showcamera) withObject:nil afterDelay:0.3];
+    else
+        [self showcamera];
+}
+
+- (void)showcamera {
+    UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
+    imagePickerController.modalPresentationStyle = UIModalPresentationCurrentContext;
+    imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
+    imagePickerController.delegate = self;
+    imagePickerController.showsCameraControls = YES;
+
+    [self presentViewController:imagePickerController animated:YES completion:nil];
+}
+
+- (void)camDenied
+{
+    NSLog(@"%@", @"Denied camera access");
+
+    NSString *alertText;
+    NSString *alertButton;
+
+    BOOL canOpenSettings = (&UIApplicationOpenSettingsURLString != NULL);
+    if (canOpenSettings)
+    {
+        alertText = @"It looks like your privacy settings are preventing us from accessing your camera to take a picture. You can fix this by doing the following:\n\n1. Touch the Go button below to open the Settings app.\n\n2. Touch Privacy.\n\n3. Turn the Camera on.\n\n4. Open this app and try again.";
+
+        alertButton = @"Go";
+    }
+    else
+    {
+        alertText = @"It looks like your privacy settings are preventing us from accessing your camera to take a picture. You can fix this by doing the following:\n\n1. Close this app.\n\n2. Open the Settings app.\n\n3. Scroll to the bottom and select this app in the list.\n\n4. Touch Privacy.\n\n5. Turn the Camera on.\n\n6. Open this app and try again.";
+
+        alertButton = @"OK";
+    }
+
+    UIAlertView *alert = [[UIAlertView alloc]
+                          initWithTitle:@"Error"
+                          message:alertText
+                          delegate:self
+                          cancelButtonTitle:alertButton
+                          otherButtonTitles:nil];
+    alert.tag = 3491832;
+    [alert show];
+}
 
 -(IBAction)undo:(id)sender {
     [paintView undo];
     undoBtn.enabled = [paintView canUndo];
     redoBtn.enabled = [paintView canRedo];
     changed = YES;
-    
+
 }
 -(IBAction)redo:(id)sender {
-    [paintView redo];    
+    [paintView redo];
     undoBtn.enabled = [paintView canUndo];
     redoBtn.enabled = [paintView canRedo];
     changed = YES;
@@ -537,7 +629,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
 //        edgeColorView.backgroundColor = controller.resultColor;
 //    } else {
 //        fillColorView.backgroundColor = controller.resultColor;
-//    }    
+//    }
 //}
 
 - (void) popoverControllerDidDismissPopover: (UIPopoverController*) popoverController {
@@ -561,7 +653,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
             }
             [ColorHelper shared].fillColor = picker.resultColor;
             [self updateColors];
-        }    
+        }
 
 	} else if( [ self.popoverController.contentViewController isKindOfClass: [ ColorPickerController class ] ] ) {
 		ColorPickerController* picker = (ColorPickerController*) self.popoverController.contentViewController;
@@ -583,8 +675,8 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
             }
             [ColorHelper shared].fillColor = picker.resultColor;
             [self updateColors];
-        }    
-        
+        }
+
 	} else if( [ self.popoverController.contentViewController isKindOfClass: [ FontController class ] ] ) {
 		FontController* picker = (FontController*) self.popoverController.contentViewController;
         [ColorHelper shared].fontName = picker.fontName;
@@ -603,16 +695,16 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
         picker.hideBg = YES;
 
         picker.sourceColor = [ColorHelper shared].edgeColor;
-        
+
         self.popoverController = [ [ UIPopoverController alloc ] initWithContentViewController: picker];
         self.popoverController.delegate = self;
         [self.popoverController setPopoverContentSize:CGSizeMake(480, 320)];
 
         UIView* aView = (UIView*)sender;
         edgeColorChoosing = TRUE;
-        [self.popoverController presentPopoverFromRect: [ aView bounds ] 
-										inView: aView 
-					  permittedArrowDirections: UIPopoverArrowDirectionAny 
+        [self.popoverController presentPopoverFromRect: [ aView bounds ]
+										inView: aView
+					  permittedArrowDirections: UIPopoverArrowDirectionAny
 									  animated: YES ];
         picker.delegate = self;
 
@@ -622,7 +714,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
 //        edgeColorChoosing = TRUE;
 //        picker.delegate = self;
 //        [self.navigationController pushViewController:picker animated:YES];
-        
+
         ColorPickerController* picker = [ColorPickerController colorPickerViewController ];
         picker.sourceColor = [ColorHelper shared].edgeColor;
         picker.delegate = self;
@@ -648,9 +740,9 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
 
         UIView* aView = (UIView*)sender;
         edgeColorChoosing = FALSE;
-        [self.popoverController presentPopoverFromRect: [ aView bounds ] 
-                                                inView: aView 
-                              permittedArrowDirections: UIPopoverArrowDirectionAny 
+        [self.popoverController presentPopoverFromRect: [ aView bounds ]
+                                                inView: aView
+                              permittedArrowDirections: UIPopoverArrowDirectionAny
                                               animated: YES ];
         picker.delegate = self;
     } else {
@@ -668,18 +760,18 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
     }
 }
 -(void)updateColors {
-    UIColor* color = [ColorHelper shared].edgeColor; 
-    
+    UIColor* color = [ColorHelper shared].edgeColor;
+
     const CGFloat *rgb = CGColorGetComponents(color.CGColor);
     float red = rgb[0];
     float green = rgb[1];
     float blue = rgb[2];
     float alpha = rgb[3];
     //[ColorHelper shared].alpha;
-    
-    touchView.paintPath.fillColor = [ColorHelper shared].fillColor; 
+
+    touchView.paintPath.fillColor = [ColorHelper shared].fillColor;
     //[UIColor colorWithRed:red green:green blue:blue alpha:alpha];
-    touchView.paintPath.strokerColor =  [UIColor colorWithRed:red green:green blue:blue alpha:alpha]; 
+    touchView.paintPath.strokerColor =  [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
 }
 
 - (void) colorPickerControllerFinished: (ColorPickerController*) picker {
@@ -709,7 +801,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
 -(void)fontDidSelected:(FontController*)picker {
     [ColorHelper shared].fontName = picker.fontName;
     [ColorHelper shared].fontSize = picker.fontSize;
-    fontView.font = [UIFont fontWithName:picker.fontName size:picker.fontSize];    
+    fontView.font = [UIFont fontWithName:picker.fontName size:picker.fontSize];
 }
 
 -(IBAction)font:(id)sender {
@@ -720,15 +812,15 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
         FontController * picker = [[FontController alloc] initWithNibName:@"FontController" bundle:nil];
         picker.fontName = [ColorHelper shared].fontName;
         picker.fontSize = [ColorHelper shared].fontSize;
-        
+
         self.popoverController = [ [ UIPopoverController alloc ] initWithContentViewController: picker];
-        [self setContentSizeForViewInPopover:CGSizeMake(320, 416)];
+        [self setPreferredContentSize:CGSizeMake(320, 416)];
         self.popoverController.delegate = self;
-        
+
         UIView* aView = (UIView*)sender;
-        [self.popoverController presentPopoverFromRect: [ aView bounds ] 
-                                                inView: aView 
-                              permittedArrowDirections: UIPopoverArrowDirectionAny 
+        [self.popoverController presentPopoverFromRect: [ aView bounds ]
+                                                inView: aView
+                              permittedArrowDirections: UIPopoverArrowDirectionAny
                                               animated: YES ];
     } else {
         FontController * picker = [[FontController alloc] initWithNibName:@"FontController" bundle:nil];
@@ -745,42 +837,25 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
         [self.delegate drawPageSaved];
     }
     [self.page saveImage:[paintView toImage]];
+    [Gallery saveImage:[paintView toImage]];
     [self.page setModified:round([[NSDate date] timeIntervalSince1970])];
     [Lib showAlert:@"A Little Bird Tale" withMessage:@"Image has been saved"];
 }
 
-#pragma mark - Gallery Delegate
--(IBAction)saveToGallery:(id)sender {
-    if ([Gallery saveImage:[paintView toImage]]) {
-        [Lib showAlert:@"A Little Bird Tale" withMessage:@"Image has been saved to Gallery"];
-    }
-}
-
 - (void) selectImage:(NSString *)imageName {
-    
-    NSString *filePath = [NSString stringWithFormat:@"%@/gallery/%@",[Lib applicationDocumentsDirectory],imageName];
+
+    NSString *filePath = [NSString stringWithFormat:@"%@%@",[Gallery dir],imageName];
     UIImage *original = [UIImage imageWithContentsOfFile:filePath];
-    
+
     CropImage* tView = [CropImage viewFromNib:self];
     tView.delegate = self;
     [tView receivingImage:original];
     [tView showInView:self.view];
-    
-//    PaintPath* path = [[PaintPath alloc] init];
-//    path.type = kFigureImage;
-//    path.drawMode = kDrawCenter;
-//    NSString *filePath = [NSString stringWithFormat:@"%@/gallery/%@",[Lib applicationDocumentsDirectory],imageName];
-//    path.image = [UIImage imageWithContentsOfFile:filePath];
-//    [paintView addPath:path];
-//    [paintView setNeedsDisplay];
-//    
-//    undoBtn.enabled = [paintView canUndo];
-//    redoBtn.enabled = [paintView canRedo];
-    
+
     if (IsIdiomPad) {
         [self.popoverController dismissPopoverAnimated:YES];
     }
-    
+
 }
 
 - (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {

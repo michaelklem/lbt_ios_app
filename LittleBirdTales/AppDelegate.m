@@ -9,11 +9,29 @@
 #import "AppDelegate.h"
 #import "LoginViewController.h"
 #import "TalesController.h"
+#import "UserTalesController.h"
+#import "UserLoginViewController.h"
 #import "Flurry.h"
 #import "iRate.h"
+#import "Lib.h"
+#import "MFSideMenuContainerViewController.h"
+#import "SideMenuViewController.h"
 
 AppDelegate* _shared;
 @implementation AppDelegate
+
+/*
+void onUncaughtException(NSException *exception)
+{
+    NSLog(@"uncaught exception: %@", exception.description);
+    NSLog(@"Stack trace: %@", [exception callStackSymbols]);
+}
+
+-(void) applicationDidFinishLaunching:(UIApplication*)application
+{
+    NSSetUncaughtExceptionHandler(&onUncaughtException);
+}
+*/
 
 + (void)initialize
 {
@@ -39,9 +57,9 @@ AppDelegate* _shared;
 -(void)showMain {
     if (self.navController &&
         self.navController.viewControllers.count == 1){
-        TalesController* controller;
+        UIViewController* controller;
         if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad) {
-            controller = [[TalesController alloc] initWithNibName:@"TalesController-iPad" bundle:nil];
+            controller = [[UserLoginViewController alloc] initWithNibName:@"UserLoginViewController-iPad" bundle:nil];
         } else {
             controller = [[TalesController alloc] initWithNibName:@"TalesController-iPhone" bundle:nil];
         }
@@ -52,8 +70,10 @@ AppDelegate* _shared;
 // Have to support portrait for UIImagePickerController to be happy when presentModalViewController gets called
 // UINavigationController+Landscape category keeps our views from rotating
 - (NSUInteger)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window {
-   return UIInterfaceOrientationMaskLandscape | UIInterfaceOrientationMaskPortrait;
+   return UIInterfaceOrientationMaskLandscape;
 }
+
+
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -76,7 +96,8 @@ AppDelegate* _shared;
 //    NSLog(@"%i %i",x,y+1);
     [Flurry setCrashReportingEnabled:YES];
     [Flurry startSession:@"68NHTPWPGX3QNMXSTG9R"];
-                           
+//    NSSetUncaughtExceptionHandler(&onUncaughtException);
+
     
     //As client request to display Splash Screen a little longer
     [NSThread sleepForTimeInterval:1.0];
@@ -87,23 +108,27 @@ AppDelegate* _shared;
     // Override point for customization after application launch.
     UIViewController* controller;
     if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad) {
-        controller = [[TalesController alloc] initWithNibName:@"TalesController-iPad" bundle:nil];
+        if([[Lib getValueOfKey:@"user_id"]  isEqual: @""]  || ![Lib getValueOfKey:@"user_id"]) {
+            controller = [[UserLoginViewController alloc] initWithNibName:@"UserLoginViewController-iPad" bundle:nil];
+        } else {
+            controller = [[UserTalesController alloc] initWithNibName:@"UserTalesController-iPad" bundle:nil];
+        }
     } else {
         controller = [[TalesController alloc] initWithNibName:@"TalesController-iPhone" bundle:nil];
     }
 
     self.navController = [[UINavigationController alloc] initWithRootViewController:controller];
     self.navController.navigationBarHidden = YES;
-    
-//    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone) {
-//    } else {
-//        UIImageView* imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 20, 1024, 748)];
-//        imageView.image = [UIImage imageNamed:@"bg-ipad"];
-//        [self.navController.view insertSubview:imageView atIndex:0];
-//        //TT_RELEASE_SAFELY(imageView);
-//    }
 
-    self.window.rootViewController = self.navController;
+    SideMenuViewController *leftMenuViewController = [[SideMenuViewController alloc] init];
+    SideMenuViewController *rightMenuViewController = [[SideMenuViewController alloc] init];
+    MFSideMenuContainerViewController *container = [MFSideMenuContainerViewController
+                                                    containerWithCenterViewController:[self navController]
+                                                    leftMenuViewController:leftMenuViewController
+                                                    rightMenuViewController:rightMenuViewController];
+
+    container.panMode = MFSideMenuPanModeNone;
+    self.window.rootViewController = container;
     [self.window makeKeyAndVisible];
     
     return YES;

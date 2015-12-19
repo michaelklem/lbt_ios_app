@@ -9,6 +9,7 @@
 #import "DownloadTalesController.h"
 #import "EditTaleViewController.h"
 #import "TalesController.h"
+#import "UserTalesController.h"
 #import "SBJson.h"
 #import "ServiceLib.h"
 #import "HttpHelper.h"
@@ -187,8 +188,9 @@
                                                                 andUrl:url2];
                          
                          
-                         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
-                         NSString *path = [paths objectAtIndex:0];
+//                         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+//                         NSString *path = [paths objectAtIndex:0];
+                         NSString* path = [Lib applicationDocumentsDirectory];
                          NSString *zipPath = [path stringByAppendingPathComponent:@"tale_data.zip"];
                          [data writeToFile:zipPath options:0 error:&error2];
                          
@@ -288,11 +290,20 @@
 }
 
 - (IBAction)back:(id)sender {
-    TalesController* controller;
-    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad) {
-        controller = [[TalesController alloc] initWithNibName:@"TalesController-iPad" bundle:nil];
-    } else {
-        controller = [[TalesController alloc] initWithNibName:@"TalesController-iPhone" bundle:nil];
+    UIViewController* controller;
+    if([[Lib getValueOfKey:@"logged_in"] boolValue]) {
+        if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad) {
+            controller = [[UserTalesController alloc] initWithNibName:@"UserTalesController-iPad" bundle:nil];
+        } else {
+            controller = [[UserTalesController alloc] initWithNibName:@"UserTalesController-iPhone" bundle:nil];
+        }
+    }
+    else {
+        if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad) {
+            controller = [[TalesController alloc] initWithNibName:@"TalesController-iPad" bundle:nil];
+        } else {
+            controller = [[TalesController alloc] initWithNibName:@"TalesController-iPhone" bundle:nil];
+        }
     }
     [self.navigationController pushViewController:controller animated:YES];
 }
@@ -327,7 +338,7 @@
                             [activityIndicator stopAnimating];
                             noTaleBackground.hidden = NO;
                             talesPreviewView.hidden = NO;
-                            [Lib showAlert:@"Warning" withMessage:@"You have no Tales to Download."];
+                            [Lib showAlert:@"Warning" withMessage:@"You have no Tales to download."];
                         }
                     }];
 }

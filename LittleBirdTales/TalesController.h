@@ -35,4 +35,5 @@
 - (IBAction)deleteTale:(id)sender;
 - (IBAction)playTale:(id)sender;
 - (IBAction)downloadTales:(id)sender;
+- (IBAction)back:(id)sender;
 @end

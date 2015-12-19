@@ -36,12 +36,14 @@
     NSTimer *levelTimer;
     UISlider *volumeMeter;
     BOOL hasRecorded;
+    BOOL playOnly;
 }
 
 @property (nonatomic, assign) id <AudioRecordDelegate> delegate;
 @property (nonatomic, strong) NSString *voiceName;
 @property (nonatomic, strong) NSString *pageFolder;
 @property (nonatomic, strong) NSString *pageText;
+@property BOOL playOnly;
 
 +(AudioRecord*)viewFromNib:(id)owner;
 -(void)showInView:(UIView*)aView;

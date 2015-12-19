@@ -29,27 +29,27 @@
         NSDictionary* dic = [self.points objectAtIndex:0];
         point.x = (int)[[dic objectForKey:@"x"] floatValue];
         point.y = (int)[[dic objectForKey:@"y"] floatValue];
-        
+
         CGRect textFrame;
         textFrame.origin.x = point.x;
-        textFrame.origin.y = point.y;        
+        textFrame.origin.y = point.y;
         textFrame.size.width = rect.size.width - textFrame.origin.x - 5;
         textFrame.size.height = rect.size.height - textFrame.origin.y - 5;
-        
+
         if (textFrame.size.width < 0 && textFrame.size.height < 0) {
             return;
         }
-        [self.text drawInRect:textFrame 
-                     withFont:self.font 
+        [self.text drawInRect:textFrame
+                     withFont:self.font
            lineBreakMode:NSLineBreakByWordWrapping
-               alignment:NSTextAlignmentCenter];
-        
+               alignment:NSTextAlignmentLeft];
+
 //        CGContextSetTextDrawingMode(context, kCGTextStroke);
 //        CGContextSelectFont(context, "Times", 12.0, kCGEncodingMacRoman);
 //        CGAffineTransform transform = CGAffineTransformMake(1.0, 0.0, 0.0, -1.0, 0.0, 0.0);
 //        CGContextSetTextMatrix(context, transform);
 //        const char* txt = [text UTF8String];
-//        CGContextShowTextAtPoint(context, 100.0, 100.0, txt, 
+//        CGContextShowTextAtPoint(context, 100.0, 100.0, txt,
 //                                 strlen(txt));
     }
 }
@@ -58,21 +58,21 @@
     if (!self.image) {
         return;
     }
-    
+
     if (self.drawMode == kDrawFill) {
         [self.image drawInRect:rect];
     } else if (self.drawMode == kDrawCenter){
         CGSize size = image.size;
         float scaleW = size.width/rect.size.width;
         float scaleH = size.height/rect.size.height;
-        
+
         float scale = MIN(scaleW, scaleH);
-        
+
         if (scale >= 1.0) {
             scale = 1.0/MAX(scaleW, scaleH);
         }
-        CGRect _rect = CGRectMake((int)((rect.size.width - size.width*scale)/2), 
-                                  (int)((rect.size.height - size.height*scale)/2), 
+        CGRect _rect = CGRectMake((int)((rect.size.width - size.width*scale)/2),
+                                  (int)((rect.size.height - size.height*scale)/2),
                                   (int)size.width * scale,
                                   (int)size.height * scale);
         [self.image drawInRect:_rect];
@@ -86,7 +86,7 @@
     CGContextSetLineWidth(context, self.brushWide);
     CGContextSetStrokeColorWithColor(context, self.strokerColor.CGColor);
     CGContextSetFillColorWithColor(context, self.fillColor.CGColor);
-    
+
     CGPoint startPoint;
     NSDictionary* dic = [self.points objectAtIndex:0];
     startPoint.x = (int)[[dic objectForKey:@"x"] floatValue];
@@ -100,7 +100,7 @@
     CGContextSetLineCap(context, kCGLineCapRound);
     CGContextMoveToPoint(context, startPoint.x, startPoint.y);
     CGContextAddLineToPoint(context, endPoint.x, endPoint.y);
-    CGContextStrokePath(context);  
+    CGContextStrokePath(context);
 }
 
 - (void)paintEclipse:(CGContextRef)context {
@@ -110,7 +110,7 @@
     CGContextSetLineWidth(context, self.brushWide);
     CGContextSetStrokeColorWithColor(context, self.strokerColor.CGColor);
     CGContextSetFillColorWithColor(context, self.fillColor.CGColor);
-    
+
     CGPoint startPoint;
     NSDictionary* dic = [self.points objectAtIndex:0];
     startPoint.x = (int)[[dic objectForKey:@"x"] floatValue];
@@ -121,14 +121,14 @@
         endPoint.x = (int)[[dic objectForKey:@"x"] floatValue];
         endPoint.y = (int)[[dic objectForKey:@"y"] floatValue];
     }
-    CGRect rectangle = CGRectMake(MIN(startPoint.x, endPoint.x), 
+    CGRect rectangle = CGRectMake(MIN(startPoint.x, endPoint.x),
                                   MIN(startPoint.y, endPoint.y),
                                   ABS(endPoint.x - startPoint.x),
                                   ABS(endPoint.y - startPoint.y));
     CGContextAddEllipseInRect(context, rectangle);
     CGContextStrokePath(context);
-    rectangle = CGRectMake(rectangle.origin.x + self.brushWide/2, 
-                           rectangle.origin.y + self.brushWide/2, 
+    rectangle = CGRectMake(rectangle.origin.x + self.brushWide/2,
+                           rectangle.origin.y + self.brushWide/2,
                            rectangle.size.width - self.brushWide,
                            rectangle.size.height - self.brushWide);
     CGContextAddEllipseInRect(context, rectangle);
@@ -139,11 +139,11 @@
     if (self.points.count < 2) {
         return;
     }
-    
+
     CGContextSetLineWidth(context, self.brushWide);
     CGContextSetStrokeColorWithColor(context, self.strokerColor.CGColor);
     CGContextSetFillColorWithColor(context, self.fillColor.CGColor);
-    
+
     CGPoint startPoint;
     NSDictionary* dic = [self.points objectAtIndex:0];
     startPoint.x = (int)[[dic objectForKey:@"x"] floatValue];
@@ -154,14 +154,14 @@
         endPoint.x = (int)[[dic objectForKey:@"x"] floatValue];
         endPoint.y = (int)[[dic objectForKey:@"y"] floatValue];
     }
-    CGRect rectangle = CGRectMake(MIN(startPoint.x, endPoint.x), 
+    CGRect rectangle = CGRectMake(MIN(startPoint.x, endPoint.x),
                                   MIN(startPoint.y, endPoint.y),
                                   ABS(endPoint.x - startPoint.x),
                                   ABS(endPoint.y - startPoint.y));
     CGContextAddRect(context, rectangle);
     CGContextStrokePath(context);
-    rectangle = CGRectMake(rectangle.origin.x + self.brushWide/2, 
-                           rectangle.origin.y + self.brushWide/2, 
+    rectangle = CGRectMake(rectangle.origin.x + self.brushWide/2,
+                           rectangle.origin.y + self.brushWide/2,
                            rectangle.size.width - self.brushWide,
                            rectangle.size.height - self.brushWide);
     CGContextAddRect(context, rectangle);
@@ -176,23 +176,23 @@
         CGContextSetFillColorWithColor(context, self.fillColor.CGColor);
     } else if (self.type == kFigureClear) {
         CGContextSetStrokeColorWithColor(context, [UIColor whiteColor].CGColor);
-        CGContextSetFillColorWithColor(context, [UIColor whiteColor].CGColor);        
+        CGContextSetFillColorWithColor(context, [UIColor whiteColor].CGColor);
     }
     for (int i = 0; i < self.points.count; i ++) {
         NSDictionary* dic = [self.points objectAtIndex:i];
-        CGPoint point = CGPointMake([[dic objectForKey:@"x"] floatValue], 
+        CGPoint point = CGPointMake([[dic objectForKey:@"x"] floatValue],
                                     [[dic objectForKey:@"y"] floatValue]);
         if (i == 0) {
             CGContextMoveToPoint(context, point.x, point.y);
         } else {
-            CGContextAddLineToPoint(context, point.x, point.y);   
+            CGContextAddLineToPoint(context, point.x, point.y);
         }
     }
     if (self.points.count == 1) {
         NSDictionary* dic = [self.points objectAtIndex:0];
-        CGPoint point = CGPointMake([[dic objectForKey:@"x"] floatValue], 
+        CGPoint point = CGPointMake([[dic objectForKey:@"x"] floatValue],
                                     [[dic objectForKey:@"y"] floatValue]);
-        CGContextAddLineToPoint(context, point.x, point.y);   
+        CGContextAddLineToPoint(context, point.x, point.y);
     }
     CGContextStrokePath(context);
 }

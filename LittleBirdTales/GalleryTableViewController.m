@@ -8,6 +8,7 @@
 
 #import "GalleryTableViewController.h"
 #import "Lib.h"
+#import "Gallery.h"
 
 @implementation GalleryTableViewController
 @synthesize delegate;
@@ -39,7 +40,7 @@
 {
     [super viewDidLoad];
 
-    galleryPath = [NSString stringWithFormat:@"%@/gallery",[Lib applicationDocumentsDirectory]];
+    galleryPath = [Gallery dir];
     
     NSFileManager *fm = [NSFileManager defaultManager];
     NSArray *fileList = [fm contentsOfDirectoryAtPath:galleryPath error:nil];
@@ -145,13 +146,13 @@
         return;
     } else {
        
-        NSString *path = [NSString stringWithFormat:@"%@/gallery/%@", [Lib applicationDocumentsDirectory],selectImage];
+        NSString *path = [NSString stringWithFormat:@"%@%@", [Gallery dir],selectImage];
         if ([[NSFileManager defaultManager] fileExistsAtPath:path]) {
             [[NSFileManager defaultManager] removeItemAtPath:path error:NULL];
             [[NSFileManager defaultManager] removeItemAtPath:[NSString stringWithFormat:@"%@.jpg",path] error:NULL];
         }
         NSString* imageName = [selectImage stringByReplacingOccurrencesOfString:@".jpg" withString:@".jpg_iphone.jpg"];
-        path = [NSString stringWithFormat:@"%@/gallery/%@", [Lib applicationDocumentsDirectory],imageName];
+        path = [NSString stringWithFormat:@"%@%@", [Gallery dir],imageName];
         if ([[NSFileManager defaultManager] fileExistsAtPath:path]) {
             [[NSFileManager defaultManager] removeItemAtPath:path error:NULL];
             [[NSFileManager defaultManager] removeItemAtPath:[NSString stringWithFormat:@"%@.jpg",path] error:NULL];

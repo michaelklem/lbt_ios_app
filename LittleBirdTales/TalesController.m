@@ -10,10 +10,18 @@
 #import "PlayerController.h"
 #import "EditTaleViewController.h"
 #import "LoginViewController.h"
+#import "UserLoginViewController.h"
 #import "Lib.h"
 
 @implementation TalesController
 
+-(IBAction)back:(id)sender {
+    UserLoginViewController* controller;
+    if (IsIdiomPad) {
+        controller = [[UserLoginViewController alloc] initWithNibName:@"UserLoginViewController-iPad" bundle:nil];
+    }
+    [self.navigationController pushViewController:controller animated:YES];
+}
 -(IBAction)editTale:(id)sender {
     if ([[Tale tales] count] > 0) {
         EditTaleViewController* controller;

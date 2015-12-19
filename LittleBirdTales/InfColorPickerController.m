@@ -21,10 +21,10 @@
 static void HSVFromUIColor( UIColor* color, float* h, float* s, float* v )
 {
 	CGColorRef colorRef = [ color CGColor ];
-	
+
 	const CGFloat* components = CGColorGetComponents( colorRef );
 	size_t numComponents = CGColorGetNumberOfComponents( colorRef );
-	
+
 	CGFloat r, g, b;
 	if( numComponents < 3 ) {
 		r = g = b = components[ 0 ];
@@ -34,7 +34,7 @@ static void HSVFromUIColor( UIColor* color, float* h, float* s, float* v )
 		g = components[ 1 ];
 		b = components[ 2 ];
 	}
-	
+
 	RGBToHSV( r, g, b, h, s, v, YES );
 }
 
@@ -94,12 +94,12 @@ static void HSVFromUIColor( UIColor* color, float* h, float* s, float* v )
 - (id) initWithNibName: (NSString*) nibNameOrNil bundle: (NSBundle*) nibBundleOrNil
 {
 	self = [ super initWithNibName: nibNameOrNil bundle: nibBundleOrNil ];
-	
+
 	if( self ) {
-		self.navigationItem.title = NSLocalizedString( @"Set Color", 
+		self.navigationItem.title = NSLocalizedString( @"Set Color",
 									@"InfColorPicker default nav item title" );
 	}
-	
+
 	return self;
 }
 
@@ -127,10 +127,10 @@ static void HSVFromUIColor( UIColor* color, float* h, float* s, float* v )
     alphaPicker.value = alpha;
 	if( sourceColor )
 		sourceColorView.backgroundColor = sourceColor;
-	
+
 	if( resultColor )
 		resultColorView.backgroundColor = resultColor;
-    
+
     if (IsIdiomPad) {
         [backBtn setHidden:YES];
     }
@@ -141,9 +141,9 @@ static void HSVFromUIColor( UIColor* color, float* h, float* s, float* v )
 - (void) viewDidUnload
 {
 	[ super viewDidUnload ];
-	
+
 	// Release any retained subviews of the main view.
-	
+
 	self.barView = nil;
 	self.squareView = nil;
 	self.barPicker = nil;
@@ -165,13 +165,13 @@ static void HSVFromUIColor( UIColor* color, float* h, float* s, float* v )
 - (void) presentModallyOverViewController: (UIViewController*) controller
 {
 	UINavigationController* nav = [ [ UINavigationController alloc ] initWithRootViewController: self ];
-	
+
 	nav.navigationBar.barStyle = UIBarStyleBlackOpaque;
     nav.navigationBar.translucent = NO;
-	
+
 	self.navigationItem.rightBarButtonItem = [ [ UIBarButtonItem alloc ] initWithBarButtonSystemItem: UIBarButtonSystemItemDone target: self action: @selector( done: ) ];
-				
-    [controller presentViewController:nav animated:YES completion:nil];
+
+	[ controller presentViewController: nav animated: YES completion:nil];
 }
 
 //------------------------------------------------------------------------------
@@ -181,10 +181,10 @@ static void HSVFromUIColor( UIColor* color, float* h, float* s, float* v )
 - (IBAction) takeBarValue: (InfColorBarPicker*) sender
 {
 	hue = sender.value;
-	
+
 	squareView.hue = hue;
 	squarePicker.hue = hue;
-	
+
 	[ self updateResultColor ];
 }
 
@@ -214,7 +214,7 @@ static void HSVFromUIColor( UIColor* color, float* h, float* s, float* v )
 
 - (IBAction) done: (id) sender
 {
-	[ self.delegate colorPickerControllerDidFinish: self ];	
+	[ self.delegate colorPickerControllerDidFinish: self ];
 }
 
 //------------------------------------------------------------------------------
@@ -235,16 +235,16 @@ static void HSVFromUIColor( UIColor* color, float* h, float* s, float* v )
 	// we don't cause push-back on the HSV values in case there are rounding
 	// differences or anything.  However, given protections from hue and sat
 	// changes when not necessary elsewhere it's probably not actually needed.
-	
+
 	[ self willChangeValueForKey: @"resultColor" ];
-	
-	resultColor = [UIColor colorWithHue: hue saturation: saturation 
+
+	resultColor = [UIColor colorWithHue: hue saturation: saturation
 								brightness: brightness alpha: alpha  ];
-	
+
 	[ self didChangeValueForKey: @"resultColor" ];
-	
+
 	resultColorView.backgroundColor = resultColor;
-	
+
 	[ self informDelegateDidChangeColor ];
 }
 
@@ -254,22 +254,22 @@ static void HSVFromUIColor( UIColor* color, float* h, float* s, float* v )
 {
 	if( ![ resultColor isEqual: newValue ] ) {
 		resultColor = newValue;
-		
+
 		float h = hue;
 		HSVFromUIColor( newValue, &h, &saturation, &brightness );
-		
+
 		if( h != hue ) {
 			hue = h;
-			
+
 			barPicker.value = hue;
 			squareView.hue = hue;
 			squarePicker.hue = hue;
 		}
-		
+
         const CGFloat* components = CGColorGetComponents(newValue.CGColor);
         alpha = components[3];
         alphaPicker.value = alpha;
-        
+
 		squarePicker.value = CGPointMake( saturation, brightness );
 
 		resultColorView.backgroundColor = resultColor;
@@ -284,9 +284,9 @@ static void HSVFromUIColor( UIColor* color, float* h, float* s, float* v )
 {
 	if( ![ sourceColor isEqual: newValue ] ) {
 		sourceColor = newValue;
-		
+
 		sourceColorView.backgroundColor = sourceColor;
-		
+
         const CGFloat* components = CGColorGetComponents(sourceColor.CGColor);
         alpha = components[3];
 		self.resultColor = newValue;

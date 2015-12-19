@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AVFoundation/AVFoundation.h>
 #import "Page.h"
 #import "InputTextView.h"
 #import "LayerManager.h"

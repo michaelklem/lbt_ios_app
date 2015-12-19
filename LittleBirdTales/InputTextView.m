@@ -42,7 +42,27 @@
 }
 
 -(void)textViewDidChange:(UITextView *)_textView {
+<<<<<<< HEAD
     textLeftLabel.text = [NSString stringWithFormat:@"%u characters left", 400-_textView.text.length];
+=======
+
+    textLeftLabel.text = [NSString stringWithFormat:@"%i characters left", 400-_textView.text.length];
+>>>>>>> new_ui
+}
+
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
+{
+    NSUInteger newLength = (textView.text.length - range.length) + text.length;
+    if(newLength <= 400)
+    {
+        return YES;
+    } else {
+        NSUInteger emptySpace = 400 - (textView.text.length - range.length);
+        textView.text = [[[textView.text substringToIndex:range.location]
+                          stringByAppendingString:[text substringToIndex:emptySpace]]
+                         stringByAppendingString:[textView.text substringFromIndex:(range.location + range.length)]];
+        return NO;
+    }
 }
 
 -(void)showInView:(UIView*)aView {
@@ -68,13 +88,6 @@
     return self;
 }
 
-- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
-    if ([text isEqualToString:@"\n"]) {
-        [self save:nil];
-        return NO;
-    }
-    return YES;
-}
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

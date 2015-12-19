@@ -71,7 +71,7 @@
                                    andUrl:[NSString stringWithFormat:@"%@/services/authenticate.php",servicesURLPrefix]];
     }
     BOOL sucessed = FALSE;
-    //NSLog(@"--%@",strData);
+//    NSLog(@"--%@",strData);
     
     if (strData) {
         id obj = [strData JSONValue];
@@ -263,8 +263,13 @@
     
     [picker setSubject:subject];
     [picker setMessageBody:emailBody isHTML:YES];
+<<<<<<< HEAD
 
     [self presentViewController:picker animated:YES completion:NULL];
+=======
+	
+	[self presentViewController:picker animated:YES completion:nil];
+>>>>>>> new_ui
 }
 
 
@@ -290,7 +295,11 @@
 			NSLog(@"Result: not sent");
 			break;
 	}
+<<<<<<< HEAD
     [self dismissViewControllerAnimated:YES completion:nil];
+=======
+	[self dismissViewControllerAnimated:YES completion:nil];
+>>>>>>> new_ui
 }
 
 

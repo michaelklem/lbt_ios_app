@@ -8,6 +8,7 @@
 
 #import "GalleryCell.h"
 #import "Lib.h"
+#import "Gallery.h"
 
 @implementation GalleryCell
 @synthesize index, delegate;
@@ -30,7 +31,7 @@
 
 - (void)setThumbnail:(NSString*)imageName editMode:(BOOL)editMode{
     
-    NSString *filePath = [NSString stringWithFormat:@"%@/gallery/%@",[Lib applicationDocumentsDirectory],imageName];
+    NSString *filePath = [NSString stringWithFormat:@"%@%@",[Gallery dir],imageName];
     UIImage *thumbnail = [UIImage imageWithContentsOfFile:filePath];
     
     switch (index) {

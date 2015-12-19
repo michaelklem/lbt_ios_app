@@ -15,12 +15,39 @@ NSMutableArray* tales;
 @implementation Tale
 @synthesize index, created, title, pages, modified, author;
 
+// Returns the path to the tales.plist file.
 +(NSString*)path {
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString* path = [paths objectAtIndex:0];
-    path = [path stringByAppendingString:@"/tales.plist"];
+//    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+//    NSString* dir = [paths objectAtIndex:0];
+    NSString* dir = [Lib applicationDocumentsDirectory];
+    NSString* path = [NSString stringWithFormat:@"%@/%@", dir, @"tales.plist"];
+    
+    // If the user_id is present, the plist file will be found in the directory with the
+    // name of the user_id. So create the directory if needed and add it to the path.
+    if([Lib getValueOfKey:@"user_id"] && ![[Lib getValueOfKey:@"user_id"] isEqual: @""]) {
+        path = [NSString stringWithFormat:@"%@/%@", [Lib dir], @"tales.plist"];
+    }
+
+    // Create the plist file if it does not exist.
+//    NSFileManager *fileManager = [NSFileManager defaultManager];
+//    Boolean success = [fileManager fileExistsAtPath:path];
+//    if (success)
+//    {
+//        NSLog(@"FILE PATH EXISTS %@",path);
+//    }
+//    else
+//    {
+//        NSLog(@"FILE PATH DOES NOT EXIST %@",path);
+//        [@{} writeToFile: path atomically: YES];
+//        Boolean success2 = [fileManager fileExistsAtPath:path];
+//        if (success2)
+//        {
+//            NSLog(@"FILE PATH EXISTS NOW %@",path);
+//        }
+//    }
     return path;
 }
+
 +(Tale*)taleFromDictionary:(NSDictionary*)dic {
     //NSLog(@"%@",dic);
     
@@ -60,6 +87,10 @@ NSMutableArray* tales;
         }
     }
     return tales;
+}
+
++(void)removeAll {
+    tales = nil;
 }
 
 // Create a new tale, but not add to tales list
@@ -240,7 +271,7 @@ NSMutableArray* tales;
 	NSData* responeData = [NSURLConnection sendSynchronousRequest:theRequest returningResponse:nil error:nil];	
 	
 	NSString *strData = [[NSString alloc] initWithData:responeData encoding:NSUTF8StringEncoding];
-    
+    NSLog(@"Upload completed");
     if (strData) {
         id obj = [strData JSONValue];
         if ([obj isKindOfClass:[NSDictionary class]]) {

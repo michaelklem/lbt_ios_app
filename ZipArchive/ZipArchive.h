@@ -10,6 +10,12 @@
 */
 
 
+typedef NS_ENUM(NSInteger, ZipArchiveCompression) {
+    ZipArchiveCompressionDefault = -1,
+    ZipArchiveCompressionNone    =  0,
+    ZipArchiveCompressionSpeed   =  1,
+    ZipArchiveCompressionBest    =  9,
+};
 
 
 /**
@@ -17,7 +23,7 @@
  files processed (as an integer from 0 to 100), the number of files processed so far and the
  total number of files in the archive is called after each file is processed.
  */
-typedef void(^ZipArchiveProgressUpdateBlock)(int percentage, int filesProcessed, int numFiles);
+typedef void(^ZipArchiveProgressUpdateBlock)(int percentage, int filesProcessed, unsigned long numFiles);
 	
 /**
     @protocol
@@ -65,12 +71,12 @@ typedef void(^ZipArchiveProgressUpdateBlock)(int percentage, int filesProcessed,
 
 @interface ZipArchive : NSObject {
 @private
-	void*		_zipFile;
-	void*		_unzFile;
+	void*           _zipFile;
+	void*           _unzFile;
 	
-    int         _numFiles;
-	NSString*   _password;
-	id			_delegate;
+    unsigned long   _numFiles;
+	NSString*       _password;
+	id              _delegate;
     ZipArchiveProgressUpdateBlock _progressBlock;
     
     NSArray*    _unzippedFiles;
@@ -81,8 +87,10 @@ typedef void(^ZipArchiveProgressUpdateBlock)(int percentage, int filesProcessed,
 
 /** a delegate object conforming to ZipArchiveDelegate protocol */
 @property (nonatomic, retain) id<ZipArchiveDelegate> delegate;
-@property (nonatomic, readonly) int numFiles;
+@property (nonatomic, readonly) unsigned long numFiles;
 @property (nonatomic, copy) ZipArchiveProgressUpdateBlock progressBlock;
+
+@property (nonatomic, assign) ZipArchiveCompression compression;
 
 /**
     @brief      String encoding to be used when interpreting file names in the zip file.
@@ -95,14 +103,22 @@ typedef void(^ZipArchiveProgressUpdateBlock)(int percentage, int filesProcessed,
 -(id) initWithFileManager:(NSFileManager*) fileManager;
 
 -(BOOL) CreateZipFile2:(NSString*) zipFile;
+-(BOOL) CreateZipFile2:(NSString*) zipFile append:(BOOL)isAppend;
 -(BOOL) CreateZipFile2:(NSString*) zipFile Password:(NSString*) password;
+-(BOOL) CreateZipFile2:(NSString*) zipFile Password:(NSString*) password append:(BOOL)isAppend;
 -(BOOL) addFileToZip:(NSString*) file newname:(NSString*) newname;
+-(BOOL) addDataToZip:(NSData*) data fileAttributes:(NSDictionary *)attr newname:(NSString*) newname;
 -(BOOL) CloseZipFile2;
 
 -(BOOL) UnzipOpenFile:(NSString*) zipFile;
 -(BOOL) UnzipOpenFile:(NSString*) zipFile Password:(NSString*) password;
 -(BOOL) UnzipFileTo:(NSString*) path overWrite:(BOOL) overwrite;
+-(NSDictionary *)UnzipFileToMemory;//To avoid memory issue, only use this method for small zip files.
 -(BOOL) UnzipCloseFile;
--(NSArray*) getZipFileContents;     // list the contents of the zip archive. must be called after UnzipOpenFile
+
+// List the contents of the zip archive. must be called after UnzipOpenFile.
+// If zip file was appended with `CreateZipFile2:append:` or ``CreateZipFile2:Password:append:`,
+// `getZipFileContents` result won't be updated until re-unzip-open after close write handle (`CloseZipFile2` then `UnzipCloseFile` then (`UnzipOpenFile:` or `UnzipOpenFile:Password`) get called).
+-(NSArray*) getZipFileContents;
 
 @end
