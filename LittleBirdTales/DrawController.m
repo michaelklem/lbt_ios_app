@@ -467,7 +467,9 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
             controller.title = @"Gallery";
             UINavigationController *nav = [[UINavigationController alloc]
                                            initWithRootViewController:controller];
-            if (IsIdiomPad) {
+            
+            // Forcing us to use the iPhone gallery selector since it works already.
+            if (false && IsIdiomPad) {
                 if (self.popoverController && [self.popoverController isPopoverVisible]) {
                     [self.popoverController dismissPopoverAnimated:NO];
                 }
@@ -483,10 +485,10 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
                                                       animated:YES];
 
             } else {
+                // This code works so we will use it on the iPad too.
                 GalleryViewController *galleryController = [[GalleryViewController alloc] initWithNibName:@"GalleryViewController" bundle:nil];
                 galleryController.delegate = self;
                 [[self navigationController] pushViewController:galleryController animated:YES];
-//                [self presentModalViewController:controller animated:YES];
             }
 
         } else if (buttonIndex == 2) { // take photo
@@ -841,6 +843,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
     [self.page setModified:round([[NSDate date] timeIntervalSince1970])];
     [Lib showAlert:@"A Little Bird Tale" withMessage:@"Image has been saved"];
 }
+
 
 - (void) selectImage:(NSString *)imageName {
 

@@ -593,7 +593,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
             [self presentViewController:controller animated:YES completion:nil];
         }
     } else if (buttonIndex == 1) { // Gallery
-        if (IsIdiomPad) {
+        if (false && IsIdiomPad) {
             if (self.popoverController && [self.popoverController isPopoverVisible]) {
                 [self.popoverController dismissPopoverAnimated:NO];
             }

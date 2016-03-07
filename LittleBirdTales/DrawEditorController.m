@@ -473,7 +473,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
             controller.title = @"Gallery";
             UINavigationController *nav = [[UINavigationController alloc]
                                            initWithRootViewController:controller];
-            if (IsIdiomPad) {
+            if (false && IsIdiomPad) {
                 if (self.popoverController && [self.popoverController isPopoverVisible]) {
                     [self.popoverController dismissPopoverAnimated:NO];
                 }
@@ -492,7 +492,6 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
                 GalleryViewController *galleryController = [[GalleryViewController alloc] initWithNibName:@"GalleryViewController" bundle:nil];
                 galleryController.delegate = self;
                 [[self navigationController] pushViewController:galleryController animated:YES];
-//                [self presentModalViewController:controller animated:YES];
             }
 
         } else if (buttonIndex == 2) { // take photo
@@ -696,7 +695,6 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
         if (self.popoverController && [self.popoverController isPopoverVisible]) {
             [self.popoverController dismissPopoverAnimated:NO];
         }
-//        InfColorPickerController* picker = [ InfColorPickerController colorPickerViewController ];
         ColorPickerController* picker = [ColorPickerController colorPickerViewController ];
         picker.hideBg = YES;
 
@@ -715,12 +713,6 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
         picker.delegate = self;
 
     } else {
-//        InfColorPickerController* picker = [ InfColorPickerController colorPickerViewController ];
-//        picker.sourceColor = [ColorHelper shared].edgeColor;
-//        edgeColorChoosing = TRUE;
-//        picker.delegate = self;
-//        [self.navigationController pushViewController:picker animated:YES];
-        
         ColorPickerController* picker = [ColorPickerController colorPickerViewController ];
         picker.sourceColor = [ColorHelper shared].edgeColor;
         picker.delegate = self;
