@@ -8,6 +8,7 @@
 
 #import <AVFoundation/AVFoundation.h>
 #import "EditTaleViewController.h"
+#import "Gallery.h"
 
 
 @implementation EditTaleViewController
@@ -694,7 +695,8 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
 
 - (void)saveImageFromGallery {
 
-    NSString *filePath = [NSString stringWithFormat:@"%@/gallery/%@",[Lib applicationDocumentsDirectory],selectedImageName];
+    NSString *filePath = [NSString stringWithFormat:@"%@%@",[Gallery dir],selectedImageName];
+
     UIImage *original = [UIImage imageWithContentsOfFile:filePath];
 
     CropImage* tView = [CropImage viewFromNib:self];
