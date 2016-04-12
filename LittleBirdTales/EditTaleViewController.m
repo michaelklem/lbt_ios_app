@@ -436,7 +436,15 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
                                                   animated:YES];
 
         } else {
-            [self presentViewController:controller animated:YES completion:nil];
+
+//            GalleryViewController *galleryController = [[GalleryViewController alloc] initWithNibName:@"GalleryViewController" bundle:nil];
+//            galleryController.delegate = self;
+//            [[self navigationController] pushViewController:galleryController animated:YES];
+
+        
+
+            
+            [self presentViewController:controller animated:YES completion:NULL];
         }
     } else if (buttonIndex == 1) { // Gallery
         if (IsIdiomPad) {
@@ -518,17 +526,31 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
     if (!hasLoadedCamera)
         [self performSelector:@selector(showcamera) withObject:nil afterDelay:0.3];
     else
-        [self showcamera];
-}
+//        [self showcamera];
+        [self performSelector:@selector(showcamera) withObject:nil afterDelay:0.3];
+
+        }
 
 - (void)showcamera {
-    UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
-    imagePickerController.modalPresentationStyle = UIModalPresentationCurrentContext;
-    imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
-    imagePickerController.delegate = self;
-    imagePickerController.showsCameraControls = YES;
+//    UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
+//    imagePickerController.modalPresentationStyle = UIModalPresentationCurrentContext;
+//    imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
+//    imagePickerController.delegate = self;
+//    imagePickerController.showsCameraControls = YES;
+//
+//    [self presentViewController:imagePickerController animated:YES completion:nil];
 
-    [self presentViewController:imagePickerController animated:YES completion:nil];
+    UIImagePickerControllerSourceType source = [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera] ? UIImagePickerControllerSourceTypeCamera : UIImagePickerControllerSourceTypeSavedPhotosAlbum;
+    UIImagePickerController *cameraController = [[UIImagePickerController alloc] init];
+    cameraController.delegate = self;
+    cameraController.sourceType = source;
+    cameraController.allowsEditing = YES;
+    [self presentViewController:cameraController animated:YES completion:^{
+        //iOS 8 bug.  the status bar will sometimes not be hidden after the camera is displayed, which causes the preview after an image is captured to be black
+        if (source == UIImagePickerControllerSourceTypeCamera) {
+            [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
+        }
+    }];
 }
 
 - (void)camDenied
