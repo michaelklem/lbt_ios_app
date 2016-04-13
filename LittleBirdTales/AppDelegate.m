@@ -69,8 +69,8 @@ void onUncaughtException(NSException *exception)
 
 // Have to support portrait for UIImagePickerController to be happy when presentModalViewController gets called
 // UINavigationController+Landscape category keeps our views from rotating
-- (NSUInteger)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window {
-   return UIInterfaceOrientationMaskLandscape;
+- (UIInterfaceOrientationMask)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window {
+   return UIInterfaceOrientationMaskAll;
 }
 
 

@@ -14,6 +14,31 @@
 @implementation EditTaleViewController
 @synthesize tale, taleNumber, popoverController;
 
+-(BOOL)shouldAutorotate
+{
+    return YES;
+}
+
+
+-(UIInterfaceOrientationMask)supportedInterfaceOrientations
+{
+    
+    if (IsIdiomPad) {
+        
+        return UIInterfaceOrientationMaskLandscape;
+    }
+//    return UIInterfaceOrientationMaskPortrait;
+}
+
+- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation
+{
+    if (IsIdiomPad) {
+        
+        return UIInterfaceOrientationLandscapeLeft;
+    }
+//    return UIInterfaceOrientationPortrait;
+}
+
 -(IBAction)drawPage:(id)sender {
     //TODO: Check if there is a page to draw
     DrawController* controller;
@@ -133,6 +158,8 @@
 
 -(IBAction)uploadPage:(id)sender {
     UIActionSheet* actionSheet;
+//    NSNumber *value = [NSNumber numberWithInt:UIInterfaceOrientationLandscapeLeft];
+//    [[UIDevice currentDevice] setValue:value forKey:@"orientation"];
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
         actionSheet = [[UIActionSheet alloc]
                           initWithTitle:@"Choose image"
@@ -414,6 +441,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    
     if (buttonIndex == 2 && [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
         [self goToCamera];
     } else if (buttonIndex == 0) { // Library
@@ -440,8 +468,6 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
 //            GalleryViewController *galleryController = [[GalleryViewController alloc] initWithNibName:@"GalleryViewController" bundle:nil];
 //            galleryController.delegate = self;
 //            [[self navigationController] pushViewController:galleryController animated:YES];
-
-        
 
             
             [self presentViewController:controller animated:YES completion:NULL];
