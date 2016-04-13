@@ -21,6 +21,23 @@
 
 @synthesize tale, taleNumber, downloadRequest;
 
+-(BOOL)shouldAutorotate
+{
+    return NO;
+}
+
+
+-(UIInterfaceOrientationMask)supportedInterfaceOrientations
+{
+    
+    return UIInterfaceOrientationMaskLandscape;
+}
+
+- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation{
+    
+    return UIInterfaceOrientationLandscapeRight;
+}
+
 -(IBAction)login:(id)sender {
     
     [emailText resignFirstResponder];
@@ -230,6 +247,8 @@
     } else {**/
         [super viewWillAppear:animated];
 //    }
+    NSNumber *value = [NSNumber numberWithInt:UIInterfaceOrientationLandscapeRight];
+    [[UIDevice currentDevice] setValue:value forKey:@"orientation"];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

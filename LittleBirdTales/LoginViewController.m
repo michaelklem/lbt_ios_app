@@ -17,6 +17,27 @@
 
 @synthesize tale, taleNumber, downloadRequest;
 
+-(BOOL)shouldAutorotate
+{
+    return NO;
+}
+
+
+-(UIInterfaceOrientationMask)supportedInterfaceOrientations
+{
+    
+    if (IsIdiomPad) {
+        
+        return UIInterfaceOrientationMaskLandscape;
+    }
+    return UIInterfaceOrientationMaskLandscape;
+}
+
+- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation{
+    
+    return UIInterfaceOrientationLandscapeRight;
+}
+
 -(IBAction)login:(id)sender {
     
     [emailText resignFirstResponder];
@@ -239,6 +260,8 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    NSNumber *value = [NSNumber numberWithInt:UIInterfaceOrientationLandscapeRight];
+    [[UIDevice currentDevice] setValue:value forKey:@"orientation"];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

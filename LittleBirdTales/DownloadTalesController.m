@@ -20,6 +20,27 @@
 
 @implementation DownloadTalesController
 
+-(BOOL)shouldAutorotate
+{
+    return NO;
+}
+
+
+-(UIInterfaceOrientationMask)supportedInterfaceOrientations
+{
+    
+    if (IsIdiomPad) {
+        
+        return UIInterfaceOrientationMaskLandscape;
+    }
+    return UIInterfaceOrientationMaskLandscape;
+}
+
+- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation{
+    
+    return UIInterfaceOrientationLandscapeRight;
+}
+
 - (void)reloadTaleList {
     for (UIView *view in talesScrollView.subviews) {
         [view removeFromSuperview];
@@ -312,6 +333,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    NSNumber *value = [NSNumber numberWithInt:UIInterfaceOrientationLandscapeRight];
+    [[UIDevice currentDevice] setValue:value forKey:@"orientation"];
 
     noTaleBackground.hidden = YES;
     downloadingView.hidden = NO;

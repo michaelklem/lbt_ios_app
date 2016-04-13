@@ -13,6 +13,22 @@
 @implementation UserEditTaleViewController
 @synthesize tale, taleNumber, popoverController;
 
+-(BOOL)shouldAutorotate
+{
+    return NO;
+}
+
+
+-(UIInterfaceOrientationMask)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskLandscape;
+}
+
+- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation{
+    
+    return UIInterfaceOrientationLandscapeRight;
+}
+
 -(IBAction)drawPage:(id)sender {
     //TODO: Check if there is a page to draw
     DrawEditorController* controller;
@@ -301,6 +317,10 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    
+    NSNumber *value = [NSNumber numberWithInt:UIInterfaceOrientationLandscapeRight];
+    [[UIDevice currentDevice] setValue:value forKey:@"orientation"];
+    
     Page *page = [tale.pages objectAtIndex:currentPage];
     [pagesTableView reloadData];
     [imageView setImage:[page pageImageWithDefaultBackground]];

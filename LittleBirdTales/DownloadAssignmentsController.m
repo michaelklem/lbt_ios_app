@@ -22,6 +22,23 @@
 
 @implementation DownloadAssignmentsController
 
+-(BOOL)shouldAutorotate
+{
+    return NO;
+}
+
+
+-(UIInterfaceOrientationMask)supportedInterfaceOrientations
+{
+    
+    return UIInterfaceOrientationMaskLandscape;
+}
+
+- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation{
+    
+    return UIInterfaceOrientationLandscapeRight;
+}
+
 -(void)selectTale:(id)sender {
     pageTitle.text = @"Downloading Lesson";
     UIButton *button;
@@ -251,6 +268,10 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    
+    NSNumber *value = [NSNumber numberWithInt:UIInterfaceOrientationLandscapeRight];
+    [[UIDevice currentDevice] setValue:value forKey:@"orientation"];
+    
     [self.collectionView reloadData];
 }
 

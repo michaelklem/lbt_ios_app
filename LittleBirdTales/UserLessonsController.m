@@ -20,6 +20,23 @@
 
 @implementation UserLessonsController
 
+-(BOOL)shouldAutorotate
+{
+    return NO;
+}
+
+
+-(UIInterfaceOrientationMask)supportedInterfaceOrientations
+{
+    
+    return UIInterfaceOrientationMaskLandscape;
+}
+
+- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation{
+    
+    return UIInterfaceOrientationLandscapeRight;
+}
+
 - (void)leftSideMenuButtonPressed:(id)sender {
     [self.menuContainerViewController toggleLeftSideMenuCompletion:^{}];
 }
@@ -201,6 +218,10 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    
+    NSNumber *value = [NSNumber numberWithInt:UIInterfaceOrientationLandscapeRight];
+    [[UIDevice currentDevice] setValue:value forKey:@"orientation"];
+    
     [[UISegmentedControl appearance] setTintColor:[UIColor whiteColor]];
     [noLessonsMessage setHidden:!([Lesson lessons].count == 0)];
     [self.collectionView reloadData];

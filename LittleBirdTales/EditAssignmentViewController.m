@@ -13,6 +13,22 @@
 @implementation EditAssignmentViewController
 @synthesize lesson, taleNumber, popoverController, soundPlayer;
 
+-(BOOL)shouldAutorotate
+{
+    return NO;
+}
+
+
+-(UIInterfaceOrientationMask)supportedInterfaceOrientations
+{
+    
+    return UIInterfaceOrientationMaskLandscape;
+}
+
+- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation{
+    
+    return UIInterfaceOrientationLandscapeRight;
+}
 
 -(void)tapDetected{
     Page *page = [lesson.pages objectAtIndex:currentPage];
@@ -409,6 +425,10 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    
+    NSNumber *value = [NSNumber numberWithInt:UIInterfaceOrientationLandscapeRight];
+    [[UIDevice currentDevice] setValue:value forKey:@"orientation"];
+    
     Page *page = [lesson.pages objectAtIndex:currentPage];
     [pagesTableView reloadData];
     [imageView setImage:[page pageImageWithDefaultBackground]];
@@ -468,10 +488,6 @@
     [Lesson updateLesson:lesson at:taleNumber];
 }
 
-- (NSUInteger)supportedInterfaceOrientations {
-    
-    return UIInterfaceOrientationMaskAll;
-}
 
 -(void)swipeleft:(UISwipeGestureRecognizer*)gestureRecognizer
 {

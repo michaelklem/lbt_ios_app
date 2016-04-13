@@ -13,6 +13,23 @@
 @implementation UserPlayerController
 @synthesize tale;
 
+-(BOOL)shouldAutorotate
+{
+    return NO;
+}
+
+
+-(UIInterfaceOrientationMask)supportedInterfaceOrientations
+{
+    
+    return UIInterfaceOrientationMaskLandscape;
+}
+
+- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation{
+    
+    return UIInterfaceOrientationLandscapeRight;
+}
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -195,6 +212,11 @@
     [currentPage playPageAtSecond:currentPageTime inView:mainScreen withTextView:description withAudio:YES];
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    
+    NSNumber *value = [NSNumber numberWithInt:UIInterfaceOrientationLandscapeRight];
+    [[UIDevice currentDevice] setValue:value forKey:@"orientation"];
+}
 
 - (void)viewWillDisappear:(BOOL)animated {
     [myTicker invalidate];
