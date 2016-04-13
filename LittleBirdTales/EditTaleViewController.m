@@ -16,7 +16,7 @@
 
 -(BOOL)shouldAutorotate
 {
-    return YES;
+    return NO;
 }
 
 
@@ -27,16 +27,12 @@
         
         return UIInterfaceOrientationMaskLandscape;
     }
-//    return UIInterfaceOrientationMaskPortrait;
+    return UIInterfaceOrientationMaskLandscape;
 }
 
-- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation
-{
-    if (IsIdiomPad) {
-        
-        return UIInterfaceOrientationLandscapeLeft;
-    }
-//    return UIInterfaceOrientationPortrait;
+- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation{
+
+    return UIInterfaceOrientationLandscapeRight;
 }
 
 -(IBAction)drawPage:(id)sender {
@@ -158,8 +154,7 @@
 
 -(IBAction)uploadPage:(id)sender {
     UIActionSheet* actionSheet;
-//    NSNumber *value = [NSNumber numberWithInt:UIInterfaceOrientationLandscapeLeft];
-//    [[UIDevice currentDevice] setValue:value forKey:@"orientation"];
+    
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
         actionSheet = [[UIActionSheet alloc]
                           initWithTitle:@"Choose image"
@@ -331,6 +326,10 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    
+    NSNumber *value = [NSNumber numberWithInt:UIInterfaceOrientationLandscapeRight];
+    [[UIDevice currentDevice] setValue:value forKey:@"orientation"];
+    
     Page *page = [tale.pages objectAtIndex:currentPage];
     [pagesTableView reloadData];
     [imageView setImage:[page pageImageWithDefaultBackground]];
@@ -353,11 +352,6 @@
 
     [tale deleteOrphanFiles];
     [Tale updateTale:tale at:taleNumber];
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return UIInterfaceOrientationIsLandscape(interfaceOrientation);
 }
 
 
@@ -408,6 +402,8 @@
 
 - (void)imagePickerController:(UIImagePickerController *)picker
 didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    NSNumber *value = [NSNumber numberWithInt:UIInterfaceOrientationLandscapeRight];
+    [[UIDevice currentDevice] setValue:value forKey:@"orientation"];
     if (IsIdiomPad) {
         if (self.popoverController) {
             [self.popoverController dismissPopoverAnimated:YES];
@@ -439,13 +435,21 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
                                         repeats: NO];
     }
 }
+- (void) imagePickerControllerDidCancel:(UIImagePickerController *)picker{
 
+    NSNumber *value = [NSNumber numberWithInt:UIInterfaceOrientationLandscapeRight];
+    [[UIDevice currentDevice] setValue:value forKey:@"orientation"];
+    
+    [picker dismissViewControllerAnimated:true completion:nil];
+}
 - (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex {
     
     if (buttonIndex == 2 && [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
         [self goToCamera];
     } else if (buttonIndex == 0) { // Library
 
+        NSNumber *value = [NSNumber numberWithInt:UIInterfaceOrientationMaskPortrait];
+        [[UIDevice currentDevice] setValue:value forKey:@"orientation"];
         UIImagePickerController* controller = [[UIImagePickerController alloc] init];
         controller.delegate = self;
         controller.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
@@ -470,7 +474,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
 //            [[self navigationController] pushViewController:galleryController animated:YES];
 
             
-            [self presentViewController:controller animated:YES completion:NULL];
+            [self presentViewController:controller animated:YES completion:nil];
         }
     } else if (buttonIndex == 1) { // Gallery
         if (IsIdiomPad) {

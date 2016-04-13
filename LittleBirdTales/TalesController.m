@@ -15,6 +15,27 @@
 
 @implementation TalesController
 
+-(BOOL)shouldAutorotate
+{
+    return NO;
+}
+
+
+-(UIInterfaceOrientationMask)supportedInterfaceOrientations
+{
+    
+    if (IsIdiomPad) {
+        
+        return UIInterfaceOrientationMaskLandscape;
+    }
+    return UIInterfaceOrientationMaskLandscape;
+}
+
+- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation{
+    
+    return UIInterfaceOrientationLandscapeRight;
+}
+
 -(IBAction)back:(id)sender {
     UserLoginViewController* controller;
     if (IsIdiomPad) {
@@ -156,7 +177,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-        
+    
+    
+    
     if ([[Tale tales] count] > 0) {
         [self selectTale:nil];
     }
@@ -181,6 +204,9 @@
     
     [super viewWillAppear:animated];
 
+    NSNumber *value = [NSNumber numberWithInt:UIInterfaceOrientationLandscapeRight];
+    [[UIDevice currentDevice] setValue:value forKey:@"orientation"];
+    
     if ([[Tale tales] count] > 0) {
         noTaleBackground.hidden = YES;
         [self selectTale:nil];
