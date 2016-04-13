@@ -42,6 +42,10 @@
     [self.menuContainerViewController toggleLeftSideMenuCompletion:^{}];
 }
 
+-(BOOL)prefersStatusBarHidden{
+    return YES;
+}
+
 -(void)selectTale:(id)sender {
     pageTitle.text = @"Downloading Tale";
     UIButton *button;

@@ -37,6 +37,10 @@
     return UIInterfaceOrientationLandscapeRight;
 }
 
+-(BOOL)prefersStatusBarHidden{
+    return YES;
+}
+
 - (void)leftSideMenuButtonPressed:(id)sender {
     [self.menuContainerViewController toggleLeftSideMenuCompletion:^{}];
 }
