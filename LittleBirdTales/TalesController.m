@@ -17,13 +17,11 @@
 
 -(BOOL)shouldAutorotate
 {
-    return NO;
+    return YES;
 }
-
 
 -(UIInterfaceOrientationMask)supportedInterfaceOrientations
 {
-    
     if (IsIdiomPad) {
         
         return UIInterfaceOrientationMaskLandscape;
@@ -315,8 +313,8 @@
         Page *coverPage = [[currentTale pages] objectAtIndex:0];
         
         [titleLabel setText:currentTale.title];
-        [authorLabel setText:currentTale.author];
-        [pageLabel setText:[NSString stringWithFormat:@"%u",[[currentTale pages] count] - 1]];
+        [authorLabel setText:[NSString stringWithFormat:@"By: %@", currentTale.author]];
+        [pageLabel setText:[NSString stringWithFormat:@"Pages: %u",[[currentTale pages] count] - 1]];
         
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setTimeStyle:NSDateFormatterNoStyle];
@@ -324,10 +322,10 @@
         
         NSDate *date = [NSDate dateWithTimeIntervalSince1970:currentTale.created];
         NSString *createdDate = [dateFormatter stringFromDate:date];
-        [createdLabel setText:createdDate];
+        [createdLabel setText:[NSString stringWithFormat:@"Created: %@", createdDate]];
         date = [NSDate dateWithTimeIntervalSince1970:currentTale.modified];
         NSString *modifiedDate = [dateFormatter stringFromDate:date];
-        [modifiedLabel setText:modifiedDate];
+        [modifiedLabel setText:[NSString stringWithFormat:@"Modified: %@", modifiedDate]];
         
         [previewImage setImage:coverPage.pageImageWithDefaultBackground];    
     }
