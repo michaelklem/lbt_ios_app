@@ -69,66 +69,27 @@
 }
 
 -(void)uploadTale {
-    
+
     if ([[currentTale pages] count] == 1) {
         [Lib showAlert:@"Little Bird Tales" withMessage:@"Please add at least 1 page to your story to make it playable"];
-        return;
     }
+    [activityIndicator startAnimating];
+    [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
     
-    LoginViewController* controller;
-    if (IsIdiomPad) {
-        controller = [[LoginViewController alloc] initWithNibName:@"LoginViewController-iPad" bundle:nil];
-    } else {
-        controller = [[LoginViewController alloc] initWithNibName:@"LoginViewController-iPhone" bundle:nil];
-    }
-    
-    if ([[Tale tales] count] > 0) {
-        controller.tale = currentTale;
-        controller.taleNumber = currentTaleIndex;
-        [self.navigationController pushViewController:controller animated:YES];
-    }
-    else {
-        [Lib showAlert:@"Error" withMessage:@"No Tale to upload"];
-    }
-    
-//    if ([[Tale tales] count] > 0) {
-//        controller.tale = currentTale;
-//        controller.taleNumber = currentTaleIndex;
-//        [self.navigationController pushViewController:controller animated:YES];
-//    }
-//    else {
-//        [Lib showAlert:@"Error" withMessage:@"No Tale to upload"];
-//    }
-//
-//    NSString *connect = [NSString stringWithContentsOfURL:[NSURL URLWithString:servicesURLPrefix] encoding:NSUTF8StringEncoding error:nil];
-//    
-//    if (connect == NULL) {
-//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No Internet Connection!"
-//                                                        message:@"Connect to internet and try again" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-//        [alert show];
-//        return;
-//    }
-//    
-//    if ([[currentTale pages] count] == 1) {
-//        [Lib showAlert:@"Little Bird Tales" withMessage:@"Please add at least 1 page to your story to make it playable"];
-//    }
-//    [activityIndicator startAnimating];
-//    [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
-//    
-//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{ // 1
-//        NSString* storyId = [currentTale uploadWithUserId:[Lib getValueOfKey:@"user_id"] andBucketPath:[Lib getValueOfKey:@"bucket_path"]];
-//        dispatch_async(dispatch_get_main_queue(), ^{ // 2
-//            [activityIndicator stopAnimating];
-//            [[UIApplication sharedApplication] endIgnoringInteractionEvents];
-//            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success"
-//                                                            message:@"Your story has successfully been uploaded."
-//                                                           delegate:nil
-//                                                  cancelButtonTitle:@"OK"
-//                                                  otherButtonTitles:nil];
-//            [alert show];
-//
-//        });
-//    });
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{ // 1
+        NSString* storyId = [currentTale uploadWithUserId:[Lib getValueOfKey:@"user_id"] andBucketPath:[Lib getValueOfKey:@"bucket_path"]];
+        dispatch_async(dispatch_get_main_queue(), ^{ // 2
+            [activityIndicator stopAnimating];
+            [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success"
+                                                            message:@"Your story has successfully been uploaded."
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+            [alert show];
+
+        });
+    });
 }
 
 -(void)deleteTale {
