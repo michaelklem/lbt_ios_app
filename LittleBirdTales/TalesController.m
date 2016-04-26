@@ -41,6 +41,7 @@
     }
     [self.navigationController pushViewController:controller animated:YES];
 }
+
 -(IBAction)editTale:(id)sender {
     if ([[Tale tales] count] > 0) {
         EditTaleViewController* controller;
@@ -57,6 +58,7 @@
         [Lib showAlert:@"Error" withMessage:@"No Tale to edit"];
     }
 }
+
 -(IBAction)uploadTale:(id)sender {
     if ([[currentTale pages] count] == 1) {
         [Lib showAlert:@"Little Bird Tales" withMessage:@"Please add at least 1 page to your story to make it playable"];
@@ -79,6 +81,7 @@
         [Lib showAlert:@"Error" withMessage:@"No Tale to upload"];
     } 
 }
+
 -(IBAction)deleteTale:(id)sender {
     UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Little Bird Tales"
                                                         message:@"Delete this tale?" 
@@ -132,6 +135,7 @@
     } 
     
 }
+
 -(IBAction)newTale:(id)sender {
     InputTaleInfo* tView = [InputTaleInfo viewFromNib:self];
     tView.delegate = self;
@@ -175,9 +179,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    
-    
+
     if ([[Tale tales] count] > 0) {
         [self selectTale:nil];
     }
@@ -313,7 +315,7 @@
         Page *coverPage = [[currentTale pages] objectAtIndex:0];
         
         [titleLabel setText:currentTale.title];
-        [authorLabel setText:[NSString stringWithFormat:@"By: %@", currentTale.author]];
+        [authorLabel setText:(IsIdiomPad) ? currentTale.author : [NSString stringWithFormat:@"By: %@", currentTale.author]];
         [pageLabel setText:[NSString stringWithFormat:@"Pages: %u",[[currentTale pages] count] - 1]];
         
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
@@ -322,10 +324,10 @@
         
         NSDate *date = [NSDate dateWithTimeIntervalSince1970:currentTale.created];
         NSString *createdDate = [dateFormatter stringFromDate:date];
-        [createdLabel setText:[NSString stringWithFormat:@"Created: %@", createdDate]];
+        [createdLabel setText:(IsIdiomPad) ? createdDate : [NSString stringWithFormat:@"Created: %@", createdDate]];
         date = [NSDate dateWithTimeIntervalSince1970:currentTale.modified];
         NSString *modifiedDate = [dateFormatter stringFromDate:date];
-        [modifiedLabel setText:[NSString stringWithFormat:@"Modified: %@", modifiedDate]];
+        [modifiedLabel setText:(IsIdiomPad) ? modifiedDate : [NSString stringWithFormat:@"Modified: %@", modifiedDate]];
         
         [previewImage setImage:coverPage.pageImageWithDefaultBackground];    
     }

@@ -1439,6 +1439,7 @@
 				0498460014D847E10095370C /* TalesController.h */,
 				0498460114D847E10095370C /* TalesController.m */,
 				0498460214D847E10095370C /* TalesController-iPhone.xib */,
+				0498460514D8481C0095370C /* TalesController-iPad.xib */,
 			);
 			name = "Tale List";
 			sourceTree = "<group>";
@@ -1554,7 +1555,6 @@
 				37F6E8FA14C7C2D3003A278D /* EditTaleViewController.m */,
 				37F6E8FB14C7C2D3003A278D /* EditTaleViewController-iPhone.xib */,
 				37F6E8FE14C7C30E003A278D /* EditTaleViewController-iPad.xib */,
-				0498460514D8481C0095370C /* TalesController-iPad.xib */,
 			);
 			name = "Edit Tale";
 			sourceTree = "<group>";

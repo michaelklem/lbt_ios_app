@@ -19,13 +19,11 @@
 
 -(BOOL)shouldAutorotate
 {
-    return NO;
+    return YES;
 }
-
 
 -(UIInterfaceOrientationMask)supportedInterfaceOrientations
 {
-    
     if (IsIdiomPad) {
         
         return UIInterfaceOrientationMaskLandscape;
