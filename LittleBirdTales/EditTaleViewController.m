@@ -341,6 +341,11 @@
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
 
     [super viewWillAppear:animated];
+    
+    [[NSNotificationCenter defaultCenter] addObserver: self
+                                             selector: @selector(appEnteredBackground:)
+                                                 name: UIApplicationDidEnterBackgroundNotification
+                                               object: nil];
 
 }
 
@@ -352,8 +357,16 @@
 
     [tale deleteOrphanFiles];
     [Tale updateTale:tale at:taleNumber];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
+-(void)appEnteredBackground:(NSNotification *)appEnteredBackgroundNotification {
+    
+    //do your thing
+    [tale deleteOrphanFiles];
+    [Tale updateTale:tale at:taleNumber];
+}
 
 - (void)showLoadingViewOn{
     [Lib showLoadingViewOn:self.view withAlert:@"Saving image..."];
