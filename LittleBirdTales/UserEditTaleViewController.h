@@ -35,6 +35,7 @@
     
     NSString *selectedImageName;
     NSInteger currentPage;
+    NSInteger buttonAction;
     
     NSMutableArray *taleHistory;
     NSMutableArray *activePageHistory;

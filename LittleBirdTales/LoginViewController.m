@@ -108,10 +108,10 @@
             NSString *error = [obj objectForKey:@"error"];
             [Lib showAlert:@"Error" withMessage:error];
         } else {
-            [Lib showAlert:@"Error" withMessage:@"Could not connect to our server"];
+            [Lib showAlert:@"Error" withMessage:@"Could not connect to our server1"];
         }
     } else {
-        [Lib showAlert:@"Error" withMessage:@"Could not connect to our server"];
+        [Lib showAlert:@"Error" withMessage:@"Could not connect to our server2"];
     }
     
     if (sucessed) {

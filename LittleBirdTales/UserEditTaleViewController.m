@@ -329,12 +329,26 @@
     [pagesTableView selectRowAtIndexPath:indexPath animated:YES  scrollPosition:UITableViewScrollPositionTop];
     
     [super viewWillAppear:animated];
+
+    [[NSNotificationCenter defaultCenter] addObserver: self
+                                             selector: @selector(appEnteredBackground:)
+                                                 name: UIApplicationDidEnterBackgroundNotification
+                                               object: nil];
+
+}
+
+-(void)appEnteredBackground:(NSNotification *)appEnteredBackgroundNotification {
     
+    //do your thing
+    [tale deleteOrphanFiles];
+    [Tale updateTale:tale at:taleNumber];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [tale deleteOrphanFiles];
     [Tale updateTale:tale at:taleNumber];
+
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -385,6 +399,11 @@
     [pagesTableView reloadData];
     NSIndexPath *indexPath=[NSIndexPath indexPathForRow:currentPage inSection:0];
     [pagesTableView selectRowAtIndexPath:indexPath animated:YES  scrollPosition:UITableViewScrollPositionNone];
+    
+    if (buttonAction == 2) {
+        // Save image to camera roll
+        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
+    }
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker 
@@ -422,6 +441,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    self:buttonAction = buttonIndex;
     if (buttonIndex == 2 && [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) { //
         [self goToCamera];
     } else if (buttonIndex == 0) { // Library

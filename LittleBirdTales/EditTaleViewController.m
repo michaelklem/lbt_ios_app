@@ -411,6 +411,11 @@
     [pagesTableView reloadData];
     NSIndexPath *indexPath=[NSIndexPath indexPathForRow:currentPage inSection:0];
     [pagesTableView selectRowAtIndexPath:indexPath animated:YES  scrollPosition:UITableViewScrollPositionNone];
+
+    if (buttonAction == 2) {
+        // Save image to camera roll
+        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
+    }
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker
@@ -456,6 +461,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
     [picker dismissViewControllerAnimated:true completion:nil];
 }
 - (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    self:buttonAction = buttonIndex;
     
     if (buttonIndex == 2 && [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
         [self goToCamera];

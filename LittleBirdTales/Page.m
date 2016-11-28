@@ -68,6 +68,10 @@
     }
 
 }
+- (BOOL)hasImage {
+    return (![self.image isEqualToString:@""] && self.image != NULL);
+}
+
 - (UIImage*)pageImage {
     if (![self.image isEqualToString:@""] && self.image != NULL) {
         NSString *path = [NSString stringWithFormat:@"%@/%@",[Lib applicationDocumentsDirectory],self.image];

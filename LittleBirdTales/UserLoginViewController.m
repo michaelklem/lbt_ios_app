@@ -93,7 +93,7 @@
                                    andUrl:[NSString stringWithFormat:@"%@/services/authenticate.php",servicesURLPrefix]];
     }
     BOOL sucessed = FALSE;
-//    NSLog(@"--%@",strData);
+    NSLog(@"--%@",strData);
     
     if (strData) {
         id obj = [strData JSONValue];
@@ -117,10 +117,10 @@
             NSString *error = [obj objectForKey:@"error"];
             [Lib showAlert:@"Error" withMessage:error];
         } else {
-            [Lib showAlert:@"Error" withMessage:@"Could not connect to our server"];
+            [Lib showAlert:@"Error" withMessage:@"Could not connect to our server3"];
         }
     } else {
-        [Lib showAlert:@"Error" withMessage:@"Could not connect to our server"];
+        [Lib showAlert:@"Error" withMessage:@"Could not connect to our server4"];
     }
     
     NSLog(@"USER_ID:%@", [Lib getValueOfKey:@"user_id"]);
