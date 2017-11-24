@@ -2374,9 +2374,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.littlewings.littlebirdtales;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "7f98df4f-4b85-40ec-8450-2cbb8ee6c0cf";
+				PROVISIONING_PROFILE = "f42361ee-7bac-4688-8d30-9d4995891505";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4695d0cc-0d68-472d-b2a6-df8d6d9bf5bb";
-				PROVISIONING_PROFILE_SPECIFIER = "Mike Klem Xcode 8 2016 Profile";
+				PROVISIONING_PROFILE_SPECIFIER = "Oct 2017 Dev profile";
 				SWIFT_OBJC_BRIDGING_HEADER = "LittleBirdTales-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2411,9 +2411,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.littlewings.littlebirdtales;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "7f98df4f-4b85-40ec-8450-2cbb8ee6c0cf";
+				PROVISIONING_PROFILE = "f42361ee-7bac-4688-8d30-9d4995891505";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4695d0cc-0d68-472d-b2a6-df8d6d9bf5bb";
-				PROVISIONING_PROFILE_SPECIFIER = "Mike Klem Xcode 8 2016 Profile";
+				PROVISIONING_PROFILE_SPECIFIER = "Oct 2017 Dev profile";
 				SWIFT_OBJC_BRIDGING_HEADER = "LittleBirdTales-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";

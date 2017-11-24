@@ -16,6 +16,9 @@
 #import "Lib.h"
 #import "MFSideMenuContainerViewController.h"
 #import "SideMenuViewController.h"
+#import "HttpHelper.h"
+#import "ServiceLib.h"
+#import "SBJson.h"
 
 AppDelegate* _shared;
 @implementation AppDelegate
@@ -77,26 +80,8 @@ void onUncaughtException(NSException *exception)
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-//    unsigned char a = 100;
-//    unsigned char b = 200;
-//    
-//    NSLog(@"%i",abs(a - b));
-//    NSLog(@"%i",abs(b - a));
-    
-//    fill_left(--x,y);
-//    x = x + 1 ;
-//    fill_left(x,y-1);
-//    fill_left(x,y+1);
-    
-//    int x = 10;
-//    int y = 10;
-//    NSLog(@"%i %i",--x,y);
-//    x = x + 1;
-//    NSLog(@"%i %i",x,y-1);
-//    NSLog(@"%i %i",x,y+1);
     [Flurry setCrashReportingEnabled:YES];
     [Flurry startSession:@"68NHTPWPGX3QNMXSTG9R"];
-//    NSSetUncaughtExceptionHandler(&onUncaughtException);
 
     
     //As client request to display Splash Screen a little longer
@@ -111,6 +96,41 @@ void onUncaughtException(NSException *exception)
         if([[Lib getValueOfKey:@"user_id"]  isEqual: @""]  || ![Lib getValueOfKey:@"user_id"]) {
             controller = [[UserLoginViewController alloc] initWithNibName:@"UserLoginViewController-iPad" bundle:nil];
         } else {
+            // We retrieve the email address if the user logged in, but
+            // the email is not set.
+            if([[Lib getValueOfKey:@"user_name"]  isEqual: @""]  || ![Lib getValueOfKey:@"user_name"]) {
+                // Make request to new service end point that returns the email address/username based on the user id.
+                // klem
+//                NSString* url = [NSString stringWithFormat:@"%@/services/emailFromUserId",servicesURLPrefix];
+//                [HttpHelper sendAsyncGetRequestToURL:url
+//                                      withParameters:[NSMutableDictionary dictionaryWithObjectsAndKeys:
+//                                                      [Lib getValueOfKey:@"user_id"],@"user_id",
+//                                                      nil]
+//                                andCompletionHandler:^(NSURLResponse *response, NSData *response_data, NSError *error) {
+//                                    NSError *e = nil;
+//                                    NSDictionary *json = [NSJSONSerialization JSONObjectWithData: response_data options: NSJSONReadingMutableContainers error: &e];
+//                                    NSLog(@"Email from user id Data: %@",[json valueForKey:@"email"]);
+//                                    [Lib setValue:[json valueForKey:@"email"] forKey:@"user_name"];
+//                                }];
+//
+//
+                
+            NSString* strData = [ServiceLib sendRequest:[NSMutableDictionary dictionaryWithObjectsAndKeys:
+                        [Lib getValueOfKey:@"user_id"],@"user_id",nil]
+                        andUrl:[NSString stringWithFormat:@"%@/services/emailFromUserId",servicesURLPrefix]];
+            NSLog(@"Email from user id Data: %@",strData);
+            if (strData) {
+                id obj = [strData JSONValue];
+                if ([obj isKindOfClass:[NSDictionary class]] &&
+                    [obj objectForKey:@"email"])
+                {
+                    NSString *email = [obj objectForKey:@"email"];
+                    NSLog(@"Email from user id Data22: %@",email);
+                    [Lib setValue:email forKey:@"user_name"];
+                }
+            }
+                
+            }
             controller = [[UserTalesController alloc] initWithNibName:@"UserTalesController-iPad" bundle:nil];
         }
     } else {

@@ -82,6 +82,5 @@ GalleryDelegate, CropImageDelegate, FontControllerDelegate, GalleryViewDelegate,
 
 -(void)objectLayersShow:(BOOL)showed;
 -(IBAction)save:(id)sender;
--(IBAction)saveToGallery:(id)sender;
 
 @end

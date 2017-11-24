@@ -92,6 +92,39 @@
     });
 }
 
+-(void)uploadTaleToAnother {
+    
+    if ([[currentTale pages] count] == 1) {
+        [Lib showAlert:@"Little Bird Tales" withMessage:@"Please add at least 1 page to your story to make it playable"];
+    }
+    
+
+    UserLoginViewController* controller;
+    if (IsIdiomPad) {
+        controller = [[UserLoginViewController alloc] initWithNibName:@"UserLoginViewController-iPad" bundle:nil];
+    }
+    [self.navigationController pushViewController:controller animated:YES];
+
+    [activityIndicator startAnimating];
+    [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{ // 1
+        NSString* storyId = [currentTale uploadWithUserId:[Lib getValueOfKey:@"user_id"] andBucketPath:[Lib getValueOfKey:@"bucket_path"]];
+        dispatch_async(dispatch_get_main_queue(), ^{ // 2
+            [activityIndicator stopAnimating];
+            [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success"
+                                                            message:@"Your story has successfully been uploaded."
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+            [alert show];
+            
+        });
+    });
+}
+
+
 -(void)deleteTale {
     UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Little Bird Tales"
                                                         message:@"Delete this tale?" 
@@ -202,7 +235,7 @@
                                                    delegate:self
                                           cancelButtonTitle:@"Cancel"
                                      destructiveButtonTitle:nil
-                                          otherButtonTitles:@"Play", @"Upload", @"Edit", @"Delete", nil];
+                                          otherButtonTitles:@"Play", @"Upload To My Account", @"Upload To Another Account", @"Edit", @"Delete", nil];
     
     // Show the sheet
     
@@ -217,12 +250,15 @@
             [self playTale];
             break;
         case 1:
-            [self uploadTale];
+            [self uploadTale]; // Upload to my account
             break;
         case 2:
-            [self editTale:nil];
+            [self uploadTaleToAnother]; // upload to another account
             break;
         case 3:
+            [self editTale:nil];
+            break;
+        case 4:
             [self deleteTale];
             break;
     }

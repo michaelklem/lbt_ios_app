@@ -190,7 +190,7 @@
         [button setStyle:UIBarButtonItemStyleDone];
         [button setTitle:@"Done"];
     } else {
-        [button setStyle:UIBarButtonItemStyleBordered];
+        [button setStyle:UIBarButtonItemStylePlain];
         [button setTitle:@"Edit"];
     }
     

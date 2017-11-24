@@ -318,13 +318,9 @@ NSMutableArray* lessons;
     return storyId;
 }
 
-- (BOOL)deleteOrphanFiles {
-    BOOL success;
-    
+- (void)deleteOrphanFiles {
     for (Page *page in self.pages) {
         [page deletePageOrphanFile];
     }
-    
-    return success;
 }
 @end

@@ -402,8 +402,7 @@
     NSLog(@"%@",a);
 }
 
-- (BOOL)deletePageOrphanFile {
-    BOOL success;
+- (void)deletePageOrphanFile {
 
     NSFileManager *fm = [NSFileManager defaultManager];
 

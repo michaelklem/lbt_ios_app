@@ -98,6 +98,7 @@
             [obj objectForKey:@"id"]) {
             userId = [obj objectForKey:@"id"];
             [Lib setValue:userId forKey:@"user_id"];
+            //[Lib setValue:email forKey:@"user_name"];
             bucketPath = [obj objectForKey:@"bucket_path"];
             [Lib setValue:bucketPath forKey:@"bucket_path"];
             encryptedUserId = [obj objectForKey:@"encrypted_id"];
@@ -108,10 +109,10 @@
             NSString *error = [obj objectForKey:@"error"];
             [Lib showAlert:@"Error" withMessage:error];
         } else {
-            [Lib showAlert:@"Error" withMessage:@"Could not connect to our server1"];
+            [Lib showAlert:@"Error" withMessage:@"Could not connect to our server"];
         }
     } else {
-        [Lib showAlert:@"Error" withMessage:@"Could not connect to our server2"];
+        [Lib showAlert:@"Error" withMessage:@"Could not connect to our server"];
     }
     
     if (sucessed) {

@@ -619,7 +619,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
             controller.title = @"Gallery";
             
             UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:controller];
-            UIBarButtonItem *editGalleryButton = [[UIBarButtonItem alloc] initWithTitle:@"Edit" style:UIBarButtonItemStyleBordered target:controller action:@selector(toggleEditMode:)];
+            UIBarButtonItem *editGalleryButton = [[UIBarButtonItem alloc] initWithTitle:@"Edit" style:UIBarButtonItemStylePlain target:controller action:@selector(toggleEditMode:)];
             nav.navigationBar.topItem.rightBarButtonItem = editGalleryButton;
             
             self.popoverController = [[UIPopoverController alloc] initWithContentViewController:nav];                    
