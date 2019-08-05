@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-@protocol InputTextViewDelegate 
+@protocol UserInputTextViewDelegate
 @required 
     -(void)inputedText:(NSString*)text;
 @end
@@ -18,7 +18,7 @@
 @property (nonatomic, assign) BOOL limited;
 -(void)showInView:(UIView*)aView;
 +(UserInputTextView*)viewFromNib:(id)owner;
-@property (nonatomic, assign) id <InputTextViewDelegate> delegate;
+@property (nonatomic, assign) id <UserInputTextViewDelegate> delegate;
 @property (nonatomic, retain) IBOutlet UITextView* textView;
 -(IBAction)save:(id)sender;
 -(IBAction)cancel:(id)sender;

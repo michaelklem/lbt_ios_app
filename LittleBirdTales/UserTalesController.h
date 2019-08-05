@@ -11,7 +11,7 @@
 #import "Tale.h"
 #import "UserInputTaleInfo.h"
 
-@interface UserTalesController : UIViewController <InputTaleInfoDelegate, UIAlertViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIAlertViewDelegate> {
+@interface UserTalesController : UIViewController <UserInputTaleInfoDelegate, UIAlertViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIAlertViewDelegate> {
     Tale *currentTale;
     NSInteger lastTaleIndex;
     NSInteger currentTaleIndex;

@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-@protocol InputTaleInfoDelegate 
+@protocol UserInputTaleInfoDelegate
 @required 
 -(void)inputedTitle:(NSString*)title author:(NSString*)author;
 @end
@@ -17,7 +17,7 @@
 }
 -(void)showInView:(UIView*)aView;
 +(UserInputTaleInfo*)viewFromNib:(id)owner;
-@property (nonatomic, assign) id <InputTaleInfoDelegate> delegate;
+@property (nonatomic, assign) id <UserInputTaleInfoDelegate> delegate;
 @property (nonatomic, retain) IBOutlet UITextField* titleField;
 @property (nonatomic, retain) IBOutlet UITextField* authorField;
 

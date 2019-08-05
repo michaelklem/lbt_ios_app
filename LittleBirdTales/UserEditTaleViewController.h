@@ -22,7 +22,7 @@
 #import "UserPlayerController.h"
 #import "UserTalesController.h"
 
-@interface UserEditTaleViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, InputTextViewDelegate, InputTaleInfoDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate,UINavigationControllerDelegate, UIPopoverControllerDelegate, UIAlertViewDelegate, AudioRecordDelegate, GalleryDelegate, CropImageDelegate,DrawControllerDelegate, GalleryViewDelegate > {
+@interface UserEditTaleViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, InputTextViewDelegate, UserInputTaleInfoDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate,UINavigationControllerDelegate, UIPopoverControllerDelegate, UIAlertViewDelegate, AudioRecordDelegate, GalleryDelegate, CropImageDelegate,DrawControllerDelegate, GalleryViewDelegate > {
     IBOutlet UITableView* pagesTableView;
     IBOutlet UIImageView* imageView;
     IBOutlet UIButton *uploadButton;
