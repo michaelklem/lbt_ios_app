@@ -347,9 +347,8 @@
 -(IBAction)insertImage:(id)sender {
     [self resetAllBtns];
     [self objectLayersShow:YES];
-    
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-        UIActionSheet* actionSheet = [[UIActionSheet alloc] 
+        UIActionSheet* actionSheet = [[UIActionSheet alloc]
                                       initWithTitle:@"Choose image"
                                       delegate:self
                                       cancelButtonTitle:@"Cancel"
@@ -358,7 +357,7 @@
         actionSheet.tag = IMAGETAG;
         [actionSheet showInView:self.view];
     } else {
-        UIActionSheet* actionSheet = [[UIActionSheet alloc] 
+        UIActionSheet* actionSheet = [[UIActionSheet alloc]
                                       initWithTitle:@"Choose image"
                                       delegate:self
                                       cancelButtonTitle:@"Cancel"
@@ -464,7 +463,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex {
-    if (actionSheet.tag == IMAGETAG) {
+   if (actionSheet.tag == IMAGETAG) {
         if (buttonIndex == 0) { // photo album
             UIImagePickerController* controller = [[UIImagePickerController alloc] init];
             controller.delegate = self;
